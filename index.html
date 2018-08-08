@@ -152,6 +152,187 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-React从入门到放弃" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/08/React从入门到放弃/">React从入门到放弃</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/08/React从入门到放弃/" class="archive-article-date">
+  	<time datetime="2018-08-08T05:05:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>React<br>    React安装脚手架——— cnpm install -g create-react-app<br>    安装脚手架遇到的问题，安装到指定目录后不能全局使用，解决方法：<br>        打开node的node_modules文件夹和npm放到一块，另外create-react-app和create-react-app.cmd要在同级目录下</p>
+<pre><code>创建react app:
+    create-react-app react-test(项目名)
+
+react语法
+
+    原生js创建Dom
+        var HelloMessage = React.createElement(
+            &apos;div&apos;,{&apos;style&apos;: {&apos;color&apos;:&apos;red&apos;}},
+            React.createElement(&apos;h1&apos;, null, &quot;hello world&quot;)
+        )
+        ReactDOM.render(HelloMessage,document.getElementById(&quot;root&quot;))
+
+        此方法在新版本已经废除
+        var HelloMessage = React.createClass({})
+
+        ReactDom.render是React的最基本用法，用于将模板转换为HTML语言，并插入指定的DOM节点
+        例如：
+            ReactDom.render({
+                &lt;h1&gt;Hello.World&lt;/h1&gt;
+                document.getElementById(&apos;example&apos;)
+            })
+    React组件的几种写法 
+        函数定义组件
+            function HelloMessage(props) {
+                return &lt;h1&gt;Hello World!&lt;/h1&gt;;
+            }
+            const element = &lt;HelloMessage /&gt;
+            ReactDom.render(element,document.getElementById(&quot;root&quot;));
+        ES6使用Class定义组件
+            Class HelloMessage extends React.Component{
+                render(){
+                     return &lt;h1&gt;Hello World!&lt;/h1&gt;;
+                }
+            }
+            ReactDom.render(&lt;HelloMessage/&gt;,document.getElementById(&quot;root&quot;));
+        用户自定义组件
+            const element = &lt;div&gt;hello message&lt;/div&gt;
+            ReactDom.render(element,document.getElementById(&quot;root&quot;));
+    属性与状态
+        Class Demo extends React.component({
+            render{
+                return &lt;div&gt;{this.props.title}&lt;/div&gt;
+            }
+        })
+        ReactDOM.render(&lt;Demo title={&quot;Demo&quot;}/&gt;,document.getElementById(&quot;app&quot;))
+
+    React的生命周期
+        首次实例化
+            getDefaultProps
+            getInitialState
+            componentWillMount
+            render
+            componentDidMount 实例化之后更新，这一过程和上面一样，但没有getDefaultProps这个过程 简单记忆：props =&gt; state =&gt; mount =&gt; render =&gt; mounted
+        存在期
+            组件已经存在，状态发生改变时
+
+            componetWillReceiveProps
+            shouldComponentUpdate
+            ComponentWillUpdate
+            render
+            componentDidUpdate
+        销毁期
+            componentWillUnmount
+
+        componentWillMount------组件将要挂载
+            组件刚经历constructor,初始化完数据
+            组件还未进入render,组件还未渲染完成，dom还未渲染
+            在完成首次渲染之前调用，此时可以修改组件的state
+        componentDidMount------组件渲染完成
+            组件第一次完成渲染，此时dom节点已经渲染完成，可以在这里调用ajax请求，返回数据
+            setState后组件会重新渲染
+
+        componentWillReceiveProps(nextProps)
+            此方法在接受父组件改变后的props需要重新渲染组件时用到的比较多
+            nextProps
+                通过对比nextProps和this.props，将nextProps setState为当前组件的state，从而重新渲染组件
+        shouldComponentUpdate(nextProps,nextState)
+            唯一用于控制组件重新渲染的生命周期，由于在react中，setState以后，state发生变化，组件会进入重新渲染的流程，（暂时这么理解，其实setState以后有些情况并不会重新渲染，比如数组引用不变）在这里return false可以阻止组件的更新
+
+            因为react父组件的重新渲染会导致其所有子组件的重新渲染，这个时候其实我们是不需要所有子组件都跟着重新渲染的，因此需要在子组件的该生命周期中做判断
+        componentWillUpdate (nextProps,nextState)
+            shouldComponentUpdate返回true以后，组件进入重新渲染的流程，进入componentWillUpdate,这里同样可以拿到nextProps和nextState
+        componentDidUpdate(prevProps,prevState)
+            组件更新完毕后，react只会在第一次初始化成功会进入componentDidmount,之后每次重新渲染后都会进入这个生命周期，这里可以拿到prevProps和prevState，即更新前的props和state。
+        componentWillUnmount ()
+            clear你在组建中所有的setTimeout,setInterval
+            移除所有组建中的监听 removeEventListener
+            也许你会经常遇到这个warning:
+        生命周期中10个API的作用说明
+            getDefaultProps 作用于组件类，只调用一次，返回对象用于设置默认的props，对于引用值，会在实例中共享
+
+            getInitialState 作用于组件实例，在实例创建时调用一次，用于初始化每个实例的state，此时可以访问this.props
+
+            componentWillMount 在完成首次渲染之前调用，此时可以修改组件的state
+
+            render 必选方法，创建虚拟DOM，该方法具有特殊规则：
+
+            只能通过this.props 和this.state访问数据
+
+            可以返回null、false或任何React组件
+
+            只能出现一个顶级组件，数组不可以
+
+            不能改变组件的状
+
+            不能修改DOM
+
+            componentDidMount 真实的DOM被渲染出来后调用，可以在此方法中通过 this.getDOMNode()访问真实的DOM元素。此时可以使用其它类库操作DOM。服务端不会被调用
+
+            componetWillReceiveProps 组件在接收到新的props时调用，并将其作为参数nextProps使用，此时可以更改组件的props及state
+
+            shouldComponentUpdate 组件是否应当渲染新的props或state，返回false表示跳过后续的生命周期方法，通常不需要使用以避免出现bug。在出现应用性能瓶颈时，是一个可以优化的点。
+
+            componetWillUpdate 接收新props或state后，进行渲染之前调用，此时不允许更新props或state
+
+            componetDidUpdate 完成渲染新的props或state之后调用 ，此时可以访问DOM元素。
+
+            componetWillUnmount 组件被移除之前调用，可以用于做一些清理工作，在componentDidMount方法中添加的所有任务都需要在该方法中撤销，比如创建的定时器或添加的事件监听器。
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/08/React从入门到放弃/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-git学习速记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
