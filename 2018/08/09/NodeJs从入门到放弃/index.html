@@ -8,15 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>NodeJs从入门到放弃 | 我的成长记录</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="node">
+  <meta name="description" content="IO/密集型、cpu密集型: 可以把任务分为计算密集型和IO密集型。 计算密集型:     任务的特点是要进行大量的计算，消耗CPU资源，比如计算圆周率、对视频进行高清解码等等，全靠CPU的运算能力。这种计算密集型任务虽然也可以用多任务完成，但是任务越多，花在任务切换的时间就越多，CPU执行任务的效率就越低，所以，要最高效地利用CPU，计算密集型任务同时进行的数量应当等于CPU的核心数。">
+<meta name="keywords" content="node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NodeJs从入门到放弃">
 <meta property="og:url" content="http://yoursite.com/2018/08/09/NodeJs从入门到放弃/index.html">
 <meta property="og:site_name" content="我的成长记录">
+<meta property="og:description" content="IO/密集型、cpu密集型: 可以把任务分为计算密集型和IO密集型。 计算密集型:     任务的特点是要进行大量的计算，消耗CPU资源，比如计算圆周率、对视频进行高清解码等等，全靠CPU的运算能力。这种计算密集型任务虽然也可以用多任务完成，但是任务越多，花在任务切换的时间就越多，CPU执行任务的效率就越低，所以，要最高效地利用CPU，计算密集型任务同时进行的数量应当等于CPU的核心数。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-09T05:50:09.248Z">
+<meta property="og:updated_time" content="2018-08-15T04:59:41.662Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NodeJs从入门到放弃">
+<meta name="twitter:description" content="IO/密集型、cpu密集型: 可以把任务分为计算密集型和IO密集型。 计算密集型:     任务的特点是要进行大量的计算，消耗CPU资源，比如计算圆周率、对视频进行高清解码等等，全靠CPU的运算能力。这种计算密集型任务虽然也可以用多任务完成，但是任务越多，花在任务切换的时间就越多，CPU执行任务的效率就越低，所以，要最高效地利用CPU，计算密集型任务同时进行的数量应当等于CPU的核心数。">
   
     <link rel="alternative" href="/atom.xml" title="我的成长记录" type="application/atom+xml">
   
@@ -172,7 +175,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>IO/密集型、cpu密集型:</p>
+<pre><code>可以把任务分为计算密集型和IO密集型。
+计算密集型:
+    任务的特点是要进行大量的计算，消耗CPU资源，比如计算圆周率、对视频进行高清解码等等，全靠CPU的运算能力。这种计算密集型任务虽然也可以用多任务完成，但是任务越多，花在任务切换的时间就越多，CPU执行任务的效率就越低，所以，要最高效地利用CPU，计算密集型任务同时进行的数量应当等于CPU的核心数。
+    计算密集型任务由于主要消耗CPU资源，因此，代码运行效率至关重要。Python这样的脚本语言运行效率很低，完全不适合计算密集型任务。对于计算密集型任务，最好用C语言编写。
+IO密集型:
+    涉及到网络、磁盘IO的任务都是IO密集型任务，这类任务的特点是CPU消耗很少，任务的大部分时间都在等待IO操作完成（因为IO的速度远远低于CPU和内存的速度）。对于IO密集型任务，任务越多，CPU效率越高，但也有一个限度。常见的大部分任务都是IO密集型任务，比如Web应用。
+    IO密集型任务执行期间，99%的时间都花在IO上，花在CPU上的时间很少，因此，用运行速度极快的C语言替换用Python这样运行速度极低的脚本语言，完全无法提升运行效率。对于IO密集型任务，最合适的语言就是开发效率最高（代码量最少）的语言，脚本语言是首选，C语言最差。
+</code></pre><p>进程与线程</p>
+<pre><code>进程(process)
+
+线程(thread)
+</code></pre><p>同步与异步</p>
+<p>模块的引入与导出</p>
+<p>事件循环</p>
+
       
 
       
@@ -413,11 +431,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -425,11 +447,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
