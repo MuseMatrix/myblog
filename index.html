@@ -152,6 +152,465 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-jquery学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/17/jquery学习笔记/">jquery学习笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/17/jquery学习笔记/" class="archive-article-date">
+  	<time datetime="2018-08-17T04:30:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Jquery是一个javascript库<br>Jquery文档就绪函数<br>    $(document).ready(function(){});<br>    $(function(){})<br>Jquey事件函数<br>   $(“#oBtn”).click(function(){})//单击事件<br>Jquery效果<br>    隐藏/显示<br>   //参数为 slow、fast或者毫秒，callback是效果执行完后的回调函数<br>    $(“选择器”).hide(speed,callback)<br>        ex：<br>            $(“#oBtn”).hide();//隐藏<br>            $(“#oBtn”).show();//显示<br>            $(“#oBtn”).toggle();//隐藏显示互相切换<br>   //淡入淡出<br>                $(“#oBtn”).fadeIn();//淡入已隐藏的元素<br>                $(“#oBtn”).fadeOut();//淡出可见元素<br>                $(“#oBtn”).fadeToggle();//淡入淡出互相切换;<br>       //参数为slow、fast或者毫秒，透明度，callback回调函数<br>       $(“选择器”).fadeTo(speed,opacity,callback)<br>            ex：<br>                $(“#oBtn”).fadeTo(“slow”,0.4);<br>   //滑动<br>        $(“选择器”).slideDown(speed,callback)<br>            ex:<br>                $(“#oBtn”).slideDown();//向下滑动<br>                $(“#oBtn”).slideUp();//向上滑动<br>                $(“#oBtn”).slideToggle();//上下切换<br>   //动画<br>         params定义形成动画的css属性，speed为速度，callback为回调函数<br>         $(“选择器”).animate({params},speed,callback);<br>   //停止动画<br>        //stopAll是否清除动画队列，默认false;goToEnd是否立即完成当前动画，默认false<br>        $(“选择器”).stop(stopAll,goToEnd);//<br>            $(“#oBtn”).stop();</p>
+<p>Jquery操作Dom<br>    //都可以获取和设置值，并且都有回调函数，回调函数有两个参数，一个是备选元素列表当前元素的下标，以及原始值<br>        $(“#oBtn”).text();//获取所选元素的文本内容<br>        $(“#oBtn”).html();//设置元素的内容  包括html<br>        $(“#oBtn”).val();//返回表单的值<br>        $(“#oBtn”).attr();//设置和获取属性值</p>
+<pre><code>//jquery添加新元素和内容
+    $(&quot;#oBtn&quot;).append();在被选元素的结尾插入内容（标签内部）
+    $(&quot;#oBtn&quot;).prepend();在被选元素的开头插入内容(标签内部)
+    $(&quot;#oBtn&quot;).after();在被选元素之后插入内容（标签外部）
+    $(&quot;#oBtn&quot;).befroe();在被选元素之前插入内容(标签外部)
+
+//jquery删除元素/内容
+    $(&quot;#oBtn&quot;).remove();删除被选元素及其子元素(允许接受一个参数,允许对被删除元素进行过滤)
+    $(&quot;#oBtn&quot;).empty();删除被选元素里面的子元素
+
+//Jquery操作Css
+     $(&quot;#oBtn&quot;).addClass();向被选元素添加一个类或多个类
+     $(&quot;#oBtn&quot;).removeClass();向被选元素删除一个类或多个类
+     $(&quot;#oBtn&quot;).toggleClass();对被选元素进行添加和删除类的切换操作
+     $(&quot;#oBtn&quot;).css();返回或者设置匹配元素的一个或者多个样式属性
+
+//Jquery获取尺寸
+    $(&quot;#oBtn&quot;).width();返回设置元素的宽(不包括内边距、边框或外边距)
+    $(&quot;#oBtn&quot;).height();返回设置元素的高(不包括内边距、边框或外边距)
+    $(&quot;#oBtn&quot;).innerWidth();返回元素的宽(包括内边距)
+    $(&quot;#oBtn&quot;).innerHeight();返回元素的高(包括内边距)
+    $(&quot;#oBtn&quot;).outerWidth();返回元素的宽(包括内边距和边框)
+    $(&quot;#oBtn&quot;).outerHeight();返回元素的高(包括内边距和边框)
+
+//Jquery之遍历
+    $(&quot;#oBtn&quot;).parent();返回被选元素的直接父元素
+    $(&quot;#oBtn&quot;).parents();返回被选元素的所有祖先元素
+    $(&quot;#oBtn&quot;).parentsUntil(&quot;div&quot;)返回介于两个给定元素之间的所有祖先元素
+    $(&quot;#oBtn&quot;).children();方法返回被选元素的所有直接子元素
+    $(&quot;#oBtn&quot;).find(&quot;span&quot;);返回被选元素的后代元素，一路向下直到最后一个后代
+    $(&quot;#oBtn&quot;).siblings();返回被选元素的所有同胞元素
+    $(&quot;#oBtn&quot;).next();返回被选元素的下一个同胞元素(只返回一个元素)
+    $(&quot;#oBtn&quot;).nextAll();返回被选元素的所有跟随同胞元素
+    $(&quot;#oBtn&quot;).nextUntil();介于两个给定元素之间的所有同胞元素
+        prev(),prevAll(),prevUntil()方法类似，方向相反
+    $(&quot;#oBtn&quot;).first();返回该元素内部的第一个元素
+    $(&quot;#oBtn&quot;).last();返回该元素内部的最后一个元素
+    $(&quot;#oBtn&quot;).eq();返回被选元素中带有指定索引号的元素
+    $(&quot;#oBtn&quot;).filter();匹配的元素被返回，不匹配的会删除
+    $(&quot;#oBtn&quot;).not();返回不匹配标准的所有元素
+
+//Jquery之Ajax
+    $(selector).load(URL,data,callback);
+    $(&quot;#oBtn&quot;).load() 方法从服务器加载数据，并把返回的数据放入被选元素中。
+    $.get(URL,callback);
+    $.post(URL,data,callback);
+//杂项
+    $.noConflict();方法会释放会 $ 标识符的控制，这样其他脚本就可以使用它了。$换为Jquery
+//Jquery之事件
+    $(&quot;#oBtn&quot;).click(function(){});
+    $(&quot;#oBtn&quot;).dbclick(function(){});
+    $(&quot;#oBtn&quot;).focus(function(){});
+    $(&quot;#oBtn&quot;).mouseover(function(){});
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/17/jquery学习笔记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-页面渲染机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/17/页面渲染机制/">页面渲染机制</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/17/页面渲染机制/" class="archive-article-date">
+  	<time datetime="2018-08-17T04:27:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>浏览器<br>            Chrome<br>            FireFox<br>            Safari<br>        浏览器的基本结构<br>            1.用户界面（User Interface）:用户所看到及与之交互的功能组件，如地址栏，返回，前进按钮等；<br>            2.浏览器引擎（Browser engine）:负责控制和管理下一级的渲染引擎；<br>            3.渲染引擎（Rendering engine）:负责解析用户请求的内容（如HTML或XML，渲染引擎会解析HTML或XML，以及相关CSS，然后返回解析后的内容）；<br>            4.网络（Networking）:负责处理网络相关的事务，如HTTP请求等；<br>            5.UI后端（UI backend）:负责绘制提示框等浏览器组件，其底层使用的是操作系统的用户接口；<br>            6.JavaScript解释器（JavaScript interpreter）:负责解析和执行JavaScript代码；<br>            7.数据存储（Data storage）:负责持久存储诸如cookie和缓存等应用数据。</p>
+<pre><code>                             用户界面——————————
+                                |             |
+                                |             |
+                            浏览器引擎————————————————&gt;数据存储
+                                |              |
+                                |             |
+                           —————渲染引擎——————————|
+                       |        |             |
+                       |        |              |
+                  JavaScript   网络         UI后端
+                     解释器
+
+    浏览器内核
+        Trident内核： IE
+        Webkit内核：Chrome,Safari
+        Gecko内核：FireFox
+网络
+    当用户访问页面时，浏览器需要获取用户请求内容，这个过程主要涉及浏览器网络模块：
+        1.用户在地址栏输入域名，如baidu.com，DNS（Domain Name System，域名解析系统）服务器根据输入的域名查找对应IP，然后向该IP地址发起请求；
+        2.浏览器获得并解析服务器的返回内容(HTTP response)；
+        3.浏览器加载HTML文件及文件内包含的外部引用文件及图片，多媒体等资源。             
+    DNS预解析
+        浏览器DNS解析大多时候较快，且会缓存常用域名的解析值，但是如果网站涉及多域名，在对每一个域名访问时都需要先解析出IP地址，而我们希望在跳转或者请求其他域名资源时尽量快，则可以开启域名预解析，浏览器会在空闲时提前解析声明需要预解析的域名。如：&lt;link rel=&quot;dns-prefetch&quot; href=&quot;//s1.bdstatic.com&quot;&gt;
+    多进程
+        通常说JavaScript执行是单进程的，但是浏览器网络部分通常是有几个平行进程同时开启，但是也会有
+        限制，一般为2-6个。
+渲染引擎及关键渲染路径
+    渲染引擎所做的事是将请求内容展现给我们，默认支持HTML,XML和图片类型，对于其他诸如PDF等类型的内容则需要安装相应插件，但浏览器的展示工作流程基本是一样的。
+    通过网络模块加载到HTML文件后渲染引擎渲染流程如下，这也通常被称作关键渲染路径（Critical Rendering Path）：
+        1.构建DOM树(DOM tree)：从上到下解析HTML文档生成DOM节点树（DOM tree），也叫内容树（content tree）；
+        2.构建CSSOM(CSS Object Model)树：加载解析样式生成CSSOM树；
+        3.执行JavaScript：加载并执行JavaScript代码（包括内联代码或外联JavaScript文件）；
+        4.构建渲染树(render tree)：根据DOM树和CSSOM树,生成渲染树(render tree)；渲染树：按顺序展示在屏幕上的一系列矩形，这些矩形带有字体，颜色和尺寸等视觉属性
+        5.布局（layout）：根据渲染树将节点树的每一个节点布局在屏幕上的正确位置；
+        6.绘制（painting）：遍历渲染树绘制所有节点，为每一个节点适用对应的样式，这一过程是通过UI后端模块完成；
+
+                                            ___执行javascript___
+                                           |                   |
+                                           |                   |
+                                解析html————————&gt;构建dom树——————————&gt;构建CSSDOM树——————————&gt;渲染树——————————&gt;绘制
+
+        为了更友好的用户体验，浏览器会尽可能快的展现内容，而不会等到文档所有内容到达才开始解析和构建/布局渲染树，而是每次处理一部分，并展现在屏幕上，这也是为什么我们经常可以看到页面加载的时候内容是从上到下一点一点展现的。
+
+        Webkit浏览器和Gecko浏览器渲染流程大致相同,不同的是：
+            1.Webkit浏览器中的渲染树(render tree)，在Gecko浏览器中对应的则是框架树（frame tree）,渲染对象(render object)对应的是框架（frame）;
+            2.Webkit中的布局（Layout）过程，在Gecko中称为回流（Reflow）,本质是一样的，后文会解释回流的另一层含义–重新布局；
+            3.Gecko中HTML和DOM树中间多了一层内容池（Content sink）,可以理解成生成DOM元素的工厂。
+        单进程
+            不同于网络部分的多进程渲染引擎是单线程工作的，意味着渲染流程是一步一步渐进完成的。
+        解析文档(parser HTML)
+            在详细介绍浏览器渲染文档之前，先应该理解浏览器如何解析文档：解析文档的顺序，对于CSS和JavaScript如何处理等。
+                解析顺序
+                    浏览器按从上到下的顺序扫描解析文档；
+        解析样式和脚本：
+            脚本或许是由于通常会在JavaScript脚本中改变文档DOM结构，于是浏览器以同步方式解析，加载和执行脚本，浏览器在解析文档时，当解析到标签时，会解析其中的脚本（对于外链的JavaScript文件，需要先加载该文件内容，再进行解析），然后立即执行，这整个过程都会阻塞文档解析，直到脚本执行完才会继续解析文档。就是说由于脚本是同步加载和执行的，它会阻塞文档解析，这也解释了为什么现在通常建议将标签放在标签前面，而不是放在标签里。现在HTML5提供defer和async两个属性支持延迟和异步加载JavaScript文件，如：&lt;script defer src=&quot;script.js&quot;&gt;
+
+            改进针对上文说的脚本阻塞文档解析，主流浏览器如Chrome和FireFox等都有一些优化，比如在执行脚本时，开启另一个进程解析剩余的文档以找出并加载其他的待下载外部资源（不改变主进程的DOM树，仅优化加载外部资源）。
+
+            样式不同于脚本，浏览器对样式的处理并不会阻塞文档解析，大概是因为样式表并不会改变DOM结构
+
+            样式表与脚本你可能想问样式是否会阻塞脚本文件的加载执行呢？正常情况是不会的，但是存在一个问题是通常我们会在脚本中请求样式信息，但是在文档解析时，如果样式尚未加载或解析，将会得到错误信息，对于这一问题，FireFox浏览器和Webkit浏览器处理策略不同：
+                当存在有样式文件未被加载和解析时，FireFox浏览器会阻塞所有脚本；
+                而Webkit浏览器只会阻塞操作了改文件内声明的样式属性的脚本。
+        构建DOM树
+            DOM，即文档对象模型（Document Object Model）,DOM树，即文档内所有节点构成的一个树形结构。
+
+            假设浏览器获取返回的如下HTML文档：
+                &lt;!doctype html&gt;
+                &lt;html&gt;
+                    &lt;head&gt;
+                      &lt;link rel=&quot;stylesheet&quot; href=&quot;./theme.css&quot;&gt;&lt;/link&gt;
+                      &lt;script src=&quot;./config.js&quot;&gt;&lt;/script&gt;
+                      &lt;title&gt;关键渲染路径&lt;/title&gt;
+                    &lt;/head&gt;
+                    &lt;body&gt;
+                      &lt;h1 class=&quot;title&quot;&gt;关键渲染路径&lt;/h1&gt;
+                      &lt;p&gt;关键渲染路径介绍&lt;/p&gt;
+                      &lt;footer&gt;@copyright2017&lt;/footer&gt;
+                    &lt;/body&gt;
+                &lt;/html&gt;
+                首先浏览器从上到下依次解析文档构建DOM树，如下：
+                                                html
+                                                |  |
+                                                |  |
+                  ——————head ———————————————————    ———————————————————body——————————————————————————————
+                  |       |_______                             ___________|__________                           |
+                  |          |          |                             |                       |                    footer
+                title    link   script                       h1                    p                     |
+                  |                                             |                       |                     |
+                  |                                        关键渲染陆路径          关键渲染路径介绍         @copyrifht2017
+             关键渲染路径
+
+
+
+        构建CSSOM树
+            CSSOM，即CSS对象模型（CSS Object Model），CSSOM树，与DOM树结构相似，只是另外为每一个节点关联了样式信息。
+            假设浏览器获取返回的html样式如下：
+                html, body {
+                    width: 100%;
+                    height: 100%;
+                    background-color: #fcfcfc;
+                }
+                .title {
+                    font-size: 20px;
+                }
+                .footer {
+                    font-size: 12px;
+                    color: #aaa;
+                }
+          构建CSSOM树如下：                (width:100%....)
+                                                  html
+                                                |  |
+                  (display:none.....)            |  |          (background-color:#fcfcfc.....)
+                  ——————head ———————————————————    ———————————————————body——————————————————————————————
+                  |       |_______                             ___________|__________                           |
+                  |          |          |                             |                       |                    footer
+                title    link   script                       h1                    p                     |
+                  |                                    (font-size:20px.....)      |                (font-size:12px.....)
+                  |                                             |                       |                     |
+                  |                                        关键渲染陆路径          关键渲染路径介绍         @copyrifht2017
+             关键渲染路径
+        执行JavaScript
+            上文已经阐述了文档解析时对脚本的处理，我们得知脚本加载，解析和执行会阻塞文档解析，而在特殊情况下样式的加载和解析也会阻塞脚本，所以现在推荐的实践是标签放在标签前面
+        构建渲染树
+            DOM树和CSSOM树都构建完了，接着浏览器会构建渲染树：
+                渲染树，代表一个文档的视觉展示，浏览器通过它将文档内容绘制在浏览器窗口，展示给用户，它由按顺序展示在屏幕上的一系列矩形对象组成，这些矩形对象都带有字体，颜色和尺寸，位置等视觉样式属性。对于这些矩对象，FireFox称之为框架（frame）,Webkit浏览器称之为渲染对象（render object, renderer），后文统称为渲染对象。
+        渲染树与DOM树
+            每一个渲染对象都对应着DOM节点，但是非视觉（隐藏，不占位）DOM元素不会插入渲染树，如元素或声明display: none;的元素，渲染对象与DOM节点不是简单的一对一的关系，一个DOM可以对应一个渲染对象，但一个DOM元素也可能对应多个渲染对象，因为有很多元素不止包含一个CSS盒子，如当文本被折行时，会产生多个行盒，这些行会生成多个渲染对象；又如行内元素同时包含块元素和行内元素，则会创建一个匿名块级盒包含内部行内元素，此时一个DOM对应多个矩形对象（渲染对象）。
+            见图渲染树(图中渲染树viewport即视口，是文档的初始包含块，scroll代表滚动区域，详见CSS之视觉格式化模型(Visual Formatting Model)渲染树并不会包含显式或隐式地display：none;的标签元素。)
+
+        布局（Layout）或回流（reflow，relayout）
+            创建渲染树后，下一步就是布局（Layout）,或者叫回流（reflow,relayout），这个过程就是通过渲染树中渲染对象的信息，计算出每一个渲染对象的位置和尺寸，将其安置在浏览器窗口的正确位置，而有些时候我们会在文档布局完成后对DOM进行修改，这时候可能需要重新进行布局，也可称其为回流，本质上还是一个布局的过程，每一个渲染对象都有一个布局或者回流方法，实现其布局或回流。
+
+        流（flow）
+            HTML采用的是基于流的方式定位布局，其按照从左到右，从上到下的顺序进行排列，详见CSS定位机制。
+
+        全局布局与局部布局
+            对渲染树的布局可以分为全局和局部的，全局即对整个渲染树进行重新布局，如当我们改变了窗口尺寸或方向或者是修改了根元素的尺寸或者字体大小等；而局部布局可以是对渲染树的某部分或某一个渲染对象进行重新布局。
+
+        脏位系统（dirty bit system）
+            大多数web应用对DOM的操作都是比较频繁，这意味着经常需要对DOM进行布局和回流，而如果仅仅是一些小改变，就触发整个渲染树的回流，这显然是不好的，为了避免这种情况，浏览器使用了脏位系统，只有一个渲染对象改变了或者某渲染对象及其子渲染对象脏位值为”dirty”时，说明需要回流。
+
+        表示需要布局的脏位值有两种：
+            “dirty”–自身改变，需要回流
+            “children are dirty”–子节点改变，需要回流
+        布局过程
+            布局是一个从上到下，从外到内进行的递归过程，从根渲染对象，即对应着HTML文档根元素，然后下一级渲染对象，如对应着元素，如此层层递归，依次计算每一个渲染对象的几何信息（位置和尺寸）。
+            几何信息-位置和尺寸，即相对于窗口的坐标和尺寸，如根渲染对象，其坐标为（0， 0），尺寸即是视口
+            尺寸（浏览器窗口的可视区域）。
+
+        每一个渲染对象的布局流程基本如：
+            1.计算此渲染对象的宽度（width）；
+            2.遍历此渲染对象的所有子级，依次：
+            2.1设置子级渲染对象的坐标
+            2.2判断是否需要触发子渲染对象的布局或回流方法，计算子渲染对象的高度（height）
+            3.设置此渲染对象的高度：根据子渲染对象的累积高，margin和padding的高度设置其高度；
+            4.设置此渲染对象脏位值为false。
+        强制回流
+            在渲染树布局完成后，再次操作文档，改变文档的内容或结构，或者元素定位时，会触发回流，即需要重新布局，如请求某DOM的”offsetHeight”样式信息等诸多情况：
+
+        DOM操作，如增加，删除，修改或移动；
+            变更内容；
+            激活伪类；
+            访问或改变某些CSS属性（包括修改样式表或元素类名或使用JavaScript操作等方式）；
+            浏览器窗口变化（滚动或尺寸变化）
+            JavaScript
+
+            $(&apos;body&apos;).css(&apos;padding&apos;); // reflow
+            $(&apos;body&apos;)[0].offsetHeight; // relow
+            $(&apos;body&apos;).css(&apos;padding&apos;); // reflow
+            $(&apos;body&apos;)[0].offsetHeight; // relow
+            有过CSS3动画开发经验的同学可能会有经历，如下入场动画：
+
+            CSS
+            .slide-left {
+                -webkit-transition: margin-left 1s ease-out;
+                -moz-transition: margin-left 1s ease-out;
+                -o-transition: margin-left 1s ease-out;
+                transition: margin-left 1s ease-out;
+            }
+            .slide-left {
+                -webkit-transition: margin-left 1s ease-out;
+                -moz-transition: margin-left 1s ease-out;
+                -o-transition: margin-left 1s ease-out;
+                transition: margin-left 1s ease-out;
+            }
+            然后执行如下脚本：
+        JavaScript
+            var $slide = $(&apos;.slide-left&apos;);
+            $slide.css({
+                &quot;margin-left&quot;: &quot;100px&quot;
+            }).addClass(&apos;slide-left&apos;);
+            $slide.css({
+                &quot;margin-left&quot;: &quot;10px&quot;
+            });
+            var $slide = $(&apos;.slide-left&apos;);
+            $slide.css({
+                &quot;margin-left&quot;: &quot;100px&quot;
+            }).addClass(&apos;slide-left&apos;);
+            $slide.css({
+                &quot;margin-left&quot;: &quot;10px&quot;
+            });
+        我们会发现并没有效果，为什么呢？因为对margin-left的修改并没有触发回流，元素margin-left值的改变被缓存，如果我们在中间强制触发回流：
+        JavaScript
+            var $slide = $(&apos;.slide-left&apos;);
+            $slide.css({
+                &quot;margin-left&quot;: &quot;100px&quot;
+            });
+            console.log($slide.css(&apos;padding&apos;); $slide.addClass(&apos;slide-left&apos;); $slide.css({
+                &quot;margin-left&quot;: &quot;10px&quot;
+            });
+            var $slide = $(&apos;.slide-left&apos;);
+            $slide.css({
+                &quot;margin-left&quot;: &quot;100px&quot;
+            });
+            console.log($slide.css(&apos;padding&apos;); $slide.addClass(&apos;slide-left&apos;); $slide.css({
+                &quot;margin-left&quot;: &quot;10px&quot;
+            });
+        再看就达到了预期效果。
+
+        绘制（painting）
+            最后是绘制(paint)阶段或重绘（repaint）阶段，浏览器UI组件将遍历渲染树并调用渲染对象的绘制（paint）方法，将内容展现在屏幕上，也有可能在之后对DOM进行修改，需要重新绘制渲染对象，也就是重绘，绘制和重绘的关系可以参考布局和回流的关系。
+
+        全局与局部绘制
+            与布局相似，绘制也分为全局和局部绘制，即对整个渲染树或某些渲染对象进行绘制。
+
+        触发重绘
+            我们已经知道很多操作可能会触发回流，那么什么时候可能触发重绘呢，通常，当改变元素的视觉样式，如background-color,visibility，margin，padding或字体颜色时会触发全局或局部重绘，如：
+
+        JavaScript
+            $(&apos;body&apos;).css(&apos;color&apos;, &apos;red&apos;); // repaint
+            $(&apos;body&apos;).css(&apos;margin&apos;, &apos;2px&apos;); // reflow, repaint
+            $(&apos;body&apos;).css(&apos;color&apos;, &apos;red&apos;); // repaint
+            $(&apos;body&apos;).css(&apos;margin&apos;, &apos;2px&apos;);
+        页面渲染优化
+            浏览器对上文介绍的关键渲染路径进行了很多优化，针对每一次变化产生尽量少的操作，还有优化判断重新绘制或布局的方式等等。
+
+            在改变文档根元素的字体颜色等视觉性信息时，会触发整个文档的重绘，而改变某元素的字体颜色则只触发特定元素的重绘；改变元素的位置信息会同时触发此元素（可能还包括其兄弟元素或子级元素）的布局和重绘。某些重大改变，如更改文档根元素的字体尺寸，则会触发整个文档的重新布局和重绘，据此及上文所述，推荐以下优化和实践：
+
+                1.HTML文档结构层次尽量少，最好不深于六层；
+                2.脚本尽量后放，放在前即可；
+                3.少量首屏样式内联放在标签内；
+                4.样式结构层次尽量简单；
+                5.在脚本中尽量减少DOM操作，尽量缓存访问DOM的样式信息，避免过度触发回流；
+                6.减少通过JavaScript代码修改元素样式，尽量使用修改class名方式操作样式或动画；
+                7.动画尽量使用在绝对定位或固定定位的元素上；
+                8.隐藏在屏幕外，或在页面滚动时，尽量停止动画；
+                9.尽量缓存DOM查找，查找器尽量简洁；
+                10.涉及多域名的网站，可以开启域名预解析
+            实例
+                当我们访问一个页面时，浏览器渲染事件详细日志图如下：
+                发起请求；
+                    解析HTML；
+                    解析样式；
+                    执行JavaScript；
+                    布局；
+                    绘制
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">渲染</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/17/页面渲染机制/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-网络爬虫" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -253,24 +712,60 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Http<br>    HTTP协议，即超文本传输协议(Hypertext transfer protocol)。是一种详细规定了浏览器和万维网(WWW = World Wide Web)服务器之间互相通信的规则，通过因特网传送万维网文档的数据传送协议。</p>
-<pre><code>HTTP协议是用于从WWW服务器传输超文本到本地浏览器的传送协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等。
+        <p>Http</p>
+<pre><code>HTTP协议，即超文本传输协议(Hypertext transfer protocol)。是一种详细规定了浏览器和万维网(WWW = World Wide Web)服务器之间互相通信的规则，通过因特网传送万维网文档的数据传送协议。
+
+HTTP协议是用于从WWW服务器传输超文本到本地浏览器的传送协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等。
 
 HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。HTTP是一个无状态的协议。
-</code></pre><p>Http和https的基本概念<br>    http: 超文本传输协议，是互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准（TCP），用于从WWW服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少。<br>    https: 是以安全为目标的HTTP通道，简单讲是HTTP的安全版，即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。<br>    https协议的主要作用是：建立一个信息安全通道，来确保数组的传输，确保网站的真实性。<br>Http和https<br>    https的SSL加密是在传输层实现的。<br>Http和https的区别？<br>    http传输的数据都是未加密的，也就是明文的，网景公司设置了SSL协议来对http协议传输的数据进行加密处理，简单来说https协议是由http和ssl协议构建的可进行加密传输和身份认证的网络协议，比http协议的安全性更高。<br>    主要的区别如下：</p>
-<pre><code>Https协议需要ca证书，费用较高。
+</code></pre><p>Http和https的基本概念</p>
+<pre><code>http: 超文本传输协议，是互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准（TCP），用于从WWW服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少。
+https: 是以安全为目标的HTTP通道，简单讲是HTTP的安全版，即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。
+https协议的主要作用是：建立一个信息安全通道，来确保数组的传输，确保网站的真实性。
+</code></pre><p>Http和https</p>
+<pre><code>https的SSL加密是在传输层实现的。
+</code></pre><p>Http和https的区别？</p>
+<pre><code>http传输的数据都是未加密的，也就是明文的，网景公司设置了SSL协议来对http协议传输的数据进行加密处理，简单来说https协议是由http和ssl协议构建的可进行加密传输和身份认证的网络协议，比http协议的安全性更高。
+主要的区别如下：
+
+Https协议需要ca证书，费用较高。
 http是超文本传输协议，信息是明文传输，https则是具有安全性的ssl加密传输协议。
 使用不同的链接方式，端口也不同，一般而言，http协议的端口为80，https的端口为443
 http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。
-</code></pre><p>Https协议的工作原理<br>    客户端在使用HTTPS方式与Web服务器通信时有以下几个步骤，如图所示。</p>
-<pre><code>客户使用https url访问服务器，则要求web 服务器建立ssl链接。
+</code></pre><p>Https协议的工作原理</p>
+<pre><code>客户端在使用HTTPS方式与Web服务器通信时有以下几个步骤，如图所示。
+
+客户使用https url访问服务器，则要求web 服务器建立ssl链接。
 web服务器接收到客户端的请求之后，会将网站的证书（证书中包含了公钥），返回或者说传输给客户端。
 客户端和web服务器端开始协商SSL链接的安全等级，也就是加密等级。
 客户端浏览器通过双方协商一致的安全等级，建立会话密钥，然后通过网站的公钥来加密会话密钥，并传送给网站。
 web服务器通过自己的私钥解密出会话密钥。
 web服务器通过会话密钥加密与客户端之间的通信。
-</code></pre><p>Https协议的缺点<br>    https握手阶段比较费时，会使页面加载时间延长50%，增加10%~20%的耗电。<br>    https缓存不如http高效，会增加数据开销。<br>    SSL证书也需要钱，功能越强大的证书费用越高。<br>    SSL证书需要绑定IP，不能再同一个ip上绑定多个域名，ipv4资源支持不了这种消耗。s<br>Http工作原理<br>    http协议定义web客户端如何从web服务器请求web页面，以及服务器如何把web页面传送给客户端。http协议采用了请求/响应(response/request)模型，客户端向服务器发送一个请求报文，请求报文包含请求的方法，URL,协议版本，请求头部和请求数据。服务器以一个状态作为响应，响应的内容包含协议的版本、成功或错误代码、服务器信息、响应头部和响应数据<br>Http响应状态吗<br>    1xx——指示信息——表示请求已接受，继续处理<br>    2xx——成功——表示请求已经被成功接受、理解、接受<br>    3xx——重定向——要完成请求必须更进一步的操作<br>    4xx——客户端错误——请求有语法错误或请求无法实现<br>    5xx——服务器错误——服务器未能实现合法的请求<br>Http请求方式<br>    get请求传参长度的误区<br>        误区：我们经常说get请求参数的大小存在限制，而post请求的参数大小是无限制的。<br>            实际上HTTP 协议从未规定 GET/POST 的请求长度限制是多少。对get请求参数的限制是来源与浏览器或web服务器，浏览器或web服务器限制了url的长度。为了明确这个概念，我们必须再次强调下面几点:<br>                1、HTTP 协议 未规定 GET 和POST的长度限制<br>                2、GET的最大长度显示是因为 浏览器和 web服务器限制了 URI的长度<br>                3、不同的浏览器和WEB服务器，限制的最大长度不一样<br>                4、要支持IE，则最大长度为2083byte，若只支持Chrome，则最大长度 8182byte<br>    补充get和post请求在缓存方面的区别<br>        get请求类似于查找的过程，用户获取数据，可以不用每次都与数据库连接，所以可以使用缓存。<br>        post不同，post做的一般是修改和删除的工作，所以必须与数据库交互，所以不能使用缓存。因此get请求适合于请求缓存。</p>
-
+</code></pre><p>Https协议的缺点</p>
+<pre><code>https握手阶段比较费时，会使页面加载时间延长50%，增加10%~20%的耗电。
+https缓存不如http高效，会增加数据开销。
+SSL证书也需要钱，功能越强大的证书费用越高。
+SSL证书需要绑定IP，不能再同一个ip上绑定多个域名，ipv4资源支持不了这种消耗。s
+</code></pre><p>Http工作原理</p>
+<pre><code>http协议定义web客户端如何从web服务器请求web页面，以及服务器如何把web页面传送给客户端。http协议采用了请求/响应(response/request)模型，客户端向服务器发送一个请求报文，请求报文包含请求的方法，URL,协议版本，请求头部和请求数据。服务器以一个状态作为响应，响应的内容包含协议的版本、成功或错误代码、服务器信息、响应头部和响应数据
+</code></pre><p>Http响应状态吗</p>
+<pre><code>1xx------指示信息------表示请求已接受，继续处理
+2xx------成功------表示请求已经被成功接受、理解、接受
+3xx------重定向------要完成请求必须更进一步的操作
+4xx------客户端错误------请求有语法错误或请求无法实现
+5xx------服务器错误------服务器未能实现合法的请求
+</code></pre><p>Http请求方式</p>
+<pre><code>get请求传参长度的误区
+    误区：我们经常说get请求参数的大小存在限制，而post请求的参数大小是无限制的。
+        实际上HTTP 协议从未规定 GET/POST 的请求长度限制是多少。对get请求参数的限制是来源与浏览器或web服务器，浏览器或web服务器限制了url的长度。为了明确这个概念，我们必须再次强调下面几点:
+            1、HTTP 协议 未规定 GET 和POST的长度限制
+            2、GET的最大长度显示是因为 浏览器和 web服务器限制了 URI的长度
+            3、不同的浏览器和WEB服务器，限制的最大长度不一样
+            4、要支持IE，则最大长度为2083byte，若只支持Chrome，则最大长度 8182byte
+补充get和post请求在缓存方面的区别
+    get请求类似于查找的过程，用户获取数据，可以不用每次都与数据库连接，所以可以使用缓存。
+    post不同，post做的一般是修改和删除的工作，所以必须与数据库交互，所以不能使用缓存。因此get请求适合于请求缓存。
+</code></pre>
       
 
       
@@ -499,11 +994,35 @@ IO密集型:
     IO密集型任务执行期间，99%的时间都花在IO上，花在CPU上的时间很少，因此，用运行速度极快的C语言替换用Python这样运行速度极低的脚本语言，完全无法提升运行效率。对于IO密集型任务，最合适的语言就是开发效率最高（代码量最少）的语言，脚本语言是首选，C语言最差。
 </code></pre><p>进程与线程</p>
 <pre><code>进程(process)
-
+    个人理解进程就是指在系统中正在运行的一个应用程序；程序一旦运行就是进程，或者更专业化来说：进程是指程序执行时的一个实例。
+    进程——————资源分配的最小单位
 线程(thread)
+    线程是进程的一个实体。
+    线程——————程序执行的最小单位。
+进程线程的区别
+    线程是轻型进程 
+    一个进程可拥有多个线程 
+    具体比较： 
+        1.调度 
+            进程拥有资源 
+            线程作为调度和分派的基本单位 
+            同一进程中线程的切换不会引起进程的切换。 
+            进程间的线程切换则会引起进程切换从而导致资源切换等 
+        2.并发性 
+            进程：进程和进程之间可并发执行 
+            线程：除了进程间的并发执行还可以线程之间并发执行 
+            所以线程的并发性更高 
+        3.拥有资源 
+            线程并不能拥有资源，只有进程才拥有资源 
+        4.系统开销 
+            进程创建、切换和撤销都会导致系统为之创建或者回收进程控制卡以及资源，但是线程的创建以及线程间的切换并不会引起系统做这些事儿，所以线程的系统开销明显更小。
 </code></pre><p>同步与异步</p>
-<p>模块的引入与导出</p>
-<p>事件循环</p>
+<pre><code>同步
+
+异步
+</code></pre><p>AMD和CMD规范</p>
+<p>Nodejs模块的引入与导出</p>
+<p>Nodejs事件循环机制</p>
 
       
 
@@ -1089,15 +1608,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1105,7 +1620,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1113,7 +1632,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
             
             <div class="clearfix"></div>
