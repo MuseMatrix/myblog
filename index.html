@@ -152,6 +152,418 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-微信小程序指南" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/21/微信小程序指南/">微信小程序指南</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/21/微信小程序指南/" class="archive-article-date">
+  	<time datetime="2018-08-21T05:42:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>小程序之文件说明</p>
+<pre><code>app.json 小程序的全局配置，决定页面文件的路径、窗口表现、设置网络超时时间，设置多tab等
+    pages:设置页面的路径
+    window:设置默认页面的窗口表现
+        backgroundTextStyle：下拉loading 的样式，仅支持dark和light
+        navigationBarBackgroundColor:导航栏背景颜色
+        navigationBarTitleText:导航栏标题文字内容
+        navigationBarTextStyle:导航栏标题颜色,仅支持black/white
+    tabBar：设置底部的tab表现
+    networkTimeout:设置网络超时时间
+    debug:设置是否开启debug模式
+app.js 小程序的逻辑
+app.wxss 小程序公共样式表
+
+一个MINA页面由四个文件部分组成
+    wxml 页面结构
+    wxss 页面样式表
+    json 页面配置
+    js   页面逻辑
+</code></pre><p>小程序逻辑层</p>
+<pre><code>使用App函数来注册小程序，接受一个Object参数，其指定小程序的生命周期函数等
+Object参数说明
+    onLaunch函数---------生命周期函数(监听小程序初始化)
+        当小程序初始化完成时，会触发onLaunch(全局只触发一次)
+    onShow函数-----------生命周期函数(监听小程序显示)
+        当小程序启动，或从后台进入前台显示，会触发onShow
+    onHide函数-----------生命周期函数(监听小程序隐藏)
+        当小程序从前台进入后台，会触发onHide
+    onError函数---------错误监听函数
+        当小程序发生脚本错误，或者api调用失败时，会触发onError并带上错误信息
+    onPageNotFound------------页面不存在监听函数
+        当小程序要打开的页面不存在的情况，会带上页面信息回调该函数，
+小程序注册页面
+    Page({}) 函数用来注册一个页面。接受一个 object 参数，其指定页面的初始数据、生命周期函数、事件处理函数等。
+        data:页面的初始化数据
+        onLoad:生命周期函数(监听页面加载)
+        onReady:生命周期函数(监听页面初次渲染完成)
+        onShow:生命周期函数(监听页面显示)
+        onHide:生命周期函数(监听页面隐藏)
+        onUnload:生命周期函数(监听页面卸载)
+        onPullDownRefresh:页面相关事件处理函数--监听用户下拉动作
+        onReachBottom:页面上拉触底事件的处理函数
+        onShareAppMessage:用户点击右上角转发
+        onPageScroll:页面滚动触发事件的处理函数
+</code></pre><p>小程序视图层</p>
+<pre><code>小程序之事件
+    标签绑定事件 
+    bindtap-----------单机事件处理函数,属于冒泡事件
+
+小程序之路由
+    页面跳转
+    wx.navigateTo({
+        url:&quot;../index/index?title=微信&quot;
+    })
+    关闭当前页，跳转到页面的某个页面，页面重定向
+    wx.redirectTo({
+        url:&quot;../index/index?title=对的&quot;
+    })
+    关闭所有页面，打开应用的某个页面
+    wx.reLaunch({
+        url:&quot;../index/index?title=是啥&quot;
+    })
+    跳转到tabBar页面，并关闭其他所有taBar页面
+    wx.switchTab({
+        url:&quot;../index/index?title=是啥&quot;
+    })
+    关闭当前页，返回上一级或多级页面
+    wx.navigateBack({
+        url:&quot;../index/index?title=飒飒&quot;
+    })
+小程序之传参接受
+    onLoad:function(options){
+        this.setData({
+            text:options.title
+        })
+    }
+小程序之轮播图
+    简单布局
+    &lt;view class=&quot;container&quot;&gt;
+        &lt;swiper class=&quot;swiper-pic&quot;&gt;
+            &lt;swiper-item&gt;
+                &lt;image src=&quot;路径&quot;&gt;&lt;/image&gt;
+            &lt;/swiper-item&gt;
+        &lt;/swiper&gt;
+    &lt;/view&gt;
+    添加小圆点  indicator-dots
+    小圆点颜色  indicator-color=&quot;#fff&quot;
+    当前选中小圆点颜色  indicator-active-color=&quot;#000&quot;
+    是否循环    circular
+
+数据绑定
+    类似vue,双大括号进行数据绑定，例：
+        内容：
+            &lt;view&gt;{{message}}&lt;/view&gt;
+            Page({
+                data:{
+                    message:&quot;hello world&quot;
+                }
+            })
+        组件属性
+            &lt;view id=&quot;item-{{id}}&quot;&gt;&lt;/view&gt;
+            Page({
+                data:{
+                    id:0
+                }
+            })
+        控制属性
+            &lt;view wx:if=&quot;{{condition}}&quot;&gt;&lt;/view&gt;
+            Page({
+                data:{
+                    condition:true
+                }
+            })
+        关键字
+            &lt;checkbox checked=&quot;{{false}}&quot;&gt; &lt;/checkbox&gt;
+            不要直接写checked=&quot;false&quot;
+
+        运算
+            可以再{{}}进行的运算
+            三元表达式
+                &lt;view hidden=&quot;{{flag ? true : false}}&quot;&gt; Hidden &lt;/view&gt;
+            算术运算
+                &lt;view&gt; {{a + b}} + {{c}} + d &lt;/view&gt;
+                Page({
+                  data: {
+                    a: 1,
+                    b: 2,
+                    c: 3
+                  }
+                })
+            逻辑判断
+                &lt;view wx:if=&quot;{{length > 5}}&quot;&gt; &lt;/view&gt;
+            字符串运算
+                &lt;view&gt;{{"hello" + name}}&lt;/view&gt;
+                Page({
+                  data:{
+                    name:&quot;MINA&quot;
+                  }
+                })
+            数据路径运算
+                &lt;view&gt;{{object.key}} {{array[0]}}&lt;/view&gt;
+                Page({
+                  data: {
+                    object: {
+                      key: &apos;Hello &apos;
+                    },
+                    array: [&apos;MINA&apos;]
+                  }
+                })
+        组合
+            数组
+                &lt;view wx:for-items=&quot;{{[zero, 1, 2, 3, 4]}}&quot;&gt; {{item}} &lt;/view&gt;
+                Page({
+                  data: {
+                    zero: 0
+                  }
+                })
+            对象
+                &lt;template is=&quot;objectCombine&quot; data=&quot;{{for: a, bar: b}}&quot;&gt;&lt;/template&gt;
+                Page({
+                  data: {
+                    a: 1,
+                    b: 2
+                  }
+                })
+
+                &lt;template is=&quot;objectCombine&quot; data=&quot;{{...obj1, ...obj2, e: 5}}&quot;&gt;&lt;/template&gt;
+                Page({
+                  data: {
+                    obj1: {
+                      a: 1,
+                      b: 2
+                    },
+                    obj2: {
+                      c: 3,
+                      d: 4
+                    }
+                  }
+                })
+
+                &lt;template is=&quot;objectCombine&quot; data=&quot;{{foo, bar}}&quot;&gt;&lt;/template&gt;
+                Page({
+                  data: {
+                    foo: &apos;my-foo&apos;,
+                    bar: &apos;my-bar&apos;
+                  }
+                })
+
+                &lt;template is=&quot;objectCombine&quot; data=&quot;{{...obj1, ...obj2, a, c: 6}}&quot;&gt;&lt;/template&gt;
+                Page({
+                  data: {
+                    obj1: {
+                      a: 1,
+                      b: 2
+                    },
+                    obj2: {
+                      b: 3,
+                      c: 4
+                    },
+                    a: 5
+                  }
+                })
+        花括号和引号之间如果有空格，会被当字符串处理
+        &lt;view wx:for=&quot;{{[1,2,3]}} &quot;&gt;
+          {{item}}
+        &lt;/view&gt;
+列表渲染，例
+    &lt;view wx:for-items=&quot;{{array}}&quot;&gt;{{item}}&lt;/view&gt;
+</code></pre><p>小程序之组件</p>
+<pre><code>视图容器
+view------视图容器
+    属性
+        hover-class (默认值为none,指定按下去的样式类，当hover-class等于none时，没有点击态效果)
+        hover-stop-propagation(默认值为false,指定是否阻止本节点的祖先节点出现点状态)
+        hover-start-time(按住后多久出现点状态，单位毫秒)
+        hover-stay-time(手指松开后点击态保留时间，单位毫秒)
+scroll-view------可滚动视图区(滚动时，需要设置一个高度)
+    属性
+        scroll-x(默认值false,允许横向滚动)
+        scroll-y(默认值false,允许纵向滚动)
+        upper-threshold(默认值50，距顶部/左边多远时(单位px),触发scrolltoupper事件)
+        lower-threshold(默认值50，距底部/右边多远时(单位px),出发scrolltolower事件)
+        scroll-top(设置竖向滚动条的位置)
+        scroll-left(设置横向滚动条的位置)
+        scroll-into-view(值为某元素id,设置哪个方向滚动，则在哪个方向滚动到该元素)
+        scroll-with-animation(设置滚动条位置时，使用动画过度)
+        enable-back-to-top(ios点击状态栏、安卓双击标题栏时，滚动条返回顶部，只支持竖向)
+        bindscrolltoupper(滚动到顶部/左边,会触发scrolltoupper事件)
+        bindscrolltolower(滚动到底部/右边，会触发scrolltolower事件)
+        bindscroll(滚动时触发，event.detail = {scrollLeft, scrollTop, scrollHeight, scrollWidth, deltaX, deltaY})
+swiper------滑块视图容器
+    属性
+        indicator(是否设置面板指示点)
+        indicator-color(指示点颜色)
+        indicator-active-color(当前选中指示点颜色)
+        autoplay(是否自动切换)
+        current(当前所在滑块的index)
+        current-item-id(当前滑块所在的item-id,不能与current同时被指定)
+        interval(自动切换时间间隔)
+        duration(滑动动画时长)
+        circular(是否采用衔接滑动)
+        vertical(滑动方向是否为纵向)
+        previous-margin(前边距,可用于前一项的小部分，接受px和rpx的值)
+        next-margin(后边距，可用于后一项的小部分，接受px和rpx的值)
+        display-multiple-items(同时显示滑块的数量)
+        skip-hidden-item-layout(是否跳过未显示的滑块布局，设为true可优化复杂情况下的滑动性能,但会丢失隐藏状态滑块的布局信息)
+        bindchange(current改变时，会触发change事件event.detail = {current: current, source: source})
+        bindanimationfinsh(动画结束时，会触发animationfinsh事件，event.detail同上)
+movable-area------可移动的视图容器，在页面中可以拖拽滑动(当里面的movable-view设置为支持手动缩放时，设置此值可将缩放手势生效区修改为整个movable-area)
+                  必须设置width和height属性，不设置默认为10px
+        movable-view 
+    属性
+        direction(movable-view的移动方向，属性值有all、vertical、horizontal、none)
+        inertia(movable-view是否带有惯性)
+        out-of-bounds(超过可移动区域后,movable-view是否还可以移动)
+        x(定义x轴方向的偏移，如果x的值不再可移动范围内，会自动移动到可移动范围；改变x的值会触发动画)
+        y(定义y轴方向的偏移,如果y的值不再可移动范围内，会自动移动到可移动范围；改变y的值会触发动画)
+        damping(阻尼系数，用于控制x或y改变时的动画和过界回弹的动画，值越大移动的越大)
+        friction(摩擦系数，用于控制惯性的动画，值越大摩擦力越大，滑动越快停止;必须大于0，否则会设置成默认值)
+        disabled(是否禁用)
+        scale(是否支持双指缩放，默认缩放手势生效区域是在movable-view内)
+        scale-min(定义缩放倍数的最小值)
+        scale-max(定义缩放倍数的最大值)
+        scale-value(定义缩放倍数，取值范围为0.5-10)
+        bindchange(拖动过程中触发的事件event.detail = {x: x, y: y, source: source}，其中source表示产生移动的原因，值可为touch（拖动）、touch-out-of-bounds（超出移动范围）、out-of-bounds（超出移动范围后的回弹）、friction（惯性）和空字符串（setData）)
+        bindscale(缩放过程中触发的事件)
+        特殊事件
+            htouchmove(初次手指触摸后移动为横向的移动，如果catch此事件，则意味着touchmove事件也被catch)
+            vtouchmove(初次手指触摸后移动为纵向的移动，如果catch此事件，则意味着touchmove事件也被catch)
+cover-view------覆盖在原生组建上的文本视图，可覆盖的原生组件包括map、video、canvas、camera、liver-player、live-pusher,只支持嵌套cover-view、cover-image
+    cover-image
+        属性
+            src(图片路径、支持的临时路径、网络地址)暂不支持base64
+基础内容
+    icon------图标
+        type(icon的类型，有效值：success, success_no_circle, info, warn, waiting, cancel, download, search, clear)
+        size(icon的大小，单位px)
+        color(icon的颜色，同css的color)
+    text------文本
+        selectable(文本是否可选)
+        space(显示连续空格)    
+            space 有效值：
+                ensp 中文字符空格一半大小 
+                emsp 中文字符空格大小 
+                nbsp 根据字体设置的空格大小 
+        decode(是否解码)
+
+        •decode可以解析的有  &amp;nbsp;   &amp;lt;   &amp;gt;   &amp;amp;   &amp;apos;   &amp;ensp;   &amp;emsp; 
+        •各个操作系统的空格标准并不一致。
+        • &lt;text/&gt;  组件内只支持  &lt;text/&gt;  嵌套。
+        •除了文本节点以外的其他节点都无法长按选中。
+    rich-text
+        nodes(节点列表 / HTML String)
+    progress(进度条。)    
+        percent Float 无 百分比0~100  
+        show-info Boolean false 在进度条右侧显示百分比  
+        stroke-width Number 6 进度条线的宽度，单位px  
+        color Color #09BB07 进度条颜色 （请使用 activeColor）  
+        activeColor Color  已选择的进度条的颜色  
+        backgroundColor Color  未选择的进度条的颜色  
+        active Boolean false 进度条从左往右的动画  
+        active-mode String backwards backwards: 动画从头播；forwards：动画从上次结束点接着播 1. 
+表单组件
+    button(按钮)
+
+    checkbox(多选项目。)
+        checkbox-group 多项选择器，内部由多个 checkbox 组成。
+    form(表单)
+        表单，将组件内的用户输入的 &lt;switch/&gt;   &lt;input/&gt;   &lt;checkbox/&gt;   &lt;slider/&gt;   &lt;radio/&gt;   &lt;picker/&gt;  提交。
+        当点击  &lt;form/&gt;  表单中 formType 为 submit 的  &lt;button/&gt;  组件时，会将表单组件中的 value 值进行提交，需要在表单组件中加上 name 来作为 key。
+    input(输入框)
+    lable(用来改进表单组件的可用性，使用 for 属性找到对应的 id ，或者将控件放在该标签下，当点击时，就会触发对应的控件。
+         for 优先级高于内部控件，内部有多个控件的时候默认触发第一个控件。)
+     picker(从底部弹起的滚动选择器，现支持五种选择器，通过mode来区分，分别是普通选择器，多列选择器，时间选择器，日期选择器，省市区选择器，默认是普通选择器。)
+     picker-view(嵌入页面的滚动选择器)
+     radio(单选项目)
+     radio-group(单项选择器，内部由多个&lt;radio/&gt;组成)
+     slider(滑动选择器)
+     switch(开关选择器。)
+     textarea(多行输入框)
+ 导航
+     navigator(页面连接)
+ 媒体组件
+     audio(音频)
+     image(图片)
+     video(视频)
+     camera(系统相机)
+     live-player(实时音频播放)
+     live-pusher(实时音频录制)
+ 地图
+     map(地图)
+ 画布
+     canvas(画布)
+ 开放能力
+     open-data(用于展示微信开放的数据。)
+     web-view(web-view 组件是一个可以用来承载网页的容器，会自动铺满整个小程序页面。个人类型与海外类型的小程序暂不支持使用。)
+     ad(广告。目前暂时以邀请制开放申请，请留意后续模板消息的通知)
+</code></pre><p>小程序之api</p>
+<p>小程序之框架</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小程序</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/21/微信小程序指南/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-前端与SEO" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1393,253 +1805,10 @@ react语法
 
 
   
-    <article id="post-git学习速记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/08/git学习速记/">git学习速记</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/08/git学习速记/" class="archive-article-date">
-  	<time datetime="2018-08-08T04:59:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>环境搭建：<br>    1、安装git,安装完后设置标识<br>            git config –global user.name “名字”;<br>            git config –golbal user.email “邮箱”;</p>
-<pre><code>        创建SSH key，打开C:\Users\wzs\.ssh查看是否拥有id_rsa和id_rsa.pub,如果有的话，直接跳过，如果没有，输入以下命令
-        ssh-keygen  -t rsa –C “youremail@example.com”
-
-        github 配置key,settings---&gt;SSH keys----------&gt;在key文本框里粘贴id_rsa.pub的内容
-2、下载node安装包，一键式安装，配置环境变量，检测版本(node --version)
-        node更新命令------------npm install -g n 
-        npm更新命令-------------npm install npm@latest -g
-
-        使用npm更新淘宝镜像------------npm install -g cnpm --registry=http://registry.npm.taobao.org
-3、统一
-
-    安装vue-------------------cnpm install vue
-
-    安装webpack------------------cnpm install webpack -g
-
-    安装vue-cli------------------cnpm install -g vue-cli
-4、为了确保安装后的工具能直接在git下使用，请安装在同一目录下(node目录下)
-    新建相应的文件夹然后把文件放进去
-</code></pre><p>Git/GitHub</p>
-<p>git是什么？<br>    Git是目前世界上最先进的分布式版本控制系统。</p>
-<p>git与svn的区别<br>    svn是集中版本控制系统，版本库是集中放在中央服务器的，而干活的时候，用的都是自己的电脑，所以首先要从中央服务器那里得到最新的服务器版本，然后干活，干完活后把自己的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，如果在局域网可以，带宽够大，速度够快，如果在互联网下，网速慢了，就尴尬了。<br>    git是分布式版本控制系统，它没有中央服务器，每个人的电脑就是一个完整的版本库，这样，工作的时候就不需要联网了，因为版本都是在自己电脑上，既然每个人都有一个版本库，那么多个人如何协作呢？比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。</p>
-<p>git工作区与缓存区的区别<br>    工作区：就是在你电脑上看到的目录，或者以后要新建的目录文件等等都属于工作范畴<br>    版本库：工作区有一个隐藏目录.git,这个不属于工作区，这是版本库，版本库里面存了很多东西，其中最重要的就是stage(暂存区)，还有Git为我们自动创建了第一个分支master,以及指向master的一个指针HEAD.</p>
-<p>git提交<br>    git提交到版本库有两个步骤：<br>        1、使用git add把文件加进去，实际就是把文件添加到暂存区<br>        2、使用git commit提交更改，实际上就是把暂存区的所有内容提交到分支上</p>
-<p>git使用<br>    安装完成后，</p>
-<pre><code>git config --global user.name “名字”;
-git config --golbal user.email “邮箱”;
-
-创建版本库(本地仓库)
- cd G:
- cd wangzhongshun
- mkdir testgit
-
- pwd 显示当前目录
-
- git init    把目录变成可管理的版本库
-
- git add 文件夹 --------把文件夹添加到暂存区里去;
-
- git commit--------一次性提交所有文件
-
- git commit -m &quot;要提交的文件夹全名(带后缀)+注释&quot; -------提交文件
-
- git status---------来查看是否还有未提交的文件
-
- git diff 文件夹---------查看文件修改了哪些内容
-
- git log---------查看提交文件的历史状态
-
- git log --oneline ----------查看日志的第一行
-
- git checkout  -- 文件名---------撤销修改
-
- git reset -- hard 版本号-----------回退到该版本号
-
- git reset --hard HEAD^-----------回退到上一个版本
-
- git reset --hard HEAD^^-----------回退到上上个版本
-
- git reset --hard HEAD~100----------回退到第100个版本
-
- cat 文件名---------查看文件的内容
-
- git reflog----------查看版本号
-
- rm b.txt-----------删除文件
-
- git remote----------查看当前配置有哪些远程仓库
-
- git remote -v------------显示对应的克隆地址
-</code></pre><p>git远程仓库<br>    git本地仓库及github远程仓库配置<br>    1、创建SSH Key<br>        C盘用户目录下查找.shh目录，如果有查看是否有id_rsa和id_rsa.pub两个文件<br>        如果没有，打开命令行，执行：<br>            ssh-keygen -t rsa -C “邮箱”<br>        如果有，跳过此步骤</p>
-<pre><code>2、如何添加远程工作？(本地仓库与github相关联)
-    第一步：git remote add origin 自己本地git-------------本地仓库已经存在，直接推送到远程仓库命令
-    第二步：git push -u origin master -------------------实际上把当前分支master推送到远程
-    第三步：弹出github登录页，登录成功刷新
-
-3、如何从远程仓库克隆？(下载最新的项目到本地)
-    新建仓库，生成README.md文件
-    克隆仓库--------------git clone 克隆地址
-
-4、创建与合并分支
-    HEAD严格来说不是指向提交，而是指向master,master才是指向提交的，所以HEAD指的就是当前分支
-
-    git checkout -b dev----------------创建并切换分支
-    git branch dev-------切换分支
-    git checkout dev-----------切换分支
-
-    git checkout -b dev origin/dev------------创建本地dev分支
-
-    git branch-----------------查看当前分支    
-
-    git branch  -d dev----------删除dev分支
-
-    git branch dev---------创建dev分支
-
-    git merge 分支名称--------------合并某分支到当前分支
-
-5、解决冲突
-
-    　Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容，其中&lt;&lt;&lt;HEAD是指主分支修改的内容，&gt;&gt;&gt;&gt;&gt;fenzhi1 是指fenzhi1上修改的内容，我们可以修改下如下后保存：
-
-6、分支管理策略
-    git merge --no-ff -m &quot;注釋&quot; dev-----------------合并dev分支 --no-ff表示禁用fast forward
-
-    git log --graph --pretty=oneline --abbrev-commit--------------------查看分支合并图
-
-7、bug分支
-
-    git stash-------------将当前的工作现场隐藏起来
-
-    git list-------------查看工作现场
-
-    git stash apply-------------恢复工作现场
-
-    git stash drop--------------删除工作现场
-8、多人协作
-    git remote------------------查看远程仓库的信息
-
-    git remote -v --------------------查看远程仓库的详细信息
-
-    git push origin master-----------把该分支上所有的本地提交到远程库的master主干
-
-    git push origin dev -------------把该分支所有的本地提交到远程仓库的dev分支
-</code></pre><p>命令总结：<br>    因此：多人协作工作模式一般是这样的：</p>
-<pre><code>首先，可以试图用git push origin branch-name推送自己的修改.
-如果推送失败，则因为远程分支比你的本地更新早，需要先用git pull试图合并。
-如果合并有冲突，则需要解决冲突，并在本地提交。再用git push origin branch-name推送。
-</code></pre><p>　　Git基本常用命令如下：</p>
-<p>　　mkdir：         XX (创建一个空目录 XX指目录名)</p>
-<p>　　pwd：          显示当前目录的路径。</p>
-<p>　　git init          把当前的目录变成可以管理的git仓库，生成隐藏.git文件。</p>
-<p>　　git add XX       把xx文件添加到暂存区去。</p>
-<p>　　git commit –m “XX”  提交文件 –m 后面的是注释。</p>
-<p>　　git status        查看仓库状态</p>
-<p>　　git diff  XX      查看XX文件修改了那些内容</p>
-<p>　　git log          查看历史记录</p>
-<p>　　git reset  –hard HEAD^ 或者 git reset  –hard HEAD~ 回退到上一个版本</p>
-<p>　　(如果想回退到100个版本，使用git reset –hard HEAD~100 )</p>
-<p>　　cat XX         查看XX文件内容</p>
-<p>　　git reflog       查看历史记录的版本号id</p>
-<p>　　git checkout – XX  把XX文件在工作区的修改全部撤销。</p>
-<p>　　git rm XX          删除XX文件</p>
-<p>　　git remote add origin <a href="https://github.com/tugenhua0707/testgit" target="_blank" rel="noopener">https://github.com/tugenhua0707/testgit</a> 关联一个远程库</p>
-<p>　　git push –u(第一次要用-u 以后不需要) origin master 把当前master分支推送到远程库</p>
-<p>　　git clone <a href="https://github.com/tugenhua0707/testgit" target="_blank" rel="noopener">https://github.com/tugenhua0707/testgit</a>  从远程库中克隆</p>
-<p>　　git checkout –b dev  创建dev分支 并切换到dev分支上</p>
-<p>　　git branch  查看当前所有的分支</p>
-<p>　　git checkout master 切换回master分支</p>
-<p>　　git merge dev    在当前的分支上合并dev分支</p>
-<p>　　git branch –d dev 删除dev分支</p>
-<p>　　git branch name  创建分支</p>
-<p>　　git stash 把当前的工作隐藏起来 等以后恢复现场后继续工作</p>
-<p>　　git stash list 查看所有被隐藏的文件列表</p>
-<p>　　git stash apply 恢复被隐藏的文件，但是内容不删除</p>
-<p>　　git stash drop 删除文件</p>
-<p>　　git stash pop 恢复文件的同时 也删除文件</p>
-<p>　　git remote 查看远程库的信息</p>
-<p>　　git remote –v 查看远程库的详细信息</p>
-<p>　　git push origin master  Git会把master分支推送到远程库对应的远程分支上</p>
-<p>git/github挂载静态页面<br>    1、新建资源仓库repository<br>    2、设置settings,更改github pages为master分支<br>    3、选择盘符，新建文件件，将仓库克隆到本地，git clone 地址<br>    4、将网页文件添加到此文件夹里<br>        git status查看分支状态<br>        git add .  添加到缓存区<br>        git commit -m “注释”   提交<br>        git push  推送到github,链接访问<br>Node<br>    nodejs是一个让javaScript运行在服务端的开发平台。(javaScript(v8引擎))</p>
-<pre><code>npm更新命令--------npm install npm@latest -g
-
-require-----------NodeJs自带的http模块，createServer(),http模块提供的函数，这个函数会返回一个对象，这个对象有一个叫listen的方法，这个方法有一个数值参数，指定这个Http
-
-nodeJs是事件驱动的
-</code></pre><p>WebPack<br>    安裝————–npm install –save-dev webpack</p>
-<pre><code>安裝cli----------------npm install webpack-cli -D
-
-指定目录下安装
-    创建文件夹并进入此目录---------------mkdir webpack-demo &amp;&amp; cd webpack-demo
-
-    初始化npm------------------npm init -y
-
-    本地安装webpack----------------npm install --save-dev webpack
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/08/git学习速记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -1741,11 +1910,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Http</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1758,18 +1943,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
               </li>
             
             <div class="clearfix"></div>

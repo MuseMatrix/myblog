@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>git学习速记 | 我的成长记录</title>
+  <title>Archives | 我的成长记录</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="环境搭建：    1、安装git,安装完后设置标识            git config –global user.name “名字”;            git config –golbal user.email “邮箱”;         创建SSH key，打开C:\Users\wzs\.ssh查看是否拥有id_rsa和id_rsa.pub,如果有的话，直接跳过，如果没有，输入以下">
-<meta name="keywords" content="git">
-<meta property="og:type" content="article">
-<meta property="og:title" content="git学习速记">
-<meta property="og:url" content="http://yoursite.com/2018/08/08/git学习速记/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="我的成长记录">
+<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
 <meta property="og:site_name" content="我的成长记录">
-<meta property="og:description" content="环境搭建：    1、安装git,安装完后设置标识            git config –global user.name “名字”;            git config –golbal user.email “邮箱”;         创建SSH key，打开C:\Users\wzs\.ssh查看是否拥有id_rsa和id_rsa.pub,如果有的话，直接跳过，如果没有，输入以下">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-08T05:09:31.752Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git学习速记">
-<meta name="twitter:description" content="环境搭建：    1、安装git,安装完后设置标识            git config –global user.name “名字”;            git config –golbal user.email “邮箱”;         创建SSH key，打开C:\Users\wzs\.ssh查看是否拥有id_rsa和id_rsa.pub,如果有的话，直接跳过，如果没有，输入以下">
+<meta name="twitter:title" content="我的成长记录">
   
     <link rel="alternative" href="/atom.xml" title="我的成长记录" type="application/atom+xml">
   
@@ -155,229 +150,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-git学习速记" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      git学习速记
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/08/08/git学习速记/" class="archive-article-date">
+  	<time datetime="2018-08-08T04:59:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-08</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/08/08/git学习速记/">git学习速记</a>
     </h1>
   
 
-        
-        <a href="/2018/08/08/git学习速记/" class="archive-article-date">
-  	<time datetime="2018-08-08T04:59:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>环境搭建：<br>    1、安装git,安装完后设置标识<br>            git config –global user.name “名字”;<br>            git config –golbal user.email “邮箱”;</p>
-<pre><code>        创建SSH key，打开C:\Users\wzs\.ssh查看是否拥有id_rsa和id_rsa.pub,如果有的话，直接跳过，如果没有，输入以下命令
-        ssh-keygen  -t rsa –C “youremail@example.com”
-
-        github 配置key,settings---&gt;SSH keys----------&gt;在key文本框里粘贴id_rsa.pub的内容
-2、下载node安装包，一键式安装，配置环境变量，检测版本(node --version)
-        node更新命令------------npm install -g n 
-        npm更新命令-------------npm install npm@latest -g
-
-        使用npm更新淘宝镜像------------npm install -g cnpm --registry=http://registry.npm.taobao.org
-3、统一
-
-    安装vue-------------------cnpm install vue
-
-    安装webpack------------------cnpm install webpack -g
-
-    安装vue-cli------------------cnpm install -g vue-cli
-4、为了确保安装后的工具能直接在git下使用，请安装在同一目录下(node目录下)
-    新建相应的文件夹然后把文件放进去
-</code></pre><p>Git/GitHub</p>
-<p>git是什么？<br>    Git是目前世界上最先进的分布式版本控制系统。</p>
-<p>git与svn的区别<br>    svn是集中版本控制系统，版本库是集中放在中央服务器的，而干活的时候，用的都是自己的电脑，所以首先要从中央服务器那里得到最新的服务器版本，然后干活，干完活后把自己的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，如果在局域网可以，带宽够大，速度够快，如果在互联网下，网速慢了，就尴尬了。<br>    git是分布式版本控制系统，它没有中央服务器，每个人的电脑就是一个完整的版本库，这样，工作的时候就不需要联网了，因为版本都是在自己电脑上，既然每个人都有一个版本库，那么多个人如何协作呢？比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。</p>
-<p>git工作区与缓存区的区别<br>    工作区：就是在你电脑上看到的目录，或者以后要新建的目录文件等等都属于工作范畴<br>    版本库：工作区有一个隐藏目录.git,这个不属于工作区，这是版本库，版本库里面存了很多东西，其中最重要的就是stage(暂存区)，还有Git为我们自动创建了第一个分支master,以及指向master的一个指针HEAD.</p>
-<p>git提交<br>    git提交到版本库有两个步骤：<br>        1、使用git add把文件加进去，实际就是把文件添加到暂存区<br>        2、使用git commit提交更改，实际上就是把暂存区的所有内容提交到分支上</p>
-<p>git使用<br>    安装完成后，</p>
-<pre><code>git config --global user.name “名字”;
-git config --golbal user.email “邮箱”;
-
-创建版本库(本地仓库)
- cd G:
- cd wangzhongshun
- mkdir testgit
-
- pwd 显示当前目录
-
- git init    把目录变成可管理的版本库
-
- git add 文件夹 --------把文件夹添加到暂存区里去;
-
- git commit--------一次性提交所有文件
-
- git commit -m &quot;要提交的文件夹全名(带后缀)+注释&quot; -------提交文件
-
- git status---------来查看是否还有未提交的文件
-
- git diff 文件夹---------查看文件修改了哪些内容
-
- git log---------查看提交文件的历史状态
-
- git log --oneline ----------查看日志的第一行
-
- git checkout  -- 文件名---------撤销修改
-
- git reset -- hard 版本号-----------回退到该版本号
-
- git reset --hard HEAD^-----------回退到上一个版本
-
- git reset --hard HEAD^^-----------回退到上上个版本
-
- git reset --hard HEAD~100----------回退到第100个版本
-
- cat 文件名---------查看文件的内容
-
- git reflog----------查看版本号
-
- rm b.txt-----------删除文件
-
- git remote----------查看当前配置有哪些远程仓库
-
- git remote -v------------显示对应的克隆地址
-</code></pre><p>git远程仓库<br>    git本地仓库及github远程仓库配置<br>    1、创建SSH Key<br>        C盘用户目录下查找.shh目录，如果有查看是否有id_rsa和id_rsa.pub两个文件<br>        如果没有，打开命令行，执行：<br>            ssh-keygen -t rsa -C “邮箱”<br>        如果有，跳过此步骤</p>
-<pre><code>2、如何添加远程工作？(本地仓库与github相关联)
-    第一步：git remote add origin 自己本地git-------------本地仓库已经存在，直接推送到远程仓库命令
-    第二步：git push -u origin master -------------------实际上把当前分支master推送到远程
-    第三步：弹出github登录页，登录成功刷新
-
-3、如何从远程仓库克隆？(下载最新的项目到本地)
-    新建仓库，生成README.md文件
-    克隆仓库--------------git clone 克隆地址
-
-4、创建与合并分支
-    HEAD严格来说不是指向提交，而是指向master,master才是指向提交的，所以HEAD指的就是当前分支
-
-    git checkout -b dev----------------创建并切换分支
-    git branch dev-------切换分支
-    git checkout dev-----------切换分支
-
-    git checkout -b dev origin/dev------------创建本地dev分支
-
-    git branch-----------------查看当前分支    
-
-    git branch  -d dev----------删除dev分支
-
-    git branch dev---------创建dev分支
-
-    git merge 分支名称--------------合并某分支到当前分支
-
-5、解决冲突
-
-    　Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容，其中&lt;&lt;&lt;HEAD是指主分支修改的内容，&gt;&gt;&gt;&gt;&gt;fenzhi1 是指fenzhi1上修改的内容，我们可以修改下如下后保存：
-
-6、分支管理策略
-    git merge --no-ff -m &quot;注釋&quot; dev-----------------合并dev分支 --no-ff表示禁用fast forward
-
-    git log --graph --pretty=oneline --abbrev-commit--------------------查看分支合并图
-
-7、bug分支
-
-    git stash-------------将当前的工作现场隐藏起来
-
-    git list-------------查看工作现场
-
-    git stash apply-------------恢复工作现场
-
-    git stash drop--------------删除工作现场
-8、多人协作
-    git remote------------------查看远程仓库的信息
-
-    git remote -v --------------------查看远程仓库的详细信息
-
-    git push origin master-----------把该分支上所有的本地提交到远程库的master主干
-
-    git push origin dev -------------把该分支所有的本地提交到远程仓库的dev分支
-</code></pre><p>命令总结：<br>    因此：多人协作工作模式一般是这样的：</p>
-<pre><code>首先，可以试图用git push origin branch-name推送自己的修改.
-如果推送失败，则因为远程分支比你的本地更新早，需要先用git pull试图合并。
-如果合并有冲突，则需要解决冲突，并在本地提交。再用git push origin branch-name推送。
-</code></pre><p>　　Git基本常用命令如下：</p>
-<p>　　mkdir：         XX (创建一个空目录 XX指目录名)</p>
-<p>　　pwd：          显示当前目录的路径。</p>
-<p>　　git init          把当前的目录变成可以管理的git仓库，生成隐藏.git文件。</p>
-<p>　　git add XX       把xx文件添加到暂存区去。</p>
-<p>　　git commit –m “XX”  提交文件 –m 后面的是注释。</p>
-<p>　　git status        查看仓库状态</p>
-<p>　　git diff  XX      查看XX文件修改了那些内容</p>
-<p>　　git log          查看历史记录</p>
-<p>　　git reset  –hard HEAD^ 或者 git reset  –hard HEAD~ 回退到上一个版本</p>
-<p>　　(如果想回退到100个版本，使用git reset –hard HEAD~100 )</p>
-<p>　　cat XX         查看XX文件内容</p>
-<p>　　git reflog       查看历史记录的版本号id</p>
-<p>　　git checkout – XX  把XX文件在工作区的修改全部撤销。</p>
-<p>　　git rm XX          删除XX文件</p>
-<p>　　git remote add origin <a href="https://github.com/tugenhua0707/testgit" target="_blank" rel="noopener">https://github.com/tugenhua0707/testgit</a> 关联一个远程库</p>
-<p>　　git push –u(第一次要用-u 以后不需要) origin master 把当前master分支推送到远程库</p>
-<p>　　git clone <a href="https://github.com/tugenhua0707/testgit" target="_blank" rel="noopener">https://github.com/tugenhua0707/testgit</a>  从远程库中克隆</p>
-<p>　　git checkout –b dev  创建dev分支 并切换到dev分支上</p>
-<p>　　git branch  查看当前所有的分支</p>
-<p>　　git checkout master 切换回master分支</p>
-<p>　　git merge dev    在当前的分支上合并dev分支</p>
-<p>　　git branch –d dev 删除dev分支</p>
-<p>　　git branch name  创建分支</p>
-<p>　　git stash 把当前的工作隐藏起来 等以后恢复现场后继续工作</p>
-<p>　　git stash list 查看所有被隐藏的文件列表</p>
-<p>　　git stash apply 恢复被隐藏的文件，但是内容不删除</p>
-<p>　　git stash drop 删除文件</p>
-<p>　　git stash pop 恢复文件的同时 也删除文件</p>
-<p>　　git remote 查看远程库的信息</p>
-<p>　　git remote –v 查看远程库的详细信息</p>
-<p>　　git push origin master  Git会把master分支推送到远程库对应的远程分支上</p>
-<p>git/github挂载静态页面<br>    1、新建资源仓库repository<br>    2、设置settings,更改github pages为master分支<br>    3、选择盘符，新建文件件，将仓库克隆到本地，git clone 地址<br>    4、将网页文件添加到此文件夹里<br>        git status查看分支状态<br>        git add .  添加到缓存区<br>        git commit -m “注释”   提交<br>        git push  推送到github,链接访问<br>Node<br>    nodejs是一个让javaScript运行在服务端的开发平台。(javaScript(v8引擎))</p>
-<pre><code>npm更新命令--------npm install npm@latest -g
-
-require-----------NodeJs自带的http模块，createServer(),http模块提供的函数，这个函数会返回一个对象，这个对象有一个叫listen的方法，这个方法有一个数值参数，指定这个Http
-
-nodeJs是事件驱动的
-</code></pre><p>WebPack<br>    安裝————–npm install –save-dev webpack</p>
-<pre><code>安裝cli----------------npm install webpack-cli -D
-
-指定目录下安装
-    创建文件夹并进入此目录---------------mkdir webpack-demo &amp;&amp; cd webpack-demo
-
-    初始化npm------------------npm init -y
-
-    本地安装webpack----------------npm install --save-dev webpack
-</code></pre>
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -389,109 +191,22 @@ nodeJs是事件驱动的
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/08/git学习速记/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/08/08/React从入门到放弃/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          React从入门到放弃
-        
-      </div>
-    </a>
   
   
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -515,8 +230,8 @@ nodeJs是事件驱动的
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
