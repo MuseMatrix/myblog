@@ -152,258 +152,1024 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-NodeJs从入门到放弃" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-VUE常见问题及笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/09/NodeJs从入门到放弃/">NodeJs从入门到放弃</a>
+      <a class="article-title" href="/2018/08/21/VUE常见问题及笔记/">VUE常见问题及笔记</a>
     </h1>
   
 
         
-        <a href="/2018/08/09/NodeJs从入门到放弃/" class="archive-article-date">
-  	<time datetime="2018-08-09T01:13:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-09</time>
+        <a href="/2018/08/21/VUE常见问题及笔记/" class="archive-article-date">
+  	<time datetime="2018-08-21T05:50:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>IO/密集型、cpu密集型:</p>
-<pre><code>可以把任务分为计算密集型和IO密集型。
-计算密集型:
-    任务的特点是要进行大量的计算，消耗CPU资源，比如计算圆周率、对视频进行高清解码等等，全靠CPU的运算能力。这种计算密集型任务虽然也可以用多任务完成，但是任务越多，花在任务切换的时间就越多，CPU执行任务的效率就越低，所以，要最高效地利用CPU，计算密集型任务同时进行的数量应当等于CPU的核心数。
-    计算密集型任务由于主要消耗CPU资源，因此，代码运行效率至关重要。Python这样的脚本语言运行效率很低，完全不适合计算密集型任务。对于计算密集型任务，最好用C语言编写。
-IO密集型:
-    涉及到网络、磁盘IO的任务都是IO密集型任务，这类任务的特点是CPU消耗很少，任务的大部分时间都在等待IO操作完成（因为IO的速度远远低于CPU和内存的速度）。对于IO密集型任务，任务越多，CPU效率越高，但也有一个限度。常见的大部分任务都是IO密集型任务，比如Web应用。
-    IO密集型任务执行期间，99%的时间都花在IO上，花在CPU上的时间很少，因此，用运行速度极快的C语言替换用Python这样运行速度极低的脚本语言，完全无法提升运行效率。对于IO密集型任务，最合适的语言就是开发效率最高（代码量最少）的语言，脚本语言是首选，C语言最差。
-</code></pre><p>进程与线程</p>
-<pre><code>进程(process)
-    个人理解进程就是指在系统中正在运行的一个应用程序；程序一旦运行就是进程，或者更专业化来说：进程是指程序执行时的一个实例。
-    进程——————资源分配的最小单位
-线程(thread)
-    线程是进程的一个实体。
-    线程——————程序执行的最小单位。
-进程线程的区别
-    线程是轻型进程 
-    一个进程可拥有多个线程 
-    具体比较： 
-        1.调度 
-            进程拥有资源 
-            线程作为调度和分派的基本单位 
-            同一进程中线程的切换不会引起进程的切换。 
-            进程间的线程切换则会引起进程切换从而导致资源切换等 
-        2.并发性 
-            进程：进程和进程之间可并发执行 
-            线程：除了进程间的并发执行还可以线程之间并发执行 
-            所以线程的并发性更高 
-        3.拥有资源 
-            线程并不能拥有资源，只有进程才拥有资源 
-        4.系统开销 
-            进程创建、切换和撤销都会导致系统为之创建或者回收进程控制卡以及资源，但是线程的创建以及线程间的切换并不会引起系统做这些事儿，所以线程的系统开销明显更小。
-</code></pre><p>同步与异步</p>
-<pre><code>同步
-    程序自上而下运行
-异步
-    不用等待上面的程序执行完后再运行下面的操作
-</code></pre><p>AMD和CMD规范</p>
-<p>Nodejs模块的引入与导出</p>
-<p>Nodejs事件循环机制</p>
+        <p>前言</p>
+<pre><code>围绕vue.js的一系列工具
+    vue.js核心,不解释
+    VueRouter2 实现路由组织工具
+    webpack项目打包以及编译工具
+    nodejs前端开发环境
+    npm前端包管理器
+    axiso ajax接口请求工具
+    sass-loader和node-sass css预处理
+    element基于vue的后台组件库
+    iview基于vue的另一套后台组件库
+    vue -cli vue的项目脚手架
+</code></pre><p>如何运行vue项目</p>
+<pre><code>需要的东西
+    node.js环境(npm包管理器)
+    vue cli 脚手架构建工具
+    cnpm npm的淘宝镜像
 
-      
+node.js安装完后
+    安装cnpm(淘宝镜像)使用npm下载会比较卡
+        npm install -g cnpm --registry=http://registry.npm.taobao.org
+    安装webpack
+        npm install webpack -g
+    安装vue-cli脚手架构建工具
+        cnpm install -g vue-cli
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
-        		</li>
-      		
-		</ul>
-	</div>
+切换指定目录进行构建
+    1、新建工作空间并切换
+    2、vue init webpack 项目文件夹的名称
+安装依赖包并运行
+    打开项目路径并 cnpm install
+    npm run dev (热加载的方式运行)  启动项目
+        run对应的是package.json文件
+        dev对应的是bulid下的带有dev的js文件
+    npm run build
+        发布项目
+</code></pre><p>Vue的包构造：</p>
+<pre><code>├── README.md                       // 项目说明文档
+├── node_modules                    // 项目依赖包文件夹
+├── build                           // 编译配置文件，一般不用管
+│   ├── build.js
+│   ├── check-versions.js
+│   ├── dev-client.js
+│   ├── dev-server.js
+│   ├── utils.js
+│   ├── vue-loader.conf.js
+│   ├── webpack.base.conf.js
+│   ├── webpack.dev.conf.js
+│   └── webpack.prod.conf.js
+├── config                          // 项目基本设置文件夹
+│   ├── dev.env.js              // 开发配置文件
+│   ├── index.js                    // 配置主文件
+│   └── prod.env.js             // 编译配置文件
+├── index.html                      // 项目入口文件
+├── package-lock.json           // npm5 新增文件，优化性能
+├── package.json                    // 项目依赖包配置文件
+├── src                             // 我们的项目的源码编写文件
+│   ├── App.vue                 // APP入口文件
+│   ├── assets                      // 初始项目资源目录，回头删掉
+│   │   └── logo.png
+│   ├── components              // 组件目录
+│   │   └── Hello.vue           // 测试组件，回头删除
+│   ├── main.js                 // 主配置文件
+│   └── router                      // 路由配置文件夹
+│       └── index.js            // 路由配置文件
+└── static                          // 资源放置目录
+</code></pre><p>Vue是什么？</p>
+<pre><code>读音：V-U-E---------------view
+vue到底是什么？
+    一个MVVM框架(库)、和angular类似
+    比较容易上手，小巧
+mvc:
+    在mvc里，model是数据模型;view是视图层，即为要展示的东西;controller是控制器，用来控制model的读取、存储，以及如何在view上展示数据
+mvp:
+    在mvp里，model
+    mvvm
+    mv*
+    mvx
+  官网:http://cn.vuejs.org/
+  手册： http://cn.vuejs.org/api/
 
-      
+  vue和angular的区别？
+    vue-简单、易学
+        指令以v-xxx
+        一片html代码配合上json,然后在new出来vue实例
+        个人维护项目
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/09/NodeJs从入门到放弃/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-React从入门到放弃" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/08/React从入门到放弃/">React从入门到放弃</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/08/React从入门到放弃/" class="archive-article-date">
-  	<time datetime="2018-08-08T05:05:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>React<br>    React安装脚手架——— cnpm install -g create-react-app<br>    安装脚手架遇到的问题，安装到指定目录后不能全局使用，解决方法：<br>        打开node的node_modules文件夹和npm放到一块，另外create-react-app和create-react-app.cmd要在同级目录下</p>
-<pre><code>创建react app:
-    create-react-app react-test(项目名)
-
-react语法
-
-    原生js创建Dom
-        var HelloMessage = React.createElement(
-            &apos;div&apos;,{&apos;style&apos;: {&apos;color&apos;:&apos;red&apos;}},
-            React.createElement(&apos;h1&apos;, null, &quot;hello world&quot;)
-        )
-        ReactDOM.render(HelloMessage,document.getElementById(&quot;root&quot;))
-
-        此方法在新版本已经废除
-        var HelloMessage = React.createClass({})
-
-        ReactDom.render是React的最基本用法，用于将模板转换为HTML语言，并插入指定的DOM节点
-        例如：
-            ReactDom.render({
-                &lt;h1&gt;Hello.World&lt;/h1&gt;
-                document.getElementById(&apos;example&apos;)
-            })
-    React组件的几种写法 
-        函数定义组件
-            function HelloMessage(props) {
-                return &lt;h1&gt;Hello World!&lt;/h1&gt;;
-            }
-            const element = &lt;HelloMessage /&gt;
-            ReactDom.render(element,document.getElementById(&quot;root&quot;));
-        ES6使用Class定义组件
-            Class HelloMessage extends React.Component{
-                render(){
-                     return &lt;h1&gt;Hello World!&lt;/h1&gt;;
+        适合：移动端项目、小巧
+        vue的发展势头很猛，github在start数量已经超越angular
+    angular-上手难
+        指令以ng-XXX
+        所有属性和方法都挂到$scope身上
+        angular由谷歌维护
+共同点：不兼容低版本ie
+Vue的基本雏形：
+    angular展示一条基本数据：
+       js部分：
+           var app = angular.module(&apos;app&apos;,[]);
+           app.controller(&apos;xxx&apos;,function($scope){
+                $scope.msg = &apos;welocme&apos;
+           }
+       html部分：
+            div ng-controller = &quot;xxx&quot;
+            {{msg}}
+    vue展示一条基本数据：
+       js部分：
+            var c = new Vue({
+                el:&apos;#box&apos;,   //选择器  className  tagName
+                data:{
+                    msg:&apos;welcome vue&apos;
                 }
+            })
+       html部分:
+            &lt;div id=&quot;box&quot;&gt;
+                {{msg}}
+            &lt;/div&gt;
+常用指令：
+    angular:
+        ng-model    ng-controller
+        ng-repeat
+        ng-click
+        ng-show
+    $scope.show = function(){}
+    指令：扩展html标签功能，属性
+
+    说明：
+        el代表dom元素的选择器
+        data用于定义属性
+        methods用于定义函数，可以通过return来返回函数值
+        computed是计算属性，主要用于  处理复杂的逻辑  默认只有getter,不过也可以提供一个setter
+            methods和computed效果上，两个基本一致，但是computed是基于它的依赖缓存，只有相关依赖发生改变时才会冲新区至
+            而使用methods,在重新渲染的时候，函数总会重新调用执行
+        {{}}用于输出对象属性和函数返回值
+        在vue中，提供了一些实例属性与方法，他们都有前缀，用于区分用户定义的属性
+
+        watch属性  实时监听数据变化而改变自身的值
+    ex:
+        html部分：
+            &lt;div id=&quot;app5&quot;&gt;
+                &lt;p&gt;{{message}}&lt;/p&gt;
+                &lt;button v-on:click=&quot;rever&quot;&gt;逆转信息&lt;/button&gt;
+            &lt;/div&gt;
+        js部分：
+            var app5 = new Vue({
+                el:&quot;#app5&quot;,
+                data:{
+                    message:&quot;hello vue.js&quot;
+                },
+                methods:{
+                    rever:function(){
+                        this.message = this.message.split(&apos;&apos;).reverse().join(&apos;&apos;);
+                    }
+                }
+            })
+</code></pre><p>Vue指令 </p>
+<pre><code>    {{}}  文本插值
+    v-once 只执行一次插值
+
+    v-html 用于输出html代码(不要随意渲染，容易xss攻击)
+
+    v-model 一般表单元素，双向数据绑定
+
+    v-bind:title=&quot;message&quot; 将这个元素节点的title和vue实例的message属性保持一致
+        缩写：直接冒号加属性名
+
+    v-if=&quot;seen&quot; 条件与循环，控制一个元素是否显示
+
+    v-show  根据条件来展示元素
+        注意，v-show 不支持 &lt;template&gt; 元素，也不支持 v-else。
+    v-else 指令给v-if添加一个&quot;else&quot;块
+
+    v-else-if 指令用作v-if的else-if块
+
+循环
+    数组
+    v-for = &quot;(item,name) in arr&quot; ：key=&quot;index&quot; 
+        {{index}}
+    对象
+    v-for = &quot;(value,key,index) in json&quot; ：key=&quot;index&quot; 
+        {{index}} {{key}}
+    v-for = &quot;(value,key) in json&quot;  //in可以用of来代替，
+在for块中，我们拥有对父作用域的完全访问权限
+
+    v-for = &quot;(value,key,index) in object&quot;
+
+    v-for = &quot;n in 10&quot;  循环整数
+事件
+    v-on:click = &quot;函数&quot;
+    v-on:keyup.enter = &quot;函数&quot;(enter为键盘值)
+
+    v-on:click/mouseout/mouseover/dblclick/mousedown、、、、、、
+    @click/mouseout/mouseover/dblclick/mousedown、、、、、、
+
+
+    当 v-if 与 v-for 一起使用时，v-for 具有比 v-if 更高的优先级。
+</code></pre><p>Vue全局api</p>
+<pre><code> 扩展实例构造器
+     &lt;dream&gt;&lt;/dream&gt;
+     let App = Vue.extend({
+        template:`&lt;h2&gt;&lt;/h2&gt;`,//组件
+     })
+     new App.$mount(&apos;dream&apos;);挂载标签
+dom更新循环结束后回调延迟函数
+    Vue.nextTick(function(){
+
+    })
+    Vue.nextTick().then(()=&gt;{
+
+    })
+向响应式对象中添加一个属性，并确保这个新属性同样是响应式的，且触发视图更新。它必须用于向响应式对象上添加新属性，因为 Vue 无法探测普通的新增属性
+    理解：现在有一个数组对象，和一个vue实例，let app = new Vue();
+    app.arr,j将arr数组添加到app实例上去修改数组的值
+    只是静态的修改，页面上并没有响应数据的变化
+    Vue.set(app.arr,2,123)
+    target:要更改的对象
+    key:要更改的key
+    value:要更改的value
+    页面触发修改内存，内存的改变再返回影响页面
+Vue.delete()与上述类似
+注册获取全局指令(自定义指令)
+    Vue.directive();
+    例：
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;h1&gt;{{msg}}&lt;/h1&gt;
+            &lt;h2 v-dream=&quot;custom&quot;&gt;{{msg}}  - {{num}}&lt;/h2&gt;
+            &lt;h2 v-coutom=&quot;info&quot;&gt;{{msg}} - {{num}}&lt;/h2&gt;
+            &lt;button @click=&quot;add&quot;&gt; 点击改变num &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;button onclick=&quot;ubbind()&quot;&gt;解绑&lt;/button&gt;
+        &lt;script&gt;
+            function ubbind() {
+                app.$destroy();
             }
-            ReactDom.render(&lt;HelloMessage/&gt;,document.getElementById(&quot;root&quot;));
-        用户自定义组件
-            const element = &lt;div&gt;hello message&lt;/div&gt;
-            ReactDom.render(element,document.getElementById(&quot;root&quot;));
-    属性与状态
-        Class Demo extends React.component({
-            render{
-                return &lt;div&gt;{this.props.title}&lt;/div&gt;
+            Vue.directive(&apos;dream&apos;,function (el,bind) {
+                console.log( el );
+                el.style = &apos;color:&apos; + bind.value
+                console.log(bind)
+            });
+            Vue.directive(&apos;coutom&apos;,{
+                // 事件函数 -&gt; 钩子
+                bind: function () {
+                    console.log(&apos;1. 被绑定&apos;)
+                },
+                inserted: function (el,bind) {
+                    console.log(&apos;2. 绑定到节点&apos;)
+                    el.style.color = bind.value
+                },
+                update: function () {
+                    console.log(&apos;3. 组件更新&apos;)
+                },
+                componentUpdated: function () {
+                    console.log(&apos;4.组件更新完成 &apos;)
+                },
+                unbind: function () {
+                    console.log(&apos;5.解绑&apos;)
+                }
+            })
+            let app = new Vue({
+                el:&apos;#app&apos;,
+                data:{
+                    msg:&apos;Vue.directive&apos;,
+                    custom:&apos;hotpink&apos;,
+                    info:&apos;blue&apos;,
+                    num:0
+                },
+                methods:{
+                    add(){
+                        this.num ++
+                    }
+                }
+
+            })
+        &lt;/script&gt;
+Vue全局过滤器
+    Vue.filter(&quot;&quot;,function(){})
+    例、
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;h1&gt;{{msg}}&lt;/h1&gt;
+            &lt;h2&gt;{{ text | myFilter }}&lt;/h2&gt;
+            &lt;input type=&quot;text&quot; v-model=&quot;text&quot;&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            // 在选项中使用
+            /*let app = new Vue({
+                el:&apos;#app&apos;,
+                data:{
+                    msg:&apos;Vue.filter 过滤器&apos;,
+                    text:&apos;&apos;
+                },
+                filters:{
+                    myFilter:function (value) {
+                        return value.split(&apos;&apos;).reverse().join(&apos;&apos;);
+                    }
+                }
+            })*/
+            new Vue({
+                el: &apos;#app&apos;,
+                data: {
+                    msg: &apos;Vue.filter 过滤器&apos;,
+                    text: &apos;&apos;
+                }
+            })
+
+            // 在全局设置  Vue 构造器
+            Vue.filter(&apos;myFilter&apos;,function (value) {
+                return &apos;￥&apos;+value+&apos;元&apos;;
+            })
+        &lt;/script&gt;
+Vue全局组件
+    例：
+         &lt;div id=&quot;app&quot;&gt;
+            &lt;hd-nav&gt;&lt;/hd-nav&gt;   &lt;!--小写--&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            // 组件就像公式样式，可以在任何vue作用域下复用
+            // 全局组件
+            Vue.component(
+                &apos;hdNav&apos;,    // 驼峰命名
+                {
+                    template:`&lt;h2 style=&quot;color: skyblue&quot;&gt;全局组件&lt;/h2&gt;`
+                }
+            )
+            new Vue({
+                el:&apos;#app&apos;
+            })
+        &lt;/script&gt;
+    局部组件
+        &lt;div id=&quot;app&quot;&gt;
+            /* 要在vue的作用域 */
+            &lt;hd-nav&gt;&lt;/hd-nav&gt;   &lt;!--小写--&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            // 全局组件
+            new Vue({
+                el:&apos;#app&apos;,
+                // 声明组件
+                components:{
+                    hdNav:{
+                        template:`&lt;h2 style=&quot;color: hotpink&quot;&gt; 局部组件&lt;/h2&gt;`
+                    }
+                }
+            })
+        &lt;/script&gt;
+    选项模板
+         &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+        &lt;script&gt;
+            // 全局组件
+            new Vue({
+                el:&apos;#app&apos;,
+                template:`&lt;h2 style=&quot;color: hotpink&quot;&gt; 选项模板&lt;/h2&gt;`
+            })
+        &lt;/script&gt;
+    标签模板
+         &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+            &lt;template id=&quot;tpl&quot;&gt;
+                &lt;h2 style=&quot;color: hotpink&quot;&gt;
+                    template标签模板
+                &lt;/h2&gt;
+            &lt;/template&gt;
+            &lt;script&gt;
+
+                new Vue({
+                    el:&apos;#app&apos;,
+                    template:&apos;#tpl&apos;
+                })
+            &lt;/script&gt;
+    script模板
+        &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+        &lt;script type=&quot;text/x-template&quot;  id=&quot;tpl&quot;&gt;
+            &lt;h2 style=&quot;color: hotpink&quot;&gt;
+                script标签模板
+            &lt;/h2&gt;
+        &lt;/script&gt;
+        &lt;script&gt;
+
+            new Vue({
+                el:&apos;#app&apos;,
+                template:&apos;#tpl&apos;
+            })
+        &lt;/script&gt;
+    component标签
+         &lt;div id=&quot;app&quot;&gt;
+            &lt;h2&gt;{{msg}}&lt;/h2&gt;
+            &lt;!--根据值的不同 ，显示不同的组件--&gt;
+            &lt;component v-bind:is=&quot;componentA&quot;&gt;&lt;/component&gt;
+            &lt;component :is=&quot;componentB&quot;&gt;&lt;/component&gt;
+            &lt;component :is=&quot;componentC&quot;&gt;&lt;/component&gt;
+            &lt;hr&gt;
+            &lt;component v-bind:is=&quot;toggleComponent&quot;&gt;&lt;/component&gt;
+            &lt;button @click=&quot;toggle&quot;&gt; 切换component组件 &lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;script&gt;
+            // 在外部声明组件
+            let componentA = {
+                template:`&lt;h2 style=&quot;color: orangered&quot;&gt;组件A&lt;/h2&gt;`
+            }
+            let componentB = {
+                template:`&lt;h2 style=&quot;color: yellowgreen&quot;&gt;组件B&lt;/h2&gt;`
+            }
+            let componentC = {
+                template:`&lt;h2 style=&quot;color: skyblue&quot;&gt;组件C&lt;/h2&gt;`
+            }
+            new Vue({
+                el:&apos;#app&apos;,
+                data:{
+                    msg:&apos;component标签&apos;,
+                    componentA:componentA,
+                    componentB,
+                    componentC,
+                    toggleComponent:componentA,
+                    arr:[
+                        componentA,
+                        componentB,
+                        componentC,
+                    ]
+                },
+                components:{
+                    componentA:componentA,
+                    componentB,
+                    componentC
+                },
+                methods:{
+                    toggle(){
+                        this.toggleComponent =this.arr[Math.floor(Math.random()*3)]
+                    }
+                }
+            })
+        &lt;/script&gt;
+Vue全局混入
+    Vue.mixin({
+        update(){
+
+        }
+    })
+
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;h2&gt; {{msg}} - {{ num }}&lt;/h2&gt;
+        &lt;input type=&quot;button&quot; v-on:click=&quot;add&quot; value=&quot;add&quot;&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        let addLog = {
+            updated(){
+                console.log(&apos;选项的混入&apos;)
+            }
+        }
+        Vue.mixin({
+            updated(){
+                console.log(&apos;全局的混入&apos;)
             }
         })
-        ReactDOM.render(&lt;Demo title={&quot;Demo&quot;}/&gt;,document.getElementById(&quot;app&quot;))
+        new Vue({
+            el:&apos;#app&apos;,
+            data:{
+                msg:&apos;Vue.mixin&apos;,
+            },
+            methods:{
+                add(){
+                    this.num++
+                }
+            },
+        })
+    &lt;/script&gt;
+compile编译渲染
+     &lt;div id=&quot;app&quot;&gt;
+        &lt;h2&gt; {{msg}} - {{ num }}&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        let res = Vue.compile(&apos;&lt;h2&gt;{{num}}&lt;/h2&gt;&apos;)
+        new Vue({
+            el:&apos;#app&apos;,
+            data:{
+                msg:&apos;Vue.mixin&apos;,
+                num:520
+            },
+            render:res.render
+        })
+    &lt;/script&gt;
+Vue.version
+    获取vue的版本
+     &lt;div id=&quot;app&quot;&gt;
+        &lt;h2&gt; {{msg}}  - ${msg} &lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        console.log( Number(Vue.version.split(&apos;.&apos;)[0]) )
+        let version = Number(Vue.version.split(&apos;.&apos;)[0]);
+        if( version === 2 ){
+            console.log(&apos;Vue.JS 是2.x版本&apos;)
+        }else if( version === 1 ){
+            console.log(&apos;你使用的版本过低&apos;)
+        }else {
+            console.log(&apos;使用的版本有问题，请联系开发者&apos;)
+        }
+        // ${es6的变量}
+        new Vue({
+            el:&apos;#app&apos;,
+            data:{
+                msg:&apos;version&apos;
+            },
+            delimiters:[&apos;${&apos;,&apos;}&apos;] // 重新定义插值符号
+        })
+    &lt;/script&gt;
+具名插槽
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;h2&gt;{{msg}}&lt;/h2&gt;
+        &lt;hi-dream&gt;
+            &lt;span slot=&quot;name&quot;&gt;{{con.name}}&lt;/span&gt;
+            &lt;span slot=&quot;age&quot;&gt;{{con.age}}&lt;/span&gt;
+            &lt;span slot=&quot;job&quot;&gt;{{con.job}}&lt;/span&gt;
+        &lt;/hi-dream&gt;
+    &lt;/div&gt;
+    &lt;template id=&quot;tpl&quot;&gt;
+        &lt;div&gt;
+            &lt;h1&gt;我是: &lt;slot name=&quot;name&quot;&gt;&lt;/slot&gt; &lt;/h1&gt;
+            &lt;h2&gt;年龄: &lt;slot name=&quot;age&quot;&gt;&lt;/slot&gt; &lt;/h2&gt;
+            &lt;h3&gt;job: &lt;slot name=&quot;job&quot;&gt;&lt;/slot&gt; &lt;/h3&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+&lt;script&gt;
 
-    React的生命周期
-        首次实例化
-            getDefaultProps
-            getInitialState
-            componentWillMount
-            render
-            componentDidMount 实例化之后更新，这一过程和上面一样，但没有getDefaultProps这个过程 简单记忆：props =&gt; state =&gt; mount =&gt; render =&gt; mounted
-        存在期
-            组件已经存在，状态发生改变时
+    let vm = new Vue({
+        el:&apos;#app&apos;,
+        data:{
+            msg:&apos;用于标记往哪个具名插槽中插入子组件内容。会在第三方组件上看到有slot属性&apos;,
+            con:{
+                name:&apos;追梦&apos;,
+                age:18,
+                job:&apos;讲师&apos;
+            }
+        },
+        components:{ // 声明组件
+            &apos;hi-dream&apos;:{
+                template:&apos;#tpl&apos;
+            }
+        }
+    })
+&lt;/script&gt;
+</code></pre><p>扩展事件</p>
+<pre><code> &lt;div id=&quot;app&quot;&gt;
+    &lt;h2&gt;{{msg}} - {{num}}&lt;/h2&gt;
+    &lt;input type=&quot;button&quot; value=&quot;add&quot; @click=&quot;add&quot;&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;input type=&quot;button&quot; value=&quot;reduce&quot; onclick=&quot;reduce()&quot;&gt; &lt;br&gt;
+&lt;input type=&quot;button&quot; value=&quot;reduceOne&quot; onclick=&quot;reduceOne()&quot;&gt; &lt;br&gt;
+&lt;input type=&quot;button&quot; value=&quot;off&quot; onclick=&quot;off()&quot;&gt; &lt;br&gt;
+&lt;script&gt;
 
-            componetWillReceiveProps
-            shouldComponentUpdate
-            ComponentWillUpdate
-            render
-            componentDidUpdate
-        销毁期
-            componentWillUnmount
+    let vm = new Vue({
+        el:&apos;#app&apos;,
+        data:{
+            msg:&apos;实例方法 / 事件&apos;,
+            num:0
+        },
+        methods:{
+            add(){
+                this.num ++
+            }
+        }
+    })
+    // 事件监听
+    vm.$on(&apos;reduce&apos;,function () {
+        this.num --
+    })
+    vm.$once(&apos;reduceOne&apos;,function () {
+        this.num --
+    })
 
-        componentWillMount------组件将要挂载
-            组件刚经历constructor,初始化完数据
-            组件还未进入render,组件还未渲染完成，dom还未渲染
-            在完成首次渲染之前调用，此时可以修改组件的state
-        componentDidMount------组件渲染完成
-            组件第一次完成渲染，此时dom节点已经渲染完成，可以在这里调用ajax请求，返回数据
-            setState后组件会重新渲染
+    function off() {
+        vm.$off(&apos;reduce&apos;);
+    }
+    function reduceOne() {
+        vm.$emit(&apos;reduceOne&apos;)
+    }
+    // 发送信息
+    function reduce() {
+        vm.$emit(&apos;reduce&apos;)
+    }
+&lt;/script&gt;
+Vue生命周期
+    &lt;div id=&quot;app&quot;&gt;
+    {{msg}}
+    &lt;br&gt;
+    &lt;em&gt;{{num}}&lt;/em&gt;&lt;br&gt;
+    &lt;button @click=&quot;add&quot;&gt;add&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    let vm = new Vue({
+        el:&apos;#app&apos;,
+        data(){
+            return {
+                msg:&apos;生命周期 钩子函数 事件函数 例如，Dom加载之前，DOM加载完成后，数据更新后，操作。。。&apos;,
+                num:0
+            }
+        },
+        methods:{
+            add(){
+                this.num++
+            }
+        },
+        beforeCreate(){
+            console.log(&apos;1.beforeCreate&apos;)
+        },
+        created(){
+            console.log(&apos;2.created&apos;)
+        },
+        beforeMount(){
+            console.log(&apos;3.beforeMount&apos;)
+        },
+        mounted(){
+            console.log(&apos;4.mounted&apos;)
+        },
+        beforeUpdate(){
+            console.log(&apos;5.beforeUpdate&apos;)
+        },
+        updated(){
+            console.log(&apos;6.updated&apos;)
+        },
+        activated(){
+            console.log(&apos;7.activated&apos;)
+        },
+        deactivated(){
+            console.log(&apos;8.deactivated&apos;)
+        },
+        beforeDestroy(){
+            console.log(&apos;9.beforeDestroy&apos;)
+        },
+        destroyed(){
+            console.log(&apos;10.destroyed&apos;)
+        },
+        errorCaptured(){
+            console.log(&apos;11.errorCaptured&apos;)
+        },
+    });
+&lt;/script&gt;
+</code></pre><p>Vue 中的javascript表达式</p>
+<pre><code>每个绑定只能包含单个表达式。
+</code></pre><p>Vue 中的计算属性</p>
+<pre><code>computed，任何复杂的逻辑都应该使用  计算属性
+    计算属性只有在它的相关依赖发生改变时才会重新求值。
+</code></pre><p>Vue 中的侦听属性</p>
+<pre><code>当你有一些数据需要随着其它数据变动而变动时，你很容易滥用 watch——特别是如果你之前使用过 AngularJS。
+然而，通常更好的做法是使用计算属性而不是命令式的 watch 回调
+watch(侦听属性)
+    例：watch:{
+        message:{//侦听message属性
+            handler:function(new,old){
+                new//新值
+                old//旧值
+            }
+        }
+    }
+</code></pre><p>计算属性、方法、侦听属性的区别：</p>
+<pre><code>当data中数据发生变化时，计算属性的值也会发生改变
+methods是方法，只要调用它，函数就会执行
+在vue中，计算属性和方法达到的效果是一样的，但是计算属性是依赖缓存的，只有相关依赖发生改变时才会重新求职，只要依赖未改变，只会返回之前的结果，不在执行函数
+watched它检测的值是谁，然后相应的改变其他的值
+</code></pre><p>Vue 自定义指令来操作Dom</p>
+<pre><code>Vue.directive(id, definition)注册全局自定义指令
+    bind：只调用一次，在指令第一次绑定到元素上时调用。
+    update： 在 bind 之后立即以初始值为参数第一次调用，之后每当绑定值变化时调用，参数为新值与旧值。
+    unbind：只调用一次，在指令从元素上解绑时调用。
 
-        componentWillReceiveProps(nextProps)
-            此方法在接受父组件改变后的props需要重新渲染组件时用到的比较多
-            nextProps
-                通过对比nextProps和this.props，将nextProps setState为当前组件的state，从而重新渲染组件
-        shouldComponentUpdate(nextProps,nextState)
-            唯一用于控制组件重新渲染的生命周期，由于在react中，setState以后，state发生变化，组件会进入重新渲染的流程，（暂时这么理解，其实setState以后有些情况并不会重新渲染，比如数组引用不变）在这里return false可以阻止组件的更新
+全局自定义指令
+    // 注册一个全局自定义指令 `v-focus`
+    Vue.directive(&apos;focus&apos;, {
+      // 当被绑定的元素插入到 DOM 中时……
+      inserted: function (el) {
+        // 聚焦元素
+        el.focus()
+      }
+    })
+局部自定义指令
+    directives: {
+      focus: {
+        // 指令的定义
+        inserted: function (el) {
+          el.focus()
+        }
+      }
+    }
+</code></pre><p>Vue组件化：</p>
+<pre><code>全局注册组件
+    Vue.component(&apos;my-component&apos;,MyComponent)    
+        全局组件必须写在Vue实例创建之前，才在该根元素下面生效；
+        模板里面第一级只能有一个标签，不能并行；
+        data必须为一个函数
+局部组件注册
+    方式，直接在Vue实例里面注册
+        属性名为components，s千万别忘了;
+        data必须为一个函数
+父组件向子组件传递数据
+   父级组件绑定传递的参数,使用props来接受参数
+子组件向父组件传值
+    使用$emit来触发一个自定义事件，并传递参数
+    子组件自定义事件，this.$emit(&quot;事件名&quot;,&quot;参数&quot;)
+    父组件用该事件接受
 
-            因为react父组件的重新渲染会导致其所有子组件的重新渲染，这个时候其实我们是不需要所有子组件都跟着重新渲染的，因此需要在子组件的该生命周期中做判断
-        componentWillUpdate (nextProps,nextState)
-            shouldComponentUpdate返回true以后，组件进入重新渲染的流程，进入componentWillUpdate,这里同样可以拿到nextProps和nextState
-        componentDidUpdate(prevProps,prevState)
-            组件更新完毕后，react只会在第一次初始化成功会进入componentDidmount,之后每次重新渲染后都会进入这个生命周期，这里可以拿到prevProps和prevState，即更新前的props和state。
-        componentWillUnmount ()
-            clear你在组建中所有的setTimeout,setInterval
-            移除所有组建中的监听 removeEventListener
-            也许你会经常遇到这个warning:
-        生命周期中10个API的作用说明
-            getDefaultProps 作用于组件类，只调用一次，返回对象用于设置默认的props，对于引用值，会在实例中共享
+各组件之间传值的方法
+    1、路由传参
+        使用params,此方法在刷新页面的时候，参数会丢失，要想不丢失请使用query,另外在使用这两个参数时要注意，路由跳转应该使用name,通过path来跳转是接受不到参数的
+    2、子传父，父传子(见上)  
+    3通过缓存localstorage
+    4、vue-bus(未使用过)
+    5、vueX(见说明)
+</code></pre><p>Vue实例生命周期钩子</p>
+<pre><code>created---实例创建完成立即被调用。在这一步，已经完成的配置：数据观测，属性和方法的运算，watch/event事件回调
+    然而挂载阶段还没开始，$el属性目前不可见
+mounted---el 被新创建的 vm.$el 替换，并挂载到实例上去之后调用该钩子。如果 root 实例挂载了一个文档内元素，当 mounted 被调用时 vm.$el 也在文档内。
+    注意 mounted 不会承诺所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染完毕，可以用 vm.$nextTick 替换掉 mounted：
+updated---由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子。
+    当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态。如果要相应状态改变，通常最好使用计算属性或 watcher 取而代之。
+    注意 updated 不会承诺所有的子组件也都一起被重绘。如果你希望等到整个视图都重绘完毕，可以用 vm.$nextTick 替换掉 updated：
+destoryed---Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。
 
-            getInitialState 作用于组件实例，在实例创建时调用一次，用于初始化每个实例的state，此时可以访问this.props
+创建前——创建后
+挂在前——挂载后
+更新前——更新后
+摧毁前——摧毁后
+</code></pre><p>Vue的路由</p>
+<pre><code>vue的路由模式有history,hash模式
+    在hash模式下，是不带#号的
+    在history模式下，url中#去掉，这时在本地编译完访问是空白的，这时需要配置一个二级目录做nginx代理
+    嵌套路由的使用方法：
+        在一个模块下的路由，例：/deta,在此模块下有三个子路由
+            /deta/details
+            /deta/spec
+            /deta/afterservice
+        使用方法：
+            模块写法：
+                &lt;template&gt;
+                  &lt;div class=&quot;details-title&quot;&gt;
+                      &lt;ul class=&quot;d-title&quot;&gt;
+                         &lt;li v-for=&quot;(item,index) in menuls&quot;&gt;&lt;router-link :to=&quot;{name:item.name}&quot;&gt;{{item.text}}&lt;/router-link&gt;&lt;/li&gt;
+                      &lt;/ul&gt;
+                    &lt;div class=&quot;content&quot;&gt;
+                      &lt;router-view&gt;&lt;/router-view&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/template&gt;
+                &lt;script&gt;
+                    export default {
+                        name: &quot;details-title&quot;,
+                        data(){
+                          return{
+                            a:window.global.twoLevelUrl,
+                            menuls:[
+                              {text:&quot;商品介绍&quot;,path:window.global.twoLevelUrl+&quot;/deta/details&quot;,name:&quot;details&quot;},
+                              {text:&quot;规格参数&quot;,path:window.global.twoLevelUrl+&quot;/deta/spec&quot;,name:&quot;spec&quot;},
+                              {text:&quot;售后服务&quot;,path:window.global.twoLevelUrl+&quot;/deta/afterservice&quot;,name:&quot;afterservice&quot;},
+                            ]
+                          }
+                        },
+                    }
+                &lt;/script&gt;
+            路由处理：
+                const router = new Router({
+                    routes:[{
+                          path:&apos;/deta&apos;,
+                          name:&apos;deta&apos;,
+                          component:resolve =&gt; require([&apos;@/components/details/DetailsTitle&apos;],resolve),
+                          redirect:&apos;/deta/details&apos;,
+                          children:[{
+                              path:&apos;/deta/details&apos;,
+                              name:&apos;details&apos;,
+                              component:Details,
+                            },
+                            {
+                              path:&apos;/deta/spec&apos;,
+                              name:&apos;spec&apos;,
+                              component:Spec,
+                            },
+                            {
+                              path:&apos;/deta/afterservice&apos;,
+                              name:&apos;afterservice&apos;,
+                              component:AfterService,
+                            },
+                          ]},
+                    ]})
+        嵌套默认打开路由，需要重定向到子路由
+</code></pre><p>VueX中央处理vuex分发处理(状态管理器)</p>
+<pre><code>用于保存数据状态，数据共享，处理模块之间的数据共享
+使用方式：
+    1、App.vue入口，导入import {store} from &apos;./store/store&apos;;
+    2、new Vue({router,store,render: h =&gt; h(App)}).$mount(&apos;#app&apos;);
+    3、新建js,store.js
+        5种状态
+            state
+            getters
+                此方法主要和vue中的computed类似，都是用来计算state然后生成新的数据状态的
+            mutations
+                主要用来修改状态，所有的操作必须是同步的，官方推荐尽量不使用异步操作，一般在这里处理逻辑与修改
+                可以通过$store.commit(&apos;switch_dialog&apos;)来触发mutations里的方法
+            actions
+                多个state的操作，使用mutations触发会比较好维护，但要执行多个mutations就需要action,
+                actions里的context和$store拥有相同的对象和方法，这里的操作主要是异步操作，可以使用
+                $store.dispatch(&apos;switch_dialog&apos;)分发处理actions里的请求
+            modules 组件多了，状态也多了会不好维护，那么使用vuex的modules
 
-            componentWillMount 在完成首次渲染之前调用，此时可以修改组件的state
+            vuex使用方法(其余方法类似)
+                &lt;script&gt;
+                    import {mapState} from &apos;vuex&apos;;
+                    export default {
+                      computed:{
+                        ...mapState({
+                          show:state=&gt;state.dialog.show
+                        }),
+                      }
+                    }
+                &lt;/script&gt;
+            例：
+                总状态管理器：
+                    import Vue from &apos;vue&apos;
+                    import vuex from &apos;vuex&apos;
+                    Vue.use(vuex);
+                    import dialog_store from &apos;../components/dialog_store.js&apos;;//引入某个store对象
+                    export default new vuex.Store({
+                        modules: {
+                            dialog: dialog_store
+                        }
+                    })
+                子状态管理：dialog_store.js
+                    export default {
+                        state:{
+                            show:false
+                        }
+                    }
+</code></pre><p>Vue分环境打包部署</p>
+<pre><code>更新cross-env模块
+config文件下
+    新建pre.env.js,
+        &apos;use strict&apos;
+        module.exports = {
+          NODE_ENV: &apos;&quot;presentation&quot;&apos;,
+          EVN_CONFIG:&apos;&quot;pre&quot;&apos;,
+        }
+    新建test.env.js
+        &apos;use strict&apos;
+        module.exports = {
+          NODE_ENV: &apos;&quot;testing&quot;&apos;,
+          EVN_CONFIG:&apos;&quot;test&quot;&apos;,
+        }
+    修改prod.env.js
+        &apos;use strict&apos;
+        module.exports = {
+          NODE_ENV: &apos;&quot;production&quot;&apos;,
+          EVN_CONFIG:&apos;&quot;prod&quot;&apos;
+        }
+    新建env.js判断个环境的参数配置
+        let baseUrl = &apos;&apos;;
+        if (process.env.NODE_ENV == &apos;development&apos;) {
+          baseUrl = &quot;&quot;;
+        }else if(process.env.NODE_ENV == &apos;testing&apos;){
+          baseUrl = &quot;http://192.168.1.194:10001/api&quot;;
+        }else if(process.env.NODE_ENV == &apos;presentation&apos;){
+          baseUrl = &quot;http://192.168.1.194:10001/pre&quot;;
+        } else if(process.env.NODE_ENV == &apos;production&apos;){
+          baseUrl = &quot;http://192.168.1.194:10001/prod&quot;;
+        }
+        export{
+          baseUrl
+        }
+    修改index.js为
+        build下添加
+        prodEnv: require(&apos;./prod.env&apos;),
+        preEnv: require(&apos;./pre.env&apos;),
+        testEnv: require(&apos;./test.env&apos;),
+    build文件下修改
+        bulid.js中const spinner = ora(&apos;building for production...&apos;)修改为
+        var spinner = ora(&apos;building for &apos; + process.env.NODE_ENV + &apos; of &apos; + process.env.env_config+ &apos; mode...&apos; )
 
-            render 必选方法，创建虚拟DOM，该方法具有特殊规则：
+        webpack.prod.conf.js修改const env = require(&apos;../config/prod.env&apos;)为
+        const env = config.build[process.env.env_config+&apos;Env&apos;]
+    main.js里引入env.js,设置axios的baseurl为export的baseurl
+    package.json里设置scripts启动命令
+      &quot;scripts&quot;: {
+        &quot;dev&quot;: &quot;webpack-dev-server --inline --progress --config build/webpack.dev.conf.js&quot;,
+        &quot;start&quot;: &quot;npm run dev&quot;,
+        &quot;build&quot;: &quot;node build/build.js&quot;,
+        &quot;build:test&quot;: &quot;cross-env NODE_ENV=production env_config=test node build/build.js&quot;,
+        &quot;build:pre&quot;: &quot;cross-env NODE_ENV=production env_config=pre node build/build.js&quot;,
+        &quot;build:prod&quot;: &quot;cross-env NODE_ENV=production env_config=prod node build/build.js&quot;
+      },
+    http://blog.csdn.net/fungleo/article/details/53171052
+</code></pre><p>VUE项目实战<a href="https://segmentfault.com/p/1210000008583242/read?from=timeline" target="_blank" rel="noopener">https://segmentfault.com/p/1210000008583242/read?from=timeline</a></p>
+<p>Vue常见配置问题</p>
+<pre><code>1、cnpm install build,vue发布项目空白页webpack配置
+    config文件下index.js配置 assetsPublicPath: &apos;./&apos;;
+    build文件下util.js配置publicPath: &apos;../../&apos;
+2、axios使用ajax跨域问题配置
+    config文件下index.js里proxyTable进行代理配置
+    &apos;/api&apos;: {
+        target: &apos;http://192.168.1.99:8080/malls-provider-http&apos;,    //api代理的实际路径
+        changeOrigin: true,
+        pathRewrite: {
+          &apos;^/api&apos;: &apos;&apos;
+        }
+    }
+3、axios post请求后台，后台接收不到数据问题：
+    vue集成axios后，发送的post请求默认为payload格式，如果要改为正常的格式，需要增加headers头，并且将发送的数据改为querystring方式
+    cnpm install qs安装 qs模块
+    导入依赖import Qs from &apos;qs&apos;
+    添加headers
+     headers: {
+        &apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded; charset=UTF-8&apos;
+     },
+     data: Qs.stringify(postData)
+4、如果在安装了某模块，找不见模块的时候，使用rm -rf node_modules删除，然后cnpm install
 
-            只能通过this.props 和this.state访问数据
+5、vue使用ip访问配置
+    host改为ip即可
+6、vue中使用px编译自动转rem插件
 
-            可以返回null、false或任何React组件
+    在此说明配合使用sass
+        cnpm install node-sass --save-dev
+        cnpm install sass-loader --save-dev
 
-            只能出现一个顶级组件，数组不可以
+        cnpm install px2rem-loader
+    遇到的问题：
+        使用px2rem-loader在vue-loader.conf修改后，会出现背景图片找不见的问题，postcss会自动添加路径，因此采用如下解决方法：
+    在exports.cssLoaders函数内添加
+      const px2remLoader = {
+        loader: &apos;px2rem-loader&apos;,
+        options: {
+          remUnit: 37.5
+        }
+      }
 
-            不能改变组件的状
-
-            不能修改DOM
-
-            componentDidMount 真实的DOM被渲染出来后调用，可以在此方法中通过 this.getDOMNode()访问真实的DOM元素。此时可以使用其它类库操作DOM。服务端不会被调用
-
-            componetWillReceiveProps 组件在接收到新的props时调用，并将其作为参数nextProps使用，此时可以更改组件的props及state
-
-            shouldComponentUpdate 组件是否应当渲染新的props或state，返回false表示跳过后续的生命周期方法，通常不需要使用以避免出现bug。在出现应用性能瓶颈时，是一个可以优化的点。
-
-            componetWillUpdate 接收新props或state后，进行渲染之前调用，此时不允许更新props或state
-
-            componetDidUpdate 完成渲染新的props或state之后调用 ，此时可以访问DOM元素。
-
-            componetWillUnmount 组件被移除之前调用，可以用于做一些清理工作，在componentDidMount方法中添加的所有任务都需要在该方法中撤销，比如创建的定时器或添加的事件监听器。
+    然后修改generateLoaders函数const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
+    在最后cssLoader后添加px2remLoader即可配合sass使用高度还原设计图
+7、vue在打包后都是经过压缩加密的，如果运行时报错，输出的错误信息无法准确得知是哪里的代码报错,而生成的.map后缀文件，就可以像未加密的代码一样，准确的输出是哪一行哪一列有错可以通过设置来可以不生成该类文件，生产环境是不需要.map文件的，所    以打包时不生成这些文件在conf/index.js中，设置productionSourceMap：false
+8、如果是vue-cli初始化的项目，默认安装webpack-bundle-analyer插件，该插件可以帮助我们查看项目的提及结构和项目中对象的所有依赖，也可以直观地看到个模块体积在整个项目中的占比
+    cnpm run build --report //打开浏览器http://127.0.0.1:8888
+</code></pre><p>vue常见问题解决</p>
+<pre><code>vue首次项目加载速度慢
+    采用懒加载，提升首次加载速度，实现按需加载
+    实现方式3种：
+        第一种：
+            const hyh = resolve =&gt;{import(&apos;@components/index/hyh&apos;).then(module =&gt;{resolve(module)})}
+            const router = new Router({router:[{
+                path:&apos;yhy&apos;,
+                comnent:hyh,
+                name:&apos;hyh&apos;
+            }]})
+        第二种：
+            const router = new Router({
+                router:[{
+                    path:&quot;/index&quot;,
+                    component:(resolve) =&gt; { require([&apos;../components/index/index&apos;],resolve)}
+                }]
+            })
+        第三种：强烈推荐
+            const list = r =&gt; require.ensure([],() =&gt; r(require(&apos;../components/list/list)),&apos;list&apos;);
+            const router = new Router({
+                routes:[
+                    {
+                        path:&apos;/list/blog&apos;,
+                        component:list,
+                        name:&apos;blog&apos;
+                    }
+                ]
+            })
+vue在ios中第一次加载有时会出现有的名称显示，有的名称不显示
+    解决方法：
+    overflow:auto
+vue在history模式下，刷新页面会404
+    如果服务器找不见任何的静态资源，就让它转到默认的404
+        方案一 （这种方式容易被第三方劫持）
+            location /{
+                    root   /data/nginx/html;
+                    index  index.html index.htm;
+                    error_page 404 /index.html;
+            }
+        方案二
+            location /{
+                root   /data/nginx/html;
+                index  index.html index.htm;
+                if (!-e $request_filename) {
+                    rewrite ^/(.*) /index.html last;
+                    break;
+                }
+            }
+        方案三
+         server {
+            listen       8888;#默认端口是80，如果端口没被占用可以不用修改
+            server_name  localhost;
+            root        E:/vue/my_project/dist;#vue项目的打包后的dist
+            location / {
+                try_files $uri $uri/ @router;#需要指向下面的@router否则会出现vue的路由在nginx中刷新出现404
+                index  index.html index.htm;
+            }
+            #对应上面的@router，主要原因是路由的路径资源并不是一个真实的路径，所以无法找到具体的文件
+            #因此需要rewrite到index.html中，然后交给路由在处理请求资源
+            location @router {
+                rewrite ^.*$ /index.html last;
+            }
+            #.......其他部分省略
+      }
 </code></pre>
       
 
@@ -417,7 +1183,7 @@ react语法
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
         		</li>
       		
 		</ul>
@@ -427,254 +1193,7 @@ react语法
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/08/React从入门到放弃/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-git学习速记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/08/git学习速记/">git学习速记</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/08/git学习速记/" class="archive-article-date">
-  	<time datetime="2018-08-08T04:59:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>环境搭建：<br>    1、安装git,安装完后设置标识<br>            git config –global user.name “名字”;<br>            git config –golbal user.email “邮箱”;</p>
-<pre><code>        创建SSH key，打开C:\Users\wzs\.ssh查看是否拥有id_rsa和id_rsa.pub,如果有的话，直接跳过，如果没有，输入以下命令
-        ssh-keygen  -t rsa –C “youremail@example.com”
-
-        github 配置key,settings---&gt;SSH keys----------&gt;在key文本框里粘贴id_rsa.pub的内容
-2、下载node安装包，一键式安装，配置环境变量，检测版本(node --version)
-        node更新命令------------npm install -g n 
-        npm更新命令-------------npm install npm@latest -g
-
-        使用npm更新淘宝镜像------------npm install -g cnpm --registry=http://registry.npm.taobao.org
-3、统一
-
-    安装vue-------------------cnpm install vue
-
-    安装webpack------------------cnpm install webpack -g
-
-    安装vue-cli------------------cnpm install -g vue-cli
-4、为了确保安装后的工具能直接在git下使用，请安装在同一目录下(node目录下)
-    新建相应的文件夹然后把文件放进去
-</code></pre><p>Git/GitHub</p>
-<p>git是什么？<br>    Git是目前世界上最先进的分布式版本控制系统。</p>
-<p>git与svn的区别<br>    svn是集中版本控制系统，版本库是集中放在中央服务器的，而干活的时候，用的都是自己的电脑，所以首先要从中央服务器那里得到最新的服务器版本，然后干活，干完活后把自己的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，如果在局域网可以，带宽够大，速度够快，如果在互联网下，网速慢了，就尴尬了。<br>    git是分布式版本控制系统，它没有中央服务器，每个人的电脑就是一个完整的版本库，这样，工作的时候就不需要联网了，因为版本都是在自己电脑上，既然每个人都有一个版本库，那么多个人如何协作呢？比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。</p>
-<p>git工作区与缓存区的区别<br>    工作区：就是在你电脑上看到的目录，或者以后要新建的目录文件等等都属于工作范畴<br>    版本库：工作区有一个隐藏目录.git,这个不属于工作区，这是版本库，版本库里面存了很多东西，其中最重要的就是stage(暂存区)，还有Git为我们自动创建了第一个分支master,以及指向master的一个指针HEAD.</p>
-<p>git提交<br>    git提交到版本库有两个步骤：<br>        1、使用git add把文件加进去，实际就是把文件添加到暂存区<br>        2、使用git commit提交更改，实际上就是把暂存区的所有内容提交到分支上</p>
-<p>git使用<br>    安装完成后，</p>
-<pre><code>git config --global user.name “名字”;
-git config --golbal user.email “邮箱”;
-
-创建版本库(本地仓库)
- cd G:
- cd wangzhongshun
- mkdir testgit
-
- pwd 显示当前目录
-
- git init    把目录变成可管理的版本库
-
- git add 文件夹 --------把文件夹添加到暂存区里去;
-
- git commit--------一次性提交所有文件
-
- git commit -m &quot;要提交的文件夹全名(带后缀)+注释&quot; -------提交文件
-
- git status---------来查看是否还有未提交的文件
-
- git diff 文件夹---------查看文件修改了哪些内容
-
- git log---------查看提交文件的历史状态
-
- git log --oneline ----------查看日志的第一行
-
- git checkout  -- 文件名---------撤销修改
-
- git reset -- hard 版本号-----------回退到该版本号
-
- git reset --hard HEAD^-----------回退到上一个版本
-
- git reset --hard HEAD^^-----------回退到上上个版本
-
- git reset --hard HEAD~100----------回退到第100个版本
-
- cat 文件名---------查看文件的内容
-
- git reflog----------查看版本号
-
- rm b.txt-----------删除文件
-
- git remote----------查看当前配置有哪些远程仓库
-
- git remote -v------------显示对应的克隆地址
-</code></pre><p>git远程仓库<br>    git本地仓库及github远程仓库配置<br>    1、创建SSH Key<br>        C盘用户目录下查找.shh目录，如果有查看是否有id_rsa和id_rsa.pub两个文件<br>        如果没有，打开命令行，执行：<br>            ssh-keygen -t rsa -C “邮箱”<br>        如果有，跳过此步骤</p>
-<pre><code>2、如何添加远程工作？(本地仓库与github相关联)
-    第一步：git remote add origin 自己本地git-------------本地仓库已经存在，直接推送到远程仓库命令
-    第二步：git push -u origin master -------------------实际上把当前分支master推送到远程
-    第三步：弹出github登录页，登录成功刷新
-
-3、如何从远程仓库克隆？(下载最新的项目到本地)
-    新建仓库，生成README.md文件
-    克隆仓库--------------git clone 克隆地址
-
-4、创建与合并分支
-    HEAD严格来说不是指向提交，而是指向master,master才是指向提交的，所以HEAD指的就是当前分支
-
-    git checkout -b dev----------------创建并切换分支
-    git branch dev-------切换分支
-    git checkout dev-----------切换分支
-
-    git checkout -b dev origin/dev------------创建本地dev分支
-
-    git branch-----------------查看当前分支    
-
-    git branch  -d dev----------删除dev分支
-
-    git branch dev---------创建dev分支
-
-    git merge 分支名称--------------合并某分支到当前分支
-
-5、解决冲突
-
-    　Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容，其中&lt;&lt;&lt;HEAD是指主分支修改的内容，&gt;&gt;&gt;&gt;&gt;fenzhi1 是指fenzhi1上修改的内容，我们可以修改下如下后保存：
-
-6、分支管理策略
-    git merge --no-ff -m &quot;注釋&quot; dev-----------------合并dev分支 --no-ff表示禁用fast forward
-
-    git log --graph --pretty=oneline --abbrev-commit--------------------查看分支合并图
-
-7、bug分支
-
-    git stash-------------将当前的工作现场隐藏起来
-
-    git list-------------查看工作现场
-
-    git stash apply-------------恢复工作现场
-
-    git stash drop--------------删除工作现场
-8、多人协作
-    git remote------------------查看远程仓库的信息
-
-    git remote -v --------------------查看远程仓库的详细信息
-
-    git push origin master-----------把该分支上所有的本地提交到远程库的master主干
-
-    git push origin dev -------------把该分支所有的本地提交到远程仓库的dev分支
-</code></pre><p>命令总结：<br>    因此：多人协作工作模式一般是这样的：</p>
-<pre><code>首先，可以试图用git push origin branch-name推送自己的修改.
-如果推送失败，则因为远程分支比你的本地更新早，需要先用git pull试图合并。
-如果合并有冲突，则需要解决冲突，并在本地提交。再用git push origin branch-name推送。
-</code></pre><p>　　Git基本常用命令如下：</p>
-<p>　　mkdir：         XX (创建一个空目录 XX指目录名)</p>
-<p>　　pwd：          显示当前目录的路径。</p>
-<p>　　git init          把当前的目录变成可以管理的git仓库，生成隐藏.git文件。</p>
-<p>　　git add XX       把xx文件添加到暂存区去。</p>
-<p>　　git commit –m “XX”  提交文件 –m 后面的是注释。</p>
-<p>　　git status        查看仓库状态</p>
-<p>　　git diff  XX      查看XX文件修改了那些内容</p>
-<p>　　git log          查看历史记录</p>
-<p>　　git reset  –hard HEAD^ 或者 git reset  –hard HEAD~ 回退到上一个版本</p>
-<p>　　(如果想回退到100个版本，使用git reset –hard HEAD~100 )</p>
-<p>　　cat XX         查看XX文件内容</p>
-<p>　　git reflog       查看历史记录的版本号id</p>
-<p>　　git checkout – XX  把XX文件在工作区的修改全部撤销。</p>
-<p>　　git rm XX          删除XX文件</p>
-<p>　　git remote add origin <a href="https://github.com/tugenhua0707/testgit" target="_blank" rel="noopener">https://github.com/tugenhua0707/testgit</a> 关联一个远程库</p>
-<p>　　git push –u(第一次要用-u 以后不需要) origin master 把当前master分支推送到远程库</p>
-<p>　　git clone <a href="https://github.com/tugenhua0707/testgit" target="_blank" rel="noopener">https://github.com/tugenhua0707/testgit</a>  从远程库中克隆</p>
-<p>　　git checkout –b dev  创建dev分支 并切换到dev分支上</p>
-<p>　　git branch  查看当前所有的分支</p>
-<p>　　git checkout master 切换回master分支</p>
-<p>　　git merge dev    在当前的分支上合并dev分支</p>
-<p>　　git branch –d dev 删除dev分支</p>
-<p>　　git branch name  创建分支</p>
-<p>　　git stash 把当前的工作隐藏起来 等以后恢复现场后继续工作</p>
-<p>　　git stash list 查看所有被隐藏的文件列表</p>
-<p>　　git stash apply 恢复被隐藏的文件，但是内容不删除</p>
-<p>　　git stash drop 删除文件</p>
-<p>　　git stash pop 恢复文件的同时 也删除文件</p>
-<p>　　git remote 查看远程库的信息</p>
-<p>　　git remote –v 查看远程库的详细信息</p>
-<p>　　git push origin master  Git会把master分支推送到远程库对应的远程分支上</p>
-<p>git/github挂载静态页面<br>    1、新建资源仓库repository<br>    2、设置settings,更改github pages为master分支<br>    3、选择盘符，新建文件件，将仓库克隆到本地，git clone 地址<br>    4、将网页文件添加到此文件夹里<br>        git status查看分支状态<br>        git add .  添加到缓存区<br>        git commit -m “注释”   提交<br>        git push  推送到github,链接访问<br>Node<br>    nodejs是一个让javaScript运行在服务端的开发平台。(javaScript(v8引擎))</p>
-<pre><code>npm更新命令--------npm install npm@latest -g
-
-require-----------NodeJs自带的http模块，createServer(),http模块提供的函数，这个函数会返回一个对象，这个对象有一个叫listen的方法，这个方法有一个数值参数，指定这个Http
-
-nodeJs是事件驱动的
-</code></pre><p>WebPack<br>    安裝————–npm install –save-dev webpack</p>
-<pre><code>安裝cli----------------npm install webpack-cli -D
-
-指定目录下安装
-    创建文件夹并进入此目录---------------mkdir webpack-demo &amp;&amp; cd webpack-demo
-
-    初始化npm------------------npm init -y
-
-    本地安装webpack----------------npm install --save-dev webpack
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/08/git学习速记/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/08/21/VUE常见问题及笔记/">展开全文 >></a>
         </p>
       
 
@@ -706,7 +1225,7 @@ nodeJs是事件驱动的
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -805,11 +1324,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -825,11 +1352,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -837,15 +1360,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
