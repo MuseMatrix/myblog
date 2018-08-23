@@ -2422,6 +2422,7 @@ to {
 	#lv-container{margin:0 20px;}
 }
 @media screen and (max-width:800px) {
+	#lv-container{margin:0 5px;}
 	#container,body,html {
 	height:auto;
 	overflow-x:hidden;
