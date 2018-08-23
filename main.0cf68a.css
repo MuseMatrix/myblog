@@ -2852,6 +2852,7 @@ to {
 	height:44px
 }
 @media (-webkit-min-device-pixel-ratio:1.1),(-webkit-min-device-pixel-ratio:1.09375),(min-resolution:1.1dppx),(min-resolution:105dpi) {
+	#lv-container{margin:0 20px;}
 	.pswp--svg .pswp__button,.pswp--svg .pswp__button--arrow--left:before,.pswp--svg .pswp__button--arrow--right:before {
 	background-image:url(./fonts/default-skin.b257fa.svg)
 }
@@ -3118,7 +3119,6 @@ a.pswp__share--download:hover {
 	margin:0
 }
 @media screen and (max-width:1024px) {
-	#lv-container{margin:0 20px;}
 	.pswp__preloader {
 	position:relative;
 	left:auto;
