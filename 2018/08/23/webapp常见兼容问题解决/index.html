@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>网络爬虫 | 我的成长记录</title>
+  <title>webapp常见兼容问题解决 | 我的成长记录</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="网络爬虫的基本原理 网络爬虫是搜索引擎抓取系统的重要组成部分.爬虫的主要目的是将互联网上的网页下载到本地形成一个或互联网内容的镜像备份  网络爬虫抓取的工作流程：     1.首先选取一部分精心挑选的种子URL；     2.将这些URL放入待抓取URL队列；     3.从待抓取URL队列中取出待抓取在URL，解析DNS，并且得到主机的ip，并将URL对应的网页下载下来，存储进已下载网页库中。此">
-<meta name="keywords" content="爬虫">
+  <meta name="description" content="针对ios上position:fixed ios下fixed元素容易定位出错，软键盘弹出时，影响fixed元素定位 android下fixed表现比ios要好，软键盘弹出时，不会影响fixed元素定位 ios4下不支持position：fixed 针对ios定位带来的滑动问题 最好采用better-scroll解决 使用方法：     &amp;lt;div class=&amp;quot;menu-wrappe">
+<meta name="keywords" content="兼容">
 <meta property="og:type" content="article">
-<meta property="og:title" content="网络爬虫">
-<meta property="og:url" content="http://yoursite.com/2018/08/15/网络爬虫/index.html">
+<meta property="og:title" content="webapp常见兼容问题解决">
+<meta property="og:url" content="http://yoursite.com/2018/08/23/webapp常见兼容问题解决/index.html">
 <meta property="og:site_name" content="我的成长记录">
-<meta property="og:description" content="网络爬虫的基本原理 网络爬虫是搜索引擎抓取系统的重要组成部分.爬虫的主要目的是将互联网上的网页下载到本地形成一个或互联网内容的镜像备份  网络爬虫抓取的工作流程：     1.首先选取一部分精心挑选的种子URL；     2.将这些URL放入待抓取URL队列；     3.从待抓取URL队列中取出待抓取在URL，解析DNS，并且得到主机的ip，并将URL对应的网页下载下来，存储进已下载网页库中。此">
+<meta property="og:description" content="针对ios上position:fixed ios下fixed元素容易定位出错，软键盘弹出时，影响fixed元素定位 android下fixed表现比ios要好，软键盘弹出时，不会影响fixed元素定位 ios4下不支持position：fixed 针对ios定位带来的滑动问题 最好采用better-scroll解决 使用方法：     &amp;lt;div class=&amp;quot;menu-wrappe">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-15T05:06:21.746Z">
+<meta property="og:updated_time" content="2018-08-23T06:36:21.297Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="网络爬虫">
-<meta name="twitter:description" content="网络爬虫的基本原理 网络爬虫是搜索引擎抓取系统的重要组成部分.爬虫的主要目的是将互联网上的网页下载到本地形成一个或互联网内容的镜像备份  网络爬虫抓取的工作流程：     1.首先选取一部分精心挑选的种子URL；     2.将这些URL放入待抓取URL队列；     3.从待抓取URL队列中取出待抓取在URL，解析DNS，并且得到主机的ip，并将URL对应的网页下载下来，存储进已下载网页库中。此">
+<meta name="twitter:title" content="webapp常见兼容问题解决">
+<meta name="twitter:description" content="针对ios上position:fixed ios下fixed元素容易定位出错，软键盘弹出时，影响fixed元素定位 android下fixed表现比ios要好，软键盘弹出时，不会影响fixed元素定位 ios4下不支持position：fixed 针对ios定位带来的滑动问题 最好采用better-scroll解决 使用方法：     &amp;lt;div class=&amp;quot;menu-wrappe">
   
     <link rel="alternative" href="/atom.xml" title="我的成长记录" type="application/atom+xml">
   
@@ -155,34 +155,118 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-网络爬虫" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-webapp常见兼容问题解决" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      网络爬虫
+      webapp常见兼容问题解决
     </h1>
   
 
         
-        <a href="/2018/08/15/网络爬虫/" class="archive-article-date">
-  	<time datetime="2018-08-15T04:59:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-15</time>
+        <a href="/2018/08/23/webapp常见兼容问题解决/" class="archive-article-date">
+  	<time datetime="2018-08-23T06:32:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>网络爬虫的基本原理</p>
-<pre><code>网络爬虫是搜索引擎抓取系统的重要组成部分.爬虫的主要目的是将互联网上的网页下载到本地形成一个或互联网内容的镜像备份
+        <p>针对ios上position:fixed</p>
+<pre><code>ios下fixed元素容易定位出错，软键盘弹出时，影响fixed元素定位
+android下fixed表现比ios要好，软键盘弹出时，不会影响fixed元素定位
+ios4下不支持position：fixed
+</code></pre><p>针对ios定位带来的滑动问题</p>
+<pre><code>最好采用better-scroll解决
+使用方法：
+    &lt;div class=&quot;menu-wrapper&quot; ref=&quot;menuWrappers&quot;&gt;
+        &lt;ul&gt;&lt;/ul
+    &lt;/div&gt;
+menuWrappers元素要有高度，要绝对定位
+dom构建完成初始化：
+    this.$nextTick(() =&gt; {
+      this._initScroll();
+    });
+要执行的方法：
+    _initScroll:function () {
+      if(!this.meunScroll) {
+        this.meunScroll = new BScroll(this.$refs.menuWrappers,{});
+      }else{
+        this.scroll.refresh();
+      }
+</code></pre><p>ios下input会有阴影</p>
+<pre><code>    -webkit-appearance: none;
+h5页面嵌入app会遇到的问题
+    样式错乱，webview设置问题
+        字体设置setTextSize(16)
+        字体放大setTextZoom(100)
+    如果采用了缓存
+        setDomStorageEnabled(true);
+</code></pre><p>使用背景图片被放大</p>
+<pre><code>尽量使用字体图标
+background-size:contain;
+</code></pre><p>禁止复制和选中</p>
+<pre><code>-webkit-user-select: none;
+-moz-user-select: none;
+-khtml-user-select: none;
+ user-select: none;
+</code></pre><p>长时间按住页面会出现闪退</p>
+<pre><code>-webkit-touch-callout: none;
+</code></pre><p>上下滑动卡顿</p>
+<pre><code>html和body下宽度和高度设置了100%,就会造成这个问题
+                    overflow : auto;
+            overflow-scrolling : touch;
+  -webkit-overflow-scrolling : touch;
+</code></pre><p>ios和android下触摸元素时出现半透明灰色遮罩</p>
+<pre><code>   -webkit-tap-highlight-color: rgba(0,0,0,0); 
+旋转屏幕时，字体大小调整的问题
+    html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {
+      -webkit-text-size-adjust:100%;
+    }
+</code></pre><p>安卓手机圆角失效</p>
+<pre><code>background-clip: padding-box;
+</code></pre><p>Ios键盘字母输入，默认首字母大写</p>
+<pre><code>    &lt;input type=&quot;text&quot; autocapitalize=&quot;off&quot; /&gt;
+select选择设置下拉右对齐
+    select option {
+        direction: rtl;
+    }
+</code></pre><p>某些手机border在做rem布局时，打包成app,border会不显示</p>
+<pre><code>经过测验根据rem比例，小于1px的会不显示，在转换rem时请进行四舍五入
+</code></pre><p>页面渲染优化：</p>
+<pre><code>禁止使用iframe(阻塞父文档onload事件)
+禁止使用gif图片loading效果(降低cpu消耗，提升渲染效果)
+使用css3代替Js动画
 
-网络爬虫抓取的工作流程：
-    1.首先选取一部分精心挑选的种子URL；
-    2.将这些URL放入待抓取URL队列；
-    3.从待抓取URL队列中取出待抓取在URL，解析DNS，并且得到主机的ip，并将URL对应的网页下载下来，存储进已下载网页库中。此外，将这些URL放进已抓取URL队列。
-    4.分析已抓取URL队列中的URL，分析其中的其他URL，并且将URL放入待抓取URL队列，从而进入下一个循环。
+开启GPU加速(注意事项：硬件加速最好只用在动画animation和变换transform上，不要滥用硬件加速，这样会增加性能的消耗，如果滥用会使动画变得更加卡)
+    使用3d效果来开启硬件加速
+        -webkit-transform: translate3d(250px,250px,250px)
+         rotate3d(250px,250px,250px,-120deg)
+         scale3d(0.5, 0.5, 0.5);
+    仅开启硬件加速
+        -webkit-transform: translateZ(0);
+        -moz-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        -o-transform: translateZ(0);
+        transform: translateZ(0);
+    对于safari和chrome，可能会在animation和transition出现闪烁问题，解决方法：
+        webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        backface-visibility: hidden;
+
+        -webkit-perspective: 1000;
+        -moz-perspective: 1000;
+        -ms-perspective: 1000;
+        perspective: 1000;
+
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
 </code></pre>
       
 
@@ -227,7 +311,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">兼容</a>
         		</li>
       		
 		</ul>
@@ -283,7 +367,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/15/网络爬虫/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/23/webapp常见兼容问题解决/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -297,18 +381,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/08/17/页面渲染机制/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          页面渲染机制
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/08/09/htpp协议整理/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">htpp协议整理</div>
+    <a href="/2018/08/21/VUE常见问题及笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">VUE常见问题及笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
