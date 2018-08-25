@@ -8,13 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>个人笔记整理与收集</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="当你试图解决一个你不理解的问题时，复杂化就产成了。">
+<meta property="og:type" content="website">
 <meta property="og:title" content="个人笔记整理与收集">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="个人笔记整理与收集">
+<meta property="og:description" content="当你试图解决一个你不理解的问题时，复杂化就产成了。">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="个人笔记整理与收集">
+<meta name="twitter:description" content="当你试图解决一个你不理解的问题时，复杂化就产成了。">
   
     <link rel="alternative" href="/atom.xml" title="个人笔记整理与收集" type="application/atom+xml">
   
@@ -56,6 +59,8 @@
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/随笔/">随笔</a></li>
+	        
+				<li><a href="/archives/index.html">归档</a></li>
 	        
 			</ul>
 		</nav>
@@ -116,6 +121,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -133,12 +140,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/随笔/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/archives/index.html">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -1174,9 +1183,1792 @@ radial-gradient
 
 
   
+    <article id="post-基础篇之HTML5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/25/基础篇之HTML5/">基础篇之HTML5</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/25/基础篇之HTML5/" class="archive-article-date">
+  	<time datetime="2018-08-25T03:58:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>HTML部分<br>meta常用标签总结<br>    meta元素有三个可选属性（http-equiv、name和scheme）和一个必选属性,content定义与 http-equiv 或 name 属性相关的元信息</p>
+<pre><code>    属性                                               值                                                           描述
+http-equiv                       content-type / expire / refresh / set-cookie                             把content属性关联到HTTP头部
+    name                         author / description / keywords / generator / revised / others           把 content 属性关联到一个名称
+   scheme                                           some_text                                             定义用于翻译 content 属性值的格式
+
+   content                                          some_text                                             定义与 http-equiv 或 name 属性相关的元信息
+
+name属性：
+    &lt;!-- 页面作者 --&gt;
+    &lt;meta name=&quot;author&quot; content=&quot;author name&quot; /&gt;
+    &lt;!-- 页面描述 --&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;meta元素共有三个可选属性(不超过150字符)&quot; /&gt;
+    &lt;!-- 页面关键词 --&gt;
+    &lt;meta name=&quot;keywords&quot; content=&quot;meta标签总结,meta标签&quot; /&gt;
+    &lt;!-- 页面生成器 --&gt;
+    &lt;meta name=&quot;generator&quot; content=&quot;hexo&quot; /&gt;
+    &lt;!-- 页面修改信息 --&gt;
+    &lt;meta name=&quot;revised&quot; content=&quot;story,2015/07/22&quot; /&gt;
+    &lt;!-- 版权信息 --&gt;
+    &lt;meta name=&quot;copyright&quot; content=&quot;All Rights Reserved&quot; /&gt;
+    &lt;!-- 页面爬虫设置 --&gt;
+    &lt;meta name=&quot;robots&quot; content=&quot;index,follow&quot; /&gt;
+    &lt;!-- robots的content取值 --&gt;
+    &lt;!-- all：文件将被检索，且页面上的链接可以被查询 --&gt;
+    &lt;!-- none：文件将不被检索，且页面上的链接不可以被查询 --&gt;
+    &lt;!-- index：文件将被检索 --&gt;
+    &lt;!-- follow：页面上的链接可以被查询 --&gt;
+    &lt;!-- noindex：文件将不被检索，但页面上的链接可以被查询 --&gt;
+    &lt;!-- nofollow：文件将被检索，但页面上的链接不可以被查询 --&gt;
+http-equiv
+    &lt;!-- 字符编码 --&gt;
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=UTF-8&quot; /&gt;
+    &lt;!-- 页面到期时间 --&gt;
+    &lt;meta http-equiv=&quot;expire&quot; content=&quot;Wed,22Jul201511:11:11GMT&quot; /&gt;
+    &lt;!-- 页面重刷新，0秒后刷新并跳转 --&gt;
+    &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;URL=&apos;&apos;&quot; /&gt;
+    &lt;!-- cookie设置 --&gt;
+    &lt;meta http-equiv=&quot;set-cookie&quot; content=&quot;cookie value=xxx;expires=Wed,22-Jul-201511:11:11GMT；path=/&quot; /&gt;
+    &lt;!-- 脚本类型 --&gt;
+    &lt;meta http-equiv=&quot;Content-Script-Type&quot;Content=&quot;text/javascript&quot;&gt;
+    &lt;!-- 禁止从本地缓存中读取页面 --&gt;
+    &lt;meta http-equiv=&quot;Pragma&quot;content=&quot;no-cache&quot;&gt; 
+移动端
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no&quot;/&gt;
+    &lt;!-- viewport的content取值 --&gt;
+    &lt;!-- width：宽度（数值 / device-width）（200~10000，默认为980px） --&gt;
+    &lt;!-- height：高度（数值 / device-height）（223~10000） --&gt;
+    &lt;!-- initial-scale：初始缩放比例 （0~10） --&gt;
+    &lt;!-- minimum-scale：允许用户缩放到的最小比例 --&gt;
+    &lt;!-- maximum-scale：允许用户缩放到的最大比例 --&gt;
+    &lt;!-- user-scalable：是否允许用户缩放 (no/yes)  --&gt;
+
+    &lt;!-- uc强制竖屏 --&gt;
+    &lt;meta name=&quot;screen-orientation&quot; content=&quot;portrait&quot;&gt;
+    &lt;!-- QQ强制竖屏 --&gt;
+    &lt;meta name=&quot;x5-orientation&quot; content=&quot;portrait&quot;&gt;
+    &lt;!-- UC强制全屏 --&gt;
+    &lt;meta name=&quot;full-screen&quot; content=&quot;yes&quot;&gt;
+    &lt;!-- QQ强制全屏 --&gt;
+    &lt;meta name=&quot;x5-fullscreen&quot; content=&quot;true&quot;&gt;
+    &lt;!-- UC应用模式 --&gt;
+    &lt;meta name=&quot;browsermode&quot; content=&quot;application&quot;&gt;
+    &lt;!-- QQ应用模式 --&gt;
+    &lt;meta name=&quot;x5-page-mode&quot; content=&quot;app&quot;&gt;
+
+    &lt;!-- IOS启用 WebApp 全屏模式 --&gt;
+    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;
+    &lt;!-- IOS全屏模式下隐藏状态栏/设置状态栏颜色 content的值为default | black | black-translucent  --&gt;
+    &lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black-translucent&quot; /&gt;
+    &lt;!-- IOS添加到主屏后的标题 --&gt;
+    &lt;meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;标题&quot;&gt;
+    &lt;!-- IOS添加智能 App 广告条 Smart App Banner --&gt;
+    &lt;meta name=&quot;apple-itunes-app&quot; content=&quot;app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL&quot;&gt;
+
+    &lt;!-- 去除iphone 识别数字为号码 --&gt;
+    &lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot;&gt;
+    &lt;!-- 不识别邮箱 --&gt;
+    &lt;meta name=&quot;format-detection&quot; content=&quot;email=no&quot;&gt;
+    &lt;!-- 禁止跳转至地图 --&gt;
+    &lt;meta name=&quot;format-detection&quot; content=&quot;adress=no&quot;&gt;
+    &lt;!-- 可以连写--&gt;
+    &lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no,email=no,adress=no&quot;&gt;
+</code></pre><p>标签语义化：<br>    &lt;!doctype html&gt;文档声明  html类型<br>    <html lang="en">根目录标签<br>    <head>头部，主要包括（网页信息，浏览器，搜索引擎）<br>    网页三要素：<meta charset="UTF-8">当前编码集 国际编码utf-8;<br>               <meta name="Keywords" content="关键词,关键词">搜索引擎可以搜索的关键词；<br>               <meta name="Description" content="描述：概括当前网页内容">当前网页的描述；<br>    <title>六一儿童节大家快乐</title>网页的标题:<br>    </head><body></body>身体 可视化网页内容<br>    <div></div>盒子模型：可以控制宽高度，放置内容的长方形区域</html></p>
+<pre><code>Hn标签在网站优化中的注意事项：
+h标签在网站的SEO优化中有不可忽视的重要性，贸然使用容易打乱网页权重比较危险。
+注意：权重是站长工具等网站推出来针对网站关键词排名预计给网站带来的流量，等级划分0~10，是对网站的综合评级，只是针对关键词排名方面给网站带来 的欢迎度进行评级
+
+H标签分为6个等级：h1、h2、h3、h4、h5、h6，6个标签登记，站在SEO技巧上面，h1的标签权是最高，依次往下面排列，h6最低。H5、H6相对来说比较少用到 。
+使用标题标签是为了提高文档的可阅读性，提高文档的层次，这是促进用户习惯的优化技巧，H标签在SEO当中也是为了提高用户体验，提高web的层次分明，确保用户可以最好的体验。
+
+p标签：段落标签，通常网页中添加文本段落使用p标签
+
+strong标签、b标签：字体加粗标签
+strong：强调加粗文本（关键字）起到强调作用，重复多用
+b：单纯加粗
+
+i标签、em标签：字体斜体标签
+i:普通斜体标签（引入小图标）
+em:强调语义斜体标签（强调斜体语义）
+
+img标签：width  宽度  height 高度alt：替换作用(关键字,涉及到权重）
+    支持宽高、支持margin、可以横排展示、能设置text-align和vertail-align,标签中间隙被解析，不支持margin:auto;
+font标签：字体标签（可控制文本大小、颜色、风格样式）——淘汰，改用Css里面font样式（font-size：字体大小、font-family:字体风格样式、color:字体颜色）
+
+a标签：超链接   超链接总共四个特征：默认没有访问、鼠标滑动触发、鼠标点击下去、访问过后
+&lt;a&gt;&lt;/a&gt;定义链接。
+target=&quot;_self&quot;自身标签页打开新网页;
+targrt=&quot;_blank&quot;新标签中打开新网页;
+href=&quot;#&quot;返回页面顶部的空连接；
+默认：:link
+鼠标滑动：:hover
+鼠标点击：:active
+访问过后：:visited
+为什么执行不了样式？
+顺序问题（默认、访问过后）、动作顺序（滑上去、点击）
+
+如果要在某个区块显示源代码（计算机代码），需要保留该有代码格式[空格、回车]，请使用pre预格式标签
+
+textarea:文本域(文本输入区域)：
+cols(宽度 10):宽度值=中文字节 一个中文等于2个英文字节
+rows（行数）:
+文本域用户体验细节：当页面加载完毕自动获取鼠标焦点到该文本域(autofocus)
+禁止用户修改文本域内容：(disabled)
+
+&lt;sup&gt;&lt;/sup&gt;上标
+&lt;sub&gt;&lt;/sub&gt;下标
+&lt;caption&gt;&lt;/caption&gt;表格标题的内容，通常设置&lt;table&gt;&lt;/table&gt;的下一行，只能出现一次;
+&lt;ol&gt;&lt;/ol&gt;有序列表；&lt;ul&gt;&lt;/ul&gt;无序列表；&lt;dl&gt;&lt;/dl&gt;定义列表；
+&lt;header&gt;&lt;/header&gt;定义文档头部信息；
+&lt;nav&gt;&lt;/nav&gt;定义文档导航链信息；
+&lt;section&gt;&lt;/section&gt;定义文档的小节，可以表示为主体内容部分；
+&lt;article&gt;&lt;/article&gt;用于描述，一般定义论坛帖子，报纸的文章，博客信息或微博条目；
+&lt;aside&gt;&lt;/aside&gt;用于定义页面的边栏信息；
+
+&lt;fieldset&gt;&lt;/fieldset&gt;元素可将表单内的相关元素分组。
+&lt;legend&lt;/legend&gt;为 fieldset 元素定义标题
+
+&lt;iframe&gt;&lt;/iframe&gt;框架标签
+    scrolling 设置滚动条是否显示yes no  auto
+    frameborder 去掉默认边框  1是有边框的  0是无边框的
+注释：网页中总共三大注释
+
+网页结构（HTML标签）、网页样式（Css）、浏览器脚本(Js)
+网页结构注释：&lt;!--注释文本--&gt;
+网页样式注释：/*注释文本*/
+浏览器脚本语言注释：
+行注释：//注释文本
+段落注释：/*注释文本
+           注释2
+           注释3
+          */
+标签特效：标签分为块级标签、行内标签
+
+标签互相嵌套（父元素标签&gt;子元素标签&gt;子元素标签）
+标签嵌套注意事项：块级标签嵌套其他块级标签，嵌套行内标签（p标签除外）；行内标签只能嵌套行内标签，千万不能嵌套块级标签 
+
+web前端常用四大转义符：当使用转义符切记请写上分号
+标记：&lt;&gt;
+&lt;:&amp;lt;
+&gt;:&amp;gt;
+&quot;：&amp;quot;
+空格:&amp;nbsp;
+
+如何去除超链接下划线：
+通过修饰字体样式
+文档流：浏览器解析网页标签（依次从上到下，从左到右）
+
+网页中如果同时出现若干相同标签怎么办？
+
+通过标签自带属性（id、class、name）
+id:给标签命名（网页中不能出现重复id名字、身份证、QQ号）
+class:给标签命类名（可以在网页中进行重复）
+
+给网页中标签添加样式之前，请先初始化网页标签默认的外边距和填充
+方法：*{margin:0px;padding:0px;};//偷懒形式
+优化方法：标签名（网页中通用标签）{margin:0px;padding:0px;}建议
+
+标签宽高注意事项：
+块级：可以直接使用宽高样式设定
+行内：通常都由内容填充（撑开）产生
+行内标签不执行宽高样式处理方法：直接把该行内标签转换块级
+行内转块级方法：display:block;转换块级
+块级转行内方法：display:inline-block;块级（不带回车）
+
+导航思路：
+直接使用a标签，不利于后台开发相互之间交互对接
+借助无序列表(ul)
+ul:无序列表
+li:列表项
+无序列表特点：子元素（列表项）默认显示为垂直显示，列表项前面默认自带小黑圆点
+type:circle空心圆、square方块、disc默认值
+规范书写格式：
+&lt;ul&gt;&lt;!--父标签--&gt;
+    &lt;li&gt;列表项1&lt;/li&gt;&lt;!--子标签--&gt;
+    &lt;li&gt;列表项2&lt;/li&gt;
+    &lt;li&gt;列表项3&lt;/li&gt;
+&lt;/ul&gt;
+重要注意点：无序列表里面（ul）只能够存放子标签（li），标签嵌套（div、img、p）请放在li里面
+
+ol有序列表
+ol有序列表特点：默认显示方式为垂直对齐方式，自带排序序号
+注意事项：列表区块中父级标签（ul、ol）里面只能够存放子标签（li）。如果需要嵌套其他标签请放在li里面
+有序列表序号类型（type）：1（默认）、A、a、i、I
+有序列表序号起始值(start)：列入从5开始，start=&quot;5&quot;，序号会以此往下排序
+类型小技巧：ol有序列表类型不能随便给，如果有请使用背景图片替代
+dl自定义列表
+dt:列表项标题;dd:列表项
+</code></pre><p>H5部分<br>    新增标签<br>        结构性标签<br>            <header></header>页眉，用于块头部<br>            <nav></nav>导航<br>            <section></section>页面上的区块<br>            <article></article>用来在页面上表示一套结构完整而独立的内容部分(article套article表示文章下面的评论)<br>            <aside></aside>侧边栏，广告，nav元素组，aside的标签应该与article的内容相关<br>            <footer></footer>页面的底部或者板块的底部<br>        语义化标签<br>            <hgroup></hgroup>一个标题和一个子标题，或者标语的组合(标题组)<br>            <figure></figure>用于对元素进行组合，一般用于图片或者视频(图片视频组)<br>            <figcaption></figcaption>图片或视频组的标题<br>            <time></time>用来表示时间或者日期<br>            <datalist></datalist>标签定义列表选项，请与input配合使用，来定义input可能的值，请使用input元素的list属性来绑定datalist 的ID<br>            例如：<br>                <input type="text" list="data"><br>                <datalist id="data"><br>                    <option>1</option><br>                    <option>2</option><br>                    <option>3</option><br>                    <option>4</option><br>                </datalist><br>            <details></details>用于描述文档或文档某部分的细节.该元素用于摘录引用等,与标签配合使用(默认折叠，添加open展开)<br>            <summary></summary>details元素的标题(默认标题为详细信息)<br>            例如：<br>            <details open><br>                <summary>闺怨</summary><br>                谷中少妇不知愁，春日应著上翠柳；<br>            </details><br>            <dialog></dialog>定义一段对话,默认展开需要添加open属性<br>                例如：<br>                <dialog open>对话框</dialog><br>            <address></address>定义文章或页面作者的详细联系信息<br>            <meter></meter>定义已知范围或数值内的标量测量.也被称为gauge(尺度).<br>            <progress></progress>进度条<br>            <mark></mark>需要标记的词或句子,默认黄色背景</p>
+<p>IE低版本兼容<br>    在页面头部如下注意:样式属性display:block;<br>        <script><br>        document.createElement(header);<br>        document.createElement(nav);<br>        document.createElement(footer);<br>        </script><br>    在页面头部如下(注释语法)<br>        <!--[if lt IE 9]> 
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> 
+        <![endif]--><br>        <!-- IE条件注释语句 
+        针对的浏览器版本 
+        <!--[if lt IE 7]> 内容 <![endif]--><br>        IE7 以下版本 （小于IE7）<br>        <!--[if lte IE 7]>内容<![endif]--><br>        IE7及以下版本 （包含IE7）<br>        <!--[if gt IE 7]>内容<![endif]--><br>        IE7 以上版本 （大于IE7）<br>        <!--[if gte IE 7]>内容<![endif]--><br>        IE7及以上版本 （包含IE7）<br>        <!--[if !IE 7]>内容<![endif]--><br>        非IE7版本<br>        <!--[if !IE]><!--><br>        非IE版本<br>        <!--<![endif]--> </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/25/基础篇之HTML5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-web前端命名规范" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/25/web前端命名规范/">web前端命名规范</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/25/web前端命名规范/" class="archive-article-date">
+  	<time datetime="2018-08-25T03:50:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>企业命名规范：</p>
+<pre><code>http://tguide.qq.com
+http://www.htmleaf.com/
+http://www.dreamdu.com/javascript/what_is_bom/
+http://www.51yuansu.com/?z=jqliyhbpz
+(一)网页内容类
+
+标题: title
+摘要: summary
+箭头： arrow
+商标： label
+网站标志： logo
+转角/圆角： corner
+横幅广告： banner
+子菜单： subMenu
+搜索： search
+搜索框： searchBox
+登录： login
+登录条：loginbar
+工具条： toolbar
+下拉： drop
+标签页： tab
+当前的： current
+列表： list
+滚动： scroll
+服务： service
+提示信息： msg
+热点：hot
+新闻： news
+小技巧： tips
+下载： download
+栏目标题： title
+热点： hot
+加入： joinus
+注册： regsiter
+指南： guide
+友情链接： friendlink
+状态： status
+版权： copyright
+按钮： btn
+合作伙伴： partner
+投票： vote
+左右中：left right center
+
+(二)注释的写法:
+
+/* Footer */
+内容区
+/* End Footer */
+
+(三)id的命名:
+
+(1)页面结构
+
+容器: container
+页头：header
+内容：content/container
+页面主体：main
+页尾：footer
+导航：nav
+侧栏：sidebar
+栏目：column
+页面外围控制整体布局宽度：wrapper
+左右中：left right center
+
+(2)导航
+
+导航：nav
+主导航：mainnav
+子导航：subnav
+顶导航：topnav
+边导航：sidebar
+左导航：leftsidebar
+右导航：rightsidebar
+菜单：menu
+子菜单：submenu
+标题: title
+摘要: summary
+
+(3)功能
+
+标志：logo
+广告：banner
+登陆：login
+登录条：loginbar
+注册：regsiter
+搜索：search
+功能区：shop
+标题：title
+加入：joinus
+状态：status
+按钮：btn
+滚动：scroll
+标签页：tab
+文章列表：list
+提示信息：msg
+当前的: current
+小技巧：tips
+图标: icon
+注释：note
+指南：guild
+服务：service
+热点：hot
+新闻：news
+下载：download
+投票：vote
+合作伙伴：partner
+友情链接：link
+版权：copyright
+
+(四)class的命名:
+
+(1)颜色:使用颜色的名称或者16进制代码,如
+
+.red { color: red; }
+.f60 { color: #f60; }
+.ff8600 { color: #ff8600; }
+
+(2)字体大小,直接使用&quot;font+字体大小&quot;作为名称,如
+
+.font12px { font-size: 12px; }
+.font9pt {font-size: 9pt; }
+
+(3)对齐样式,使用对齐目标的英文名称,如
+
+.left { float:left; }
+.bottom { float:bottom; }
+
+(4)标题栏样式,使用&quot;类别+功能&quot;的方式命名,如
+
+.barnews { }
+.barproduct { }
+
+注意事项::
+
+1.一律小写;
+2.尽量用英文;
+3.不加中杠和下划线;
+4.尽量不缩写，除非一看就明白的单词.
+
+推荐的 CSS 书写顺序
+//显示属性
+display
+list-style
+position
+float
+clear
+
+//自身属性
+width
+height
+margin
+padding
+border
+background
+
+//文本属性
+color
+font
+text-decoration
+text-align
+vertical-align
+white-space
+other text
+content
+</code></pre><p>前端三层：<br>    结构层：<br>        尖括号包裹的关键字，统称标签</p>
+<pre><code>表现层：
+    人身上的衣服，css，网页样式，美化
+
+行为层：
+    js，“让网页动起来”
+</code></pre><p>标签一定要正确的闭合<br>标签属性的属性值一定要用引号引起来，建议使用双引号<br>    1、标签一定要正确的闭合<br>    2、标签属性的属性值一定要用引号引起来，建议使用双引号<br>    3、class命名：见名知意，不要用拼音<br>    4、连词之间用 - 横杆连接<br>    5、命名一定要是英文，一定要是小写<br>    6、结构层和样式层最好分离<br>    7、结构层遵循从大到小的规律</p>
+<p>局外篇：<br>    页面性能优化<br>    1、减少HTTP请求次数<br>        什么是CSS Sprite ？<br>            不知道您在浏览yahoo.com的网页中是否注意到,yahoo在页面制作上的技术和大多数网站不一样,他们把页面上的 ICON，栏目背景啊，图片按钮啊等都有会有规则的合并一张背景图,然后用background-position来实现背景图片的定位，他们为什么要花费一些时间来合并这些CSS背景图片呢,CSS中用一张背景图做页面的技术到底有什么优势呢?<br>        CSS Sprite的应用：通常我们把它叫做CSS图像拼合技术,当然还有人把CSS Sprites叫做”CSS贴图定位”。<br>        CSS Sprites(图片整合技术) 的目的就是通过整合图片，减少对服务器的请求数量，从而加快页面加载速度。<br>        9张图要请求9次，总大小36k,图像拼合，一张图，请求一次。<br>        使用方法：背景定位background-position:-8px -95px;<br>    2、减小请求带宽<br>        精简JavaScript，<br>        移除重复脚本，<br>        图像优化：正确的图片格式可以让图片缩小数倍；对图片进行压缩，详细可见图片优化<br>    3、</p>
+<pre><code>路径问题：
+    根目录、子目录、绝对路径、相对路径问题？
+    根目录：存放整个网站（网页、图片、样式、脚本...）文件的总文件
+    子目录：存放某个区块（网页文件夹、图片文件夹、样式文件夹、脚本文件夹）
+    绝对路径：路径地址附带盘符（写死） 
+        很少使用、因为不利于用户体验
+        本地绝对路径：从盘符出发开始寻找
+        网路绝对路径：
+    相对路径：路径地址只牵扯相关的文件（灵活）
+        经常使用、方便维护
+        从当前文件的地方开始寻找
+        ../ 返回上一层
+</code></pre><p>浏览器支持<br>    H5有部分内容兼容到ie9,ie8及以下完全不兼容的内容不再考虑<br>    部分内容兼容需要添加前缀<br>    -webkit- 兼容谷歌<br>    -moz- 兼容火狐<br>    -o- 兼容欧鹏<br>    -ms- 兼容ie</p>
+<p>WEB前端开发兼容问题<br>    1、*{margin:0;padding:0px}解决浏览器默认;<br>    2、img{display:block}这样可以取消图片自带的3px,让布局更加美观;<br>       当然vercital-align也可以<br>    3、如果使用了浮动，那么下边一定要清除浮动;<br>    4、如果使用了width:100%(头部，底部，导航等等)，大家会发现当缩小了浏览器窗口的大小以后，有时候布局会出错，这时候给对应的盒子加个min-width:1180px就可以解决了；<br>    5、各大浏览器的兼容代码：(以旋转30deg为例)<br>        transform:rotate(30deg);———————————-(统一标识语句，最好写上，复合w3c标准)<br>        -ms-transform:rotate(30deg);——————————(-ms代表ie内核识别码)<br>        -moz-transform:rotate(30deg);—————————–(-moz代表火狐内核识别码)<br>        -webkit-transform:rotate(30deg);————————–(-webkit代表谷歌内核识别码)<br>        -o-transform:rotate(30deg);——————————-(-o代表欧鹏内核识别码)<br>    6、列表中超出部分显示省略号<br>        overflow:hidden;<br>        text-overflow:ellipsis;<br>        white-nowrap:nowrap;<br>    7、搜索框：当input框与旁边的搜索按钮没发对齐的时候，采用定位布局(position:absolute)<br>    8、谷歌内核兼容，ie内核不兼容的解决方法<br>        <meta http-equiv="X-UA-Compatible" content="IE9;IE8;IE7;IE=EDGE"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/25/web前端命名规范/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-webapp常见兼容问题解决" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/23/webapp常见兼容问题解决/">webapp常见兼容问题解决</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/23/webapp常见兼容问题解决/" class="archive-article-date">
+  	<time datetime="2018-08-23T06:32:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>针对ios上position:fixed</p>
+<pre><code>ios下fixed元素容易定位出错，软键盘弹出时，影响fixed元素定位
+android下fixed表现比ios要好，软键盘弹出时，不会影响fixed元素定位
+ios4下不支持position：fixed
+</code></pre><p>针对ios定位带来的滑动问题</p>
+<pre><code>最好采用better-scroll解决
+使用方法：
+    &lt;div class=&quot;menu-wrapper&quot; ref=&quot;menuWrappers&quot;&gt;
+        &lt;ul&gt;&lt;/ul
+    &lt;/div&gt;
+menuWrappers元素要有高度，要绝对定位
+dom构建完成初始化：
+    this.$nextTick(() =&gt; {
+      this._initScroll();
+    });
+要执行的方法：
+    _initScroll:function () {
+      if(!this.meunScroll) {
+        this.meunScroll = new BScroll(this.$refs.menuWrappers,{});
+      }else{
+        this.scroll.refresh();
+      }
+</code></pre><p>ios下input会有阴影</p>
+<pre><code>    -webkit-appearance: none;
+h5页面嵌入app会遇到的问题
+    样式错乱，webview设置问题
+        字体设置setTextSize(16)
+        字体放大setTextZoom(100)
+    如果采用了缓存
+        setDomStorageEnabled(true);
+</code></pre><p>使用背景图片被放大</p>
+<pre><code>尽量使用字体图标
+background-size:contain;
+</code></pre><p>禁止复制和选中</p>
+<pre><code>-webkit-user-select: none;
+-moz-user-select: none;
+-khtml-user-select: none;
+ user-select: none;
+</code></pre><p>长时间按住页面会出现闪退</p>
+<pre><code>-webkit-touch-callout: none;
+</code></pre><p>上下滑动卡顿</p>
+<pre><code>html和body下宽度和高度设置了100%,就会造成这个问题
+                    overflow : auto;
+            overflow-scrolling : touch;
+  -webkit-overflow-scrolling : touch;
+</code></pre><p>ios和android下触摸元素时出现半透明灰色遮罩</p>
+<pre><code>   -webkit-tap-highlight-color: rgba(0,0,0,0); 
+旋转屏幕时，字体大小调整的问题
+    html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {
+      -webkit-text-size-adjust:100%;
+    }
+</code></pre><p>安卓手机圆角失效</p>
+<pre><code>background-clip: padding-box;
+</code></pre><p>Ios键盘字母输入，默认首字母大写</p>
+<pre><code>    &lt;input type=&quot;text&quot; autocapitalize=&quot;off&quot; /&gt;
+select选择设置下拉右对齐
+    select option {
+        direction: rtl;
+    }
+</code></pre><p>某些手机border在做rem布局时，打包成app,border会不显示</p>
+<pre><code>经过测验根据rem比例，小于1px的会不显示，在转换rem时请进行四舍五入
+</code></pre><p>页面渲染优化：</p>
+<pre><code>禁止使用iframe(阻塞父文档onload事件)
+禁止使用gif图片loading效果(降低cpu消耗，提升渲染效果)
+使用css3代替Js动画
+
+开启GPU加速(注意事项：硬件加速最好只用在动画animation和变换transform上，不要滥用硬件加速，这样会增加性能的消耗，如果滥用会使动画变得更加卡)
+    使用3d效果来开启硬件加速
+        -webkit-transform: translate3d(250px,250px,250px)
+         rotate3d(250px,250px,250px,-120deg)
+         scale3d(0.5, 0.5, 0.5);
+    仅开启硬件加速
+        -webkit-transform: translateZ(0);
+        -moz-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        -o-transform: translateZ(0);
+        transform: translateZ(0);
+    对于safari和chrome，可能会在animation和transition出现闪烁问题，解决方法：
+        webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        backface-visibility: hidden;
+
+        -webkit-perspective: 1000;
+        -moz-perspective: 1000;
+        -ms-perspective: 1000;
+        perspective: 1000;
+
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">兼容</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/23/webapp常见兼容问题解决/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-VUE常见问题及笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/21/VUE常见问题及笔记/">VUE常见问题及笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/21/VUE常见问题及笔记/" class="archive-article-date">
+  	<time datetime="2018-08-21T05:50:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言</p>
+<pre><code>围绕vue.js的一系列工具
+    vue.js核心,不解释
+    VueRouter2 实现路由组织工具
+    webpack项目打包以及编译工具
+    nodejs前端开发环境
+    npm前端包管理器
+    axiso ajax接口请求工具
+    sass-loader和node-sass css预处理
+    element基于vue的后台组件库
+    iview基于vue的另一套后台组件库
+    vue -cli vue的项目脚手架
+</code></pre><p>如何运行vue项目</p>
+<pre><code>需要的东西
+    node.js环境(npm包管理器)
+    vue cli 脚手架构建工具
+    cnpm npm的淘宝镜像
+
+node.js安装完后
+    安装cnpm(淘宝镜像)使用npm下载会比较卡
+        npm install -g cnpm --registry=http://registry.npm.taobao.org
+    安装webpack
+        npm install webpack -g
+    安装vue-cli脚手架构建工具
+        cnpm install -g vue-cli
+
+切换指定目录进行构建
+    1、新建工作空间并切换
+    2、vue init webpack 项目文件夹的名称
+安装依赖包并运行
+    打开项目路径并 cnpm install
+    npm run dev (热加载的方式运行)  启动项目
+        run对应的是package.json文件
+        dev对应的是bulid下的带有dev的js文件
+    npm run build
+        发布项目
+</code></pre><p>Vue的包构造：</p>
+<pre><code>├── README.md                       // 项目说明文档
+├── node_modules                    // 项目依赖包文件夹
+├── build                           // 编译配置文件，一般不用管
+│   ├── build.js
+│   ├── check-versions.js
+│   ├── dev-client.js
+│   ├── dev-server.js
+│   ├── utils.js
+│   ├── vue-loader.conf.js
+│   ├── webpack.base.conf.js
+│   ├── webpack.dev.conf.js
+│   └── webpack.prod.conf.js
+├── config                          // 项目基本设置文件夹
+│   ├── dev.env.js              // 开发配置文件
+│   ├── index.js                    // 配置主文件
+│   └── prod.env.js             // 编译配置文件
+├── index.html                      // 项目入口文件
+├── package-lock.json           // npm5 新增文件，优化性能
+├── package.json                    // 项目依赖包配置文件
+├── src                             // 我们的项目的源码编写文件
+│   ├── App.vue                 // APP入口文件
+│   ├── assets                      // 初始项目资源目录，回头删掉
+│   │   └── logo.png
+│   ├── components              // 组件目录
+│   │   └── Hello.vue           // 测试组件，回头删除
+│   ├── main.js                 // 主配置文件
+│   └── router                      // 路由配置文件夹
+│       └── index.js            // 路由配置文件
+└── static                          // 资源放置目录
+</code></pre><p>Vue是什么？</p>
+<pre><code>读音：V-U-E---------------view
+vue到底是什么？
+    一个MVVM框架(库)、和angular类似
+    比较容易上手，小巧
+mvc:
+    在mvc里，model是数据模型;view是视图层，即为要展示的东西;controller是控制器，用来控制model的读取、存储，以及如何在view上展示数据
+mvp:
+    在mvp里，model
+    mvvm
+    mv*
+    mvx
+  官网:http://cn.vuejs.org/
+  手册： http://cn.vuejs.org/api/
+
+  vue和angular的区别？
+    vue-简单、易学
+        指令以v-xxx
+        一片html代码配合上json,然后在new出来vue实例
+        个人维护项目
+
+        适合：移动端项目、小巧
+        vue的发展势头很猛，github在start数量已经超越angular
+    angular-上手难
+        指令以ng-XXX
+        所有属性和方法都挂到$scope身上
+        angular由谷歌维护
+共同点：不兼容低版本ie
+Vue的基本雏形：
+    angular展示一条基本数据：
+       js部分：
+           var app = angular.module(&apos;app&apos;,[]);
+           app.controller(&apos;xxx&apos;,function($scope){
+                $scope.msg = &apos;welocme&apos;
+           }
+       html部分：
+            div ng-controller = &quot;xxx&quot;
+            {{msg}}
+    vue展示一条基本数据：
+       js部分：
+            var c = new Vue({
+                el:&apos;#box&apos;,   //选择器  className  tagName
+                data:{
+                    msg:&apos;welcome vue&apos;
+                }
+            })
+       html部分:
+            &lt;div id=&quot;box&quot;&gt;
+                {{msg}}
+            &lt;/div&gt;
+常用指令：
+    angular:
+        ng-model    ng-controller
+        ng-repeat
+        ng-click
+        ng-show
+    $scope.show = function(){}
+    指令：扩展html标签功能，属性
+
+    说明：
+        el代表dom元素的选择器
+        data用于定义属性
+        methods用于定义函数，可以通过return来返回函数值
+        computed是计算属性，主要用于  处理复杂的逻辑  默认只有getter,不过也可以提供一个setter
+            methods和computed效果上，两个基本一致，但是computed是基于它的依赖缓存，只有相关依赖发生改变时才会冲新区至
+            而使用methods,在重新渲染的时候，函数总会重新调用执行
+        {{}}用于输出对象属性和函数返回值
+        在vue中，提供了一些实例属性与方法，他们都有前缀，用于区分用户定义的属性
+
+        watch属性  实时监听数据变化而改变自身的值
+    ex:
+        html部分：
+            &lt;div id=&quot;app5&quot;&gt;
+                &lt;p&gt;{{message}}&lt;/p&gt;
+                &lt;button v-on:click=&quot;rever&quot;&gt;逆转信息&lt;/button&gt;
+            &lt;/div&gt;
+        js部分：
+            var app5 = new Vue({
+                el:&quot;#app5&quot;,
+                data:{
+                    message:&quot;hello vue.js&quot;
+                },
+                methods:{
+                    rever:function(){
+                        this.message = this.message.split(&apos;&apos;).reverse().join(&apos;&apos;);
+                    }
+                }
+            })
+</code></pre><p>Vue指令 </p>
+<pre><code>    {{}}  文本插值
+    v-once 只执行一次插值
+
+    v-html 用于输出html代码(不要随意渲染，容易xss攻击)
+
+    v-model 一般表单元素，双向数据绑定
+
+    v-bind:title=&quot;message&quot; 将这个元素节点的title和vue实例的message属性保持一致
+        缩写：直接冒号加属性名
+
+    v-if=&quot;seen&quot; 条件与循环，控制一个元素是否显示
+
+    v-show  根据条件来展示元素
+        注意，v-show 不支持 &lt;template&gt; 元素，也不支持 v-else。
+    v-else 指令给v-if添加一个&quot;else&quot;块
+
+    v-else-if 指令用作v-if的else-if块
+
+循环
+    数组
+    v-for = &quot;(item,name) in arr&quot; ：key=&quot;index&quot; 
+        {{index}}
+    对象
+    v-for = &quot;(value,key,index) in json&quot; ：key=&quot;index&quot; 
+        {{index}} {{key}}
+    v-for = &quot;(value,key) in json&quot;  //in可以用of来代替，
+在for块中，我们拥有对父作用域的完全访问权限
+
+    v-for = &quot;(value,key,index) in object&quot;
+
+    v-for = &quot;n in 10&quot;  循环整数
+事件
+    v-on:click = &quot;函数&quot;
+    v-on:keyup.enter = &quot;函数&quot;(enter为键盘值)
+
+    v-on:click/mouseout/mouseover/dblclick/mousedown、、、、、、
+    @click/mouseout/mouseover/dblclick/mousedown、、、、、、
+
+
+    当 v-if 与 v-for 一起使用时，v-for 具有比 v-if 更高的优先级。
+</code></pre><p>Vue全局api</p>
+<pre><code> 扩展实例构造器
+     &lt;dream&gt;&lt;/dream&gt;
+     let App = Vue.extend({
+        template:`&lt;h2&gt;&lt;/h2&gt;`,//组件
+     })
+     new App.$mount(&apos;dream&apos;);挂载标签
+dom更新循环结束后回调延迟函数
+    Vue.nextTick(function(){
+
+    })
+    Vue.nextTick().then(()=&gt;{
+
+    })
+向响应式对象中添加一个属性，并确保这个新属性同样是响应式的，且触发视图更新。它必须用于向响应式对象上添加新属性，因为 Vue 无法探测普通的新增属性
+    理解：现在有一个数组对象，和一个vue实例，let app = new Vue();
+    app.arr,j将arr数组添加到app实例上去修改数组的值
+    只是静态的修改，页面上并没有响应数据的变化
+    Vue.set(app.arr,2,123)
+    target:要更改的对象
+    key:要更改的key
+    value:要更改的value
+    页面触发修改内存，内存的改变再返回影响页面
+Vue.delete()与上述类似
+注册获取全局指令(自定义指令)
+    Vue.directive();
+    例：
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;h1&gt;{{msg}}&lt;/h1&gt;
+            &lt;h2 v-dream=&quot;custom&quot;&gt;{{msg}}  - {{num}}&lt;/h2&gt;
+            &lt;h2 v-coutom=&quot;info&quot;&gt;{{msg}} - {{num}}&lt;/h2&gt;
+            &lt;button @click=&quot;add&quot;&gt; 点击改变num &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;button onclick=&quot;ubbind()&quot;&gt;解绑&lt;/button&gt;
+        &lt;script&gt;
+            function ubbind() {
+                app.$destroy();
+            }
+            Vue.directive(&apos;dream&apos;,function (el,bind) {
+                console.log( el );
+                el.style = &apos;color:&apos; + bind.value
+                console.log(bind)
+            });
+            Vue.directive(&apos;coutom&apos;,{
+                // 事件函数 -&gt; 钩子
+                bind: function () {
+                    console.log(&apos;1. 被绑定&apos;)
+                },
+                inserted: function (el,bind) {
+                    console.log(&apos;2. 绑定到节点&apos;)
+                    el.style.color = bind.value
+                },
+                update: function () {
+                    console.log(&apos;3. 组件更新&apos;)
+                },
+                componentUpdated: function () {
+                    console.log(&apos;4.组件更新完成 &apos;)
+                },
+                unbind: function () {
+                    console.log(&apos;5.解绑&apos;)
+                }
+            })
+            let app = new Vue({
+                el:&apos;#app&apos;,
+                data:{
+                    msg:&apos;Vue.directive&apos;,
+                    custom:&apos;hotpink&apos;,
+                    info:&apos;blue&apos;,
+                    num:0
+                },
+                methods:{
+                    add(){
+                        this.num ++
+                    }
+                }
+
+            })
+        &lt;/script&gt;
+Vue全局过滤器
+    Vue.filter(&quot;&quot;,function(){})
+    例、
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;h1&gt;{{msg}}&lt;/h1&gt;
+            &lt;h2&gt;{{ text | myFilter }}&lt;/h2&gt;
+            &lt;input type=&quot;text&quot; v-model=&quot;text&quot;&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            // 在选项中使用
+            /*let app = new Vue({
+                el:&apos;#app&apos;,
+                data:{
+                    msg:&apos;Vue.filter 过滤器&apos;,
+                    text:&apos;&apos;
+                },
+                filters:{
+                    myFilter:function (value) {
+                        return value.split(&apos;&apos;).reverse().join(&apos;&apos;);
+                    }
+                }
+            })*/
+            new Vue({
+                el: &apos;#app&apos;,
+                data: {
+                    msg: &apos;Vue.filter 过滤器&apos;,
+                    text: &apos;&apos;
+                }
+            })
+
+            // 在全局设置  Vue 构造器
+            Vue.filter(&apos;myFilter&apos;,function (value) {
+                return &apos;￥&apos;+value+&apos;元&apos;;
+            })
+        &lt;/script&gt;
+Vue全局组件
+    例：
+         &lt;div id=&quot;app&quot;&gt;
+            &lt;hd-nav&gt;&lt;/hd-nav&gt;   &lt;!--小写--&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            // 组件就像公式样式，可以在任何vue作用域下复用
+            // 全局组件
+            Vue.component(
+                &apos;hdNav&apos;,    // 驼峰命名
+                {
+                    template:`&lt;h2 style=&quot;color: skyblue&quot;&gt;全局组件&lt;/h2&gt;`
+                }
+            )
+            new Vue({
+                el:&apos;#app&apos;
+            })
+        &lt;/script&gt;
+    局部组件
+        &lt;div id=&quot;app&quot;&gt;
+            /* 要在vue的作用域 */
+            &lt;hd-nav&gt;&lt;/hd-nav&gt;   &lt;!--小写--&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            // 全局组件
+            new Vue({
+                el:&apos;#app&apos;,
+                // 声明组件
+                components:{
+                    hdNav:{
+                        template:`&lt;h2 style=&quot;color: hotpink&quot;&gt; 局部组件&lt;/h2&gt;`
+                    }
+                }
+            })
+        &lt;/script&gt;
+    选项模板
+         &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+        &lt;script&gt;
+            // 全局组件
+            new Vue({
+                el:&apos;#app&apos;,
+                template:`&lt;h2 style=&quot;color: hotpink&quot;&gt; 选项模板&lt;/h2&gt;`
+            })
+        &lt;/script&gt;
+    标签模板
+         &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+            &lt;template id=&quot;tpl&quot;&gt;
+                &lt;h2 style=&quot;color: hotpink&quot;&gt;
+                    template标签模板
+                &lt;/h2&gt;
+            &lt;/template&gt;
+            &lt;script&gt;
+
+                new Vue({
+                    el:&apos;#app&apos;,
+                    template:&apos;#tpl&apos;
+                })
+            &lt;/script&gt;
+    script模板
+        &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+        &lt;script type=&quot;text/x-template&quot;  id=&quot;tpl&quot;&gt;
+            &lt;h2 style=&quot;color: hotpink&quot;&gt;
+                script标签模板
+            &lt;/h2&gt;
+        &lt;/script&gt;
+        &lt;script&gt;
+
+            new Vue({
+                el:&apos;#app&apos;,
+                template:&apos;#tpl&apos;
+            })
+        &lt;/script&gt;
+    component标签
+         &lt;div id=&quot;app&quot;&gt;
+            &lt;h2&gt;{{msg}}&lt;/h2&gt;
+            &lt;!--根据值的不同 ，显示不同的组件--&gt;
+            &lt;component v-bind:is=&quot;componentA&quot;&gt;&lt;/component&gt;
+            &lt;component :is=&quot;componentB&quot;&gt;&lt;/component&gt;
+            &lt;component :is=&quot;componentC&quot;&gt;&lt;/component&gt;
+            &lt;hr&gt;
+            &lt;component v-bind:is=&quot;toggleComponent&quot;&gt;&lt;/component&gt;
+            &lt;button @click=&quot;toggle&quot;&gt; 切换component组件 &lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;script&gt;
+            // 在外部声明组件
+            let componentA = {
+                template:`&lt;h2 style=&quot;color: orangered&quot;&gt;组件A&lt;/h2&gt;`
+            }
+            let componentB = {
+                template:`&lt;h2 style=&quot;color: yellowgreen&quot;&gt;组件B&lt;/h2&gt;`
+            }
+            let componentC = {
+                template:`&lt;h2 style=&quot;color: skyblue&quot;&gt;组件C&lt;/h2&gt;`
+            }
+            new Vue({
+                el:&apos;#app&apos;,
+                data:{
+                    msg:&apos;component标签&apos;,
+                    componentA:componentA,
+                    componentB,
+                    componentC,
+                    toggleComponent:componentA,
+                    arr:[
+                        componentA,
+                        componentB,
+                        componentC,
+                    ]
+                },
+                components:{
+                    componentA:componentA,
+                    componentB,
+                    componentC
+                },
+                methods:{
+                    toggle(){
+                        this.toggleComponent =this.arr[Math.floor(Math.random()*3)]
+                    }
+                }
+            })
+        &lt;/script&gt;
+Vue全局混入
+    Vue.mixin({
+        update(){
+
+        }
+    })
+
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;h2&gt; {{msg}} - {{ num }}&lt;/h2&gt;
+        &lt;input type=&quot;button&quot; v-on:click=&quot;add&quot; value=&quot;add&quot;&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        let addLog = {
+            updated(){
+                console.log(&apos;选项的混入&apos;)
+            }
+        }
+        Vue.mixin({
+            updated(){
+                console.log(&apos;全局的混入&apos;)
+            }
+        })
+        new Vue({
+            el:&apos;#app&apos;,
+            data:{
+                msg:&apos;Vue.mixin&apos;,
+            },
+            methods:{
+                add(){
+                    this.num++
+                }
+            },
+        })
+    &lt;/script&gt;
+compile编译渲染
+     &lt;div id=&quot;app&quot;&gt;
+        &lt;h2&gt; {{msg}} - {{ num }}&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        let res = Vue.compile(&apos;&lt;h2&gt;{{num}}&lt;/h2&gt;&apos;)
+        new Vue({
+            el:&apos;#app&apos;,
+            data:{
+                msg:&apos;Vue.mixin&apos;,
+                num:520
+            },
+            render:res.render
+        })
+    &lt;/script&gt;
+Vue.version
+    获取vue的版本
+     &lt;div id=&quot;app&quot;&gt;
+        &lt;h2&gt; {{msg}}  - ${msg} &lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        console.log( Number(Vue.version.split(&apos;.&apos;)[0]) )
+        let version = Number(Vue.version.split(&apos;.&apos;)[0]);
+        if( version === 2 ){
+            console.log(&apos;Vue.JS 是2.x版本&apos;)
+        }else if( version === 1 ){
+            console.log(&apos;你使用的版本过低&apos;)
+        }else {
+            console.log(&apos;使用的版本有问题，请联系开发者&apos;)
+        }
+        // ${es6的变量}
+        new Vue({
+            el:&apos;#app&apos;,
+            data:{
+                msg:&apos;version&apos;
+            },
+            delimiters:[&apos;${&apos;,&apos;}&apos;] // 重新定义插值符号
+        })
+    &lt;/script&gt;
+具名插槽
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;h2&gt;{{msg}}&lt;/h2&gt;
+        &lt;hi-dream&gt;
+            &lt;span slot=&quot;name&quot;&gt;{{con.name}}&lt;/span&gt;
+            &lt;span slot=&quot;age&quot;&gt;{{con.age}}&lt;/span&gt;
+            &lt;span slot=&quot;job&quot;&gt;{{con.job}}&lt;/span&gt;
+        &lt;/hi-dream&gt;
+    &lt;/div&gt;
+    &lt;template id=&quot;tpl&quot;&gt;
+        &lt;div&gt;
+            &lt;h1&gt;我是: &lt;slot name=&quot;name&quot;&gt;&lt;/slot&gt; &lt;/h1&gt;
+            &lt;h2&gt;年龄: &lt;slot name=&quot;age&quot;&gt;&lt;/slot&gt; &lt;/h2&gt;
+            &lt;h3&gt;job: &lt;slot name=&quot;job&quot;&gt;&lt;/slot&gt; &lt;/h3&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+&lt;script&gt;
+
+    let vm = new Vue({
+        el:&apos;#app&apos;,
+        data:{
+            msg:&apos;用于标记往哪个具名插槽中插入子组件内容。会在第三方组件上看到有slot属性&apos;,
+            con:{
+                name:&apos;追梦&apos;,
+                age:18,
+                job:&apos;讲师&apos;
+            }
+        },
+        components:{ // 声明组件
+            &apos;hi-dream&apos;:{
+                template:&apos;#tpl&apos;
+            }
+        }
+    })
+&lt;/script&gt;
+</code></pre><p>扩展事件</p>
+<pre><code> &lt;div id=&quot;app&quot;&gt;
+    &lt;h2&gt;{{msg}} - {{num}}&lt;/h2&gt;
+    &lt;input type=&quot;button&quot; value=&quot;add&quot; @click=&quot;add&quot;&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;input type=&quot;button&quot; value=&quot;reduce&quot; onclick=&quot;reduce()&quot;&gt; &lt;br&gt;
+&lt;input type=&quot;button&quot; value=&quot;reduceOne&quot; onclick=&quot;reduceOne()&quot;&gt; &lt;br&gt;
+&lt;input type=&quot;button&quot; value=&quot;off&quot; onclick=&quot;off()&quot;&gt; &lt;br&gt;
+&lt;script&gt;
+
+    let vm = new Vue({
+        el:&apos;#app&apos;,
+        data:{
+            msg:&apos;实例方法 / 事件&apos;,
+            num:0
+        },
+        methods:{
+            add(){
+                this.num ++
+            }
+        }
+    })
+    // 事件监听
+    vm.$on(&apos;reduce&apos;,function () {
+        this.num --
+    })
+    vm.$once(&apos;reduceOne&apos;,function () {
+        this.num --
+    })
+
+    function off() {
+        vm.$off(&apos;reduce&apos;);
+    }
+    function reduceOne() {
+        vm.$emit(&apos;reduceOne&apos;)
+    }
+    // 发送信息
+    function reduce() {
+        vm.$emit(&apos;reduce&apos;)
+    }
+&lt;/script&gt;
+Vue生命周期
+    &lt;div id=&quot;app&quot;&gt;
+    {{msg}}
+    &lt;br&gt;
+    &lt;em&gt;{{num}}&lt;/em&gt;&lt;br&gt;
+    &lt;button @click=&quot;add&quot;&gt;add&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    let vm = new Vue({
+        el:&apos;#app&apos;,
+        data(){
+            return {
+                msg:&apos;生命周期 钩子函数 事件函数 例如，Dom加载之前，DOM加载完成后，数据更新后，操作。。。&apos;,
+                num:0
+            }
+        },
+        methods:{
+            add(){
+                this.num++
+            }
+        },
+        beforeCreate(){
+            console.log(&apos;1.beforeCreate&apos;)
+        },
+        created(){
+            console.log(&apos;2.created&apos;)
+        },
+        beforeMount(){
+            console.log(&apos;3.beforeMount&apos;)
+        },
+        mounted(){
+            console.log(&apos;4.mounted&apos;)
+        },
+        beforeUpdate(){
+            console.log(&apos;5.beforeUpdate&apos;)
+        },
+        updated(){
+            console.log(&apos;6.updated&apos;)
+        },
+        activated(){
+            console.log(&apos;7.activated&apos;)
+        },
+        deactivated(){
+            console.log(&apos;8.deactivated&apos;)
+        },
+        beforeDestroy(){
+            console.log(&apos;9.beforeDestroy&apos;)
+        },
+        destroyed(){
+            console.log(&apos;10.destroyed&apos;)
+        },
+        errorCaptured(){
+            console.log(&apos;11.errorCaptured&apos;)
+        },
+    });
+&lt;/script&gt;
+</code></pre><p>Vue 中的javascript表达式</p>
+<pre><code>每个绑定只能包含单个表达式。
+</code></pre><p>Vue 中的计算属性</p>
+<pre><code>computed，任何复杂的逻辑都应该使用  计算属性
+    计算属性只有在它的相关依赖发生改变时才会重新求值。
+</code></pre><p>Vue 中的侦听属性</p>
+<pre><code>当你有一些数据需要随着其它数据变动而变动时，你很容易滥用 watch——特别是如果你之前使用过 AngularJS。
+然而，通常更好的做法是使用计算属性而不是命令式的 watch 回调
+watch(侦听属性)
+    例：watch:{
+        message:{//侦听message属性
+            handler:function(new,old){
+                new//新值
+                old//旧值
+            }
+        }
+    }
+</code></pre><p>计算属性、方法、侦听属性的区别：</p>
+<pre><code>当data中数据发生变化时，计算属性的值也会发生改变
+methods是方法，只要调用它，函数就会执行
+在vue中，计算属性和方法达到的效果是一样的，但是计算属性是依赖缓存的，只有相关依赖发生改变时才会重新求职，只要依赖未改变，只会返回之前的结果，不在执行函数
+watched它检测的值是谁，然后相应的改变其他的值
+</code></pre><p>Vue 自定义指令来操作Dom</p>
+<pre><code>Vue.directive(id, definition)注册全局自定义指令
+    bind：只调用一次，在指令第一次绑定到元素上时调用。
+    update： 在 bind 之后立即以初始值为参数第一次调用，之后每当绑定值变化时调用，参数为新值与旧值。
+    unbind：只调用一次，在指令从元素上解绑时调用。
+
+全局自定义指令
+    // 注册一个全局自定义指令 `v-focus`
+    Vue.directive(&apos;focus&apos;, {
+      // 当被绑定的元素插入到 DOM 中时……
+      inserted: function (el) {
+        // 聚焦元素
+        el.focus()
+      }
+    })
+局部自定义指令
+    directives: {
+      focus: {
+        // 指令的定义
+        inserted: function (el) {
+          el.focus()
+        }
+      }
+    }
+</code></pre><p>Vue组件化：</p>
+<pre><code>全局注册组件
+    Vue.component(&apos;my-component&apos;,MyComponent)    
+        全局组件必须写在Vue实例创建之前，才在该根元素下面生效；
+        模板里面第一级只能有一个标签，不能并行；
+        data必须为一个函数
+局部组件注册
+    方式，直接在Vue实例里面注册
+        属性名为components，s千万别忘了;
+        data必须为一个函数
+父组件向子组件传递数据
+   父级组件绑定传递的参数,使用props来接受参数
+子组件向父组件传值
+    使用$emit来触发一个自定义事件，并传递参数
+    子组件自定义事件，this.$emit(&quot;事件名&quot;,&quot;参数&quot;)
+    父组件用该事件接受
+
+各组件之间传值的方法
+    1、路由传参
+        使用params,此方法在刷新页面的时候，参数会丢失，要想不丢失请使用query,另外在使用这两个参数时要注意，路由跳转应该使用name,通过path来跳转是接受不到参数的
+    2、子传父，父传子(见上)  
+    3通过缓存localstorage
+    4、vue-bus(未使用过)
+    5、vueX(见说明)
+</code></pre><p>Vue实例生命周期钩子</p>
+<pre><code>created---实例创建完成立即被调用。在这一步，已经完成的配置：数据观测，属性和方法的运算，watch/event事件回调
+    然而挂载阶段还没开始，$el属性目前不可见
+mounted---el 被新创建的 vm.$el 替换，并挂载到实例上去之后调用该钩子。如果 root 实例挂载了一个文档内元素，当 mounted 被调用时 vm.$el 也在文档内。
+    注意 mounted 不会承诺所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染完毕，可以用 vm.$nextTick 替换掉 mounted：
+updated---由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子。
+    当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态。如果要相应状态改变，通常最好使用计算属性或 watcher 取而代之。
+    注意 updated 不会承诺所有的子组件也都一起被重绘。如果你希望等到整个视图都重绘完毕，可以用 vm.$nextTick 替换掉 updated：
+destoryed---Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。
+
+创建前——创建后
+挂在前——挂载后
+更新前——更新后
+摧毁前——摧毁后
+</code></pre><p>Vue的路由</p>
+<pre><code>vue的路由模式有history,hash模式
+    在hash模式下，是不带#号的
+    在history模式下，url中#去掉，这时在本地编译完访问是空白的，这时需要配置一个二级目录做nginx代理
+    嵌套路由的使用方法：
+        在一个模块下的路由，例：/deta,在此模块下有三个子路由
+            /deta/details
+            /deta/spec
+            /deta/afterservice
+        使用方法：
+            模块写法：
+                &lt;template&gt;
+                  &lt;div class=&quot;details-title&quot;&gt;
+                      &lt;ul class=&quot;d-title&quot;&gt;
+                         &lt;li v-for=&quot;(item,index) in menuls&quot;&gt;&lt;router-link :to=&quot;{name:item.name}&quot;&gt;{{item.text}}&lt;/router-link&gt;&lt;/li&gt;
+                      &lt;/ul&gt;
+                    &lt;div class=&quot;content&quot;&gt;
+                      &lt;router-view&gt;&lt;/router-view&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/template&gt;
+                &lt;script&gt;
+                    export default {
+                        name: &quot;details-title&quot;,
+                        data(){
+                          return{
+                            a:window.global.twoLevelUrl,
+                            menuls:[
+                              {text:&quot;商品介绍&quot;,path:window.global.twoLevelUrl+&quot;/deta/details&quot;,name:&quot;details&quot;},
+                              {text:&quot;规格参数&quot;,path:window.global.twoLevelUrl+&quot;/deta/spec&quot;,name:&quot;spec&quot;},
+                              {text:&quot;售后服务&quot;,path:window.global.twoLevelUrl+&quot;/deta/afterservice&quot;,name:&quot;afterservice&quot;},
+                            ]
+                          }
+                        },
+                    }
+                &lt;/script&gt;
+            路由处理：
+                const router = new Router({
+                    routes:[{
+                          path:&apos;/deta&apos;,
+                          name:&apos;deta&apos;,
+                          component:resolve =&gt; require([&apos;@/components/details/DetailsTitle&apos;],resolve),
+                          redirect:&apos;/deta/details&apos;,
+                          children:[{
+                              path:&apos;/deta/details&apos;,
+                              name:&apos;details&apos;,
+                              component:Details,
+                            },
+                            {
+                              path:&apos;/deta/spec&apos;,
+                              name:&apos;spec&apos;,
+                              component:Spec,
+                            },
+                            {
+                              path:&apos;/deta/afterservice&apos;,
+                              name:&apos;afterservice&apos;,
+                              component:AfterService,
+                            },
+                          ]},
+                    ]})
+        嵌套默认打开路由，需要重定向到子路由
+</code></pre><p>VueX中央处理vuex分发处理(状态管理器)</p>
+<pre><code>用于保存数据状态，数据共享，处理模块之间的数据共享
+使用方式：
+    1、App.vue入口，导入import {store} from &apos;./store/store&apos;;
+    2、new Vue({router,store,render: h =&gt; h(App)}).$mount(&apos;#app&apos;);
+    3、新建js,store.js
+        5种状态
+            state
+            getters
+                此方法主要和vue中的computed类似，都是用来计算state然后生成新的数据状态的
+            mutations
+                主要用来修改状态，所有的操作必须是同步的，官方推荐尽量不使用异步操作，一般在这里处理逻辑与修改
+                可以通过$store.commit(&apos;switch_dialog&apos;)来触发mutations里的方法
+            actions
+                多个state的操作，使用mutations触发会比较好维护，但要执行多个mutations就需要action,
+                actions里的context和$store拥有相同的对象和方法，这里的操作主要是异步操作，可以使用
+                $store.dispatch(&apos;switch_dialog&apos;)分发处理actions里的请求
+            modules 组件多了，状态也多了会不好维护，那么使用vuex的modules
+
+            vuex使用方法(其余方法类似)
+                &lt;script&gt;
+                    import {mapState} from &apos;vuex&apos;;
+                    export default {
+                      computed:{
+                        ...mapState({
+                          show:state=&gt;state.dialog.show
+                        }),
+                      }
+                    }
+                &lt;/script&gt;
+            例：
+                总状态管理器：
+                    import Vue from &apos;vue&apos;
+                    import vuex from &apos;vuex&apos;
+                    Vue.use(vuex);
+                    import dialog_store from &apos;../components/dialog_store.js&apos;;//引入某个store对象
+                    export default new vuex.Store({
+                        modules: {
+                            dialog: dialog_store
+                        }
+                    })
+                子状态管理：dialog_store.js
+                    export default {
+                        state:{
+                            show:false
+                        }
+                    }
+</code></pre><p>Vue分环境打包部署</p>
+<pre><code>更新cross-env模块
+config文件下
+    新建pre.env.js,
+        &apos;use strict&apos;
+        module.exports = {
+          NODE_ENV: &apos;&quot;presentation&quot;&apos;,
+          EVN_CONFIG:&apos;&quot;pre&quot;&apos;,
+        }
+    新建test.env.js
+        &apos;use strict&apos;
+        module.exports = {
+          NODE_ENV: &apos;&quot;testing&quot;&apos;,
+          EVN_CONFIG:&apos;&quot;test&quot;&apos;,
+        }
+    修改prod.env.js
+        &apos;use strict&apos;
+        module.exports = {
+          NODE_ENV: &apos;&quot;production&quot;&apos;,
+          EVN_CONFIG:&apos;&quot;prod&quot;&apos;
+        }
+    新建env.js判断个环境的参数配置
+        let baseUrl = &apos;&apos;;
+        if (process.env.NODE_ENV == &apos;development&apos;) {
+          baseUrl = &quot;&quot;;
+        }else if(process.env.NODE_ENV == &apos;testing&apos;){
+          baseUrl = &quot;http://192.168.1.194:10001/api&quot;;
+        }else if(process.env.NODE_ENV == &apos;presentation&apos;){
+          baseUrl = &quot;http://192.168.1.194:10001/pre&quot;;
+        } else if(process.env.NODE_ENV == &apos;production&apos;){
+          baseUrl = &quot;http://192.168.1.194:10001/prod&quot;;
+        }
+        export{
+          baseUrl
+        }
+    修改index.js为
+        build下添加
+        prodEnv: require(&apos;./prod.env&apos;),
+        preEnv: require(&apos;./pre.env&apos;),
+        testEnv: require(&apos;./test.env&apos;),
+    build文件下修改
+        bulid.js中const spinner = ora(&apos;building for production...&apos;)修改为
+        var spinner = ora(&apos;building for &apos; + process.env.NODE_ENV + &apos; of &apos; + process.env.env_config+ &apos; mode...&apos; )
+
+        webpack.prod.conf.js修改const env = require(&apos;../config/prod.env&apos;)为
+        const env = config.build[process.env.env_config+&apos;Env&apos;]
+    main.js里引入env.js,设置axios的baseurl为export的baseurl
+    package.json里设置scripts启动命令
+      &quot;scripts&quot;: {
+        &quot;dev&quot;: &quot;webpack-dev-server --inline --progress --config build/webpack.dev.conf.js&quot;,
+        &quot;start&quot;: &quot;npm run dev&quot;,
+        &quot;build&quot;: &quot;node build/build.js&quot;,
+        &quot;build:test&quot;: &quot;cross-env NODE_ENV=production env_config=test node build/build.js&quot;,
+        &quot;build:pre&quot;: &quot;cross-env NODE_ENV=production env_config=pre node build/build.js&quot;,
+        &quot;build:prod&quot;: &quot;cross-env NODE_ENV=production env_config=prod node build/build.js&quot;
+      },
+    http://blog.csdn.net/fungleo/article/details/53171052
+</code></pre><p>VUE项目实战<a href="https://segmentfault.com/p/1210000008583242/read?from=timeline" target="_blank" rel="noopener">https://segmentfault.com/p/1210000008583242/read?from=timeline</a></p>
+<p>Vue常见配置问题</p>
+<pre><code>1、cnpm install build,vue发布项目空白页webpack配置
+    config文件下index.js配置 assetsPublicPath: &apos;./&apos;;
+    build文件下util.js配置publicPath: &apos;../../&apos;
+2、axios使用ajax跨域问题配置
+    config文件下index.js里proxyTable进行代理配置
+    &apos;/api&apos;: {
+        target: &apos;http://192.168.1.99:8080/malls-provider-http&apos;,    //api代理的实际路径
+        changeOrigin: true,
+        pathRewrite: {
+          &apos;^/api&apos;: &apos;&apos;
+        }
+    }
+3、axios post请求后台，后台接收不到数据问题：
+    vue集成axios后，发送的post请求默认为payload格式，如果要改为正常的格式，需要增加headers头，并且将发送的数据改为querystring方式
+    cnpm install qs安装 qs模块
+    导入依赖import Qs from &apos;qs&apos;
+    添加headers
+     headers: {
+        &apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded; charset=UTF-8&apos;
+     },
+     data: Qs.stringify(postData)
+4、如果在安装了某模块，找不见模块的时候，使用rm -rf node_modules删除，然后cnpm install
+
+5、vue使用ip访问配置
+    host改为ip即可
+6、vue中使用px编译自动转rem插件
+
+    在此说明配合使用sass
+        cnpm install node-sass --save-dev
+        cnpm install sass-loader --save-dev
+
+        cnpm install px2rem-loader
+    遇到的问题：
+        使用px2rem-loader在vue-loader.conf修改后，会出现背景图片找不见的问题，postcss会自动添加路径，因此采用如下解决方法：
+    在exports.cssLoaders函数内添加
+      const px2remLoader = {
+        loader: &apos;px2rem-loader&apos;,
+        options: {
+          remUnit: 37.5
+        }
+      }
+
+    然后修改generateLoaders函数const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
+    在最后cssLoader后添加px2remLoader即可配合sass使用高度还原设计图
+7、vue在打包后都是经过压缩加密的，如果运行时报错，输出的错误信息无法准确得知是哪里的代码报错,而生成的.map后缀文件，就可以像未加密的代码一样，准确的输出是哪一行哪一列有错可以通过设置来可以不生成该类文件，生产环境是不需要.map文件的，所    以打包时不生成这些文件在conf/index.js中，设置productionSourceMap：false
+8、如果是vue-cli初始化的项目，默认安装webpack-bundle-analyer插件，该插件可以帮助我们查看项目的提及结构和项目中对象的所有依赖，也可以直观地看到个模块体积在整个项目中的占比
+    cnpm run build --report //打开浏览器http://127.0.0.1:8888
+</code></pre><p>vue常见问题解决</p>
+<pre><code>vue首次项目加载速度慢
+    采用懒加载，提升首次加载速度，实现按需加载
+    实现方式3种：
+        第一种：
+            const hyh = resolve =&gt;{import(&apos;@components/index/hyh&apos;).then(module =&gt;{resolve(module)})}
+            const router = new Router({router:[{
+                path:&apos;yhy&apos;,
+                comnent:hyh,
+                name:&apos;hyh&apos;
+            }]})
+        第二种：
+            const router = new Router({
+                router:[{
+                    path:&quot;/index&quot;,
+                    component:(resolve) =&gt; { require([&apos;../components/index/index&apos;],resolve)}
+                }]
+            })
+        第三种：强烈推荐
+            const list = r =&gt; require.ensure([],() =&gt; r(require(&apos;../components/list/list)),&apos;list&apos;);
+            const router = new Router({
+                routes:[
+                    {
+                        path:&apos;/list/blog&apos;,
+                        component:list,
+                        name:&apos;blog&apos;
+                    }
+                ]
+            })
+vue在ios中第一次加载有时会出现有的名称显示，有的名称不显示
+    解决方法：
+    overflow:auto
+vue在history模式下，刷新页面会404
+    如果服务器找不见任何的静态资源，就让它转到默认的404
+        方案一 （这种方式容易被第三方劫持）
+            location /{
+                    root   /data/nginx/html;
+                    index  index.html index.htm;
+                    error_page 404 /index.html;
+            }
+        方案二
+            location /{
+                root   /data/nginx/html;
+                index  index.html index.htm;
+                if (!-e $request_filename) {
+                    rewrite ^/(.*) /index.html last;
+                    break;
+                }
+            }
+        方案三
+         server {
+            listen       8888;#默认端口是80，如果端口没被占用可以不用修改
+            server_name  localhost;
+            root        E:/vue/my_project/dist;#vue项目的打包后的dist
+            location / {
+                try_files $uri $uri/ @router;#需要指向下面的@router否则会出现vue的路由在nginx中刷新出现404
+                index  index.html index.htm;
+            }
+            #对应上面的@router，主要原因是路由的路径资源并不是一个真实的路径，所以无法找到具体的文件
+            #因此需要rewrite到index.html中，然后交给路由在处理请求资源
+            location @router {
+                rewrite ^.*$ /index.html last;
+            }
+            #.......其他部分省略
+      }
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/21/VUE常见问题及笔记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1219,7 +3011,7 @@ radial-gradient
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -1281,19 +3073,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1301,11 +3085,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1313,11 +3105,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1325,7 +3113,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
+                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1333,7 +3125,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1341,7 +3133,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
             
             <div class="clearfix"></div>

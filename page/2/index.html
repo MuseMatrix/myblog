@@ -8,13 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>个人笔记整理与收集</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="当你试图解决一个你不理解的问题时，复杂化就产成了。">
+<meta property="og:type" content="website">
 <meta property="og:title" content="个人笔记整理与收集">
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="个人笔记整理与收集">
+<meta property="og:description" content="当你试图解决一个你不理解的问题时，复杂化就产成了。">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="个人笔记整理与收集">
+<meta name="twitter:description" content="当你试图解决一个你不理解的问题时，复杂化就产成了。">
   
     <link rel="alternative" href="/atom.xml" title="个人笔记整理与收集" type="application/atom+xml">
   
@@ -56,6 +59,8 @@
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/随笔/">随笔</a></li>
+	        
+				<li><a href="/archives/index.html">归档</a></li>
 	        
 			</ul>
 		</nav>
@@ -116,6 +121,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -133,12 +140,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/随笔/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/archives/index.html">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -155,240 +164,365 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-基础篇之HTML5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-微信小程序指南" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/25/基础篇之HTML5/">基础篇之HTML5</a>
+      <a class="article-title" href="/2018/08/21/微信小程序指南/">微信小程序指南</a>
     </h1>
   
 
         
-        <a href="/2018/08/25/基础篇之HTML5/" class="archive-article-date">
-  	<time datetime="2018-08-25T03:58:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-25</time>
+        <a href="/2018/08/21/微信小程序指南/" class="archive-article-date">
+  	<time datetime="2018-08-21T05:42:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>HTML部分<br>meta常用标签总结<br>    meta元素有三个可选属性（http-equiv、name和scheme）和一个必选属性,content定义与 http-equiv 或 name 属性相关的元信息</p>
-<pre><code>    属性                                               值                                                           描述
-http-equiv                       content-type / expire / refresh / set-cookie                             把content属性关联到HTTP头部
-    name                         author / description / keywords / generator / revised / others           把 content 属性关联到一个名称
-   scheme                                           some_text                                             定义用于翻译 content 属性值的格式
+        <p>小程序之文件说明</p>
+<pre><code>app.json 小程序的全局配置，决定页面文件的路径、窗口表现、设置网络超时时间，设置多tab等
+    pages:设置页面的路径
+    window:设置默认页面的窗口表现
+        backgroundTextStyle：下拉loading 的样式，仅支持dark和light
+        navigationBarBackgroundColor:导航栏背景颜色
+        navigationBarTitleText:导航栏标题文字内容
+        navigationBarTextStyle:导航栏标题颜色,仅支持black/white
+    tabBar：设置底部的tab表现
+    networkTimeout:设置网络超时时间
+    debug:设置是否开启debug模式
+app.js 小程序的逻辑
+app.wxss 小程序公共样式表
 
-   content                                          some_text                                             定义与 http-equiv 或 name 属性相关的元信息
+一个MINA页面由四个文件部分组成
+    wxml 页面结构
+    wxss 页面样式表
+    json 页面配置
+    js   页面逻辑
+</code></pre><p>小程序逻辑层</p>
+<pre><code>使用App函数来注册小程序，接受一个Object参数，其指定小程序的生命周期函数等
+Object参数说明
+    onLaunch函数---------生命周期函数(监听小程序初始化)
+        当小程序初始化完成时，会触发onLaunch(全局只触发一次)
+    onShow函数-----------生命周期函数(监听小程序显示)
+        当小程序启动，或从后台进入前台显示，会触发onShow
+    onHide函数-----------生命周期函数(监听小程序隐藏)
+        当小程序从前台进入后台，会触发onHide
+    onError函数---------错误监听函数
+        当小程序发生脚本错误，或者api调用失败时，会触发onError并带上错误信息
+    onPageNotFound------------页面不存在监听函数
+        当小程序要打开的页面不存在的情况，会带上页面信息回调该函数，
+小程序注册页面
+    Page({}) 函数用来注册一个页面。接受一个 object 参数，其指定页面的初始数据、生命周期函数、事件处理函数等。
+        data:页面的初始化数据
+        onLoad:生命周期函数(监听页面加载)
+        onReady:生命周期函数(监听页面初次渲染完成)
+        onShow:生命周期函数(监听页面显示)
+        onHide:生命周期函数(监听页面隐藏)
+        onUnload:生命周期函数(监听页面卸载)
+        onPullDownRefresh:页面相关事件处理函数--监听用户下拉动作
+        onReachBottom:页面上拉触底事件的处理函数
+        onShareAppMessage:用户点击右上角转发
+        onPageScroll:页面滚动触发事件的处理函数
+</code></pre><p>小程序视图层</p>
+<pre><code>小程序之事件
+    标签绑定事件 
+    bindtap-----------单机事件处理函数,属于冒泡事件
 
-name属性：
-    &lt;!-- 页面作者 --&gt;
-    &lt;meta name=&quot;author&quot; content=&quot;author name&quot; /&gt;
-    &lt;!-- 页面描述 --&gt;
-    &lt;meta name=&quot;description&quot; content=&quot;meta元素共有三个可选属性(不超过150字符)&quot; /&gt;
-    &lt;!-- 页面关键词 --&gt;
-    &lt;meta name=&quot;keywords&quot; content=&quot;meta标签总结,meta标签&quot; /&gt;
-    &lt;!-- 页面生成器 --&gt;
-    &lt;meta name=&quot;generator&quot; content=&quot;hexo&quot; /&gt;
-    &lt;!-- 页面修改信息 --&gt;
-    &lt;meta name=&quot;revised&quot; content=&quot;story,2015/07/22&quot; /&gt;
-    &lt;!-- 版权信息 --&gt;
-    &lt;meta name=&quot;copyright&quot; content=&quot;All Rights Reserved&quot; /&gt;
-    &lt;!-- 页面爬虫设置 --&gt;
-    &lt;meta name=&quot;robots&quot; content=&quot;index,follow&quot; /&gt;
-    &lt;!-- robots的content取值 --&gt;
-    &lt;!-- all：文件将被检索，且页面上的链接可以被查询 --&gt;
-    &lt;!-- none：文件将不被检索，且页面上的链接不可以被查询 --&gt;
-    &lt;!-- index：文件将被检索 --&gt;
-    &lt;!-- follow：页面上的链接可以被查询 --&gt;
-    &lt;!-- noindex：文件将不被检索，但页面上的链接可以被查询 --&gt;
-    &lt;!-- nofollow：文件将被检索，但页面上的链接不可以被查询 --&gt;
-http-equiv
-    &lt;!-- 字符编码 --&gt;
-    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=UTF-8&quot; /&gt;
-    &lt;!-- 页面到期时间 --&gt;
-    &lt;meta http-equiv=&quot;expire&quot; content=&quot;Wed,22Jul201511:11:11GMT&quot; /&gt;
-    &lt;!-- 页面重刷新，0秒后刷新并跳转 --&gt;
-    &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;URL=&apos;&apos;&quot; /&gt;
-    &lt;!-- cookie设置 --&gt;
-    &lt;meta http-equiv=&quot;set-cookie&quot; content=&quot;cookie value=xxx;expires=Wed,22-Jul-201511:11:11GMT；path=/&quot; /&gt;
-    &lt;!-- 脚本类型 --&gt;
-    &lt;meta http-equiv=&quot;Content-Script-Type&quot;Content=&quot;text/javascript&quot;&gt;
-    &lt;!-- 禁止从本地缓存中读取页面 --&gt;
-    &lt;meta http-equiv=&quot;Pragma&quot;content=&quot;no-cache&quot;&gt; 
-移动端
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no&quot;/&gt;
-    &lt;!-- viewport的content取值 --&gt;
-    &lt;!-- width：宽度（数值 / device-width）（200~10000，默认为980px） --&gt;
-    &lt;!-- height：高度（数值 / device-height）（223~10000） --&gt;
-    &lt;!-- initial-scale：初始缩放比例 （0~10） --&gt;
-    &lt;!-- minimum-scale：允许用户缩放到的最小比例 --&gt;
-    &lt;!-- maximum-scale：允许用户缩放到的最大比例 --&gt;
-    &lt;!-- user-scalable：是否允许用户缩放 (no/yes)  --&gt;
+小程序之路由
+    页面跳转
+    wx.navigateTo({
+        url:&quot;../index/index?title=微信&quot;
+    })
+    关闭当前页，跳转到页面的某个页面，页面重定向
+    wx.redirectTo({
+        url:&quot;../index/index?title=对的&quot;
+    })
+    关闭所有页面，打开应用的某个页面
+    wx.reLaunch({
+        url:&quot;../index/index?title=是啥&quot;
+    })
+    跳转到tabBar页面，并关闭其他所有taBar页面
+    wx.switchTab({
+        url:&quot;../index/index?title=是啥&quot;
+    })
+    关闭当前页，返回上一级或多级页面
+    wx.navigateBack({
+        url:&quot;../index/index?title=飒飒&quot;
+    })
+小程序之传参接受
+    onLoad:function(options){
+        this.setData({
+            text:options.title
+        })
+    }
+小程序之轮播图
+    简单布局
+    &lt;view class=&quot;container&quot;&gt;
+        &lt;swiper class=&quot;swiper-pic&quot;&gt;
+            &lt;swiper-item&gt;
+                &lt;image src=&quot;路径&quot;&gt;&lt;/image&gt;
+            &lt;/swiper-item&gt;
+        &lt;/swiper&gt;
+    &lt;/view&gt;
+    添加小圆点  indicator-dots
+    小圆点颜色  indicator-color=&quot;#fff&quot;
+    当前选中小圆点颜色  indicator-active-color=&quot;#000&quot;
+    是否循环    circular
 
-    &lt;!-- uc强制竖屏 --&gt;
-    &lt;meta name=&quot;screen-orientation&quot; content=&quot;portrait&quot;&gt;
-    &lt;!-- QQ强制竖屏 --&gt;
-    &lt;meta name=&quot;x5-orientation&quot; content=&quot;portrait&quot;&gt;
-    &lt;!-- UC强制全屏 --&gt;
-    &lt;meta name=&quot;full-screen&quot; content=&quot;yes&quot;&gt;
-    &lt;!-- QQ强制全屏 --&gt;
-    &lt;meta name=&quot;x5-fullscreen&quot; content=&quot;true&quot;&gt;
-    &lt;!-- UC应用模式 --&gt;
-    &lt;meta name=&quot;browsermode&quot; content=&quot;application&quot;&gt;
-    &lt;!-- QQ应用模式 --&gt;
-    &lt;meta name=&quot;x5-page-mode&quot; content=&quot;app&quot;&gt;
+数据绑定
+    类似vue,双大括号进行数据绑定，例：
+        内容：
+            &lt;view&gt;{{message}}&lt;/view&gt;
+            Page({
+                data:{
+                    message:&quot;hello world&quot;
+                }
+            })
+        组件属性
+            &lt;view id=&quot;item-{{id}}&quot;&gt;&lt;/view&gt;
+            Page({
+                data:{
+                    id:0
+                }
+            })
+        控制属性
+            &lt;view wx:if=&quot;{{condition}}&quot;&gt;&lt;/view&gt;
+            Page({
+                data:{
+                    condition:true
+                }
+            })
+        关键字
+            &lt;checkbox checked=&quot;{{false}}&quot;&gt; &lt;/checkbox&gt;
+            不要直接写checked=&quot;false&quot;
 
-    &lt;!-- IOS启用 WebApp 全屏模式 --&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;
-    &lt;!-- IOS全屏模式下隐藏状态栏/设置状态栏颜色 content的值为default | black | black-translucent  --&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black-translucent&quot; /&gt;
-    &lt;!-- IOS添加到主屏后的标题 --&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;标题&quot;&gt;
-    &lt;!-- IOS添加智能 App 广告条 Smart App Banner --&gt;
-    &lt;meta name=&quot;apple-itunes-app&quot; content=&quot;app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL&quot;&gt;
+        运算
+            可以再{{}}进行的运算
+            三元表达式
+                &lt;view hidden=&quot;{{flag ? true : false}}&quot;&gt; Hidden &lt;/view&gt;
+            算术运算
+                &lt;view&gt; {{a + b}} + {{c}} + d &lt;/view&gt;
+                Page({
+                  data: {
+                    a: 1,
+                    b: 2,
+                    c: 3
+                  }
+                })
+            逻辑判断
+                &lt;view wx:if=&quot;{{length > 5}}&quot;&gt; &lt;/view&gt;
+            字符串运算
+                &lt;view&gt;{{"hello" + name}}&lt;/view&gt;
+                Page({
+                  data:{
+                    name:&quot;MINA&quot;
+                  }
+                })
+            数据路径运算
+                &lt;view&gt;{{object.key}} {{array[0]}}&lt;/view&gt;
+                Page({
+                  data: {
+                    object: {
+                      key: &apos;Hello &apos;
+                    },
+                    array: [&apos;MINA&apos;]
+                  }
+                })
+        组合
+            数组
+                &lt;view wx:for-items=&quot;{{[zero, 1, 2, 3, 4]}}&quot;&gt; {{item}} &lt;/view&gt;
+                Page({
+                  data: {
+                    zero: 0
+                  }
+                })
+            对象
+                &lt;template is=&quot;objectCombine&quot; data=&quot;{{for: a, bar: b}}&quot;&gt;&lt;/template&gt;
+                Page({
+                  data: {
+                    a: 1,
+                    b: 2
+                  }
+                })
 
-    &lt;!-- 去除iphone 识别数字为号码 --&gt;
-    &lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot;&gt;
-    &lt;!-- 不识别邮箱 --&gt;
-    &lt;meta name=&quot;format-detection&quot; content=&quot;email=no&quot;&gt;
-    &lt;!-- 禁止跳转至地图 --&gt;
-    &lt;meta name=&quot;format-detection&quot; content=&quot;adress=no&quot;&gt;
-    &lt;!-- 可以连写--&gt;
-    &lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no,email=no,adress=no&quot;&gt;
-</code></pre><p>标签语义化：<br>    &lt;!doctype html&gt;文档声明  html类型<br>    <html lang="en">根目录标签<br>    <head>头部，主要包括（网页信息，浏览器，搜索引擎）<br>    网页三要素：<meta charset="UTF-8">当前编码集 国际编码utf-8;<br>               <meta name="Keywords" content="关键词,关键词">搜索引擎可以搜索的关键词；<br>               <meta name="Description" content="描述：概括当前网页内容">当前网页的描述；<br>    <title>六一儿童节大家快乐</title>网页的标题:<br>    </head><body></body>身体 可视化网页内容<br>    <div></div>盒子模型：可以控制宽高度，放置内容的长方形区域</html></p>
-<pre><code>Hn标签在网站优化中的注意事项：
-h标签在网站的SEO优化中有不可忽视的重要性，贸然使用容易打乱网页权重比较危险。
-注意：权重是站长工具等网站推出来针对网站关键词排名预计给网站带来的流量，等级划分0~10，是对网站的综合评级，只是针对关键词排名方面给网站带来 的欢迎度进行评级
+                &lt;template is=&quot;objectCombine&quot; data=&quot;{{...obj1, ...obj2, e: 5}}&quot;&gt;&lt;/template&gt;
+                Page({
+                  data: {
+                    obj1: {
+                      a: 1,
+                      b: 2
+                    },
+                    obj2: {
+                      c: 3,
+                      d: 4
+                    }
+                  }
+                })
 
-H标签分为6个等级：h1、h2、h3、h4、h5、h6，6个标签登记，站在SEO技巧上面，h1的标签权是最高，依次往下面排列，h6最低。H5、H6相对来说比较少用到 。
-使用标题标签是为了提高文档的可阅读性，提高文档的层次，这是促进用户习惯的优化技巧，H标签在SEO当中也是为了提高用户体验，提高web的层次分明，确保用户可以最好的体验。
+                &lt;template is=&quot;objectCombine&quot; data=&quot;{{foo, bar}}&quot;&gt;&lt;/template&gt;
+                Page({
+                  data: {
+                    foo: &apos;my-foo&apos;,
+                    bar: &apos;my-bar&apos;
+                  }
+                })
 
-p标签：段落标签，通常网页中添加文本段落使用p标签
+                &lt;template is=&quot;objectCombine&quot; data=&quot;{{...obj1, ...obj2, a, c: 6}}&quot;&gt;&lt;/template&gt;
+                Page({
+                  data: {
+                    obj1: {
+                      a: 1,
+                      b: 2
+                    },
+                    obj2: {
+                      b: 3,
+                      c: 4
+                    },
+                    a: 5
+                  }
+                })
+        花括号和引号之间如果有空格，会被当字符串处理
+        &lt;view wx:for=&quot;{{[1,2,3]}} &quot;&gt;
+          {{item}}
+        &lt;/view&gt;
+列表渲染，例
+    &lt;view wx:for-items=&quot;{{array}}&quot;&gt;{{item}}&lt;/view&gt;
+</code></pre><p>小程序之组件</p>
+<pre><code>视图容器
+view------视图容器
+    属性
+        hover-class (默认值为none,指定按下去的样式类，当hover-class等于none时，没有点击态效果)
+        hover-stop-propagation(默认值为false,指定是否阻止本节点的祖先节点出现点状态)
+        hover-start-time(按住后多久出现点状态，单位毫秒)
+        hover-stay-time(手指松开后点击态保留时间，单位毫秒)
+scroll-view------可滚动视图区(滚动时，需要设置一个高度)
+    属性
+        scroll-x(默认值false,允许横向滚动)
+        scroll-y(默认值false,允许纵向滚动)
+        upper-threshold(默认值50，距顶部/左边多远时(单位px),触发scrolltoupper事件)
+        lower-threshold(默认值50，距底部/右边多远时(单位px),出发scrolltolower事件)
+        scroll-top(设置竖向滚动条的位置)
+        scroll-left(设置横向滚动条的位置)
+        scroll-into-view(值为某元素id,设置哪个方向滚动，则在哪个方向滚动到该元素)
+        scroll-with-animation(设置滚动条位置时，使用动画过度)
+        enable-back-to-top(ios点击状态栏、安卓双击标题栏时，滚动条返回顶部，只支持竖向)
+        bindscrolltoupper(滚动到顶部/左边,会触发scrolltoupper事件)
+        bindscrolltolower(滚动到底部/右边，会触发scrolltolower事件)
+        bindscroll(滚动时触发，event.detail = {scrollLeft, scrollTop, scrollHeight, scrollWidth, deltaX, deltaY})
+swiper------滑块视图容器
+    属性
+        indicator(是否设置面板指示点)
+        indicator-color(指示点颜色)
+        indicator-active-color(当前选中指示点颜色)
+        autoplay(是否自动切换)
+        current(当前所在滑块的index)
+        current-item-id(当前滑块所在的item-id,不能与current同时被指定)
+        interval(自动切换时间间隔)
+        duration(滑动动画时长)
+        circular(是否采用衔接滑动)
+        vertical(滑动方向是否为纵向)
+        previous-margin(前边距,可用于前一项的小部分，接受px和rpx的值)
+        next-margin(后边距，可用于后一项的小部分，接受px和rpx的值)
+        display-multiple-items(同时显示滑块的数量)
+        skip-hidden-item-layout(是否跳过未显示的滑块布局，设为true可优化复杂情况下的滑动性能,但会丢失隐藏状态滑块的布局信息)
+        bindchange(current改变时，会触发change事件event.detail = {current: current, source: source})
+        bindanimationfinsh(动画结束时，会触发animationfinsh事件，event.detail同上)
+movable-area------可移动的视图容器，在页面中可以拖拽滑动(当里面的movable-view设置为支持手动缩放时，设置此值可将缩放手势生效区修改为整个movable-area)
+                  必须设置width和height属性，不设置默认为10px
+        movable-view 
+    属性
+        direction(movable-view的移动方向，属性值有all、vertical、horizontal、none)
+        inertia(movable-view是否带有惯性)
+        out-of-bounds(超过可移动区域后,movable-view是否还可以移动)
+        x(定义x轴方向的偏移，如果x的值不再可移动范围内，会自动移动到可移动范围；改变x的值会触发动画)
+        y(定义y轴方向的偏移,如果y的值不再可移动范围内，会自动移动到可移动范围；改变y的值会触发动画)
+        damping(阻尼系数，用于控制x或y改变时的动画和过界回弹的动画，值越大移动的越大)
+        friction(摩擦系数，用于控制惯性的动画，值越大摩擦力越大，滑动越快停止;必须大于0，否则会设置成默认值)
+        disabled(是否禁用)
+        scale(是否支持双指缩放，默认缩放手势生效区域是在movable-view内)
+        scale-min(定义缩放倍数的最小值)
+        scale-max(定义缩放倍数的最大值)
+        scale-value(定义缩放倍数，取值范围为0.5-10)
+        bindchange(拖动过程中触发的事件event.detail = {x: x, y: y, source: source}，其中source表示产生移动的原因，值可为touch（拖动）、touch-out-of-bounds（超出移动范围）、out-of-bounds（超出移动范围后的回弹）、friction（惯性）和空字符串（setData）)
+        bindscale(缩放过程中触发的事件)
+        特殊事件
+            htouchmove(初次手指触摸后移动为横向的移动，如果catch此事件，则意味着touchmove事件也被catch)
+            vtouchmove(初次手指触摸后移动为纵向的移动，如果catch此事件，则意味着touchmove事件也被catch)
+cover-view------覆盖在原生组建上的文本视图，可覆盖的原生组件包括map、video、canvas、camera、liver-player、live-pusher,只支持嵌套cover-view、cover-image
+    cover-image
+        属性
+            src(图片路径、支持的临时路径、网络地址)暂不支持base64
+基础内容
+    icon------图标
+        type(icon的类型，有效值：success, success_no_circle, info, warn, waiting, cancel, download, search, clear)
+        size(icon的大小，单位px)
+        color(icon的颜色，同css的color)
+    text------文本
+        selectable(文本是否可选)
+        space(显示连续空格)    
+            space 有效值：
+                ensp 中文字符空格一半大小 
+                emsp 中文字符空格大小 
+                nbsp 根据字体设置的空格大小 
+        decode(是否解码)
 
-strong标签、b标签：字体加粗标签
-strong：强调加粗文本（关键字）起到强调作用，重复多用
-b：单纯加粗
+        •decode可以解析的有  &amp;nbsp;   &amp;lt;   &amp;gt;   &amp;amp;   &amp;apos;   &amp;ensp;   &amp;emsp; 
+        •各个操作系统的空格标准并不一致。
+        • &lt;text/&gt;  组件内只支持  &lt;text/&gt;  嵌套。
+        •除了文本节点以外的其他节点都无法长按选中。
+    rich-text
+        nodes(节点列表 / HTML String)
+    progress(进度条。)    
+        percent Float 无 百分比0~100  
+        show-info Boolean false 在进度条右侧显示百分比  
+        stroke-width Number 6 进度条线的宽度，单位px  
+        color Color #09BB07 进度条颜色 （请使用 activeColor）  
+        activeColor Color  已选择的进度条的颜色  
+        backgroundColor Color  未选择的进度条的颜色  
+        active Boolean false 进度条从左往右的动画  
+        active-mode String backwards backwards: 动画从头播；forwards：动画从上次结束点接着播 1. 
+表单组件
+    button(按钮)
 
-i标签、em标签：字体斜体标签
-i:普通斜体标签（引入小图标）
-em:强调语义斜体标签（强调斜体语义）
-
-img标签：width  宽度  height 高度alt：替换作用(关键字,涉及到权重）
-    支持宽高、支持margin、可以横排展示、能设置text-align和vertail-align,标签中间隙被解析，不支持margin:auto;
-font标签：字体标签（可控制文本大小、颜色、风格样式）——淘汰，改用Css里面font样式（font-size：字体大小、font-family:字体风格样式、color:字体颜色）
-
-a标签：超链接   超链接总共四个特征：默认没有访问、鼠标滑动触发、鼠标点击下去、访问过后
-&lt;a&gt;&lt;/a&gt;定义链接。
-target=&quot;_self&quot;自身标签页打开新网页;
-targrt=&quot;_blank&quot;新标签中打开新网页;
-href=&quot;#&quot;返回页面顶部的空连接；
-默认：:link
-鼠标滑动：:hover
-鼠标点击：:active
-访问过后：:visited
-为什么执行不了样式？
-顺序问题（默认、访问过后）、动作顺序（滑上去、点击）
-
-如果要在某个区块显示源代码（计算机代码），需要保留该有代码格式[空格、回车]，请使用pre预格式标签
-
-textarea:文本域(文本输入区域)：
-cols(宽度 10):宽度值=中文字节 一个中文等于2个英文字节
-rows（行数）:
-文本域用户体验细节：当页面加载完毕自动获取鼠标焦点到该文本域(autofocus)
-禁止用户修改文本域内容：(disabled)
-
-&lt;sup&gt;&lt;/sup&gt;上标
-&lt;sub&gt;&lt;/sub&gt;下标
-&lt;caption&gt;&lt;/caption&gt;表格标题的内容，通常设置&lt;table&gt;&lt;/table&gt;的下一行，只能出现一次;
-&lt;ol&gt;&lt;/ol&gt;有序列表；&lt;ul&gt;&lt;/ul&gt;无序列表；&lt;dl&gt;&lt;/dl&gt;定义列表；
-&lt;header&gt;&lt;/header&gt;定义文档头部信息；
-&lt;nav&gt;&lt;/nav&gt;定义文档导航链信息；
-&lt;section&gt;&lt;/section&gt;定义文档的小节，可以表示为主体内容部分；
-&lt;article&gt;&lt;/article&gt;用于描述，一般定义论坛帖子，报纸的文章，博客信息或微博条目；
-&lt;aside&gt;&lt;/aside&gt;用于定义页面的边栏信息；
-
-&lt;fieldset&gt;&lt;/fieldset&gt;元素可将表单内的相关元素分组。
-&lt;legend&lt;/legend&gt;为 fieldset 元素定义标题
-
-&lt;iframe&gt;&lt;/iframe&gt;框架标签
-    scrolling 设置滚动条是否显示yes no  auto
-    frameborder 去掉默认边框  1是有边框的  0是无边框的
-注释：网页中总共三大注释
-
-网页结构（HTML标签）、网页样式（Css）、浏览器脚本(Js)
-网页结构注释：&lt;!--注释文本--&gt;
-网页样式注释：/*注释文本*/
-浏览器脚本语言注释：
-行注释：//注释文本
-段落注释：/*注释文本
-           注释2
-           注释3
-          */
-标签特效：标签分为块级标签、行内标签
-
-标签互相嵌套（父元素标签&gt;子元素标签&gt;子元素标签）
-标签嵌套注意事项：块级标签嵌套其他块级标签，嵌套行内标签（p标签除外）；行内标签只能嵌套行内标签，千万不能嵌套块级标签 
-
-web前端常用四大转义符：当使用转义符切记请写上分号
-标记：&lt;&gt;
-&lt;:&amp;lt;
-&gt;:&amp;gt;
-&quot;：&amp;quot;
-空格:&amp;nbsp;
-
-如何去除超链接下划线：
-通过修饰字体样式
-文档流：浏览器解析网页标签（依次从上到下，从左到右）
-
-网页中如果同时出现若干相同标签怎么办？
-
-通过标签自带属性（id、class、name）
-id:给标签命名（网页中不能出现重复id名字、身份证、QQ号）
-class:给标签命类名（可以在网页中进行重复）
-
-给网页中标签添加样式之前，请先初始化网页标签默认的外边距和填充
-方法：*{margin:0px;padding:0px;};//偷懒形式
-优化方法：标签名（网页中通用标签）{margin:0px;padding:0px;}建议
-
-标签宽高注意事项：
-块级：可以直接使用宽高样式设定
-行内：通常都由内容填充（撑开）产生
-行内标签不执行宽高样式处理方法：直接把该行内标签转换块级
-行内转块级方法：display:block;转换块级
-块级转行内方法：display:inline-block;块级（不带回车）
-
-导航思路：
-直接使用a标签，不利于后台开发相互之间交互对接
-借助无序列表(ul)
-ul:无序列表
-li:列表项
-无序列表特点：子元素（列表项）默认显示为垂直显示，列表项前面默认自带小黑圆点
-type:circle空心圆、square方块、disc默认值
-规范书写格式：
-&lt;ul&gt;&lt;!--父标签--&gt;
-    &lt;li&gt;列表项1&lt;/li&gt;&lt;!--子标签--&gt;
-    &lt;li&gt;列表项2&lt;/li&gt;
-    &lt;li&gt;列表项3&lt;/li&gt;
-&lt;/ul&gt;
-重要注意点：无序列表里面（ul）只能够存放子标签（li），标签嵌套（div、img、p）请放在li里面
-
-ol有序列表
-ol有序列表特点：默认显示方式为垂直对齐方式，自带排序序号
-注意事项：列表区块中父级标签（ul、ol）里面只能够存放子标签（li）。如果需要嵌套其他标签请放在li里面
-有序列表序号类型（type）：1（默认）、A、a、i、I
-有序列表序号起始值(start)：列入从5开始，start=&quot;5&quot;，序号会以此往下排序
-类型小技巧：ol有序列表类型不能随便给，如果有请使用背景图片替代
-dl自定义列表
-dt:列表项标题;dd:列表项
-</code></pre><p>H5部分<br>    新增标签<br>        结构性标签<br>            <header></header>页眉，用于块头部<br>            <nav></nav>导航<br>            <section></section>页面上的区块<br>            <article></article>用来在页面上表示一套结构完整而独立的内容部分(article套article表示文章下面的评论)<br>            <aside></aside>侧边栏，广告，nav元素组，aside的标签应该与article的内容相关<br>            <footer></footer>页面的底部或者板块的底部<br>        语义化标签<br>            <hgroup></hgroup>一个标题和一个子标题，或者标语的组合(标题组)<br>            <figure></figure>用于对元素进行组合，一般用于图片或者视频(图片视频组)<br>            <figcaption></figcaption>图片或视频组的标题<br>            <time></time>用来表示时间或者日期<br>            <datalist></datalist>标签定义列表选项，请与input配合使用，来定义input可能的值，请使用input元素的list属性来绑定datalist 的ID<br>            例如：<br>                <input type="text" list="data"><br>                <datalist id="data"><br>                    <option>1</option><br>                    <option>2</option><br>                    <option>3</option><br>                    <option>4</option><br>                </datalist><br>            <details></details>用于描述文档或文档某部分的细节.该元素用于摘录引用等,与标签配合使用(默认折叠，添加open展开)<br>            <summary></summary>details元素的标题(默认标题为详细信息)<br>            例如：<br>            <details open><br>                <summary>闺怨</summary><br>                谷中少妇不知愁，春日应著上翠柳；<br>            </details><br>            <dialog></dialog>定义一段对话,默认展开需要添加open属性<br>                例如：<br>                <dialog open>对话框</dialog><br>            <address></address>定义文章或页面作者的详细联系信息<br>            <meter></meter>定义已知范围或数值内的标量测量.也被称为gauge(尺度).<br>            <progress></progress>进度条<br>            <mark></mark>需要标记的词或句子,默认黄色背景</p>
-<p>IE低版本兼容<br>    在页面头部如下注意:样式属性display:block;<br>        <script><br>        document.createElement(header);<br>        document.createElement(nav);<br>        document.createElement(footer);<br>        </script><br>    在页面头部如下(注释语法)<br>        <!--[if lt IE 9]> 
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> 
-        <![endif]--><br>        <!-- IE条件注释语句 
-        针对的浏览器版本 
-        <!--[if lt IE 7]> 内容 <![endif]--><br>        IE7 以下版本 （小于IE7）<br>        <!--[if lte IE 7]>内容<![endif]--><br>        IE7及以下版本 （包含IE7）<br>        <!--[if gt IE 7]>内容<![endif]--><br>        IE7 以上版本 （大于IE7）<br>        <!--[if gte IE 7]>内容<![endif]--><br>        IE7及以上版本 （包含IE7）<br>        <!--[if !IE 7]>内容<![endif]--><br>        非IE7版本<br>        <!--[if !IE]><!--><br>        非IE版本<br>        <!--<![endif]--> </p>
+    checkbox(多选项目。)
+        checkbox-group 多项选择器，内部由多个 checkbox 组成。
+    form(表单)
+        表单，将组件内的用户输入的 &lt;switch/&gt;   &lt;input/&gt;   &lt;checkbox/&gt;   &lt;slider/&gt;   &lt;radio/&gt;   &lt;picker/&gt;  提交。
+        当点击  &lt;form/&gt;  表单中 formType 为 submit 的  &lt;button/&gt;  组件时，会将表单组件中的 value 值进行提交，需要在表单组件中加上 name 来作为 key。
+    input(输入框)
+    lable(用来改进表单组件的可用性，使用 for 属性找到对应的 id ，或者将控件放在该标签下，当点击时，就会触发对应的控件。
+         for 优先级高于内部控件，内部有多个控件的时候默认触发第一个控件。)
+     picker(从底部弹起的滚动选择器，现支持五种选择器，通过mode来区分，分别是普通选择器，多列选择器，时间选择器，日期选择器，省市区选择器，默认是普通选择器。)
+     picker-view(嵌入页面的滚动选择器)
+     radio(单选项目)
+     radio-group(单项选择器，内部由多个&lt;radio/&gt;组成)
+     slider(滑动选择器)
+     switch(开关选择器。)
+     textarea(多行输入框)
+ 导航
+     navigator(页面连接)
+ 媒体组件
+     audio(音频)
+     image(图片)
+     video(视频)
+     camera(系统相机)
+     live-player(实时音频播放)
+     live-pusher(实时音频录制)
+ 地图
+     map(地图)
+ 画布
+     canvas(画布)
+ 开放能力
+     open-data(用于展示微信开放的数据。)
+     web-view(web-view 组件是一个可以用来承载网页的容器，会自动铺满整个小程序页面。个人类型与海外类型的小程序暂不支持使用。)
+     ad(广告。目前暂时以邀请制开放申请，请留意后续模板消息的通知)
+</code></pre><p>小程序之api</p>
+<p>小程序之框架</p>
 
       
 
@@ -402,7 +536,7 @@ dt:列表项标题;dd:列表项
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小程序</a>
         		</li>
       		
 		</ul>
@@ -412,7 +546,683 @@ dt:列表项标题;dd:列表项
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/25/基础篇之HTML5/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/08/21/微信小程序指南/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-前端与SEO" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/20/前端与SEO/">前端与SEO</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/20/前端与SEO/" class="archive-article-date">
+  	<time datetime="2018-08-20T08:16:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>SEO</p>
+<pre><code>SEO,搜索引擎优化，是指为了增加网页在搜索引擎自然搜索结果中的收录数量以及提升排序位置而做的优化行为。
+SEO有三条最重要的规律，那就是原创的内容、高质量的外部链接和持之以恒适度的优化。
+
+前端的工作主要是负责页面的HTML+CSS+JS，优化好这几个方面会为SEO工作打好一个坚实的基础。突出重要内容可以让搜索引擎判断当前页面的重点是什么，提升网站访问速度可以让搜索引擎的蜘蛛顺利、快速、大量的抓取网页内容，所以以突出重要内容和提升网站速度为主来总结:
+    1、突出重要内容(合理的title、description和keywords)
+        title：只强调重点即可，重要关键词出现不要超过2次，而且要靠前，每个页面title要有所不同
+        description：把网页内容高度概括到这里，长度要合理，不可过分堆砌关键词，每个页面description要有所不同
+        keywords：列举出几个重要关键词即可，也不可过分堆砌
+    2、语义化书写HTML代码，符合W3C标准(代码语义化)
+    3、利用布局，把重要内容HTML代码放在最前。(搜索引擎抓取HTML内容是从上到下，利用这一特点，可以让主要代码优先读取，广告等不重要代码放在下边)
+    4、重要内容不要用JS输出。(蜘蛛不会读取JS里的内容，所以重要内容必须放在HTML里。)
+    5、尽少使用iframe框架。(搜索引擎不会抓取到iframe里的内容，重要内容不要放在框架中。)
+    6、为图片设置高度和宽度，可提高页面的加载速度。为图片加上alt属性。(当网络速度很慢，或者图片地址失效的时候，就可以体现出alt属性的作用，他可以让用户在图片没有显示的时候知道这个图片的作用。)
+    7、需要强调的地方可以加上title属性
+    8、保留文字效果。
+    9、利用CSS截取字符。(如果文字长度过长，可以用样式截取，设置高度，超出的部分隐藏即可。这样做的好处是让文字完整呈现给搜索引擎，同时在表现上也保证了美观。)
+    10、尽量外链CSS和JS，保证网页代码的整洁，也有利于日后维护。
+    11、CSS放在文件头部，JS放在文件尾部，可使用工具对CSS和JS文件进行压缩。
+    12、为静态资源文件增加过期时间，让用户通过本地缓存来更快的访问网站。
+    13、减少大改版的频率。
+    14、压缩、格式化代码。
+    15、不使用CSS表达式，会影响效率。
+    16、使用CDN网络，可加快用户访问速度。
+    17、启用GZIP压缩，浏览速度变快，搜索引擎的蜘蛛抓取信息量也会增大
+    18、善于利用浏览器插件。
+    19、伪静态设置。(如果是动态网页，可以开启伪静态功能，让蜘蛛“误以为”这是静态网页，因为静态网页比较合蜘蛛的胃口，如果url中带有关键词效果更好。)
+</code></pre><p>HTML规范：</p>
+<pre><code>　　1.meta信息完善（包含title、keyword、description）。
+        　标准的html头部应该包含title、keyword、description这3个meta信息。这些meta信息是SEO优化必要的基础。
+　　2.合理使用H1-H6标签。
+        　在页面内合理应用H1-H6标签，能够让页面内容主次结构分明，利于搜索引擎识别页面内容偏重。
+　　3.整站优先使用伪静态。
+        　伪静态链接能够避免出现重复无效的动态链接。更利于整站链接规范。
+　　4.img标签需完善alt属性。
+ 搜索引擎还不能有效的识别出图片的内容，给img添加alt属性就相当于告知搜索引擎图片的内容。从而获取较好的图片排名。
+　　5.尽量少的使用JS后加载。
+        　Google对JS抓取支持较好，ajax内容也能够抓取。但是现在国内搜索引擎大多不会抓取JS中的内容。重要链接静态化到html源码中。    
+　　6.页面主体内容需静态化到html中。
+页面主体内容请静态化到html源码中，不然搜索引擎很可能抓取不到。
+　　7.页面源代码控制在200K以内。
+超过200K的内容将不被百度搜索引擎抓取。
+</code></pre><p>CSS规范：</p>
+<pre><code>　　1.慎重使用CSS隐藏
+慎重使用display：none;text-indent:-9999px等CSS隐藏。过度使用可能会被搜索引擎识别为作弊。
+　　2.页面文字勿过度使用黑体、粗体、斜体。
+过度的使用黑体、粗体、斜体可能会被搜索引擎识别为作弊。
+　　3.禁用透明色和底色加关键词
+　　     使用颜色作弊的手法来提高关键词密度或者布局和页面不相关的关键词都是作弊行为。
+</code></pre><p>各标签对seo的影响</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;title&gt;标题标签：在优化的过程中，&lt;title&gt;标签起到了决定性作用，搜索引擎对一个网页的内容识别，很大的程度上是依靠&lt;title&gt;标签中的内容。</span><br><span class="line">&lt;H&gt;标签：是网页HTML中对文本标题进行强调的一种标签；H1标签按套路来说，一个页面只能用一次，H2 H3 可以多次使用（一般是长尾词使用）。</span><br><span class="line">&lt;description&gt;描述标签：标签内容能够如实反映网页内容，简单告诉用户这个页面是有什么内容。如果描述标签写得好可以大大促进提高点击率，是站长应该重视的标签，如果直接出现用户需要的答案则更佳，如下图搜索多少钱出现具体的价格，大大降低用户获取信息的难度。</span><br><span class="line">&lt;keyword&gt;关键词标签：关键词标签虽然没什么用了，但写上可以方便查关键词排名，对于没有指数的关键词，用站长工具也能查出来，并且排名更新较快，所以keyword标签一直是搜索引擎判断网页内容和主题的重要依据；</span><br><span class="line">&lt;a&gt;标签：外链和定向锚文本都依靠它发挥作用，格式是&lt;a href =””&gt;链接文字&lt;/a&gt;;”href”后面可以站内链接，也可以站外链接。但是我们要注意它的两个属性，一是【target】，它决定了链接以何种方式打开，一般站内链接会被定义为在当前页面打开，外部链接被定义为在新窗口中打开。另外一个属性是【rel】，其最让SEO人员关注的就是【Nofollow】值，因为它代表不传递权重。对内可以集中权重，不使其分散到无意义的页面；对外，可以防止权重流失和避免被骗友情链接。</span><br><span class="line">&lt;img&gt;标签：在站群实验中，标题如果是包含“图文”等字眼，点击率是普通页面的2~3倍，由于以前网速，上网设备受限等原因，网站要求是越简单越好，随着技术进步，现在的要求是需要把网站丰富起来，摆放更多的图片等元素丰富起来。</span><br><span class="line">&lt;STRONG&gt;标签：主要用于强调文本，与&lt;EM&gt;、&lt;b&gt;标签同样的效果。</span><br><span class="line">&lt;nofloolw&gt;标签：该标签告诉搜索引擎“不要追踪此网页上的链接”，目前各大搜索引擎都支持该标签，这对防止权重分散有重大意义</span><br></pre></td></tr></table></figure>
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SEO</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/20/前端与SEO/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-jquery学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/17/jquery学习笔记/">jquery学习笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/17/jquery学习笔记/" class="archive-article-date">
+  	<time datetime="2018-08-17T04:30:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Jquery是一个javascript库<br>Jquery文档就绪函数<br>    $(document).ready(function(){});<br>    $(function(){})<br>Jquey事件函数<br>   $(“#oBtn”).click(function(){})//单击事件<br>Jquery效果<br>    隐藏/显示<br>   //参数为 slow、fast或者毫秒，callback是效果执行完后的回调函数<br>    $(“选择器”).hide(speed,callback)<br>        ex：<br>            $(“#oBtn”).hide();//隐藏<br>            $(“#oBtn”).show();//显示<br>            $(“#oBtn”).toggle();//隐藏显示互相切换<br>   //淡入淡出<br>                $(“#oBtn”).fadeIn();//淡入已隐藏的元素<br>                $(“#oBtn”).fadeOut();//淡出可见元素<br>                $(“#oBtn”).fadeToggle();//淡入淡出互相切换;<br>       //参数为slow、fast或者毫秒，透明度，callback回调函数<br>       $(“选择器”).fadeTo(speed,opacity,callback)<br>            ex：<br>                $(“#oBtn”).fadeTo(“slow”,0.4);<br>   //滑动<br>        $(“选择器”).slideDown(speed,callback)<br>            ex:<br>                $(“#oBtn”).slideDown();//向下滑动<br>                $(“#oBtn”).slideUp();//向上滑动<br>                $(“#oBtn”).slideToggle();//上下切换<br>   //动画<br>         params定义形成动画的css属性，speed为速度，callback为回调函数<br>         $(“选择器”).animate({params},speed,callback);<br>   //停止动画<br>        //stopAll是否清除动画队列，默认false;goToEnd是否立即完成当前动画，默认false<br>        $(“选择器”).stop(stopAll,goToEnd);//<br>            $(“#oBtn”).stop();</p>
+<p>Jquery操作Dom<br>    //都可以获取和设置值，并且都有回调函数，回调函数有两个参数，一个是备选元素列表当前元素的下标，以及原始值<br>        $(“#oBtn”).text();//获取所选元素的文本内容<br>        $(“#oBtn”).html();//设置元素的内容  包括html<br>        $(“#oBtn”).val();//返回表单的值<br>        $(“#oBtn”).attr();//设置和获取属性值</p>
+<pre><code>//jquery添加新元素和内容
+    $(&quot;#oBtn&quot;).append();在被选元素的结尾插入内容（标签内部）
+    $(&quot;#oBtn&quot;).prepend();在被选元素的开头插入内容(标签内部)
+    $(&quot;#oBtn&quot;).after();在被选元素之后插入内容（标签外部）
+    $(&quot;#oBtn&quot;).befroe();在被选元素之前插入内容(标签外部)
+
+//jquery删除元素/内容
+    $(&quot;#oBtn&quot;).remove();删除被选元素及其子元素(允许接受一个参数,允许对被删除元素进行过滤)
+    $(&quot;#oBtn&quot;).empty();删除被选元素里面的子元素
+
+//Jquery操作Css
+     $(&quot;#oBtn&quot;).addClass();向被选元素添加一个类或多个类
+     $(&quot;#oBtn&quot;).removeClass();向被选元素删除一个类或多个类
+     $(&quot;#oBtn&quot;).toggleClass();对被选元素进行添加和删除类的切换操作
+     $(&quot;#oBtn&quot;).css();返回或者设置匹配元素的一个或者多个样式属性
+
+//Jquery获取尺寸
+    $(&quot;#oBtn&quot;).width();返回设置元素的宽(不包括内边距、边框或外边距)
+    $(&quot;#oBtn&quot;).height();返回设置元素的高(不包括内边距、边框或外边距)
+    $(&quot;#oBtn&quot;).innerWidth();返回元素的宽(包括内边距)
+    $(&quot;#oBtn&quot;).innerHeight();返回元素的高(包括内边距)
+    $(&quot;#oBtn&quot;).outerWidth();返回元素的宽(包括内边距和边框)
+    $(&quot;#oBtn&quot;).outerHeight();返回元素的高(包括内边距和边框)
+
+//Jquery之遍历
+    $(&quot;#oBtn&quot;).parent();返回被选元素的直接父元素
+    $(&quot;#oBtn&quot;).parents();返回被选元素的所有祖先元素
+    $(&quot;#oBtn&quot;).parentsUntil(&quot;div&quot;)返回介于两个给定元素之间的所有祖先元素
+    $(&quot;#oBtn&quot;).children();方法返回被选元素的所有直接子元素
+    $(&quot;#oBtn&quot;).find(&quot;span&quot;);返回被选元素的后代元素，一路向下直到最后一个后代
+    $(&quot;#oBtn&quot;).siblings();返回被选元素的所有同胞元素
+    $(&quot;#oBtn&quot;).next();返回被选元素的下一个同胞元素(只返回一个元素)
+    $(&quot;#oBtn&quot;).nextAll();返回被选元素的所有跟随同胞元素
+    $(&quot;#oBtn&quot;).nextUntil();介于两个给定元素之间的所有同胞元素
+        prev(),prevAll(),prevUntil()方法类似，方向相反
+    $(&quot;#oBtn&quot;).first();返回该元素内部的第一个元素
+    $(&quot;#oBtn&quot;).last();返回该元素内部的最后一个元素
+    $(&quot;#oBtn&quot;).eq();返回被选元素中带有指定索引号的元素
+    $(&quot;#oBtn&quot;).filter();匹配的元素被返回，不匹配的会删除
+    $(&quot;#oBtn&quot;).not();返回不匹配标准的所有元素
+
+//Jquery之Ajax
+    $(selector).load(URL,data,callback);
+    $(&quot;#oBtn&quot;).load() 方法从服务器加载数据，并把返回的数据放入被选元素中。
+    $.get(URL,callback);
+    $.post(URL,data,callback);
+//杂项
+    $.noConflict();方法会释放会 $ 标识符的控制，这样其他脚本就可以使用它了。$换为Jquery
+//Jquery之事件
+    $(&quot;#oBtn&quot;).click(function(){});
+    $(&quot;#oBtn&quot;).dbclick(function(){});
+    $(&quot;#oBtn&quot;).focus(function(){});
+    $(&quot;#oBtn&quot;).mouseover(function(){});
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/17/jquery学习笔记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-页面渲染机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/17/页面渲染机制/">页面渲染机制</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/17/页面渲染机制/" class="archive-article-date">
+  	<time datetime="2018-08-17T04:27:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>浏览器</p>
+<pre><code>Chrome
+FireFox
+Safari
+</code></pre><p>浏览器的基本结构</p>
+<pre><code>    1.用户界面（User Interface）:用户所看到及与之交互的功能组件，如地址栏，返回，前进按钮等；
+    2.浏览器引擎（Browser engine）:负责控制和管理下一级的渲染引擎；
+    3.渲染引擎（Rendering engine）:负责解析用户请求的内容（如HTML或XML，渲染引擎会解析HTML或XML，以及相关CSS，然后返回解析后的内容）；
+    4.网络（Networking）:负责处理网络相关的事务，如HTTP请求等；
+    5.UI后端（UI backend）:负责绘制提示框等浏览器组件，其底层使用的是操作系统的用户接口；
+    6.JavaScript解释器（JavaScript interpreter）:负责解析和执行JavaScript代码；
+    7.数据存储（Data storage）:负责持久存储诸如cookie和缓存等应用数据。
+
+                            用户界面——————— 
+                            |             |
+                            |             |
+                        浏览器引擎————————————————&gt;数据存储
+                            |              |
+                            |              |
+                    —————渲染引擎———————————|
+                    |        |             |
+                    |        |             |
+                JavaScript   网络         UI后端
+                    解释器
+
+    浏览器内核
+        Trident内核： IE
+        Webkit内核：Chrome,Safari
+        Gecko内核：FireFox
+网络
+    当用户访问页面时，浏览器需要获取用户请求内容，这个过程主要涉及浏览器网络模块：
+        1.用户在地址栏输入域名，如baidu.com，DNS（Domain Name System，域名解析系统）服务器根据输入的域名查找对应IP，然后向该IP地址发起请求；
+        2.浏览器获得并解析服务器的返回内容(HTTP response)；
+        3.浏览器加载HTML文件及文件内包含的外部引用文件及图片，多媒体等资源。             
+    DNS预解析
+        浏览器DNS解析大多时候较快，且会缓存常用域名的解析值，但是如果网站涉及多域名，在对每一个域名访问时都需要先解析出IP地址，而我们希望在跳转或者请求其他域名资源时尽量快，则可以开启域名预解析，浏览器会在空闲时提前解析声明需要预解析的域名。如：&lt;link rel=&quot;dns-prefetch&quot; href=&quot;//s1.bdstatic.com&quot;&gt;
+    多进程
+        通常说JavaScript执行是单进程的，但是浏览器网络部分通常是有几个平行进程同时开启，但是也会有
+        限制，一般为2-6个。
+渲染引擎及关键渲染路径
+    渲染引擎所做的事是将请求内容展现给我们，默认支持HTML,XML和图片类型，对于其他诸如PDF等类型的内容则需要安装相应插件，但浏览器的展示工作流程基本是一样的。
+    通过网络模块加载到HTML文件后渲染引擎渲染流程如下，这也通常被称作关键渲染路径（Critical Rendering Path）：
+        1.构建DOM树(DOM tree)：从上到下解析HTML文档生成DOM节点树（DOM tree），也叫内容树（content tree）；
+        2.构建CSSOM(CSS Object Model)树：加载解析样式生成CSSOM树；
+        3.执行JavaScript：加载并执行JavaScript代码（包括内联代码或外联JavaScript文件）；
+        4.构建渲染树(render tree)：根据DOM树和CSSOM树,生成渲染树(render tree)；渲染树：按顺序展示在屏幕上的一系列矩形，这些矩形带有字体，颜色和尺寸等视觉属性
+        5.布局（layout）：根据渲染树将节点树的每一个节点布局在屏幕上的正确位置；
+        6.绘制（painting）：遍历渲染树绘制所有节点，为每一个节点适用对应的样式，这一过程是通过UI后端模块完成；
+
+                                            ___执行javascript___
+                                           |                   |
+                                           |                   |
+                                解析html————————&gt;构建dom树——————————&gt;构建CSSDOM树——————————&gt;渲染树——————————&gt;绘制
+
+        为了更友好的用户体验，浏览器会尽可能快的展现内容，而不会等到文档所有内容到达才开始解析和构建/布局渲染树，而是每次处理一部分，并展现在屏幕上，这也是为什么我们经常可以看到页面加载的时候内容是从上到下一点一点展现的。
+
+        Webkit浏览器和Gecko浏览器渲染流程大致相同,不同的是：
+            1.Webkit浏览器中的渲染树(render tree)，在Gecko浏览器中对应的则是框架树（frame tree）,渲染对象(render object)对应的是框架（frame）;
+            2.Webkit中的布局（Layout）过程，在Gecko中称为回流（Reflow）,本质是一样的，后文会解释回流的另一层含义–重新布局；
+            3.Gecko中HTML和DOM树中间多了一层内容池（Content sink）,可以理解成生成DOM元素的工厂。
+        单进程
+            不同于网络部分的多进程渲染引擎是单线程工作的，意味着渲染流程是一步一步渐进完成的。
+        解析文档(parser HTML)
+            在详细介绍浏览器渲染文档之前，先应该理解浏览器如何解析文档：解析文档的顺序，对于CSS和JavaScript如何处理等。
+                解析顺序
+                    浏览器按从上到下的顺序扫描解析文档；
+        解析样式和脚本：
+            脚本或许是由于通常会在JavaScript脚本中改变文档DOM结构，于是浏览器以同步方式解析，加载和执行脚本，浏览器在解析文档时，当解析到标签时，会解析其中的脚本（对于外链的JavaScript文件，需要先加载该文件内容，再进行解析），然后立即执行，这整个过程都会阻塞文档解析，直到脚本执行完才会继续解析文档。就是说由于脚本是同步加载和执行的，它会阻塞文档解析，这也解释了为什么现在通常建议将标签放在标签前面，而不是放在标签里。现在HTML5提供defer和async两个属性支持延迟和异步加载JavaScript文件，如：&lt;script defer src=&quot;script.js&quot;&gt;
+
+            改进针对上文说的脚本阻塞文档解析，主流浏览器如Chrome和FireFox等都有一些优化，比如在执行脚本时，开启另一个进程解析剩余的文档以找出并加载其他的待下载外部资源（不改变主进程的DOM树，仅优化加载外部资源）。
+
+            样式不同于脚本，浏览器对样式的处理并不会阻塞文档解析，大概是因为样式表并不会改变DOM结构
+
+            样式表与脚本你可能想问样式是否会阻塞脚本文件的加载执行呢？正常情况是不会的，但是存在一个问题是通常我们会在脚本中请求样式信息，但是在文档解析时，如果样式尚未加载或解析，将会得到错误信息，对于这一问题，FireFox浏览器和Webkit浏览器处理策略不同：
+                当存在有样式文件未被加载和解析时，FireFox浏览器会阻塞所有脚本；
+                而Webkit浏览器只会阻塞操作了改文件内声明的样式属性的脚本。
+        构建DOM树
+            DOM，即文档对象模型（Document Object Model）,DOM树，即文档内所有节点构成的一个树形结构。
+
+            假设浏览器获取返回的如下HTML文档：
+                &lt;!doctype html&gt;
+                &lt;html&gt;
+                    &lt;head&gt;
+                      &lt;link rel=&quot;stylesheet&quot; href=&quot;./theme.css&quot;&gt;&lt;/link&gt;
+                      &lt;script src=&quot;./config.js&quot;&gt;&lt;/script&gt;
+                      &lt;title&gt;关键渲染路径&lt;/title&gt;
+                    &lt;/head&gt;
+                    &lt;body&gt;
+                      &lt;h1 class=&quot;title&quot;&gt;关键渲染路径&lt;/h1&gt;
+                      &lt;p&gt;关键渲染路径介绍&lt;/p&gt;
+                      &lt;footer&gt;@copyright2017&lt;/footer&gt;
+                    &lt;/body&gt;
+                &lt;/html&gt;
+                首先浏览器从上到下依次解析文档构建DOM树，如下：
+                                                html
+                                                |  |
+                                                |  |
+                  ——————head ———————————————————    ———————————————————body——————————————————————————————
+                  |       |_______                             ___________|__________                           |
+                  |          |          |                             |                       |                    footer
+                title    link   script                       h1                    p                     |
+                  |                                             |                       |                     |
+                  |                                        关键渲染陆路径          关键渲染路径介绍         @copyrifht2017
+             关键渲染路径
+
+
+
+        构建CSSOM树
+            CSSOM，即CSS对象模型（CSS Object Model），CSSOM树，与DOM树结构相似，只是另外为每一个节点关联了样式信息。
+            假设浏览器获取返回的html样式如下：
+                html, body {
+                    width: 100%;
+                    height: 100%;
+                    background-color: #fcfcfc;
+                }
+                .title {
+                    font-size: 20px;
+                }
+                .footer {
+                    font-size: 12px;
+                    color: #aaa;
+                }
+          构建CSSOM树如下：                (width:100%....)
+                                                  html
+                                                |  |
+                  (display:none.....)            |  |          (background-color:#fcfcfc.....)
+                  ——————head ———————————————————    ———————————————————body——————————————————————————————
+                  |       |_______                             ___________|__________                           |
+                  |          |          |                             |                       |                    footer
+                title    link   script                       h1                    p                     |
+                  |                                    (font-size:20px.....)      |                (font-size:12px.....)
+                  |                                             |                       |                     |
+                  |                                        关键渲染陆路径          关键渲染路径介绍         @copyrifht2017
+             关键渲染路径
+        执行JavaScript
+            上文已经阐述了文档解析时对脚本的处理，我们得知脚本加载，解析和执行会阻塞文档解析，而在特殊情况下样式的加载和解析也会阻塞脚本，所以现在推荐的实践是标签放在标签前面
+        构建渲染树
+            DOM树和CSSOM树都构建完了，接着浏览器会构建渲染树：
+                渲染树，代表一个文档的视觉展示，浏览器通过它将文档内容绘制在浏览器窗口，展示给用户，它由按顺序展示在屏幕上的一系列矩形对象组成，这些矩形对象都带有字体，颜色和尺寸，位置等视觉样式属性。对于这些矩对象，FireFox称之为框架（frame）,Webkit浏览器称之为渲染对象（render object, renderer），后文统称为渲染对象。
+        渲染树与DOM树
+            每一个渲染对象都对应着DOM节点，但是非视觉（隐藏，不占位）DOM元素不会插入渲染树，如元素或声明display: none;的元素，渲染对象与DOM节点不是简单的一对一的关系，一个DOM可以对应一个渲染对象，但一个DOM元素也可能对应多个渲染对象，因为有很多元素不止包含一个CSS盒子，如当文本被折行时，会产生多个行盒，这些行会生成多个渲染对象；又如行内元素同时包含块元素和行内元素，则会创建一个匿名块级盒包含内部行内元素，此时一个DOM对应多个矩形对象（渲染对象）。
+            见图渲染树(图中渲染树viewport即视口，是文档的初始包含块，scroll代表滚动区域，详见CSS之视觉格式化模型(Visual Formatting Model)渲染树并不会包含显式或隐式地display：none;的标签元素。)
+
+        布局（Layout）或回流（reflow，relayout）
+            创建渲染树后，下一步就是布局（Layout）,或者叫回流（reflow,relayout），这个过程就是通过渲染树中渲染对象的信息，计算出每一个渲染对象的位置和尺寸，将其安置在浏览器窗口的正确位置，而有些时候我们会在文档布局完成后对DOM进行修改，这时候可能需要重新进行布局，也可称其为回流，本质上还是一个布局的过程，每一个渲染对象都有一个布局或者回流方法，实现其布局或回流。
+
+        流（flow）
+            HTML采用的是基于流的方式定位布局，其按照从左到右，从上到下的顺序进行排列，详见CSS定位机制。
+
+        全局布局与局部布局
+            对渲染树的布局可以分为全局和局部的，全局即对整个渲染树进行重新布局，如当我们改变了窗口尺寸或方向或者是修改了根元素的尺寸或者字体大小等；而局部布局可以是对渲染树的某部分或某一个渲染对象进行重新布局。
+
+        脏位系统（dirty bit system）
+            大多数web应用对DOM的操作都是比较频繁，这意味着经常需要对DOM进行布局和回流，而如果仅仅是一些小改变，就触发整个渲染树的回流，这显然是不好的，为了避免这种情况，浏览器使用了脏位系统，只有一个渲染对象改变了或者某渲染对象及其子渲染对象脏位值为”dirty”时，说明需要回流。
+
+        表示需要布局的脏位值有两种：
+            “dirty”–自身改变，需要回流
+            “children are dirty”–子节点改变，需要回流
+        布局过程
+            布局是一个从上到下，从外到内进行的递归过程，从根渲染对象，即对应着HTML文档根元素，然后下一级渲染对象，如对应着元素，如此层层递归，依次计算每一个渲染对象的几何信息（位置和尺寸）。
+            几何信息-位置和尺寸，即相对于窗口的坐标和尺寸，如根渲染对象，其坐标为（0， 0），尺寸即是视口
+            尺寸（浏览器窗口的可视区域）。
+
+        每一个渲染对象的布局流程基本如：
+            1.计算此渲染对象的宽度（width）；
+            2.遍历此渲染对象的所有子级，依次：
+            2.1设置子级渲染对象的坐标
+            2.2判断是否需要触发子渲染对象的布局或回流方法，计算子渲染对象的高度（height）
+            3.设置此渲染对象的高度：根据子渲染对象的累积高，margin和padding的高度设置其高度；
+            4.设置此渲染对象脏位值为false。
+        强制回流
+            在渲染树布局完成后，再次操作文档，改变文档的内容或结构，或者元素定位时，会触发回流，即需要重新布局，如请求某DOM的”offsetHeight”样式信息等诸多情况：
+
+        DOM操作，如增加，删除，修改或移动；
+            变更内容；
+            激活伪类；
+            访问或改变某些CSS属性（包括修改样式表或元素类名或使用JavaScript操作等方式）；
+            浏览器窗口变化（滚动或尺寸变化）
+            JavaScript
+
+            $(&apos;body&apos;).css(&apos;padding&apos;); // reflow
+            $(&apos;body&apos;)[0].offsetHeight; // relow
+            $(&apos;body&apos;).css(&apos;padding&apos;); // reflow
+            $(&apos;body&apos;)[0].offsetHeight; // relow
+            有过CSS3动画开发经验的同学可能会有经历，如下入场动画：
+
+            CSS
+            .slide-left {
+                -webkit-transition: margin-left 1s ease-out;
+                -moz-transition: margin-left 1s ease-out;
+                -o-transition: margin-left 1s ease-out;
+                transition: margin-left 1s ease-out;
+            }
+            .slide-left {
+                -webkit-transition: margin-left 1s ease-out;
+                -moz-transition: margin-left 1s ease-out;
+                -o-transition: margin-left 1s ease-out;
+                transition: margin-left 1s ease-out;
+            }
+            然后执行如下脚本：
+        JavaScript
+            var $slide = $(&apos;.slide-left&apos;);
+            $slide.css({
+                &quot;margin-left&quot;: &quot;100px&quot;
+            }).addClass(&apos;slide-left&apos;);
+            $slide.css({
+                &quot;margin-left&quot;: &quot;10px&quot;
+            });
+            var $slide = $(&apos;.slide-left&apos;);
+            $slide.css({
+                &quot;margin-left&quot;: &quot;100px&quot;
+            }).addClass(&apos;slide-left&apos;);
+            $slide.css({
+                &quot;margin-left&quot;: &quot;10px&quot;
+            });
+        我们会发现并没有效果，为什么呢？因为对margin-left的修改并没有触发回流，元素margin-left值的改变被缓存，如果我们在中间强制触发回流：
+        JavaScript
+            var $slide = $(&apos;.slide-left&apos;);
+            $slide.css({
+                &quot;margin-left&quot;: &quot;100px&quot;
+            });
+            console.log($slide.css(&apos;padding&apos;); $slide.addClass(&apos;slide-left&apos;); $slide.css({
+                &quot;margin-left&quot;: &quot;10px&quot;
+            });
+            var $slide = $(&apos;.slide-left&apos;);
+            $slide.css({
+                &quot;margin-left&quot;: &quot;100px&quot;
+            });
+            console.log($slide.css(&apos;padding&apos;); $slide.addClass(&apos;slide-left&apos;); $slide.css({
+                &quot;margin-left&quot;: &quot;10px&quot;
+            });
+        再看就达到了预期效果。
+
+        绘制（painting）
+            最后是绘制(paint)阶段或重绘（repaint）阶段，浏览器UI组件将遍历渲染树并调用渲染对象的绘制（paint）方法，将内容展现在屏幕上，也有可能在之后对DOM进行修改，需要重新绘制渲染对象，也就是重绘，绘制和重绘的关系可以参考布局和回流的关系。
+
+        全局与局部绘制
+            与布局相似，绘制也分为全局和局部绘制，即对整个渲染树或某些渲染对象进行绘制。
+
+        触发重绘
+            我们已经知道很多操作可能会触发回流，那么什么时候可能触发重绘呢，通常，当改变元素的视觉样式，如background-color,visibility，margin，padding或字体颜色时会触发全局或局部重绘，如：
+
+        JavaScript
+            $(&apos;body&apos;).css(&apos;color&apos;, &apos;red&apos;); // repaint
+            $(&apos;body&apos;).css(&apos;margin&apos;, &apos;2px&apos;); // reflow, repaint
+            $(&apos;body&apos;).css(&apos;color&apos;, &apos;red&apos;); // repaint
+            $(&apos;body&apos;).css(&apos;margin&apos;, &apos;2px&apos;);
+        页面渲染优化
+            浏览器对上文介绍的关键渲染路径进行了很多优化，针对每一次变化产生尽量少的操作，还有优化判断重新绘制或布局的方式等等。
+
+            在改变文档根元素的字体颜色等视觉性信息时，会触发整个文档的重绘，而改变某元素的字体颜色则只触发特定元素的重绘；改变元素的位置信息会同时触发此元素（可能还包括其兄弟元素或子级元素）的布局和重绘。某些重大改变，如更改文档根元素的字体尺寸，则会触发整个文档的重新布局和重绘，据此及上文所述，推荐以下优化和实践：
+
+                1.HTML文档结构层次尽量少，最好不深于六层；
+                2.脚本尽量后放，放在前即可；
+                3.少量首屏样式内联放在标签内；
+                4.样式结构层次尽量简单；
+                5.在脚本中尽量减少DOM操作，尽量缓存访问DOM的样式信息，避免过度触发回流；
+                6.减少通过JavaScript代码修改元素样式，尽量使用修改class名方式操作样式或动画；
+                7.动画尽量使用在绝对定位或固定定位的元素上；
+                8.隐藏在屏幕外，或在页面滚动时，尽量停止动画；
+                9.尽量缓存DOM查找，查找器尽量简洁；
+                10.涉及多域名的网站，可以开启域名预解析
+            实例
+                当我们访问一个页面时，浏览器渲染事件详细日志图如下：
+                发起请求；
+                    解析HTML；
+                    解析样式；
+                    执行JavaScript；
+                    布局；
+                    绘制
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">渲染</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/17/页面渲染机制/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-网络爬虫" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/15/网络爬虫/">网络爬虫</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/15/网络爬虫/" class="archive-article-date">
+  	<time datetime="2018-08-15T04:59:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>网络爬虫的基本原理</p>
+<pre><code>网络爬虫是搜索引擎抓取系统的重要组成部分.爬虫的主要目的是将互联网上的网页下载到本地形成一个或互联网内容的镜像备份
+
+网络爬虫抓取的工作流程：
+    1.首先选取一部分精心挑选的种子URL；
+    2.将这些URL放入待抓取URL队列；
+    3.从待抓取URL队列中取出待抓取在URL，解析DNS，并且得到主机的ip，并将URL对应的网页下载下来，存储进已下载网页库中。此外，将这些URL放进已抓取URL队列。
+    4.分析已抓取URL队列中的URL，分析其中的其他URL，并且将URL放入待抓取URL队列，从而进入下一个循环。
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/15/网络爬虫/">展开全文 >></a>
         </p>
       
 
@@ -444,7 +1254,7 @@ dt:列表项标题;dd:列表项
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -487,7 +1297,7 @@ dt:列表项标题;dd:列表项
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -549,19 +1359,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,11 +1371,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -581,11 +1391,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -593,7 +1399,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
+                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -601,7 +1411,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -609,7 +1419,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
             
             <div class="clearfix"></div>
