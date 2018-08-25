@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>ES6+进阶 | 我的成长记录</title>
+  <title>ES6+进阶 | 个人笔记整理与收集</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="es6">
+  <meta name="description" content="let    1、let的用法跟es5的var一样;    2、var会存在变量提升现象，let、const不会存在这种情况    3、只要块级作用域存在let、它声明的变量就会绑定这个区域，不在受外部的影响，形成封闭式作用域，言之，暂时性死区(简称TDZ),它的本质就是        只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使">
+<meta name="keywords" content="es6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6+进阶">
 <meta property="og:url" content="http://yoursite.com/2018/08/09/ES6-进阶/index.html">
-<meta property="og:site_name" content="我的成长记录">
+<meta property="og:site_name" content="个人笔记整理与收集">
+<meta property="og:description" content="let    1、let的用法跟es5的var一样;    2、var会存在变量提升现象，let、const不会存在这种情况    3、只要块级作用域存在let、它声明的变量就会绑定这个区域，不在受外部的影响，形成封闭式作用域，言之，暂时性死区(简称TDZ),它的本质就是        只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-09T05:49:50.751Z">
+<meta property="og:updated_time" content="2018-08-25T04:03:38.268Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6+进阶">
+<meta name="twitter:description" content="let    1、let的用法跟es5的var一样;    2、var会存在变量提升现象，let、const不会存在这种情况    3、只要块级作用域存在let、它声明的变量就会绑定这个区域，不在受外部的影响，形成封闭式作用域，言之，暂时性死区(简称TDZ),它的本质就是        只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使">
   
-    <link rel="alternative" href="/atom.xml" title="我的成长记录" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="个人笔记整理与收集" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -175,7 +178,842 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>let<br>    1、let的用法跟es5的var一样;<br>    2、var会存在变量提升现象，let、const不会存在这种情况<br>    3、只要块级作用域存在let、它声明的变量就会绑定这个区域，不在受外部的影响，形成封闭式作用域，言之，暂时性死区(简称TDZ),它的本质就是<br>        只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用变量<br>    4、let不允许在相同作用域内，重复声明同一个变量，因此不能再函数内部重新声明参数</p>
+<p>块级作用域<br>    ES5只有全局作用域和函数作用域，没有块级作用域<br>        需要块级作用域的两种情景<br>            1、内层变量、可能会覆盖外层变量<br>                var tmp = 123;<br>                function f(){<br>                    console.log(tmp);<br>                    if(false){<br>                        var tmp =”hello world”;<br>                    }<br>                }<br>                f();<br>            2、用计数的循环变量泄露为全局变量<br>                var s = “helloworld”;</p>
+<pre><code>        for(var i = 0;i&lt;s.length;i++){
+            console.log(s[i]);
+        }
+        console.log(i)
+es6的块级作用域
+    1、es6允许块级作用域的任意嵌套
+    2、块级作用域的出现，使得函数自执行IIFE不在需要了
+       //IIFE写法
+        (function(){
+            var tmp =.....;
+        }())
+       //块级作用域写法
+        {
+            let tmp =....;
+        }
+    3、块级作用域不返回值，除非t是全局变量
+</code></pre><p> const<br>    1、const声明一个只读的常量<br>    2、const除以下两点 不同外，其他都相同<br>            const一旦声明，就必须立即初始化，不能留到以后赋值<br>            const一旦赋值，常量的值就不能改变</p>
+<pre><code>在声明引用性数据为常量时，const保存的是变量的指针，只要指针不变就不会保存
+    const array = [];
+    array.push(1);
+    arr = [];
+</code></pre><p> 顶层对象属性和全局变量<br>    顶层对象，在浏览器环境指的是window对象，在node指的是global对象。es5中，顶层对象的属性和全局变量是等价的<br>    顶层对象的属性与全局变量挂钩，被认为是 JavaScript 语言最大的设计败笔之一。</p>
+<pre><code>es6引入的let 、const和class声明的全局变量不再属于顶层对象的属性
+</code></pre><p> 变量的解构赋值<br>    es6允许按照一定的模式，从数组和对象赋值，对变量进行赋值，这称之为解构。<br>        es5一次声明多个变量<br>        var a =1,<br>            b =2,<br>            c =3,<br>            …..<br>            ;<br>        es6一次声明多个变量<br>        let[a,b,c,d] = [1,2,1,4];</p>
+<pre><code>1、本质上这种写法属于&quot;模式匹配&quot;，只要等号两边的模式相同，左边的变量就会被赋予相同的值
+
+2、如果结构不成功，变量的值就等于undefined
+
+3、不完全解构，即等号左边的模式，只匹配一部分的等号右边的数组，这种情况，依然可以结构成功
+
+4、如果等号的右边不是数组，那么将会报错
+    let [foo] = 1;
+    let [foo] = false;
+    let [foo] = NaN;
+    let [foo] = undefined;
+    let [foo] = null;
+    let [foo] = {};
+
+5、解构赋值，允许指定默认值。
+    let[foo=true] = []; //foo====&gt;true;
+6、es6内部使用严格相等运算符===，判断一个位置是否有值。所以，如果一个数组成员不严格等于undefined,默认值是不会生效的
+    let[x=2] = [undefined]; //x ===&gt;2
+    let[x=1] = [null];//x == null;
+
+7、如果默认值是一个表达式，那么这个表达式是惰性求值的，即只有再用到的时候才会求值
+
+    function f(){console.log(&apos;aaa&apos;);}
+
+    let[x=f()] =[1];
+    //等价于
+    let x;
+    if([1][0] ==undefined){
+        x = f();
+    }else{
+        x =[1][0];
+    }
+8、默认值可以引用解构赋值的其他变量，但该变量必须已经声明
+    let [x = 1, y = x] = [];     // x=1; y=1
+    let [x = 1, y = x] = [2];    // x=2; y=2
+    let [x = 1, y = x] = [1, 2]; // x=1; y=2
+    let [x = y, y = 1] = [];     // ReferenceError
+    //上面最后一个表达式之所以会报错，是因为x用到默认值y时，y还没有声明
+
+对象的解构赋值
+    1、解构不仅仅用于数组，还可以用于对象
+        let {foo,bar} = {foo:&quot;aaa&quot;,bar:&quot;bbb&quot;};
+        //foo  ==&gt;&quot;aaa&quot;;
+        //bar ==&gt;&quot;bbb&quot;;
+    2、对象的解构和数组有一个重要的不同。数组的元素是按次序排列的，变量的取值由它的位置决定；而对象的属性没有次序，变量必须与属性名相同，才能取到相同的值
+    3、如果变量名与属性名不一致，必须写成下面这样
+        let [foo:baz] = {foo:&quot;wzs&quot;,baz:&quot;bbb&quot;}; //baz  ==&gt;wzs
+        let obj = {first:&quot;hello&quot;,last:&quot;world&quot;};
+        let {first:f,last:l} = obj;  //f &apos;hello&apos;  l &apos;world&apos;
+
+        实际上说明对象的解构是下面的简写
+            let {boo:boo,bar:bar} = {boo:&quot;aaa&quot;,bar:&quot;cccc&quot;};
+    4、与数组一样，解构也可以用于嵌套结构对象
+        let obj = {
+            p:[
+                &apos;hello&apos;,
+                {y:&apos;world&apos;}
+            ]
+        }
+
+        let {p:[x,{y}]} = obj;
+            x // hello
+            y // world
+
+    5、对象的解构也可以指定默认值
+        var {x = 3} = {};
+        x // 3
+
+        var {x, y = 5} = {x: 1};
+        x // 1
+        y // 5
+
+        var {x: y = 3} = {};
+        y // 3
+
+        var {x: y = 3} = {x: 5};
+        y // 5
+
+        var { message: msg = &apos;Something went wrong&apos; } = {};
+        msg // &quot;Something went wrong&quot;
+     默认值生效的条件是，对象的属性值严格等于undefined
+
+        var {x = 3} = {x: undefined};//x   3
+        var {x = 6} = {x:null};// x  null
+     如果解构模式是嵌套的对象，而且子对象所在的父属性不存在，那么将会报错
+       let {foo:{bar}} = {baz:&quot;baz&quot;};
+
+     由于数组本质是特殊的对象，因此可以对数组进行对象属性的解构
+        let arr =[1,2,3];
+        let {0:first,arr.length-1:last} = arr;
+        first // 1
+        last //3
+</code></pre><p>字符串的解构赋值</p>
+<pre><code>const [a,b,c,d,e] = &quot;hello&quot;;
+a//h
+b//e
+c//l
+d//l
+e//o
+
+类似数组的对象都有一个length,因此还可以对这个属性解构赋值
+let {length:len}=&quot;hello&quot;;
+</code></pre><p>函数参数的解构赋值<br>    function fun([a,b]){<br>    return a+b;<br>    }<br>    函数参数的解构也可以使用默认值。</p>
+<pre><code>function move({x = 0, y = 0} = {}) {
+  return [x, y];
+}
+
+move({x: 3, y: 8}); // [3, 8]
+move({x: 3}); // [3, 0]
+move({}); // [0, 0]
+move(); // [0, 0]
+
+function move({x, y} = { x: 0, y: 0 }) {
+  return [x, y];
+}
+
+move({x: 3, y: 8}); // [3, 8]
+move({x: 3}); // [3, undefined]
+move({}); // [undefined, undefined]
+move(); // [0, 0]
+//
+上面代码是为函数move的参数指定默认值，而不是为变量x和y指定默认值，所以会得到与前一种写法不同的结果。
+
+解构的用途
+    1、可以一次定义多个变量
+    2、让函数返回多个值
+    3、方便的让函数的参数和值对应起来
+    4、提取json数据
+    5、函数参数的默认值
+</code></pre><p> 严格模式(“use strict”)<br>    严格模式的限制<br>        1、变量必须声明后在使用<br>        2、函数的参数不能有同名属性，否则报错<br>        3、不能使用with语句<br>        4、不能对只读属性赋值，否则报错<br>        5、不能使用0表示8进制数，否则报错<br>        6、不能删除不可删除的属性，否则报错<br>        7、不能删除变量delete prop,会报错，只能删除属性delete global[prop]<br>        8、eval不会再它的外层作用域引入变量<br>        9、eval和arguments不能被重新赋值<br>        10、arguments不能自动反应函数参数的变化<br>        11、不能使用arguments.callee<br>        12、不能使用arguments.caller<br>        13、禁止this指向全局对象<br>        14、不能使用fn.caller和fn.arguments获取函数调用的堆栈<br>        15、增加了保留字（比如protected、static和interface）</p>
+<p> ES6数值的扩展<br>    es6在number对象上提供了Number.isFinite()和Number.isNaN()两个方法<br>    Number.isFinite()用来检查一个数值是否为有限的(finite)<br>    Number.isFinite(15); // true<br>    Number.isFinite(0.8); // true<br>    Number.isFinite(NaN); // false<br>    Number.isFinite(Infinity); // false<br>    Number.isFinite(-Infinity); // false<br>    Number.isFinite(‘foo’); // false<br>    Number.isFinite(‘15’); // false<br>    Number.isFinite(true); // false<br>    Number.isNaN()用来检查一个数值是否为NaN<br>    和全局函数 isNaN() 相比，该方法不会强制将参数转换成数字，只有在参数是真正的数字类型，且值为 NaN 的时候才会返回 true。<br>    Number.isNaN(NaN);        // true<br>    Number.isNaN(Number.NaN); // true<br>    Number.isNaN(0 / 0)       // true</p>
+<pre><code>// 下面这几个如果使用全局的 isNaN() 时，会返回 true。
+Number.isNaN(&quot;NaN&quot;);      // false，字符串 &quot;NaN&quot; 不会被隐式转换成数字 NaN。
+Number.isNaN(undefined);  // false
+Number.isNaN({});         // false
+Number.isNaN(&quot;blabla&quot;);   // false
+
+// 下面的都返回 false
+Number.isNaN(true);
+Number.isNaN(null);
+Number.isNaN(37);
+Number.isNaN(&quot;37&quot;);
+Number.isNaN(&quot;37.37&quot;);
+Number.isNaN(&quot;&quot;);
+Number.isNaN(&quot; &quot;);
+
+Number.parseInt()、Number.parseFloat()
+    ES6 将全局方法parseInt()和parseFloat()，移植到Number对象上面，行为完全保持不变。
+
+    // ES5的写法
+    parseInt(&apos;12.34&apos;) // 12
+    parseFloat(&apos;123.45#&apos;) // 123.45
+
+    // ES6的写法
+    Number.parseInt(&apos;12.34&apos;) // 12
+    Number.parseFloat(&apos;123.45#&apos;) // 123.45
+    这样做的目的，是逐步减少全局性方法，使得语言逐步模块化。
+
+    Number.parseInt === parseInt // true
+    Number.parseFloat === parseFloat // true
+
+Number.isInteger()
+    用来判断一个值是否为整数。需要注意的是，在 JavaScript 内部，整数和浮点数是同样的储存方法，所以 3 和 3.0 被视为同一个值。
+        Number.isInteger(25) // true
+        Number.isInteger(25.0) // true
+        Number.isInteger(25.1) // false
+        Number.isInteger(&quot;15&quot;) // false
+        Number.isInteger(true) // false
+
+Math对象的拓展
+    Math.trunc()  去除一个数的小数部分，返回整数部分
+        对于非数值，Math.trunc内部使用Number方法将其先转为数值。
+        对于空值和无法截取整数的值，返回NaN。
+    Math.sign()   判断一个数到底是正数、负数还是零，对于非数值，会先将转换为数值
+        它会返回五种值。
+
+        参数为正数，返回+1；
+        参数为负数，返回-1；
+        参数为 0，返回0；
+        参数为-0，返回-0;
+        其他值，返回NaN。
+
+    Math.cbrt()
+
+    Math.cbrt方法用于计算一个数的立方根。
+
+    对于非数值，Math.cbrt方法内部也是先使用Number方法将其转为数值。
+
+    Math.cbrt(-1) // -1
+    Math.cbrt(0)  // 0
+    Math.cbrt(1)  // 1
+    Math.cbrt(2)  // 1.2599210498948734
+    Math.hypot()
+
+    Math.hypot方法返回所有参数的平方和的平方根。
+
+    Math.hypot(3, 4);        // 5
+    Math.hypot(3, 4, 5);     // 7.0710678118654755
+    Math.hypot();            // 0
+    Math.hypot(NaN);         // NaN
+    Math.hypot(3, 4, &apos;foo&apos;); // NaN
+    Math.hypot(3, 4, &apos;5&apos;);   // 7.0710678118654755
+    Math.hypot(-3);          // 3
+</code></pre><p> ES6新增了一个指数运算符(<strong>)<br>    指数运算符可以与等号结合，形成一个新的赋值运算符（</strong>=）。</p>
+<pre><code>let a = 1.5;
+a **= 2;
+// 等同于 a = a * a;
+
+let b = 4;
+b **= 3;
+// 等同于 b = b * b * b;
+</code></pre><p> ES6字符串的扩展<br>    includes()、endWith()、startWith()<br>        传统上，JavaScript 只有indexOf方法，可以用来确定一个字符串是否包含在另一个字符串中。ES6 又提供了三种新方法。<br>        includes()      返回布尔值，表示是否查到了字符串方法<br>        startWith()     返回布尔值，表示参数字符串是否在原字符串的头部。<br>        endWith()       返回布尔值，表示参数字符串是否在原字符串的尾部。</p>
+<pre><code>        let s = &apos;Hello world!&apos;;
+
+        s.startsWith(&apos;Hello&apos;) // true
+        s.endsWith(&apos;!&apos;) // true
+        s.includes(&apos;o&apos;) // true
+    这三个方法都支持第二个参数，表示开始搜索的位置。
+
+        let s = &apos;Hello world!&apos;;
+
+        s.startsWith(&apos;world&apos;, 6) // true
+        s.endsWith(&apos;Hello&apos;, 5) // true
+        s.includes(&apos;Hello&apos;, 6) // false
+        上面代码表示，使用第二个参数n时，endsWith的行为与其他两个方法有所不同。它针对前n个字符，而其他两个方法针对从第n个位置直到字符串结束。
+repeat()
+    repeat(n)方法返回一个新字符串，表示将原字符串重复n次
+    &apos;x&apos;.repeat(3) // &quot;xxx&quot;
+    &apos;hello&apos;.repeat(2) // &quot;hellohello&quot;
+    &apos;na&apos;.repeat(0) // &quot;&quot;
+    参数如果是小数，会被向下取整。
+    如果repeat的参数是负数或者Infinity，会报错。
+    0 到-1 之间的小数，则等同于 0，这是因为会先进行取整运算。0 到-1 之间的小数，取整以后等于-0，repeat视同为 0。
+    参数NaN等同于 0。
+    如果repeat的参数是字符串，则会先转换成数字。
+padStart()、padEnd()
+    ES2017 引入了字符串补全长度的功能。如果某个字符串不够指定长度，会在头部或尾部补全。padStart()用于头部补全，padEnd()用于尾部补全。
+
+    &apos;x&apos;.padStart(5, &apos;ab&apos;) // &apos;ababx&apos;
+    &apos;x&apos;.padStart(4, &apos;ab&apos;) // &apos;abax&apos;
+
+    &apos;x&apos;.padEnd(5, &apos;ab&apos;) // &apos;xabab&apos;
+    &apos;x&apos;.padEnd(4, &apos;ab&apos;) // &apos;xaba&apos;
+    如果原字符串的长度，等于或大于指定的最小长度，则返回原字符串。
+    如果用来补全的字符串与原字符串，两者的长度之和超过了指定的最小长度，则会截去超出位数的补全字符串。
+    如果省略第二个参数，默认使用空格补全长度。
+
+模板字符串
+    es5的字符串模板输出通常是使用+拼接。
+
+    这样的缺点显然易见：字符串拼接内容多的时候，过于混乱，易出错。
+
+    而ES6 引入了模板字符串解决这个问题。
+
+    var name = &quot;老先生&quot;,trait = &quot;帅气&quot;;
+    //es5
+    var str = &quot;他叫&quot;+name+&quot;,人非常&quot;+trait+&quot;,说话又好听&quot;;
+
+    //es6
+    var str2 = `他叫 ${name} ,人非常 ${trait} ,说话又好听`;
+    模板字符串是增强版的字符串，用反引号（`）(英文下的~键)标识。它可以当作普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量。
+
+    如果在模板字符串中需要使用反引号，则前面要用反斜杠转义。
+    如果使用模板字符串表示多行字符串，所有的空格和缩进都会被保留在输出之中。
+    模板字符串中嵌入变量，需要将变量名写在${}之中。
+    大括号内部可以放入任意的 JavaScript 表达式，可以进行运算，以及引用对象属性。
+    模板字符串之中还能调用函数。
+    如果大括号中的值不是字符串，将按照一般的规则转为字符串。比如，大括号中是一个对象，将默认调用对象的toString方法。
+    如果模板字符串中的变量没有声明，将报错。
+
+标签模板
+    模板字符串可以紧跟在一个函数名后面，该函数将被调用来处理这个模板字符串。这被称为“标签模板”功能。
+
+    alert`123`
+    // 等同于
+    alert(123)
+    标签模板其实不是模板，而是函数调用的一种特殊形式。“标签”指的就是函数，紧跟在后面的模板字符串就是它的参数。
+
+    如果模板字符里面有变量，就不是简单的调用了，而是会将模板字符串先处理成多个参数，再调用函数。
+
+    let a = 5;
+    let b = 10;
+
+    tag`Hello ${ a + b } world ${ a * b }`;
+    // 等同于
+    tag([&apos;Hello &apos;, &apos; world &apos;, &apos;&apos;], 15, 50);
+</code></pre><p>ES6函数的扩展<br>    Es6之前 不能为函数参数指定默认值，只能采用变通的方法<br>        function log(x,y = ‘world’){<br>            console.log(x,y);<br>        }<br>        log(‘Hello’) // Hello World<br>        log(‘Hello’, ‘China’) // Hello China<br>        log(‘Hello’, ‘’) // Hello</p>
+<pre><code>与解构赋值结合使用
+    function foo({x, y = 5}) {
+      console.log(x, y);
+    }
+
+    foo({}) // undefined 5
+    foo({x: 1}) // 1 5
+    foo({x: 1, y: 2}) // 1 2
+    foo() // TypeError: Cannot read property &apos;x&apos; of undefined
+
+参数默认值的位置
+
+通常情况下，定义了默认值的参数，应该是函数的尾参数。因为这样比较容易看出来，到底省略了哪些参数。如果非尾部的参数设置默认值，实际上这个参数是没法省略的。
+
+    // 例一
+    function f(x = 1, y) {
+      return [x, y];
+    }
+
+    f() // [1, undefined]
+    f(2) // [2, undefined])
+    f(, 1) // 报错
+    f(undefined, 1) // [1, 1]
+
+    // 例二
+    function f(x, y = 5, z) {
+      return [x, y, z];
+    }
+
+    f() // [undefined, 5, undefined]
+    f(1) // [1, 5, undefined]
+    f(1, ,2) // 报错
+    f(1, undefined, 2) // [1, 5, 2]
+</code></pre><p>函数的length属性<br>        指定了默认值以后，函数的length属性，将返回没有指定默认值的参数个数。也就是说，指定了默认值后，length属性将失真。</p>
+<pre><code>(function (a) {}).length // 1
+(function (a = 5) {}).length // 0
+(function (a, b, c = 5) {}).length // 2
+fn.length 返回形参个数
+arguments.length 返回实参个数
+</code></pre><p>函数的作用域<br>    *作用域</p>
+<pre><code>一旦设置了参数的默认值，函数进行声明初始化时，参数会形成一个单独的作用域。等到初始化结束，这个作用域就会消失。这种语法行为，在不设置参数默认值时，是不会出现的。
+
+    var x = 1;
+
+    function f(x, y = x) {
+      console.log(y);
+    }
+
+    f(2) // 2
+上面代码中，参数y的默认值等于变量x。调用函数f时，参数形成一个单独的作用域。在这个作用域里面，默认值变量x指向第一个参数x，而不是全局变量x，所以输出是2。
+
+    let x = 1;
+
+    function f(y = x) {
+      let x = 2;
+      console.log(y);
+    }
+
+    f() // 1
+上面代码中，函数f调用时，参数y = x形成一个单独的作用域。这个作用域里面，变量x本身没有定义，所以指向外层的全局变量x。函数调用时，函数体内部的局部变量x影响不到默认值变量x。
+
+    var x = 1;
+
+    function foo(x = x) {
+      // ...
+    }
+
+    foo() // ReferenceError: x is not defined
+上面代码中，参数x = x形成一个单独作用域。实际执行的是let x = x，由于暂时性死区的原因，这行代码会报错”x 未定义“。
+
+    var x = 1;
+    function foo(x, y = function() { x = 2; }) {
+      var x = 3;
+      y();
+      console.log(x);
+    }
+
+    foo()//3
+    x//1
+如果将var x = 3的var去除，函数foo的内部变量x就指向第一个参数x，与匿名函数内部的x是一致的，所以最后输出的就是2，而外层的全局变量x依然不受影响。
+
+    var x = 1;
+    function foo(x, y = function() { x = 2; }) {
+      x = 3;
+      y();
+      console.log(x);
+    }
+
+    foo() // 2
+    x // 1
+</code></pre><p>Es6之rest参数<br>    ES6 引入 rest 参数（形式为…变量名），用于获取函数的多余参数，这样就不需要使用arguments对象了。rest 参数搭配的变量是一个数组，该变量将多余的参数放入数组中。</p>
+<pre><code>function add(...values) {
+  let sum = 0;
+
+  for (var val of values) {
+    sum += val;
+  }
+
+  return sum;
+}
+
+add(2, 5, 3) // 10
+arguments对象不是数组，而是一个类似数组的对象。所以为了使用数组的方法，必须使用Array.prototype.slice.call先将其转为数组。rest 参数就不存在这个问题，它就是一个真正的数组，数组特有的方法都可以使用。下面是一个利用 rest 参数改写数组push方法的例子。
+
+function push(array, ...items) {
+  items.forEach(function(item) {
+    array.push(item);
+    console.log(item);
+  });
+}
+
+var a = [];
+push(a, 1, 2, 3)
+注意，rest 参数之后不能再有其他参数（即只能是最后一个参数），否则会报错。
+
+// 报错
+function f(a, ...b, c) {
+  // ...
+}
+函数的length属性，不包括 rest 参数。
+
+(function(a) {}).length  // 1
+(function(...a) {}).length  // 0
+(function(a, ...b) {}).length  // 1
+</code></pre><p>严格模式<br>    从 ES5 开始，函数内部可以设定为严格模式。</p>
+<pre><code>ES2016 做了一点修改，规定只要函数参数使用了默认值、解构赋值、或者扩展运算符，那么函数内部就不能显式设定为严格模式，否则会报错
+</code></pre><p>函数的name属性<br>   返回函数名<br>   function foo() {}<br>   foo.name // “foo”<br>   var f = function () {}; // “f”</p>
+<p>箭头函数<br>    Es6允许使用箭头(=&gt;)定义函数<br>    var f = v =&gt; v;<br>    相当于<br>    function f(v){<br>        return v;<br>    }</p>
+<pre><code>var f = () =&gt;5;
+相当于
+function f(){
+    return 5;
+}
+
+var sum = (num1,num2) =&gt;num1+num2;
+相当于
+function (num1,num2){
+    return num1 + num2;
+}
+
+由于大括号被解释为代码块，所以如果箭头函数直接返回一个对象，必须在对象外面加上括号，否则会报错。
+
+// 报错
+let getTempItem = id =&gt; { id: id, name: &quot;Temp&quot; };
+
+// 不报错
+let getTempItem = id =&gt; ({ id: id, name: &quot;Temp&quot; });
+使用注意点
+
+箭头函数有几个使用注意点。
+
+函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。
+不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。
+不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。
+不可以使用yield命令，因此箭头函数不能用作 Generator 函数。
+this指向的固定化，并不是因为箭头函数内部有绑定this的机制，实际原因是箭头函数根本没有自己的this，导致内部的this就是外层代码块的this。正是因为它没有this，所以也就不能用作构造函数。
+
+箭头函数转成 ES5 的代码如下。
+
+// ES6
+function foo() {
+  setTimeout(() =&gt; {
+    console.log(&apos;id:&apos;, this.id);
+  }, 100);
+}
+
+// ES5
+function foo() {
+  var _this = this;
+
+  setTimeout(function () {
+    console.log(&apos;id:&apos;, _this.id);
+  }, 100);
+}
+//转换后的 ES5 版本清楚地说明了，箭头函数里面根本没有自己的this，而是引用外层的this。
+由于箭头函数没有自己的this，所以当然也就不能用call()、apply()、bind()这些方法去改变this的指向。
+</code></pre><p>   函数参数的尾逗号</p>
+<p>   ES2017 允许函数的最后一个参数有尾逗号（trailing comma）。</p>
+<p>   这样的规定也使得，函数参数与数组和对象的尾逗号规则，保持一致了。</p>
+<p>   function clownsEverywhere(<br>     param1,<br>     param2,<br>   ) { /<em> … </em>/ }</p>
+<p>   clownsEverywhere(<br>     ‘foo’,<br>     ‘bar’,<br>   );</p>
+<p>数组的扩展<br>    扩展运算符<br>        扩展运算符是三个点(…)。它好比rest参数的逆运算，将一个素组转为用逗号分割的参数序列<br>        console.log(…[1,2,3])<br>        //1 2 3</p>
+<pre><code>  console.log(2,3,4...[56,45,4],2)
+  //2 3 4 56 45 4 2
+
+  [...document.querySelectorAll(&apos;div&apos;)]
+  // [&lt;div&gt;, &lt;div&gt;, &lt;div&gt;]
+
+  该运算符将一个数组，变为参数序列。
+
+  扩展运算符后面还可以放置表达式。
+
+  const arr = [
+    ...(x &gt; 0 ? [&apos;a&apos;] : []),
+    &apos;b&apos;,
+  ];
+  如果扩展运算符后面是一个空数组，则不产生任何效果。
+
+  [...[], 1]
+  // [1]
+
+ 替代数组的apply方法
+ 由于扩展运算符可以展开数组，所以不再需要apply方法，将数组转为函数的参数了。
+
+ // ES5 的写法
+ function f(x, y, z) {
+   // ...
+ }
+ var args = [0, 1, 2];
+ f.apply(null, args);
+
+ // ES6的写法
+ function f(x, y, z) {
+   // ...
+ }
+ let args = [0, 1, 2];
+ f(...args);
+ es5教大家的利用Math.max拿数组最大值
+
+ //es5
+ Math.max.apply(null,[1,5,2,8]) // 8
+ //es6
+ Math.max(...[1,5,2,8])//8
+ //上面两种方法等同于
+ Math.max(1,5,2,8)
+
+ 扩展运算符的应用
+复制数组
+  //es5复制数组写法
+  const a1 =[1,2];
+  const a2 = a1.concat();
+
+  es6扩展运算符复制数组写法
+  const a1 =[1,2];
+  const a2 =[...a1];//写法一
+  const [...a2] = a1; // 写法二
+
+  合并数组
+  合并数组
+
+  扩展运算符提供了数组合并的新写法。
+
+  // ES5
+  [1, 2].concat(more)
+  // ES6
+  [1, 2, ...more]
+
+  var arr1 = [&apos;a&apos;, &apos;b&apos;];
+  var arr2 = [&apos;c&apos;];
+  var arr3 = [&apos;d&apos;, &apos;e&apos;];
+
+  // ES5的合并数组
+  arr1.concat(arr2, arr3);
+  // [ &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos; ]
+
+  // ES6的合并数组
+  [...arr1, ...arr2, ...arr3]
+  // [ &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos; ]
+
+  与解构赋值结合
+
+    // ES5
+    a = list[0], rest = list.slice(1)
+    // ES6
+    [a, ...rest] = list
+    下面是另外一些例子。
+
+    const [first, ...rest] = [1, 2, 3, 4, 5];
+    first // 1
+    rest  // [2, 3, 4, 5]
+
+    const [first, ...rest] = [];
+    first // undefined
+    rest  // []
+
+    const [first, ...rest] = [&quot;foo&quot;];
+    first  // &quot;foo&quot;
+    rest   // []
+    const [...butLast, last] = [1, 2, 3, 4, 5];
+    // 报错
+
+    const [first, ...middle, last] = [1, 2, 3, 4, 5];
+    // 报错
+
+    字符串
+
+    扩展运算符还可以将字符串转为真正的数组。
+
+        [...&apos;hello&apos;]
+        // [ &quot;h&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot; ]
+    实现了 Iterator 接口的对象
+
+        let nodeList = document.querySelectorAll(&apos;div&apos;);
+        let array = [...nodeList];
+</code></pre><p> Array.form()<br>    Array.form()将两类对象转为真正的数组<br>        // NodeList对象(节点对象)<br>        let ps = document.querySelectorAll(‘p’);<br>        Array.from(ps).forEach(function (p) {<br>          console.log(p);<br>        });</p>
+<pre><code>// arguments对象
+function foo() {
+  var args = Array.from(arguments);
+  // ...
+}
+参数：
+
+第一个参数：一个类数组对象，用于转为真正的数组
+第二个参数：类似于数组的map方法，用来对每个元素进行处理，将处理后的值放入返回的数组。
+第三个参数：如果map函数里面用到了this关键字，还可以传入Array.from的第三个参数，用来绑定this。
+</code></pre><p>Array.of()</p>
+<pre><code>Array.of方法用于将一组值，转换为数组。
+
+这个方法的主要目的，是弥补数组构造函数Array()的不足。因为参数个数的不同，会导致Array()的行为有差异。
+
+//Array
+Array() // []
+Array(3) // [, , ,]
+Array(3, 11, 8) // [3, 11, 8]
+
+Array.of(3, 11, 8) // [3,11,8]
+Array.of(3) // [3]
+Array.of(3).length // 1
+</code></pre><p>数组实例的copyWithin()<br>    copayWithin()，在当前数组的内部，将指定位置的成员复制到其他位置(会覆盖原有成员)，然后返回当前数组，也就是说，使用这个方法会修改当前数组</p>
+<p>Es6之Class和extends<br>    es5的写法<br>        方法一:<br>            function Person(name, age){<br>                this.name = name;<br>                this.age = age;<br>            }<br>            Person.prototype.showName = function(){<br>                return <code>名字为: ${this.name}</code>;<br>            };</p>
+<pre><code>     let p1 = new Person(&apos;Strive&apos;, 18);
+     console.log(p1.showName());
+方法二：
+     function Person(name, age){
+         this.name = name;
+         this.age = age;
+     }
+     Object.assign(Person.prototype,{
+         showName(){
+             return `名字为: ${this.name}`;
+         },
+         showAge(){
+             return `年龄为: ${this.age}`;
+         }
+     });
+
+     let p1 = new Person(&apos;Strive&apos;, 18);
+     console.log(p1.showName());
+     console.log(p1.showAge());
+ es6的写法
+     class Person{
+         constructor(name,age){ //构造方法(函数), 调用new，自动执行
+             //console.log(`构造函数执行了, ${name}, ${age}`);
+             this.name = name;
+             this.age = age;
+         }
+         showName(){
+             return `名字为: ${this.name}`;
+         }
+         showAge(){
+             return `年龄: ${this.age}`;
+         }
+     }
+     let p1 = new Person(&apos;Strive&apos;, 18);
+     console.log(p1.showName(), p1.showAge());
+
+     表达式写法
+         const Person = class{
+             constructor(name,age){ //构造方法(函数), 调用new，自动执行
+                 //console.log(`构造函数执行了, ${name}, ${age}`);
+                 this.name = name;
+                 this.age = age;
+             }
+             showName(){
+                 return `名字为: ${this.name}`;
+             }
+             showAge(){
+                 return `年龄: ${this.age}`;
+             }
+         }
+         let p1 = new Person(&apos;Strive&apos;, 18);
+         console.log(p1.showName(), p1.showAge());
+
+     函数名拼接写法
+         let aaa =&apos;strive&apos;;
+         let bbb =&apos;method&apos;;
+
+         class Person{
+             constructor(name,age){ //构造方法(函数), 调用new，自动执行
+                 //console.log(`构造函数执行了, ${name}, ${age}`);
+                 this.name = name;
+                 this.age = age;
+             }
+             showName(){
+                 return `名字为: ${this.name}`;
+             }
+             showAge(){
+                 return `年龄: ${this.age}`;
+             }
+             [aaa+bbb](){
+                 return &apos;随便了....&apos;
+             }
+         }
+         let p1 = new Person(&apos;Strive&apos;, 18);
+         console.log(p1[aaa+bbb]());
+
+     结构后会是undefined,this会找不见
+     class Person{
+         constructor(){
+             this.name = &apos;Strive&apos;;
+             this.showName = this.showName.bind(this); //在这里改变this的指向，矫正this
+         }
+         showName(){
+             console.log(&apos;this:&apos;, this);
+             return `名字为: ${this.name}`;
+         }
+     }
+
+     let p1 = new Person();
+
+     let {showName } = p1;
+
+     console.log(showName());
+
+    拖拽小封装
+             &lt;div id=&quot;div1&quot; class=&quot;box left&quot;&gt;DIV1&lt;/div&gt;
+             &lt;div id=&quot;div2&quot; class=&quot;box right&quot;&gt;DIV2&lt;/div&gt;
+
+             &lt;script&gt;
+                 //普通拖拽 -- 父类
+                 class Drag{
+                     constructor(id){
+                         this.oDiv = document.querySelector(id);
+                         this.disX = 0;
+                         this.disY = 0;
+                         this.init();
+                     }
+                     init(){
+                         this.oDiv.onmousedown = function(ev){
+                             this.disX = ev.clientX - this.oDiv.offsetLeft;
+                             this.disY = ev.clientY - this.oDiv.offsetTop;
+
+                             document.onmousemove = this.fnMove.bind(this);
+                             document.onmouseup = this.fnUp.bind(this);
+
+                             return false;
+                         }.bind(this);
+                     }
+                     fnMove(ev){
+                         this.oDiv.style.left = ev.clientX - this.disX+&apos;px&apos;;
+                         this.oDiv.style.top = ev.clientY - this.disY+&apos;px&apos;;
+                     }
+                     fnUp(){
+                         document.onmousemove=null;
+                         document.onmouseup=null;
+                     }
+                 }
+
+                 //子类—— 限制范围
+                 class LimitDrag extends Drag{
+                     fnMove(ev){
+                         super.fnMove(ev);
+
+                         //限制范围
+                         if(this.oDiv.offsetLeft&lt;=0){
+                             this.oDiv.style.left =0;
+                         }
+                     }
+                 }
+
+                 //调用
+                 new Drag(&apos;#div1&apos;);
+                 new LimitDrag(&apos;#div2&apos;);
+             &lt;/script&gt;
+
+         类的继承
+             es5的继承：
+              //父类(组合继承)
+             function Person(name){
+                 this.name = name;
+             }
+             Person.prototype.showName = function(){
+                 return `名字是: ${this.name}`;
+             };
+
+             //子类
+             function Student(name,skill){
+                 Person.call(this,name); //继承属性
+
+                 this.skill = skill;
+             }
+             Student.prototype = new Person(); //继承方法
+
+
+             //调用
+
+             let stu1 = new Student(&apos;Strive&apos;,&apos;逃学&apos;);
+             console.log(stu1.showName());
+             es6的继承
+                //父类
+                 class Person{
+                     constructor(name){
+                         this.name = name;
+                     }
+                     showName(){
+                         console.log(&apos;父类showName&apos;);
+                         return `名字为: ${this.name}`;
+                     }
+                 }
+
+                 //子类
+                 class Student extends Person{
+                     constructor(name,skill){
+                         super(name);
+                         this.skill = skill;
+                     }
+                     showName(){
+                         super.showName(); //父级的方法执行
+
+                         //TODO 做子级事情
+                         console.log(&apos;子类里的showName&apos;);
+                     }
+                     showSkill(){
+                         return  `哥们儿的技能为: ${this.skill}`;
+                     }
+                 }
+
+
+                 //调用
+
+                 let stu1 = new Student(&apos;Strive&apos;,&apos;逃学&apos;);
+                 console.log(stu1.showName());
+</code></pre>
       
 
       
@@ -299,8 +1137,8 @@
     </a>
   
   
-    <a href="/2018/08/09/javaScript从入门到放弃/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">javaScript从入门到放弃</div>
+    <a href="/2018/08/09/基础篇之javaScript/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">基础篇之javaScript</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -454,35 +1292,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -490,11 +1300,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,7 +1324,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
             
             <div class="clearfix"></div>
@@ -659,5 +1509,5 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>

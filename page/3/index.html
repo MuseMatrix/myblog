@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>我的成长记录</title>
+  <title>个人笔记整理与收集</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="我的成长记录">
+<meta property="og:title" content="个人笔记整理与收集">
 <meta property="og:url" content="http://yoursite.com/page/3/index.html">
-<meta property="og:site_name" content="我的成长记录">
+<meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的成长记录">
+<meta name="twitter:title" content="个人笔记整理与收集">
   
-    <link rel="alternative" href="/atom.xml" title="我的成长记录" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="个人笔记整理与收集" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -155,365 +155,213 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-微信小程序指南" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-web前端命名规范" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/21/微信小程序指南/">微信小程序指南</a>
+      <a class="article-title" href="/2018/08/25/web前端命名规范/">web前端命名规范</a>
     </h1>
   
 
         
-        <a href="/2018/08/21/微信小程序指南/" class="archive-article-date">
-  	<time datetime="2018-08-21T05:42:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
+        <a href="/2018/08/25/web前端命名规范/" class="archive-article-date">
+  	<time datetime="2018-08-25T03:50:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>小程序之文件说明</p>
-<pre><code>app.json 小程序的全局配置，决定页面文件的路径、窗口表现、设置网络超时时间，设置多tab等
-    pages:设置页面的路径
-    window:设置默认页面的窗口表现
-        backgroundTextStyle：下拉loading 的样式，仅支持dark和light
-        navigationBarBackgroundColor:导航栏背景颜色
-        navigationBarTitleText:导航栏标题文字内容
-        navigationBarTextStyle:导航栏标题颜色,仅支持black/white
-    tabBar：设置底部的tab表现
-    networkTimeout:设置网络超时时间
-    debug:设置是否开启debug模式
-app.js 小程序的逻辑
-app.wxss 小程序公共样式表
+        <p>企业命名规范：</p>
+<pre><code>http://tguide.qq.com
+http://www.htmleaf.com/
+http://www.dreamdu.com/javascript/what_is_bom/
+http://www.51yuansu.com/?z=jqliyhbpz
+(一)网页内容类
 
-一个MINA页面由四个文件部分组成
-    wxml 页面结构
-    wxss 页面样式表
-    json 页面配置
-    js   页面逻辑
-</code></pre><p>小程序逻辑层</p>
-<pre><code>使用App函数来注册小程序，接受一个Object参数，其指定小程序的生命周期函数等
-Object参数说明
-    onLaunch函数---------生命周期函数(监听小程序初始化)
-        当小程序初始化完成时，会触发onLaunch(全局只触发一次)
-    onShow函数-----------生命周期函数(监听小程序显示)
-        当小程序启动，或从后台进入前台显示，会触发onShow
-    onHide函数-----------生命周期函数(监听小程序隐藏)
-        当小程序从前台进入后台，会触发onHide
-    onError函数---------错误监听函数
-        当小程序发生脚本错误，或者api调用失败时，会触发onError并带上错误信息
-    onPageNotFound------------页面不存在监听函数
-        当小程序要打开的页面不存在的情况，会带上页面信息回调该函数，
-小程序注册页面
-    Page({}) 函数用来注册一个页面。接受一个 object 参数，其指定页面的初始数据、生命周期函数、事件处理函数等。
-        data:页面的初始化数据
-        onLoad:生命周期函数(监听页面加载)
-        onReady:生命周期函数(监听页面初次渲染完成)
-        onShow:生命周期函数(监听页面显示)
-        onHide:生命周期函数(监听页面隐藏)
-        onUnload:生命周期函数(监听页面卸载)
-        onPullDownRefresh:页面相关事件处理函数--监听用户下拉动作
-        onReachBottom:页面上拉触底事件的处理函数
-        onShareAppMessage:用户点击右上角转发
-        onPageScroll:页面滚动触发事件的处理函数
-</code></pre><p>小程序视图层</p>
-<pre><code>小程序之事件
-    标签绑定事件 
-    bindtap-----------单机事件处理函数,属于冒泡事件
+标题: title
+摘要: summary
+箭头： arrow
+商标： label
+网站标志： logo
+转角/圆角： corner
+横幅广告： banner
+子菜单： subMenu
+搜索： search
+搜索框： searchBox
+登录： login
+登录条：loginbar
+工具条： toolbar
+下拉： drop
+标签页： tab
+当前的： current
+列表： list
+滚动： scroll
+服务： service
+提示信息： msg
+热点：hot
+新闻： news
+小技巧： tips
+下载： download
+栏目标题： title
+热点： hot
+加入： joinus
+注册： regsiter
+指南： guide
+友情链接： friendlink
+状态： status
+版权： copyright
+按钮： btn
+合作伙伴： partner
+投票： vote
+左右中：left right center
 
-小程序之路由
-    页面跳转
-    wx.navigateTo({
-        url:&quot;../index/index?title=微信&quot;
-    })
-    关闭当前页，跳转到页面的某个页面，页面重定向
-    wx.redirectTo({
-        url:&quot;../index/index?title=对的&quot;
-    })
-    关闭所有页面，打开应用的某个页面
-    wx.reLaunch({
-        url:&quot;../index/index?title=是啥&quot;
-    })
-    跳转到tabBar页面，并关闭其他所有taBar页面
-    wx.switchTab({
-        url:&quot;../index/index?title=是啥&quot;
-    })
-    关闭当前页，返回上一级或多级页面
-    wx.navigateBack({
-        url:&quot;../index/index?title=飒飒&quot;
-    })
-小程序之传参接受
-    onLoad:function(options){
-        this.setData({
-            text:options.title
-        })
-    }
-小程序之轮播图
-    简单布局
-    &lt;view class=&quot;container&quot;&gt;
-        &lt;swiper class=&quot;swiper-pic&quot;&gt;
-            &lt;swiper-item&gt;
-                &lt;image src=&quot;路径&quot;&gt;&lt;/image&gt;
-            &lt;/swiper-item&gt;
-        &lt;/swiper&gt;
-    &lt;/view&gt;
-    添加小圆点  indicator-dots
-    小圆点颜色  indicator-color=&quot;#fff&quot;
-    当前选中小圆点颜色  indicator-active-color=&quot;#000&quot;
-    是否循环    circular
+(二)注释的写法:
 
-数据绑定
-    类似vue,双大括号进行数据绑定，例：
-        内容：
-            &lt;view&gt;{{message}}&lt;/view&gt;
-            Page({
-                data:{
-                    message:&quot;hello world&quot;
-                }
-            })
-        组件属性
-            &lt;view id=&quot;item-{{id}}&quot;&gt;&lt;/view&gt;
-            Page({
-                data:{
-                    id:0
-                }
-            })
-        控制属性
-            &lt;view wx:if=&quot;{{condition}}&quot;&gt;&lt;/view&gt;
-            Page({
-                data:{
-                    condition:true
-                }
-            })
-        关键字
-            &lt;checkbox checked=&quot;{{false}}&quot;&gt; &lt;/checkbox&gt;
-            不要直接写checked=&quot;false&quot;
+/* Footer */
+内容区
+/* End Footer */
 
-        运算
-            可以再{{}}进行的运算
-            三元表达式
-                &lt;view hidden=&quot;{{flag ? true : false}}&quot;&gt; Hidden &lt;/view&gt;
-            算术运算
-                &lt;view&gt; {{a + b}} + {{c}} + d &lt;/view&gt;
-                Page({
-                  data: {
-                    a: 1,
-                    b: 2,
-                    c: 3
-                  }
-                })
-            逻辑判断
-                &lt;view wx:if=&quot;{{length > 5}}&quot;&gt; &lt;/view&gt;
-            字符串运算
-                &lt;view&gt;{{"hello" + name}}&lt;/view&gt;
-                Page({
-                  data:{
-                    name:&quot;MINA&quot;
-                  }
-                })
-            数据路径运算
-                &lt;view&gt;{{object.key}} {{array[0]}}&lt;/view&gt;
-                Page({
-                  data: {
-                    object: {
-                      key: &apos;Hello &apos;
-                    },
-                    array: [&apos;MINA&apos;]
-                  }
-                })
-        组合
-            数组
-                &lt;view wx:for-items=&quot;{{[zero, 1, 2, 3, 4]}}&quot;&gt; {{item}} &lt;/view&gt;
-                Page({
-                  data: {
-                    zero: 0
-                  }
-                })
-            对象
-                &lt;template is=&quot;objectCombine&quot; data=&quot;{{for: a, bar: b}}&quot;&gt;&lt;/template&gt;
-                Page({
-                  data: {
-                    a: 1,
-                    b: 2
-                  }
-                })
+(三)id的命名:
 
-                &lt;template is=&quot;objectCombine&quot; data=&quot;{{...obj1, ...obj2, e: 5}}&quot;&gt;&lt;/template&gt;
-                Page({
-                  data: {
-                    obj1: {
-                      a: 1,
-                      b: 2
-                    },
-                    obj2: {
-                      c: 3,
-                      d: 4
-                    }
-                  }
-                })
+(1)页面结构
 
-                &lt;template is=&quot;objectCombine&quot; data=&quot;{{foo, bar}}&quot;&gt;&lt;/template&gt;
-                Page({
-                  data: {
-                    foo: &apos;my-foo&apos;,
-                    bar: &apos;my-bar&apos;
-                  }
-                })
+容器: container
+页头：header
+内容：content/container
+页面主体：main
+页尾：footer
+导航：nav
+侧栏：sidebar
+栏目：column
+页面外围控制整体布局宽度：wrapper
+左右中：left right center
 
-                &lt;template is=&quot;objectCombine&quot; data=&quot;{{...obj1, ...obj2, a, c: 6}}&quot;&gt;&lt;/template&gt;
-                Page({
-                  data: {
-                    obj1: {
-                      a: 1,
-                      b: 2
-                    },
-                    obj2: {
-                      b: 3,
-                      c: 4
-                    },
-                    a: 5
-                  }
-                })
-        花括号和引号之间如果有空格，会被当字符串处理
-        &lt;view wx:for=&quot;{{[1,2,3]}} &quot;&gt;
-          {{item}}
-        &lt;/view&gt;
-列表渲染，例
-    &lt;view wx:for-items=&quot;{{array}}&quot;&gt;{{item}}&lt;/view&gt;
-</code></pre><p>小程序之组件</p>
-<pre><code>视图容器
-view------视图容器
-    属性
-        hover-class (默认值为none,指定按下去的样式类，当hover-class等于none时，没有点击态效果)
-        hover-stop-propagation(默认值为false,指定是否阻止本节点的祖先节点出现点状态)
-        hover-start-time(按住后多久出现点状态，单位毫秒)
-        hover-stay-time(手指松开后点击态保留时间，单位毫秒)
-scroll-view------可滚动视图区(滚动时，需要设置一个高度)
-    属性
-        scroll-x(默认值false,允许横向滚动)
-        scroll-y(默认值false,允许纵向滚动)
-        upper-threshold(默认值50，距顶部/左边多远时(单位px),触发scrolltoupper事件)
-        lower-threshold(默认值50，距底部/右边多远时(单位px),出发scrolltolower事件)
-        scroll-top(设置竖向滚动条的位置)
-        scroll-left(设置横向滚动条的位置)
-        scroll-into-view(值为某元素id,设置哪个方向滚动，则在哪个方向滚动到该元素)
-        scroll-with-animation(设置滚动条位置时，使用动画过度)
-        enable-back-to-top(ios点击状态栏、安卓双击标题栏时，滚动条返回顶部，只支持竖向)
-        bindscrolltoupper(滚动到顶部/左边,会触发scrolltoupper事件)
-        bindscrolltolower(滚动到底部/右边，会触发scrolltolower事件)
-        bindscroll(滚动时触发，event.detail = {scrollLeft, scrollTop, scrollHeight, scrollWidth, deltaX, deltaY})
-swiper------滑块视图容器
-    属性
-        indicator(是否设置面板指示点)
-        indicator-color(指示点颜色)
-        indicator-active-color(当前选中指示点颜色)
-        autoplay(是否自动切换)
-        current(当前所在滑块的index)
-        current-item-id(当前滑块所在的item-id,不能与current同时被指定)
-        interval(自动切换时间间隔)
-        duration(滑动动画时长)
-        circular(是否采用衔接滑动)
-        vertical(滑动方向是否为纵向)
-        previous-margin(前边距,可用于前一项的小部分，接受px和rpx的值)
-        next-margin(后边距，可用于后一项的小部分，接受px和rpx的值)
-        display-multiple-items(同时显示滑块的数量)
-        skip-hidden-item-layout(是否跳过未显示的滑块布局，设为true可优化复杂情况下的滑动性能,但会丢失隐藏状态滑块的布局信息)
-        bindchange(current改变时，会触发change事件event.detail = {current: current, source: source})
-        bindanimationfinsh(动画结束时，会触发animationfinsh事件，event.detail同上)
-movable-area------可移动的视图容器，在页面中可以拖拽滑动(当里面的movable-view设置为支持手动缩放时，设置此值可将缩放手势生效区修改为整个movable-area)
-                  必须设置width和height属性，不设置默认为10px
-        movable-view 
-    属性
-        direction(movable-view的移动方向，属性值有all、vertical、horizontal、none)
-        inertia(movable-view是否带有惯性)
-        out-of-bounds(超过可移动区域后,movable-view是否还可以移动)
-        x(定义x轴方向的偏移，如果x的值不再可移动范围内，会自动移动到可移动范围；改变x的值会触发动画)
-        y(定义y轴方向的偏移,如果y的值不再可移动范围内，会自动移动到可移动范围；改变y的值会触发动画)
-        damping(阻尼系数，用于控制x或y改变时的动画和过界回弹的动画，值越大移动的越大)
-        friction(摩擦系数，用于控制惯性的动画，值越大摩擦力越大，滑动越快停止;必须大于0，否则会设置成默认值)
-        disabled(是否禁用)
-        scale(是否支持双指缩放，默认缩放手势生效区域是在movable-view内)
-        scale-min(定义缩放倍数的最小值)
-        scale-max(定义缩放倍数的最大值)
-        scale-value(定义缩放倍数，取值范围为0.5-10)
-        bindchange(拖动过程中触发的事件event.detail = {x: x, y: y, source: source}，其中source表示产生移动的原因，值可为touch（拖动）、touch-out-of-bounds（超出移动范围）、out-of-bounds（超出移动范围后的回弹）、friction（惯性）和空字符串（setData）)
-        bindscale(缩放过程中触发的事件)
-        特殊事件
-            htouchmove(初次手指触摸后移动为横向的移动，如果catch此事件，则意味着touchmove事件也被catch)
-            vtouchmove(初次手指触摸后移动为纵向的移动，如果catch此事件，则意味着touchmove事件也被catch)
-cover-view------覆盖在原生组建上的文本视图，可覆盖的原生组件包括map、video、canvas、camera、liver-player、live-pusher,只支持嵌套cover-view、cover-image
-    cover-image
-        属性
-            src(图片路径、支持的临时路径、网络地址)暂不支持base64
-基础内容
-    icon------图标
-        type(icon的类型，有效值：success, success_no_circle, info, warn, waiting, cancel, download, search, clear)
-        size(icon的大小，单位px)
-        color(icon的颜色，同css的color)
-    text------文本
-        selectable(文本是否可选)
-        space(显示连续空格)    
-            space 有效值：
-                ensp 中文字符空格一半大小 
-                emsp 中文字符空格大小 
-                nbsp 根据字体设置的空格大小 
-        decode(是否解码)
+(2)导航
 
-        •decode可以解析的有  &amp;nbsp;   &amp;lt;   &amp;gt;   &amp;amp;   &amp;apos;   &amp;ensp;   &amp;emsp; 
-        •各个操作系统的空格标准并不一致。
-        • &lt;text/&gt;  组件内只支持  &lt;text/&gt;  嵌套。
-        •除了文本节点以外的其他节点都无法长按选中。
-    rich-text
-        nodes(节点列表 / HTML String)
-    progress(进度条。)    
-        percent Float 无 百分比0~100  
-        show-info Boolean false 在进度条右侧显示百分比  
-        stroke-width Number 6 进度条线的宽度，单位px  
-        color Color #09BB07 进度条颜色 （请使用 activeColor）  
-        activeColor Color  已选择的进度条的颜色  
-        backgroundColor Color  未选择的进度条的颜色  
-        active Boolean false 进度条从左往右的动画  
-        active-mode String backwards backwards: 动画从头播；forwards：动画从上次结束点接着播 1. 
-表单组件
-    button(按钮)
+导航：nav
+主导航：mainnav
+子导航：subnav
+顶导航：topnav
+边导航：sidebar
+左导航：leftsidebar
+右导航：rightsidebar
+菜单：menu
+子菜单：submenu
+标题: title
+摘要: summary
 
-    checkbox(多选项目。)
-        checkbox-group 多项选择器，内部由多个 checkbox 组成。
-    form(表单)
-        表单，将组件内的用户输入的 &lt;switch/&gt;   &lt;input/&gt;   &lt;checkbox/&gt;   &lt;slider/&gt;   &lt;radio/&gt;   &lt;picker/&gt;  提交。
-        当点击  &lt;form/&gt;  表单中 formType 为 submit 的  &lt;button/&gt;  组件时，会将表单组件中的 value 值进行提交，需要在表单组件中加上 name 来作为 key。
-    input(输入框)
-    lable(用来改进表单组件的可用性，使用 for 属性找到对应的 id ，或者将控件放在该标签下，当点击时，就会触发对应的控件。
-         for 优先级高于内部控件，内部有多个控件的时候默认触发第一个控件。)
-     picker(从底部弹起的滚动选择器，现支持五种选择器，通过mode来区分，分别是普通选择器，多列选择器，时间选择器，日期选择器，省市区选择器，默认是普通选择器。)
-     picker-view(嵌入页面的滚动选择器)
-     radio(单选项目)
-     radio-group(单项选择器，内部由多个&lt;radio/&gt;组成)
-     slider(滑动选择器)
-     switch(开关选择器。)
-     textarea(多行输入框)
- 导航
-     navigator(页面连接)
- 媒体组件
-     audio(音频)
-     image(图片)
-     video(视频)
-     camera(系统相机)
-     live-player(实时音频播放)
-     live-pusher(实时音频录制)
- 地图
-     map(地图)
- 画布
-     canvas(画布)
- 开放能力
-     open-data(用于展示微信开放的数据。)
-     web-view(web-view 组件是一个可以用来承载网页的容器，会自动铺满整个小程序页面。个人类型与海外类型的小程序暂不支持使用。)
-     ad(广告。目前暂时以邀请制开放申请，请留意后续模板消息的通知)
-</code></pre><p>小程序之api</p>
-<p>小程序之框架</p>
+(3)功能
+
+标志：logo
+广告：banner
+登陆：login
+登录条：loginbar
+注册：regsiter
+搜索：search
+功能区：shop
+标题：title
+加入：joinus
+状态：status
+按钮：btn
+滚动：scroll
+标签页：tab
+文章列表：list
+提示信息：msg
+当前的: current
+小技巧：tips
+图标: icon
+注释：note
+指南：guild
+服务：service
+热点：hot
+新闻：news
+下载：download
+投票：vote
+合作伙伴：partner
+友情链接：link
+版权：copyright
+
+(四)class的命名:
+
+(1)颜色:使用颜色的名称或者16进制代码,如
+
+.red { color: red; }
+.f60 { color: #f60; }
+.ff8600 { color: #ff8600; }
+
+(2)字体大小,直接使用&quot;font+字体大小&quot;作为名称,如
+
+.font12px { font-size: 12px; }
+.font9pt {font-size: 9pt; }
+
+(3)对齐样式,使用对齐目标的英文名称,如
+
+.left { float:left; }
+.bottom { float:bottom; }
+
+(4)标题栏样式,使用&quot;类别+功能&quot;的方式命名,如
+
+.barnews { }
+.barproduct { }
+
+注意事项::
+
+1.一律小写;
+2.尽量用英文;
+3.不加中杠和下划线;
+4.尽量不缩写，除非一看就明白的单词.
+
+推荐的 CSS 书写顺序
+//显示属性
+display
+list-style
+position
+float
+clear
+
+//自身属性
+width
+height
+margin
+padding
+border
+background
+
+//文本属性
+color
+font
+text-decoration
+text-align
+vertical-align
+white-space
+other text
+content
+</code></pre><p>前端三层：<br>    结构层：<br>        尖括号包裹的关键字，统称标签</p>
+<pre><code>表现层：
+    人身上的衣服，css，网页样式，美化
+
+行为层：
+    js，“让网页动起来”
+</code></pre><p>标签一定要正确的闭合<br>标签属性的属性值一定要用引号引起来，建议使用双引号<br>    1、标签一定要正确的闭合<br>    2、标签属性的属性值一定要用引号引起来，建议使用双引号<br>    3、class命名：见名知意，不要用拼音<br>    4、连词之间用 - 横杆连接<br>    5、命名一定要是英文，一定要是小写<br>    6、结构层和样式层最好分离<br>    7、结构层遵循从大到小的规律</p>
+<p>局外篇：<br>    页面性能优化<br>    1、减少HTTP请求次数<br>        什么是CSS Sprite ？<br>            不知道您在浏览yahoo.com的网页中是否注意到,yahoo在页面制作上的技术和大多数网站不一样,他们把页面上的 ICON，栏目背景啊，图片按钮啊等都有会有规则的合并一张背景图,然后用background-position来实现背景图片的定位，他们为什么要花费一些时间来合并这些CSS背景图片呢,CSS中用一张背景图做页面的技术到底有什么优势呢?<br>        CSS Sprite的应用：通常我们把它叫做CSS图像拼合技术,当然还有人把CSS Sprites叫做”CSS贴图定位”。<br>        CSS Sprites(图片整合技术) 的目的就是通过整合图片，减少对服务器的请求数量，从而加快页面加载速度。<br>        9张图要请求9次，总大小36k,图像拼合，一张图，请求一次。<br>        使用方法：背景定位background-position:-8px -95px;<br>    2、减小请求带宽<br>        精简JavaScript，<br>        移除重复脚本，<br>        图像优化：正确的图片格式可以让图片缩小数倍；对图片进行压缩，详细可见图片优化<br>    3、</p>
+<pre><code>路径问题：
+    根目录、子目录、绝对路径、相对路径问题？
+    根目录：存放整个网站（网页、图片、样式、脚本...）文件的总文件
+    子目录：存放某个区块（网页文件夹、图片文件夹、样式文件夹、脚本文件夹）
+    绝对路径：路径地址附带盘符（写死） 
+        很少使用、因为不利于用户体验
+        本地绝对路径：从盘符出发开始寻找
+        网路绝对路径：
+    相对路径：路径地址只牵扯相关的文件（灵活）
+        经常使用、方便维护
+        从当前文件的地方开始寻找
+        ../ 返回上一层
+</code></pre><p>浏览器支持<br>    H5有部分内容兼容到ie9,ie8及以下完全不兼容的内容不再考虑<br>    部分内容兼容需要添加前缀<br>    -webkit- 兼容谷歌<br>    -moz- 兼容火狐<br>    -o- 兼容欧鹏<br>    -ms- 兼容ie</p>
+<p>WEB前端开发兼容问题<br>    1、*{margin:0;padding:0px}解决浏览器默认;<br>    2、img{display:block}这样可以取消图片自带的3px,让布局更加美观;<br>       当然vercital-align也可以<br>    3、如果使用了浮动，那么下边一定要清除浮动;<br>    4、如果使用了width:100%(头部，底部，导航等等)，大家会发现当缩小了浏览器窗口的大小以后，有时候布局会出错，这时候给对应的盒子加个min-width:1180px就可以解决了；<br>    5、各大浏览器的兼容代码：(以旋转30deg为例)<br>        transform:rotate(30deg);———————————-(统一标识语句，最好写上，复合w3c标准)<br>        -ms-transform:rotate(30deg);——————————(-ms代表ie内核识别码)<br>        -moz-transform:rotate(30deg);—————————–(-moz代表火狐内核识别码)<br>        -webkit-transform:rotate(30deg);————————–(-webkit代表谷歌内核识别码)<br>        -o-transform:rotate(30deg);——————————-(-o代表欧鹏内核识别码)<br>    6、列表中超出部分显示省略号<br>        overflow:hidden;<br>        text-overflow:ellipsis;<br>        white-nowrap:nowrap;<br>    7、搜索框：当input框与旁边的搜索按钮没发对齐的时候，采用定位布局(position:absolute)<br>    8、谷歌内核兼容，ie内核不兼容的解决方法<br>        <meta http-equiv="X-UA-Compatible" content="IE9;IE8;IE7;IE=EDGE"></p>
 
       
 
@@ -527,7 +375,7 @@ cover-view------覆盖在原生组建上的文本视图，可覆盖的原生组�
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小程序</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		
 		</ul>
@@ -537,7 +385,7 @@ cover-view------覆盖在原生组建上的文本视图，可覆盖的原生组�
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/21/微信小程序指南/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/08/25/web前端命名规范/">展开全文 >></a>
         </p>
       
 
@@ -569,7 +417,7 @@ cover-view------覆盖在原生组建上的文本视图，可覆盖的原生组�
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -674,35 +522,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -710,11 +530,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -722,7 +554,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
             
             <div class="clearfix"></div>
@@ -879,5 +739,5 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>

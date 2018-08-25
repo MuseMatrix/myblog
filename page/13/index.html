@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>我的成长记录</title>
+  <title>个人笔记整理与收集</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="我的成长记录">
+<meta property="og:title" content="个人笔记整理与收集">
 <meta property="og:url" content="http://yoursite.com/page/13/index.html">
-<meta property="og:site_name" content="我的成长记录">
+<meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的成长记录">
+<meta name="twitter:title" content="个人笔记整理与收集">
   
-    <link rel="alternative" href="/atom.xml" title="我的成长记录" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="个人笔记整理与收集" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -155,201 +155,940 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-git学习速记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-基础篇之javaScript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/08/git学习速记/">git学习速记</a>
+      <a class="article-title" href="/2018/08/09/基础篇之javaScript/">基础篇之javaScript</a>
     </h1>
   
 
         
-        <a href="/2018/08/08/git学习速记/" class="archive-article-date">
-  	<time datetime="2018-08-08T04:59:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-08</time>
+        <a href="/2018/08/09/基础篇之javaScript/" class="archive-article-date">
+  	<time datetime="2018-08-09T03:27:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>环境搭建：<br>    1、安装git,安装完后设置标识<br>            git config –global user.name “名字”;<br>            git config –golbal user.email “邮箱”;</p>
-<pre><code>        创建SSH key，打开C:\Users\wzs\.ssh查看是否拥有id_rsa和id_rsa.pub,如果有的话，直接跳过，如果没有，输入以下命令
-        ssh-keygen  -t rsa –C “youremail@example.com”
+        <p>javaScript部分：</p>
+<p>javascript历史<br>    javascript诞生于1995年，网景<br>    javascript之父，Brendan Eich 布兰登.艾奇</p>
+<pre><code>js跟java 没有一毛关系，js与java同年出生，但是java火了，js为了蹭java的热度，命名为javascript
 
-        github 配置key,settings---&gt;SSH keys----------&gt;在key文本框里粘贴id_rsa.pub的内容
-2、下载node安装包，一键式安装，配置环境变量，检测版本(node --version)
-        node更新命令------------npm install -g n 
-        npm更新命令-------------npm install npm@latest -g
+javascript是一种直译式的脚本语言，是一种动态类型、弱类型、基于原型的语言。
+javascript通常用来操作HTML页面，响应用户操作，验证传输数据等
 
-        使用npm更新淘宝镜像------------npm install -g cnpm --registry=http://registry.npm.taobao.org
-3、统一
+jquery是javascript编写的一个类库
+javascript语言的组成部分：
+    ECMScript-----------------语法规则
+        ECMScript是javascript的标准；
+        javascript是ECMScript的表现；
+    DOM对象
+        提供方法让js操作html标签节点
+    BOM对象
+        提供方法以便于js去操作浏览器
+</code></pre><p>javaScript的api的认识<br>    获取对应的标签节点<br>        通过dom提供的方法API</p>
+<pre><code>document.getElementById()
+    通过id来获取标签节点
+onlick 
+    单击事件  /    点击一下触发
+innerHTML
+    获取标签节点的内容/获取标签节点内容的操作权限
+    能解析html标签
+//标准
+textContext
+    获取元素文本内容以及修改
+//非标准(ie低版本)
+innerText
+    获取标签节点的内容，单指文本方式
+    不能解析html标签
+document.write();可以解析html
 
-    安装vue-------------------cnpm install vue
+window.onload在所有dom加载完成后执行
+var 
+    用于声明/注册变量
+变量命名：
+    严格区分大小写。
+    见名知意。
+    不能以数字开头。
+    尽量不要使用中文名作为变量名
+    不能使用关键字、保留字；当前版本可能没有特殊含义，但是以后会有。
+alert()  只有确定按钮的取消。没有返回值(返回默认值的undefined没有意义)
+conform() 比alert多一个取消按钮。点确定返回true,点取消返回false
+prompt()  比confirm还要多一个输入框。确定返回输入框的内容取消返回null
 
-    安装webpack------------------cnpm install webpack -g
+onmouseenter    鼠标移入
+onmouseover
 
-    安装vue-cli------------------cnpm install -g vue-cli
-4、为了确保安装后的工具能直接在git下使用，请安装在同一目录下(node目录下)
-    新建相应的文件夹然后把文件放进去
-</code></pre><p>Git/GitHub</p>
-<p>git是什么？<br>    Git是目前世界上最先进的分布式版本控制系统。</p>
-<p>git与svn的区别<br>    svn是集中版本控制系统，版本库是集中放在中央服务器的，而干活的时候，用的都是自己的电脑，所以首先要从中央服务器那里得到最新的服务器版本，然后干活，干完活后把自己的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，如果在局域网可以，带宽够大，速度够快，如果在互联网下，网速慢了，就尴尬了。<br>    git是分布式版本控制系统，它没有中央服务器，每个人的电脑就是一个完整的版本库，这样，工作的时候就不需要联网了，因为版本都是在自己电脑上，既然每个人都有一个版本库，那么多个人如何协作呢？比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。</p>
-<p>git工作区与缓存区的区别<br>    工作区：就是在你电脑上看到的目录，或者以后要新建的目录文件等等都属于工作范畴<br>    版本库：工作区有一个隐藏目录.git,这个不属于工作区，这是版本库，版本库里面存了很多东西，其中最重要的就是stage(暂存区)，还有Git为我们自动创建了第一个分支master,以及指向master的一个指针HEAD.</p>
-<p>git提交<br>    git提交到版本库有两个步骤：<br>        1、使用git add把文件加进去，实际就是把文件添加到暂存区<br>        2、使用git commit提交更改，实际上就是把暂存区的所有内容提交到分支上</p>
-<p>git使用<br>    安装完成后，</p>
-<pre><code>git config --global user.name “名字”;
-git config --golbal user.email “邮箱”;
+onmouseleave    鼠标移出
+onmouseout
 
-创建版本库(本地仓库)
- cd G:
- cd wangzhongshun
- mkdir testgit
+true 真
+false 假
+null 空
+</code></pre><p>ES5<br>ECMAScript 第五版<br>    ES5声明变量的两种方式<br>        1、var来声明<br>        2、function来声明<br>            function是专门用来声明函数<br>    函数 = 方法 = api<br>    函数也叫方法。 只有函数才能加();</p>
+<pre><code>函数的作用
+    当代码需要重复利用的时候，用函数封装起来，执行函数就能达到效果
+函数声明
+    通过function来声明函数
+    function fn1();
+函数表达式：
+    var fn1 = function(){};
+函数自执行：
+    函数名加括号 fn();
+函数里的关键字：
+    this指向调用函数的对象
+全局作用域
+    全局作用域的this默认指向window对象
+</code></pre><p>JavaScript之操作DOM<br>    初始dom:<br>    var oBox = document.getElementById(‘oBox’);<br>    cssText用于一次修改多条css属性；<br>        ex:<br>            oBox.style.cssText = “width:100px;height:200px;background-color:red”;<br>    value获取输入框的值<br>        ex:<br>            oBox.value;<br>    点代替中括号操作<br>        ex:<br>            oBox.value;<br>            oBox[“value”];</p>
+<pre><code>集合：需要通过序号来获取当前对象的节点
+    document.getElementsByClassName();  不兼容IE8及其以下浏览器
 
- pwd 显示当前目录
+    document.getElementsByTagName();
 
- git init    把目录变成可管理的版本库
+    document.getElementsByName();
 
- git add 文件夹 --------把文件夹添加到暂存区里去;
+    document.querySelectorAll();    不兼容ie7及其以下浏览器
+单个对象：直接使用
 
- git commit--------一次性提交所有文件
+    document.getElementById();
 
- git commit -m &quot;要提交的文件夹全名(带后缀)+注释&quot; -------提交文件
+    document.querySelector()    不兼容ie7及其以下浏览器
 
- git status---------来查看是否还有未提交的文件
+    集合的序号从0开始的
 
- git diff 文件夹---------查看文件修改了哪些内容
+自定义标签属性
+    class是关键字
+        操作标签的class 必须写成className;
 
- git log---------查看提交文件的历史状态
+    自定义标签属性不能直接通过点来操作；
 
- git log --oneline ----------查看日志的第一行
+    设置自定义标签属性：
+        setAttribute(&quot;属性名&quot;,&quot;值&quot;);
+    获取自定义标签属性的值
+        getAttribute(&quot;属性名&quot;);
+    删除自定义标签属性的值
+        removeAttribute(&quot;属性名&quot;);
+    判断自定义属性是否存在
+        hasAttribute(&quot;属性名&quot;);
+        返回true 代表存在
+        false，不存在
+颜色和路径不能用来作为判断条件
+getComputedStyle(对象).属性----------------不兼容ie8及其以下破浏览器
+    ex:
+        var Div = document.getElementById(&quot;box&quot;);
+          function getStyle(ele){
+            return ele.currentStyle || getComputedStyle(ele);
+            }
+        var Divcss = getStyle(Div);
+    再识dom:
+        dom节点类型一共12种，重点三种(元素、属性、文本)
+</code></pre><p>javaScript数据类型<br>    js es5:数据类型有6种<br>        number  //数字<br>        String  //字符串<br>        Boolean //布尔类型   值只有两种：true/false<br>        undefined //未定义<br>        null  //是一种独立的数据类型，但是如果用typeof检测会返回Object<br>        Object //对象</p>
+<pre><code>[] 数组
+    有序存储数据
+    有默认属性：length 返回数组数据得长度(个数)
 
- git checkout  -- 文件名---------撤销修改
+比较符： true / false
+    &gt;  &lt;  &gt;=   &lt;=
+    == 等于：会进行数据类型转换(隐式)
+    !=  不等于
 
- git reset -- hard 版本号-----------回退到该版本号
+    === 全等于：不会进行数据类型转换
+    !== 不全等于
+条件语句：
+    if(){
 
- git reset --hard HEAD^-----------回退到上一个版本
+    }else{
 
- git reset --hard HEAD^^-----------回退到上上个版本
+    }
+    当if的判断条件是  一个变量来跟其他的数据做  全等于比较时。
+    if可以改写为 switch
 
- git reset --hard HEAD~100----------回退到第100个版本
+    六种情况可以转为false:
+        &quot;&quot;
+        0
+        null
+        undefined
+        NaN
+        false
+</code></pre><p>javaScript循环语句<br>    for循环使用<br>    循环标记<br>        var oBtns = document.getElementsByTagName(“button”);<br>        for(var i = 0;i&lt;oBtns.length;i++){<br>            oBtns[i].index = i;<br>            oBtns[i].onclick = function(){<br>                alert(this.index);<br>            }<br>        }</p>
+<pre><code>    var i = 0;
+    for(;i&lt;10;){
+        i++;
+        console.log(i);//10次
+    }
 
- cat 文件名---------查看文件的内容
+    例：
+    var btns = document.getElementsByTagName(&apos;button&apos;);
+    var i = 0;
 
- git reflog----------查看版本号
+    while(true){//决定当前是否循环
+        btns[i].onclick = function (){
 
- rm b.txt-----------删除文件
+        };
+        i++;
+    }
 
- git remote----------查看当前配置有哪些远程仓库
+    var i = 0;
+    do{
+        console.log(i);
+    }while(false)//决定是否进入下一次循环
+for循环嵌套(执行60次)
+    for(var i =0;i&lt;10;i++){
+        for(var j = 0;j&lt;10;j++){
 
- git remote -v------------显示对应的克隆地址
-</code></pre><p>git远程仓库<br>    git本地仓库及github远程仓库配置<br>    1、创建SSH Key<br>        C盘用户目录下查找.shh目录，如果有查看是否有id_rsa和id_rsa.pub两个文件<br>        如果没有，打开命令行，执行：<br>            ssh-keygen -t rsa -C “邮箱”<br>        如果有，跳过此步骤</p>
-<pre><code>2、如何添加远程工作？(本地仓库与github相关联)
-    第一步：git remote add origin 自己本地git-------------本地仓库已经存在，直接推送到远程仓库命令
-    第二步：git push -u origin master -------------------实际上把当前分支master推送到远程
-    第三步：弹出github登录页，登录成功刷新
+        }
+    }
 
-3、如何从远程仓库克隆？(下载最新的项目到本地)
-    新建仓库，生成README.md文件
-    克隆仓库--------------git clone 克隆地址
+break;
+    跳出循环，不包括本次,并且后面的不会执行;
+continue;
+    跳出本层循环，不包括本次循环,并且后面的还会执行
+break和continue只能跳出离他们最近的循环，要想跳出其他循环需要使用标签语句
+标签语句
+    在for循环上添加标签语句
+for循环的性能
+    console.time(&apos;Tag&apos;)和console.endTime(&apos;Tag&apos;)---------大概反映出代码的执行时间
+    var lis = document.getElementsByTagName(&quot;li&quot;);
+    ex1:
+        for(var i = 0;i&lt;lis.length;i++){}------------每一次迭代都要获取length属性
+    ex2:
+        for(var i = 0;len = lis.length;i&lt;len;i++){}-------------直接把length属性预存，只取一次length
+    ex3:
+        for(var i = 0,b;b= lis[++i];)--------------通过下标获取，当成为undefined时，终止循环
+for循环的倒叙遍历
+    前置++和后置++(前置--和后置--)
+    后置++  需要在当前表达式结束后才会自增
+    ex:var b = a++;---------此条语句，++不会在赋值行为之前执行
+    ex:var b = ++a;---------前置++跟后置++相反，++会在当前表达式得最开始执行
+    前置++和后置++在什么时候没有区别
+        a++;
+        ++a;
+</code></pre><p>数据类型和运算符：<br>    数据类型：<br>        number<br>        string  ‘’ “”<br>        null<br>        undefined<br>        boolean  true  false<br>        object  [] {} function</p>
+<pre><code>    显式的强制类型转换 和  隐式的强制类型转换
 
-4、创建与合并分支
-    HEAD严格来说不是指向提交，而是指向master,master才是指向提交的，所以HEAD指的就是当前分支
+    NaN  not a number /不是一个数字 /坏数值  NaN是一个特殊的数字
+    出现NaN一定是进行了非法的数学运算
 
-    git checkout -b dev----------------创建并切换分支
-    git branch dev-------切换分支
-    git checkout dev-----------切换分支
+    &quot;&quot;可以被Nubmer转化为0;
+    null可以被Number转化为0;
+    undefined 会被Number转为NaN
+    {} 会被Number转化为NaN
+    true会被Number转化为1
+    false会被Number转化为0;
+    []会被Number转化为0;
+    Number();用于任何数据类型转换为数值，
+        1）如果是Boolean值，true和false将分别转换为1和0。
 
-    git checkout -b dev origin/dev------------创建本地dev分支
+        2）如果是数字值，只是简单的传入和返回。
 
-    git branch-----------------查看当前分支    
+        3）如果是null值，返回0。
 
-    git branch  -d dev----------删除dev分支
+        4）如果是undefined,返回NaN。
 
-    git branch dev---------创建dev分支
+        5）如果是字符串，遵循下列规则：
 
-    git merge 分支名称--------------合并某分支到当前分支
+        .如果是字符串中只包含数字（包括前面带正号或负号的情况），则将其转换为十进制数值，即“1”变成1，“123”会变成123，而“011”会变成11（前导的零被忽略了）；
+        .如果字符串中包含有效的浮点格式，如“1.1”，则将其转换为对应的浮点数值（同样也会忽略前导零）；
+        .如果字符串中包含有效的十六进制格式，例如&quot;0xf&quot;，则将其他转换为相同大小的十进制整数值；
+        .如果字符串是空的（不包含任何字符），则将其转换为0；
+        .如果字符串中包含除上述格式之外的字符，则将其他转换成NaN
+    parseInt() //取整数
+        比如：传入一个字符串，会从字符串的左边开始往右寻找(会忽略开始的空格字符)，知道遇到非数字(除了- +)停止
+        //会隐式调用toString();
+    parseFloat() //可保留一个正常的数字(能取到小数)
+算术运算符：
+    +  -  *  /  %取余取模
+        注意：+运算符
+            当+号两边有其中一边字符串时就是字符串拼接。
+            要是数学加法运算符，必须两边都是数字
 
-5、解决冲突
+            -  /  * %
+                上面三种运算符当有一边不是数字时，会调用Number转化为数字，如果可以转为正常数字则输出正确结果，不能正常转换就NaN
+            % 取余时：
+                小模大 一定等于小
+赋值运算符：
+    =  +=  -=  /=  *=  %= ++ --
 
-    　Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容，其中&lt;&lt;&lt;HEAD是指主分支修改的内容，&gt;&gt;&gt;&gt;&gt;fenzhi1 是指fenzhi1上修改的内容，我们可以修改下如下后保存：
+    ++ 和 --
+        虽然可以拆分为 例如 a = a+1;
+        但是++会进行隐式类型强制类型转换
 
-6、分支管理策略
-    git merge --no-ff -m &quot;注釋&quot; dev-----------------合并dev分支 --no-ff表示禁用fast forward
+        a++具备隐式转换的能力  调用Number
+        a = a+1;
+逻辑运算符
+    &amp;&amp; || ！
+        逻辑与：&amp;&amp;
+        逻辑或：||
+        取反： ！
+            &amp;&amp; 运算
+                遇到true就通过。false就停
+                &amp;&amp;两边会转为布尔值
+            || 或
+                遇到true 就停止。 false 通过
+                ||两边会转化为布尔值。如果转化为布尔值以后是false,就通过
+            ！ 取反
+    原理：在运算的过程中，js会将&amp;&amp;和||两边的值转成boolean,然后再算值，&amp;&amp;运算如果返回true,则取后面的值，||运算返回true,则取前面的值
+        数值转换成boolean的规则是对象、非零整数、非空字符串返回true
+</code></pre><p>javascript规范<br>    位置：script标签能放在任意的位置，但是最终会被浏览器整合在head或者body里面,所以说，我们需要将script标签放置于head或者body标签里面,通常我们会把js代码写在结构结束之后，也就是body的最后面<br>    规范：<br>        严格区分大小写<br>        所有内置的API和功能符号都是英文输入法<br>        tab缩进/空格缩进 对齐<br>        完整的语句后面需要加;<br>    注释：/<em> </em>/   <!--   -->   //<br>    变量：<br>        = 赋值的意思  从右往左 读,= 号两边不必要加空格<br>        要求：只能包含数字、字母、_ 、$；不能以数字开头；不能和JS原本的API或语法词冲突；见名知意；驼峰、 _   连词<br>javascript弹窗<br>    alert()通常用来调试<br>    confirm()可以根据不同的选择去判断<br>    prompt()可以收集到输入的内容<br>    三种弹窗都不能修改样式，在实际开发中，用它做的功能很少<br>JavaScript数据类型<br>    任何数据类型在判断的时候，都会有对应的真假值<br>        哪些数据在判断的时候为假<br>            false 0  “”  null undefined  NaN<br>JavaScript事件<br>    鼠标事件<br>        onclick       单击左键<br>        ondblclick    双击左键<br>        onmouseenter  移入<br>        onmouseleave  移出</p>
+<pre><code>    onmouseover   移入*
+    onmouseout    移出*
+    onmousedown   按下
+    onmouseup     抬起
+    onmousemove   移动
+键盘事件
+    onkeydown
+    onkeypress
+    onkeyup
+系统事件
+    onload
+    onerror
+    window.onload();页面加载完成触发的事件
+表单事件
+    焦点事件：除了可以获得光标的元素有此事件外，window也可以有这个事件
+        onfocus  聚焦事件
+        onblur   失去焦点
 
-    git log --graph --pretty=oneline --abbrev-commit--------------------查看分支合并图
+    onchange 内容改变触发(能获得光标)
+        前提：失去焦点才能触发
 
-7、bug分支
+    oninput 内容改变就会触发(能获得光标) 没有任何前提
+        H5不兼容低版本IE
+</code></pre><p>JavaScript函数<br>    匿名函数<br>        function(){}不能莫名其妙的出现一个独立的匿名函数<br>    有名函数<br>    function y(){alert(1);}函数名和变量名规则一样,有名函数大括号结束后不需要分号，写了也不算错<br>JavaScript获取元素的方式<br>    document.getElementById(“id”);通过id获取<br>    document.getElementsByClassName(“className”);通过类名称获取，获取的是个数组（类似数组，可用下标，可用.length）<br>    document.getElementsByTagName(“标签”);通过标签获取，获取的是个类数组<br>    document.getElementsByName(“name”);通过name获取，获取的是个类数组<br>    document.querySelector();直接获取单个节点对象<br>    document.querySelectorAll();获取类数组，多个<br>    head  body  title这三个唯一的元素可以这样用：<br>    document.head<br>    document.body<br>    document.title<br>    document.write();<br>    关闭文档流之前：<br>        往body最后添加东西，它和 += 添加不一样，不会影响其他元素<br>    关闭文档流之后：<br>        重新书写HTML<br>JavaScript操作样式<br>    操作style=””, 操作单个属性.style.width,操作复合属性.style.backgroundColor<br>    操作自定义属性setAttribute,getAttribute,removeAttribute<br>    现在oBox.style.float = “left”;<br>    以前ie的兼容和写法oBox.style.styleFloat = “left”;<br>    以前其他浏览器的写法oBox.style.CssFloat = “left”;<br>JavaScript中的方法<br>    var o = document.getElementById(“box”);<br>    o.innerHTML(会得到所有的内容，包括子标签的内容,如果有标签，会解析标签)<br>    o.innerText(只会得到文本内容，不会包括子标签，不会解析标签，会将标签以文本的形式显示出来)<br>     [] 能代替 . 操作<br>    任何数据在被判断的时候，都会有对应的真假值（布尔值）<br>    哪些数据在做判断的时候为假：<br>    false  0   “”   null  undefined  NaN<br>JavaScript中的跳出循环<br>    break<br>        switch里面有break关键词，作用是表明该种情况结束<br>        for里面的break作用是阻断该层for的执行（跳出循环，还没执行的代码也不会执行了）<br>    continue<br>        跳过该次循环（也就是下面的代码不执行了），进入下一次的循环<br>JavaScript的执行顺序<br>    大致是从上到下、从左到右、运算时注意优先级<br>    js的执行分两个阶段：1、编译阶段；2、执行阶段<br>    编译阶段：<br>        找var声明/找函数声明<br>        var a<br>        function(){}</p>
+<pre><code>郑重声明：
+    函数参数的声明和赋值是在编译之后，执行之前来声明的
+        1、编译：提升变量声明  var function
+            var a;
+            function
+        2、执行
+变量提升
+    在js中，函数及变量的声明都将被提升到函数的最顶部
+    变量可以在使用后声明，也就是变量可以先使用在声明
 
-    git stash-------------将当前的工作现场隐藏起来
+    变量提升：函数声明和变量声明是总会被解释器悄悄地被提升到方法体的最顶部
 
-    git list-------------查看工作现场
+    javaScript只有被声明的变量才会被提升，初始化的不会
+</code></pre><p>JavaScript中的变量的作用域<br>    任何程序设计语言都有作用域的概念，简单的说，作用域就是变量与函数的可访问范围，即作用域控制着变量与函数的可见性和生命周期。今天我们来看看在JavaScript中的变量的两种作用域。<br>    子对象会一级一级地向上寻找所有父对象的变量,链式作用域</p>
+<pre><code>作用域：
+    变量起作用的范围(区域)
 
-    git stash apply-------------恢复工作现场
+    es5:全局作用域、函数作用域
+    es6:全局作用域、函数作用域、块作用域
 
-    git stash drop--------------删除工作现场
-8、多人协作
-    git remote------------------查看远程仓库的信息
+    函数作用域是函数定义时决定的，而不是函数运行时(执行时)决定的
 
-    git remote -v --------------------查看远程仓库的详细信息
+    变量绑定的作用域如何确定：
+        主要看变量是在哪个作用域内声明的
+        在不同的作用域内声明的变量不会冲突
+        父级作用域不可以向子集查询变量(父作用域没有访问子作用域变量的权限)
+        没有声明的变量，直接赋值，会泄露成为一个全局变量
+        在浏览器环境下，所有的全局变量都会挂载到顶层对象下(成为顶层对象的属性和方法)
+        要避免变量泄露成为全局变量
+全局作用域：
+在代码中任何地方都能访问到的对象拥有全局作用域；
+    1、在最外层函数外面定义的变量拥有全局作用域
+        //在最外层函数外面定义的变量拥有全局作用域
+            var authorName=&quot;我的梦想&quot;;//全局变量
+            function doSomething(){
+                var blogName=&quot;飞往太空&quot;;//局部变量
+                function innerSay(){
+                    alert(authorName+&quot;是&quot;+blogName);
+                }
+               return innerSay();
+            }
+            alert(authorName);　　//我的梦想
+            doSomething();　　 //我的梦想是飞往太空
+    2、所有末定义直接赋值的变量自动声明为拥有全局作用域
+        function doSomething(){
+            var authorName=&quot;我的梦想&quot;;
+            blogName=&quot;飞往太空&quot;;
+            alert(authorName+&quot;是&quot;+blogName);
+        }
+        doSomething();      //我的梦想是飞往太空
+        alert(blogName);    //飞往太空
+        alert(authorName);  //authorName 找不到
+    3、所有window对象的属性拥有全局作用域
+    　一般情况下，window对象的内置属性都拥有全局作用域，例如window.name、window.location、window.top等等。
 
-    git push origin master-----------把该分支上所有的本地提交到远程库的master主干
+局部作用域：
+    局部作用域一般只在固定的代码片段内可访问到，最常见的例如函数内部，所有在一些地方也会看到有人把这种作用域称为函数作用域。
+        例如：下列代码中的blogName和函数innerSay都只拥有局部作用域
+        function doSomething(){
+            var blogName=&quot;我的梦想&quot;;
+            function innerSay(){
+                alert(blogName);
+            }
+            innerSay();
+        }
+        alert(blogName); //脚本错误（blogName未找到）
+        innerSay(); //脚本错误（ innerSay未找到）
+</code></pre><p>JavaScript之闭包<br>        闭包含义：<br>            闭包就是能够读取其他函数内部变量的函数；<br>            闭包就是子函数在外调用，子函数所在的父函数的作用域不会被释放。<br>        闭包形成的条件:<br>            1、函数嵌套函数(有作用域的嵌套)<br>            2、内部函数使用了外部函数的某些变量/参数<br>        闭包的作用：<br>            内部函数使用的外部函数的那些变量/参数  会被永久的保存</p>
+<pre><code>    闭包的优缺点
+        使用的变量会被永久的存储(关闭程序释放),我可以对同一个变量连续性进行多次操作
+        使用的变量会被永久的保存，当大量使用闭包时，会对内存的消耗有点点高
+    在JavaScript中，有全局作用域和局部作用域之分，函数内部可以直接读取全局变量，
+    ex:
+        var ex =999;
+        function a(){
+            console.log(ex);
+        }
+        a();//999
+    函数外部自然无法读取函数内的局部变量
+        function fn(){
+            var n = 999;
+        }
+        alert(n);报错未定义
+    函数定义的话一定要用var声明，如果不用的话实际声明了一个全局变量
+        function fn1(){
+            n=999;
+        }
+        fn1();
+        alert(n);//999
+    那么如何从外部读取局部变量呢？
+        那就是在函数的内部在定义一个函数
+        function f1(){
+            n=999;
+            function f2(){
+                alert(n);
+            }
+            return f2;
+        }
+        var result = f1();//必须声明一个变量来接受值
+        result();//999
 
-    git push origin dev -------------把该分支所有的本地提交到远程仓库的dev分支
-</code></pre><p>命令总结：<br>    因此：多人协作工作模式一般是这样的：</p>
-<pre><code>首先，可以试图用git push origin branch-name推送自己的修改.
-如果推送失败，则因为远程分支比你的本地更新早，需要先用git pull试图合并。
-如果合并有冲突，则需要解决冲突，并在本地提交。再用git push origin branch-name推送。
-</code></pre><p>　　Git基本常用命令如下：</p>
-<p>　　mkdir：         XX (创建一个空目录 XX指目录名)</p>
-<p>　　pwd：          显示当前目录的路径。</p>
-<p>　　git init          把当前的目录变成可以管理的git仓库，生成隐藏.git文件。</p>
-<p>　　git add XX       把xx文件添加到暂存区去。</p>
-<p>　　git commit –m “XX”  提交文件 –m 后面的是注释。</p>
-<p>　　git status        查看仓库状态</p>
-<p>　　git diff  XX      查看XX文件修改了那些内容</p>
-<p>　　git log          查看历史记录</p>
-<p>　　git reset  –hard HEAD^ 或者 git reset  –hard HEAD~ 回退到上一个版本</p>
-<p>　　(如果想回退到100个版本，使用git reset –hard HEAD~100 )</p>
-<p>　　cat XX         查看XX文件内容</p>
-<p>　　git reflog       查看历史记录的版本号id</p>
-<p>　　git checkout – XX  把XX文件在工作区的修改全部撤销。</p>
-<p>　　git rm XX          删除XX文件</p>
-<p>　　git remote add origin <a href="https://github.com/tugenhua0707/testgit" target="_blank" rel="noopener">https://github.com/tugenhua0707/testgit</a> 关联一个远程库</p>
-<p>　　git push –u(第一次要用-u 以后不需要) origin master 把当前master分支推送到远程库</p>
-<p>　　git clone <a href="https://github.com/tugenhua0707/testgit" target="_blank" rel="noopener">https://github.com/tugenhua0707/testgit</a>  从远程库中克隆</p>
-<p>　　git checkout –b dev  创建dev分支 并切换到dev分支上</p>
-<p>　　git branch  查看当前所有的分支</p>
-<p>　　git checkout master 切换回master分支</p>
-<p>　　git merge dev    在当前的分支上合并dev分支</p>
-<p>　　git branch –d dev 删除dev分支</p>
-<p>　　git branch name  创建分支</p>
-<p>　　git stash 把当前的工作隐藏起来 等以后恢复现场后继续工作</p>
-<p>　　git stash list 查看所有被隐藏的文件列表</p>
-<p>　　git stash apply 恢复被隐藏的文件，但是内容不删除</p>
-<p>　　git stash drop 删除文件</p>
-<p>　　git stash pop 恢复文件的同时 也删除文件</p>
-<p>　　git remote 查看远程库的信息</p>
-<p>　　git remote –v 查看远程库的详细信息</p>
-<p>　　git push origin master  Git会把master分支推送到远程库对应的远程分支上</p>
-<p>git/github挂载静态页面<br>    1、新建资源仓库repository<br>    2、设置settings,更改github pages为master分支<br>    3、选择盘符，新建文件件，将仓库克隆到本地，git clone 地址<br>    4、将网页文件添加到此文件夹里<br>        git status查看分支状态<br>        git add .  添加到缓存区<br>        git commit -m “注释”   提交<br>        git push  推送到github,链接访问<br>Node<br>    nodejs是一个让javaScript运行在服务端的开发平台。(javaScript(v8引擎))</p>
-<pre><code>npm更新命令--------npm install npm@latest -g
+    闭包的用途
+        读取函数的内部变量
+        让这个变量始终保持在内存中
 
-require-----------NodeJs自带的http模块，createServer(),http模块提供的函数，这个函数会返回一个对象，这个对象有一个叫listen的方法，这个方法有一个数值参数，指定这个Http
+    ex:
+    function f1(){
+　　　　var n=999;
+　　　　nAdd=function(){n+=1}
+　　　　function f2(){
+　　　　　　alert(n);
+　　　　}
+　　　　return f2;
+　　}
+　　var result=f1();
+　　result(); // 999
+　　nAdd();
+　　result(); // 1000
+在这段代码中，result实际上就是闭包f2函数。它一共运行了两次，第一次的值是999，第二次的值是1000。这证明了，函数f1中的局部变量n一直保存在内存中，并没有在f1调用后被自动清除。
+为什么会这样呢？原因就在于f1是f2的父函数，而f2被赋给了一个全局变量，这导致f2始终在内存中，而f2的存在依赖于f1，因此f1也始终在内存中，不会在调用结束后，被垃圾回收机制（garbage collection）回收。
+这段代码中另一个值得注意的地方，就是“nAdd=function(){n+=1}”这一行，首先在nAdd前面没有使用var关键字，因此 nAdd是一个全局变量，而不是局部变量。其次，nAdd的值是一个匿名函数（anonymous function），而这个
 
-nodeJs是事件驱动的
-</code></pre><p>WebPack<br>    安裝————–npm install –save-dev webpack</p>
-<pre><code>安裝cli----------------npm install webpack-cli -D
+匿名函数本身也是一个闭包，所以nAdd相当于是一个setter，可以在函数外部对函数内部的局部变量进行操作。
 
-指定目录下安装
-    创建文件夹并进入此目录---------------mkdir webpack-demo &amp;&amp; cd webpack-demo
+使用闭包的注意：
+    1、由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄露。解决方法是，在退出函数之前，将不使用的局部变量全部删除。
+    2、闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象（object）使用，把闭包当作它的公用方法（Public Method），把内部变量当作它的私有属性（private value），这时一定要小心，不要随便
+       改变父函数内部变量的值。
+思考题：
+    如果你能理解下面代码的运行结果，应该就算理解闭包的运行机制了。
+    Js代码
+    　　var name = &quot;The Window&quot;;
+    　　var object = {
+    　　　　name : &quot;My Object&quot;,
+    　　　　getNameFunc : function(){
+    　　　　　　return function(){
+    　　　　　　　　return this.name;
+    　　　　　};
+    　　　　}
+        };
+        alert(object.getNameFunc()());  //The Window
 
-    初始化npm------------------npm init -y
+        JavaScript闭包例子
 
-    本地安装webpack----------------npm install --save-dev webpack
-</code></pre>
+        function outerFun(){
+          var a=0;
+          function innerFun(){
+           a++;
+           alert(a);
+          }
+         }
+        innerFun();
+        上面的代码是错误的.innerFun()的作用域在outerFun()内部,所在outerFun()外部调用它是错误的.
+        改成如下,也就是闭包:
+            function outerFun(){
+             var a=0;
+             function innerFun(){
+              a++;
+              alert(a);
+             }
+             return innerFun;  //注意这里
+            }
+            var obj=outerFun();
+            obj();  //结果为1
+            obj();  //结果为2
+            var obj2=outerFun();
+            obj2();  //结果为1
+            obj2();  //结果为2
+    什么是闭包:
+       当内部函数 在定义它的作用域 的外部 被引用时,就创建了该内部函数的闭包 ,如果内部函数引用了位于外部函数的变量,当外部函数调用完毕后,这些变量在内存不会被 释放,因为闭包需要它们.
+    ex:
+    function outerFun(){
+     var a =0;
+     alert(a);
+    }
+    var a=4;
+    outerFun();
+    alert(a);
+    结果是 0,4 .  因为在函数内部使用了var关键字 维护a的作用域在outFun()内部.
+    再看下面的代码:
+    Js代码
+    function outerFun(){
+     //没有var
+     a =0;
+     alert(a);
+    }
+    var a=4;
+    outerFun();
+    alert(a);
+    结果为 0,0 真是奇怪,为什么呢?
+    作用域链是描述一种路径的术语,沿着该路径可以确定变量的值 .当执行a=0时,因为没有使用var关键字,因此赋值操作会沿着作用域链到var a=4;  并改变其值.
+Javascript的垃圾回收机制
+在Javascript中，如果一个对象不再被引用，那么这个对象就会被GC回收。如果两个对象互相引用，而不再被第3者所引用，那么这两个互相引用的对象也会被回收。因为函数a被b引用，b又被a外的c引用，这就是为什么函数a执行后不会被回收的原因。
+垃圾回收机制：当所有环境都不在有某个对象/数据的引用时，这个数据会自动被回收
+</code></pre><p>JavaScript之ajax<br>    ajax上传文件需要注意的:<br>        使用form表单初始化FormData对象方式上传文件<br>            processData设置为false 因为data是FormData对象，不需要对数据做处理<br>            <form>标签添加enctype=”multipart/form-data”属性。<br>            cache设置为false,上传文件不需要缓存<br>            contentType设置为false,不设置contentType值，因为是由<form>表单构造的FormData对象且已经声明了属性enctype=”multipart/form-data”，所以这里设置为false。<br>            上传后，服务器端代码需要使用从查询参数名为file获取文件输入流对象，因为<input>中声明的是name=”file”。<br>        不使用form表单上传文件<br>            只需要在<input type="file">里添加multiple或multiple=”multiple”属性。<br>JavaScript的定时器<br>    setTimeOut(function|code,dely)//只执行一次就没了<br>    第一个参数函数名或者一段代码，第二个参数推迟执行的毫秒数<br>    setInterval(function|code,dely)//循环执行</form></form></p>
+<pre><code>清除定时器(可以清除任意定时器)
+    clearInterval();
+    clearTimeout();
+setInterval和setTimeOut类似。区别在于setInterval每隔一段时间就执行一次，直到clearinterval()被调用或窗口被关闭
+</code></pre><p>JavaScript的日期对象<br>    var date = new Date();//创建日期对象<br>    Date.parse(new Date());//返回1970/1/1午夜到至今的毫秒数<br>    Date.UTC(2018,3,16);//返回1970年1月1日到指定日期的毫秒数<br>    日期格式化方法：<br>        date.toDateString();———–”Fri Mar 16 2018”<br>        date.toTimeString();———–”14:53:49 GMT+0800 (中国标准时间)”<br>        date.toLocaleDateString();———–”2018/3/16”<br>        date.toLocaleTimeString();————“下午2:53:49”<br>        date.toUTCString();—————“Fri, 16 Mar 2018 06:53:49 GMT”<br>        date.toLocaleString();————–”2018/3/16 下午2:53:49”<br>   日期方法：<br>        date.getTime();———1521183229261<br>        Date.now();<br>            返回从1970年1月1日午夜到当前日期和时间的毫秒值</p>
+<pre><code>date.getFullYear();-------------2018 //年
+date.getMonth()+1;--------------2 月份是0到11
+date.getDate();--------------16;
+date.getHours();-----------14;
+date.getMinutes();-----------53;
+date.getSeconds();-----------49;
+date.getDay();--------------5;
+</code></pre><p>   date.getTimezoneOffset();—————-480;//返回格林威治时间和本地时间之间的时差，以分钟为单位。<br>JavaScript的Math方法<br>    Math.round();四舍五入<br>    Math.random();0到1之间的随机数<br>    Math.max()；最大值;<br>    Math.min();最小值;<br>    Math.floor();对一个数进行下舍五入；向下取整运算，它返回的是小于或等于函数参数，并且与之最接近的整数<br>    Math.ceil();对一个数进行向上摄入；向上取整运算，它返回的是大于或等于函数参数，并且与之最接近的整数</p>
+<p>JavaScript的常用的字符串和数组方法<br>    字符串方法：<br>        length/返回字符的长度    只读属性<br>        [下标]返回对应位置的字符 //不兼容ie7及以下浏览器<br>            str.charAt(下标)兼容低版本ie<br>        concat() 合并字符串<br>        charAt();通过下标获取指定位置的字符<br>        charCodeAt();通过下标获取指定位置字符的unicode码<br>        String.fromCharCode(numx、、、);通过多个unicode码返回字符串<br>        indexOf()返回某个字符串值在字符串中首次出现的位置<br>        lastIndexOf()返回一个字符串值在字符串中最后出现的位置，检索条件从后向前搜索<br>        substring()通过下标提取字符串中介于两个指定下标之间的字符<br>        toUpperCase()用于字符串转大写<br>        toLowerCase()用于字符串转小写<br>        split()用于把一个字符串截取成字符串数组<br>    数组方法：<br>        index也可以查找数组里的数据<br>        length获取数组的长度(可读可写)<br>        [] array[0]通过下标获取数组里的指定值<br>        push()  向一个数组的末尾添加一个或多个元素，此方法会改变数组的长度<br>        unshift()  向一个数组的开头添加一个或多个元素，此方法会改变数组的长度<br>        pop()  删除数组里的最后一个元素，并且返回这个元素<br>        shit()  删除数组里的第一个元素，并且返回这个元素<br>        reverse() 将数组中各元素颠倒顺序<br>        slice(start,end)用于返回数组中start到end(不包括结尾)的数组中的元素，返回的是一个新的数组(原数组不会改变)<br>        splice(index,num,info) 该方法用于从数组中添加或删除项目，然后返回被删除的项目(原数组会改变)<br>        splice(下标，删除的长度，第三个及其以后都是添加进去的项目)<br>        concat(); 用于连接两个数组或者多个数组<br>        join(); 用于把数组中的所有元素放入一个字母；例：arr.join(),join内 可以为字符串   可以为符号</p>
+<pre><code>filter()和sort()为高阶函数，关键在于正确的实现一个筛选函数
+    sort();用于对数组进行排序，默认对字母进行排序，对数字没有效果
+        sort排序
+        sort(function(value1,value2){
+            return;
+            -1:value1在value2前面
+            0：位置不变；
+            1：value2在value1前面
+
+        })
+        }
+        升序，从小到大排序
+        function sortNumber(a,b){
+            return a-b;
+        }
+        降序，从大大小
+        function sortNumber(a,b){
+            return b-a;
+        }
+        如果为对象
+        则同理
+        按照属性值升序排序arr.sort(compare(&quot;要排序的属性名称&quot;))
+        function compare(property){
+            return function(a,b){
+                var value1 = a[property];
+                var value2 = b[property];
+                return value1-value2;
+            }
+        }
+        按照属性值降序排序
+        function compare(property){
+            return function(a,b){
+                var value1 = a[property];
+                var value2 = b[property];
+                return value2-value1;
+            }
+        }
+    filter用于过滤数组元素
+        ex:
+            删掉偶数，只保留奇数(返回一个数组)
+                array.filter(function(x){
+                    return x % 2 !== 0
+                })
+            去掉数组中的空字符串
+                array.filter(function(s){
+                    return s &amp;&amp; s.trim();ie8及其以下没有trim()方法
+                })
+            array.filter(function(element,index,self){
+                console.log(element);//依次打印数组里的值
+                console.log(index);//数组里值的下标
+                console.log(self);//代表数组本身
+
+            })
+
+            数组去重
+                array.filter(function(index,value,self){
+                    return self.indexOf(index) === value;
+                })
+            倒序去重
+                for (var i = arr.length-1; i &gt;= 0; i--) {
+                        for (var j = i-1; j &gt;= 0; j--) {
+                            if (arr[i]===arr[j]) {
+                                arr.splice(i,1)
+                            }
+                        }
+                    }
+            此方法去重，只删除index后面的
+            var arr = [&quot;apple&quot;,&quot;banana&quot;,&apos;pear&apos;,&quot;abc&quot;,&quot;abc&quot;,&quot;abc&quot;,&quot;abc&quot;,&quot;abc&quot;,&quot;abc&quot;,&quot;123&quot;,&quot;apple&quot;,&apos;apple&apos;,&apos;pear&apos;,&quot;abc&quot;];
+            var item = &quot;abc&quot;;
+            arr.forEach(function (value, index, self) {
+                if (value === item) {
+                    arr.splice(index,1)
+                }
+            })
+    forEach() 遍历数组  不会返回新数组
+        array.forEach(function(element,index,self){})//参数同理
+    find() 只返回第一个为true的项目
+        array.find(function(element,index,self){})
+    map() 调用数组的每个元素传给指定的函数，并返回一个数组，它包含该函数的返回值
+        array.map(function(element,index,self){})
+Array.isArray(object)
+    判断该对象是否为数组，如果是数组则返回true,如果不是则返回false,如果传的参数不是object则返回false
+</code></pre><p>JavaScript中的json，call,apply,bind<br>    json<br>        Json是javascript对象表示法<br>        Json是轻量级的文本数据交换格式<br>        Json是存储和交换文本信息的语法。类似XML。<br>        Json比xml更小、更快、更容易解析。</p>
+<pre><code>javascript创建对象的三种方式
+    var obj = {}
+    var obj = new Object();
+    var obj = Object.create();
+call
+
+apply
+
+每个函数都包含两个非继承而来的方法：call方法和apply方法
+这两个方法的作用是一样的
+bind
+
+函数的call(),apply(),bind()方法都适用于改变函数内部的指向
+第一个参数都是this要指向的对象
+都可以利用后续函数传参
+bind是返回对应函数，便于稍后调用，apply,call是立即调用
+
+不传参ex:
+    var xb = {
+        name:&quot;小兵&quot;,
+        gender:&quot;女&quot;,
+        say:function(){
+            alert(this.name+&quot;,&quot;+this.gender)
+        }
+    }
+    var other = {
+        name:&apos;小东&apos;,
+        gender:&apos;男&apos;，
+    }
+    xb.say(); ======&gt;结果   小冰  女
+
+    用xb.say()的方法输出other的数据
+        xb.say.call(other);
+        xb.say.apply(other);
+        xb.say.bind(other)();
+传参数ex:
+    var xb = {
+        name: &apos;小冰&apos;,
+        gender: &apos;女&apos;,
+        say: function(school,grade){
+            alert(this.name + &apos;,&apos; + this.gender + &apos;----&apos; + school + &apos;,&apos; + grade);
+        }
+    }
+    var other = {
+        name: &apos;小东&apos;,
+        gender: &apos;男&apos;,
+    }
+
+    xb.say.call(other,&apos;北大&apos;，&apos;3&apos;);
+    xb.say.apply(other,[&quot;清华&quot;，&quot;3&quot;]);
+    xb.say.bind(other)(&quot;交大&quot;，&quot;3&quot;);
+</code></pre><p>JavaScript的函数<br>    函数执行后后面的括号 是用来进行输入(传递一个实际存在的参数)<br>    不定参<br>        arguments /在es6被废除了<br>            是一个结构看起来非常类似数组的对象(类数组)<br>            类数组跟对象都有一些跟数组类似的特性<br>                .取值用下标，下标从0开始<br>                .都拥有length属性<br>            函数的默认返回值：undefined</p>
+<pre><code>        函数里的关键字return:
+            用来设定函数的返回值
+            函数一旦遇到return,函数就结束了
+            一个函数里，只有一个return生效
+
+            return语句将终止当前函数并返回当前函数的值
+            返回方式
+                返回控制与函数结果
+                    return 表达式；
+                返回控制，无函数结果
+                    return;
+
+                return true;返回正常的处理结果；
+                return false;返回错误处理结果；终止处理；阻止提交表单；阻止执行默认的行为
+                return;把控制权返还给页面
+有名函数
+    使用function关键字声明一个函数，在指定一个函数名，叫函数声明。
+    function 函数名(){}
+匿名函数
+    function(){}
+函数定义
+函数表达式
+    var fn = function(){}
+函数的自执行(即创建立即调用一次)
+    (function(){}())
+    (function(){})()
+    +function(){}()
+    -function(){}()
+    ~function(){}()
+</code></pre><p>JavaScript之DOM篇<br>    childNodes  所有子节点，包括(文本节点)<br>    children    返回第一级子元素<br>    nodeType    元素的节点类型，如果是1，返回元素节点类型，若果是2，返回属性节点类型，如果是3，返回的是元素或属性中的文本内容<br>    nodeName    返回节点名称，返回的是大写(返回的是所有的，包括文本)</p>
+<pre><code>tagName     返回元素节点的名称(大写)(返回的只是节点，不包括文本)
+getAttribute(&quot;attr&quot;) 返回指定节点的属性节点
+document.createAttribute(&quot;attrname&quot;) 创建一个属性节点
+ele.setAttributeNode() 添加一个属性节点
+
+firstChild 返回第一个子节点 在低版本IE只会返回元素节点，主流浏览器可能返回文本节点】
+firstElementChild 返回第一个元素节点 只兼容主流浏览器
+
+lastChild     兼容性同上
+lastElementChild    兼容性同上
+
+nextSibling   返回下一个兄弟节点  兼容性同上
+nextElementSibling   兼容性同上
+
+previousSibling     兼容性同上
+previousElementSibling  兼容性同上
+
+parentNode 返回父节点(没有兼容问题)
+offsetParent 返回定位父级
+
+childElementCount返回子元素节点个数，不兼容ie8及其以下
+
+cloneNode();克隆指定节点，包括属性和值。
+document.createElement(); 创建一个元素节点
+document.createTextNode();创建文本节点
+appendChild();向节点的子节点列表的末尾添加新的子节点。
+
+insertBefore(new,old);方法在您指定的已有子节点之前插入新的子节点
+removeChild();方法指定元素的某个指定的子节点。
+replaceChild(new,old);用一个新项目替换列表中的某个项目;
+
+获取窗口的内部宽度和高度
+    innerWidth
+    innerHeight
+    (包含滚动条)
+获取文档的可视区域宽高
+    document.documentElement.clientWidth
+    document.documentElement.clientHeight
+    (不包含滚动条)
+ele.clientWidth/clientHeight
+    padding+样式宽/样式高
+ele.offsetWidth/offsetHeight
+    padding+border+样式宽/样式高
+    就是说元素的实际占位大小
+ele.scrollWidth/scrollHeight
+    获取ele的padding+width/padding
+    但是如果子元素超过父元素宽高时，会加上超出部分的宽高(无论父元素是否overflow:hidden)
+ele.offsetTop/offsetLeft
+    获取ele元素到定位父级的top和left(可能包含margin)
+
+ele.scrollTop/scrollLeft;可读可写
+    X轴/y轴的滚动距离
+    在赋值时，不能带px单位，否则报错
+
+获取页面的实际高度/宽度
+    document.body.offsetHeight
+    document.body.offsetWidth
+
+获取元素到页面顶部的距离
+function getOffset(ele){
+    var obj ={
+        left:0,
+        top:0,
+    }
+     function getStyle(obj2){
+        return obj2.currentStyle || getComputedStyle(obj2);
+    }
+    while(ele !== document.body){
+        obj.top = obj.top + ele.offsetTop + parseFloat(getStyle(ele.offsetParent).borderTopWidth)
+        obj.left = obj.left + ele.offsetLeft + parseFloat(getStyle(ele.offsetParent).borderLeftWidth);
+        ele = ele.offsetParent;
+    }
+    return obj;
+}
+
+事件对象：
+    在主流浏览器里，是事件函数的第一个形参
+    在低版本IE里，是在window.event属性下
+    clientX/clientY //没有兼容性
+        获取鼠标到文档可视区域的top和left方向的距离
+        兼容：
+            滚动高+clientY
+    onresize窗口大小发生改变触发这个事件
+
+事件冒泡：
+    事件从子元素往父元素上触发，这个过程叫事件冒泡
+    阻止事件冒泡：
+        e.stopPropagation();//不兼容ie低版本
+        e.cancelBubble = true;//兼容ie低版本
+
+事件监听
+    Dom0级
+        box.onclick = function(){console.log(&apos;2&apos;)}
+    Dom2级
+        addEventListener(type,fn,Boolean)//不兼容ie低版本
+            boolean:false  不进行事件捕获(事件冒泡)
+                    true   进行事件捕获(不会冒泡)
+
+        ele.removeEventListener(type,fn)
+        e.target  返回事件源  不兼容低版本IE
+        e.srcElement ie兼容
+
+阻止默认行为
+    e.preventDefault()  不兼容低版本IE
+        兼容写法：
+            e.returnValue = false;
+    return false 在dom.onclick上阻止默认行为
+
+    oncontextmenu鼠标右击菜单事件
+
+Ie的attachEvent问题
+    有名函数作为attachEvent的事件函数时，在ie8及其以下浏览器里，第一个形参是事件对象
+
+滚动事件
+    是监听浏览器的滚动条
+滚轮事件
+    监听鼠标中键(滚轮)
+
+    onmousewheel 不兼容火狐
+        e.wheelDelta用于记录滚轮方向、 不兼容火狐
+        120 向前推
+        -120 向后拉
+            火狐使用：
+                e.detail
+                    3向后拉
+                    -3向前推
+    火狐使用：
+        DOMMouseScroll 只能使用addEventlistener绑定
+</code></pre><p>JavaScript之BOM篇<br>    什么是Bom? Bom是浏览器对象。有哪些常用的Bom属性呢？<br>    (1)location对象<br>        location.href– 返回或设置当前文档的URL<br>        location.search – 返回URL中的查询字符串部分。例如 <a href="http://www.dreamdu.com/dreamdu.php?id=5&amp;name=dreamdu" target="_blank" rel="noopener">http://www.dreamdu.com/dreamdu.php?id=5&amp;name=dreamdu</a> 返回包括(?)后面的内容?id=5&amp;name=dreamdu<br>        location.hash – 返回URL#后面的内容，如果没有#，返回空<br>        location.host – 返回URL中的域名部分，例如<a href="http://www.dreamdu.com" target="_blank" rel="noopener">www.dreamdu.com</a><br>        location.hostname – 返回URL中的主域名部分，例如dreamdu.com<br>        location.pathname – 返回URL的域名后的部分。例如 <a href="http://www.dreamdu.com/xhtml/" target="_blank" rel="noopener">http://www.dreamdu.com/xhtml/</a> 返回/xhtml/<br>        location.port – 返回URL中的端口部分。例如 <a href="http://www.dreamdu.com:8080/xhtml/" target="_blank" rel="noopener">http://www.dreamdu.com:8080/xhtml/</a> 返回8080<br>        location.protocol – 返回URL中的协议部分。例如 <a href="http://www.dreamdu.com:8080/xhtml/" target="_blank" rel="noopener">http://www.dreamdu.com:8080/xhtml/</a> 返回(//)前面的内容http:<br>        location.assign – 设置当前文档的URL<br>        location.replace() – 设置当前文档的URL，并且在history对象的地址列表中移除这个URL location.replace(url);<br>        location.reload() – 重载当前页面<br>    (2)history对象<br>        history.go() – 前进或后退指定的页面数history.go(num);<br>        history.back() – 后退一页<br>        history.forward() – 前进一页<br>    (3)Navigator对象<br>        navigator.userAgent – 返回用户代理头的字符串表示(就是包括浏览器版本信息等的字符串)<br>        navigator.cookieEnabled – 返回浏览器是否支持(启用)cookie<br>JavaScript原型链进阶<br>    类的创建和继承<br>        （1）类的创建（es5）：：new一个function，在这个function的prototype里面增加属性和方法<br>            // 定义一个动物类<br>            function Animal (name) {<br>              // 属性<br>              this.name = name || ‘Animal’;<br>              // 实例方法<br>              this.sleep = function(){<br>                console.log(this.name + ‘正在睡觉！’);<br>              }<br>            }<br>            // 原型方法<br>            Animal.prototype.eat = function(food) {<br>              console.log(this.name + ‘正在吃：’ + food);<br>            };<br>        2）类的继承——原型链继承<br>            –原型链继承<br>            function Cat(){ }<br>            Cat.prototype = new Animal();<br>            Cat.prototype.name = ‘cat’;</p>
+<pre><code>    var cat = new Cat();
+    console.log(cat.name);
+    console.log(cat.eat(&apos;fish&apos;));
+    console.log(cat.sleep());
+    console.log(cat instanceof Animal); //true 
+    console.log(cat instanceof Cat); //true
+
+    1、介绍：在这里我们可以看到new了一个空对象,这个空对象指向Animal并且Cat.prototype指向了这个空对象，这种就是基于原型链的继承。
+    2、特点：基于原型链，既是父类的实例，也是子类的实例
+    3、缺点：无法实现多继承
+（3）构造继承：使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给子类（没用到原型）
+    function Cat(name){
+      Animal.call(this);
+      this.name = name || &apos;Tom&apos;;
+    }
+    // Test Code
+    var cat = new Cat();
+    console.log(cat.name);
+    console.log(cat.sleep());
+    console.log(cat instanceof Animal); // false
+    console.log(cat instanceof Cat); // true
+    1、特点：可以实现多继承
+    2、缺点：只能继承父类实例的属性和方法，不能继承原型上的属性和方法。
+
+4）实例继承和拷贝继承
+    实例继承：为父类实例添加新特性，作为子类实例返回
+    拷贝继承：拷贝父类元素上的属性和方法
+    上述两个实用性不强，不一一举例。
+5）组合继承：相当于构造继承和原型链继承的组合体。通过调用父类构造，继承父类的属性并保留传参的优点，然后通过将父类实例作为子类原型，实现函数复用
+    function Cat(name){
+      Animal.call(this);
+      this.name = name || &apos;Tom&apos;;
+    }
+    Cat.prototype = new Animal();
+    Cat.prototype.constructor = Cat;
+    // Test Code
+    var cat = new Cat();
+    console.log(cat.name);
+    console.log(cat.sleep());
+    console.log(cat instanceof Animal); // true
+    console.log(cat instanceof Cat); // true
+
+    1、特点：可以继承实例属性/方法，也可以继承原型属性/方法
+    2、缺点：调用了两次父类构造函数，生成了两份实例
+（6）寄生组合继承：通过寄生方式，砍掉父类的实例属性，这样，在调用两次父类的构造的时候，就不会初始化两次实例方法/属性
+    function Cat(name){
+      Animal.call(this);
+      this.name = name || &apos;Tom&apos;;
+    }
+    (function(){
+      // 创建一个没有实例方法的类
+      var Super = function(){};
+      Super.prototype = Animal.prototype;
+      //将实例作为子类的原型
+      Cat.prototype = new Super();
+    })();
+    // Test Code
+    var cat = new Cat();
+    console.log(cat.name);
+    console.log(cat.sleep());
+    console.log(cat instanceof Animal); // true
+    console.log(cat instanceof Cat); //true
+</code></pre><p>JavaScript的运行机制<br>    javascript从一开始是单线程<br>    在Html5中，推出了web worker标准允许javascript脚本创建多个线程，但是子线程完全受主线程的控制，且不得操作DOM<br>    所以也是没有违背javascript单线程的本质。<br>    因为javascript是单线程，意味着任务要一个接着一个完成，但是如果一个任务前一个任务执行时间太长，那么后面的任务就会一直阻塞着，这样的用户体验非常差<br>    javascript的设计者考虑到了这一点，所以他将javascript的任务分两种，在主线程上执行的任务—-“同步任务”，被主线程挂载起来的任务<br>    “异步任务”，后者一般是放在一个叫任务队列的数据结构中。</p>
+<pre><code>javascript的运行机制
+    .所有同步任务都在一个主线程上进行，形成一个执行线。
+    .主线程之外，还有一个任务队列，只要异步任务有了运行结果，就在任务队列中放置一个事件
+    .一旦“执行栈”中的所有同步任务执行完毕了，系统就会读取“任务队列”，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。
+    .主线程不断重复上面的三步
+</code></pre><p>什么是跨域？如何解决跨域？<br>    前端跨域问题<br>        一、同源策略<br>            1、所谓同源是指域名，协议，端口相同。当一个浏览器运行一个js脚本时会进行同源检测，如果不同源是不能执行的<br>            2、源继承<br>                来自about:blank,javascript:和data：URLS中的内容，继承了将其载入的文档所指定的源，因为它们的URL本身未指定任何关于自身源的信息。<br>            3、变更源<br>                变更源可以实现基础域相同不同页面的跨域问题<br>                如：a.baidu.com/index.html 通过 iframe 引入 b.baidu.com/index.html，但是a中的JS是不可以操作b中的内容的，但是可以通过修改源来实现。需要在a和b中都修改domain,即 document.domain = ‘baicu.com’<br>　　　　        注意：document.doamin的修改必须是当前域或者当前域的基础域，如在a中document.domain = ‘b.baidu.com’是报错的<br>        二、跨域方案<br>            共有几种解决方案：<br>                1、document.domain + iframe<br>                2、动态创建script<br>                3、window.name + iframe<br>                4、window.postMessage<br>                5、CORS<br>                6、JsonP<br>                7、nginx代理</p>
+<p>客戶端存儲—————webStorage本地緩存的用法</p>
+<pre><code>设置：setItem(key,value);
+获取：getItem(key);
+删除一条数据：removeItem(key)
+清空：clear();
+window.sessionStorage------------------会话级存储(当会话结束时，用户关闭了浏览器，会话级数据才会消失)
+    用法：
+        sessionStorage[&apos;key&apos;] = &apos;value&apos;;(存储数据)
+        sessionStorage.setItem(&apos;key&apos;,&apos;value&apos;)
+        sessionStorage.key = value;
+
+        var c = sessionStorage[&apos;key&apos;];(读取数据)
+        var c = sessionStorage.getItem(&apos;key&apos;);
+        var c = sessionStorage.key;
+
+        sessionStorage.removeItem(&apos;key&apos;);(删除一个数据)
+        sessionStorage.clear();(清除所有数据)
+        sessionStorage.length;(获取数据的个数)
+window.localStorage-------------------本地跨会话级存储(永久存在)
+    用法：
+        localStorage[&apos;key&apos;] = &apos;value&apos;;(存储数据)
+        localStroage.setItem(&apos;key&apos;,&apos;value&apos;);
+        localStorage.key = value;
+
+        var c = localStorage[&apos;key&apos;];(读取数据)
+        var c = localStorage.getItem(&apos;key&apos;);
+        var c = localStroage.key;
+
+        localStroage.removeItem(&apos;key&apos;);(删除数据)
+        localStroage.clear();(清除数据)
+        localStroage.length;(获取数据的数量)  
+</code></pre><p>javaScript之cookie<br>    cookie是存于用户硬盘的一个文件，这个文件通常有一个域名，当浏览器再次访问这个域名的时候，便使这个cookie可用，因此，cookie可以跨一个域名下的多个网页，但不能跨多个域名使用<br>    cookie:数据会发送到后台，上限4kb,默认时限：本次会话，可以设置过期时间<br>        cookie必须在服务器环境下才可以使用<br>    用法：<br>        document.cookie=”username=wangzhongshun;expires=Thu, 18 Dec 2013 12:00:00 GMT”;(创建cookie)<br>        username=wangzhongshun是要存放的用户信息<br>        expires=expires=Thu, 18 Dec 2013 12:00:00 GMT设置cookie的过期时间（默认的过期时间为，浏览器关闭，cookie删除）</p>
+<pre><code>var c = document.cookie用来读取cookie(返回格式为字符串)
+
+修改cookie:类似创建cookie,直接覆盖原来cookie
+删除cookie:设置cookie过期时间为以前的时间，然后不必指定cookie的值
+
+js函数操作cookie:
+    设置cookie:
+        function setCookie(cname,cvalue,exdays){
+            var d = new Date();
+            d.setTime(d.getTime()+exdays*24*60*60*1000);
+            var expires = &quot;expires =&quot;+d.toGMTString();
+            document.cookie = cname+&quot;=&quot;+cvalue+&quot;;&quot;+expires;
+        }
+    获取cookie:
+        function getCookie(cname){
+            var name =  cname +&quot;=&quot;;
+            var ca = document.cookie.split(&quot;;&quot;);
+            for(var i = 0;i&lt;ca.length;i++){
+                var c = ca[i].trim();
+                if(c.indexOf(name) == 0){return c.subString(name.length,c.length)}
+            }
+            return &quot;&quot;;
+        }
+</code></pre><p>web storage和cookie的区别<br>    web storage的概念和cookie相似，区别是为了更大容量存储设计的<br>    Cookie的大小受限制，并且每次请求一个页面的时候Cookie都会被发送过去，这样无形中浪费了带宽，另外cookie还得指定作用域，不可以跨域调用<br>    除此之外，web storage拥有setItem getItem removeItem clear等方法，不像cookie需要前端开发自己封装setCookie,getCookie<br>    但是cookie是不可或缺的，cookie的作用是用来与服务器进行交互，作为http规范的一部分存在，而web storage仅仅是为了本地存储数据诞生<br>cookie和session的区别<br>    1、cookie的数据存放在客户端的浏览器上，session数据存放在服务器上<br>    2、cookie不是很安全，别人可以分析存在本地的cookie进行cookie欺骗，考虑到安全问题应该使用session<br>    3、session会在一定的时间上保存在服务器上，当访问增多时，会比较占用服务器的性能，考虑到减轻服务器性能方面，应该使用cookie<br>    4、单个cookie存放的数据不能超过4k,很多浏览器都限制一个站点最多存放20个cookie<br>    5、一般认为，登录信息存放在session中比较好，其他信息要保留存放在cookie中比较好<br>cookie、sessionStorage、localStorage的区别<br>    1、cookie数据始终在同源的http请求中，在服务器和浏览器间来回传送，大小限制4k<br>    2、sessionStorage:不会把数据发送到服务器，仅保存到本地，大小不同浏览器有不同的限制大概5M，数据的有效期不同，只在当前会话有效，不在不同的浏览器内共享<br>    3、localStorage:在所有同源浏览器中都可以共享，大小大概5M，可以持久保存</p>
+<p><a href="https://github.com/forthealllight/blog" target="_blank" rel="noopener">https://github.com/forthealllight/blog</a></p>
+
       
 
       
@@ -362,7 +1101,7 @@ nodeJs是事件驱动的
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
         		</li>
       		
 		</ul>
@@ -372,7 +1111,7 @@ nodeJs是事件驱动的
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/08/git学习速记/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/08/09/基础篇之javaScript/">展开全文 >></a>
         </p>
       
 
@@ -404,7 +1143,7 @@ nodeJs是事件驱动的
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/12/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span>
+      <a class="extend prev" rel="prev" href="/page/12/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/14/">Next &raquo;</a>
     </nav>
   
 
@@ -509,35 +1248,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -545,11 +1256,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,7 +1280,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
             
             <div class="clearfix"></div>
@@ -714,5 +1465,5 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>

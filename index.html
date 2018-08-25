@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>我的成长记录</title>
+  <title>个人笔记整理与收集</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="我的成长记录">
+<meta property="og:title" content="个人笔记整理与收集">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="我的成长记录">
+<meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的成长记录">
+<meta name="twitter:title" content="个人笔记整理与收集">
   
-    <link rel="alternative" href="/atom.xml" title="我的成长记录" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="个人笔记整理与收集" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -155,119 +155,502 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-webapp常见兼容问题解决" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-基础篇之CSS3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/23/webapp常见兼容问题解决/">webapp常见兼容问题解决</a>
+      <a class="article-title" href="/2018/08/25/基础篇之CSS3/">基础篇之CSS3</a>
     </h1>
   
 
         
-        <a href="/2018/08/23/webapp常见兼容问题解决/" class="archive-article-date">
-  	<time datetime="2018-08-23T06:32:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-23</time>
+        <a href="/2018/08/25/基础篇之CSS3/" class="archive-article-date">
+  	<time datetime="2018-08-25T03:58:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>针对ios上position:fixed</p>
-<pre><code>ios下fixed元素容易定位出错，软键盘弹出时，影响fixed元素定位
-android下fixed表现比ios要好，软键盘弹出时，不会影响fixed元素定位
-ios4下不支持position：fixed
-</code></pre><p>针对ios定位带来的滑动问题</p>
-<pre><code>最好采用better-scroll解决
-使用方法：
-    &lt;div class=&quot;menu-wrapper&quot; ref=&quot;menuWrappers&quot;&gt;
-        &lt;ul&gt;&lt;/ul
-    &lt;/div&gt;
-menuWrappers元素要有高度，要绝对定位
-dom构建完成初始化：
-    this.$nextTick(() =&gt; {
-      this._initScroll();
-    });
-要执行的方法：
-    _initScroll:function () {
-      if(!this.meunScroll) {
-        this.meunScroll = new BScroll(this.$refs.menuWrappers,{});
-      }else{
-        this.scroll.refresh();
-      }
-</code></pre><p>ios下input会有阴影</p>
-<pre><code>    -webkit-appearance: none;
-h5页面嵌入app会遇到的问题
-    样式错乱，webview设置问题
-        字体设置setTextSize(16)
-        字体放大setTextZoom(100)
-    如果采用了缓存
-        setDomStorageEnabled(true);
-</code></pre><p>使用背景图片被放大</p>
-<pre><code>尽量使用字体图标
-background-size:contain;
-</code></pre><p>禁止复制和选中</p>
-<pre><code>-webkit-user-select: none;
--moz-user-select: none;
--khtml-user-select: none;
- user-select: none;
-</code></pre><p>长时间按住页面会出现闪退</p>
-<pre><code>-webkit-touch-callout: none;
-</code></pre><p>上下滑动卡顿</p>
-<pre><code>html和body下宽度和高度设置了100%,就会造成这个问题
-                    overflow : auto;
-            overflow-scrolling : touch;
-  -webkit-overflow-scrolling : touch;
-</code></pre><p>ios和android下触摸元素时出现半透明灰色遮罩</p>
-<pre><code>   -webkit-tap-highlight-color: rgba(0,0,0,0); 
-旋转屏幕时，字体大小调整的问题
-    html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {
-      -webkit-text-size-adjust:100%;
-    }
-</code></pre><p>安卓手机圆角失效</p>
-<pre><code>background-clip: padding-box;
-</code></pre><p>Ios键盘字母输入，默认首字母大写</p>
-<pre><code>    &lt;input type=&quot;text&quot; autocapitalize=&quot;off&quot; /&gt;
-select选择设置下拉右对齐
-    select option {
-        direction: rtl;
-    }
-</code></pre><p>某些手机border在做rem布局时，打包成app,border会不显示</p>
-<pre><code>经过测验根据rem比例，小于1px的会不显示，在转换rem时请进行四舍五入
-</code></pre><p>页面渲染优化：</p>
-<pre><code>禁止使用iframe(阻塞父文档onload事件)
-禁止使用gif图片loading效果(降低cpu消耗，提升渲染效果)
-使用css3代替Js动画
+        <p>CSS部分<br>    兼容查询网址：<a href="https://www.caniuse.com/" target="_blank" rel="noopener">https://www.caniuse.com/</a><br>CSS书写顺序<br>    //显示属性<br>    display<br>    list-style<br>    position<br>    float<br>    clear</p>
+<pre><code>//自身属性
+width
+height
+margin
+padding
+border
+background
 
-开启GPU加速(注意事项：硬件加速最好只用在动画animation和变换transform上，不要滥用硬件加速，这样会增加性能的消耗，如果滥用会使动画变得更加卡)
-    使用3d效果来开启硬件加速
-        -webkit-transform: translate3d(250px,250px,250px)
-         rotate3d(250px,250px,250px,-120deg)
-         scale3d(0.5, 0.5, 0.5);
-    仅开启硬件加速
-        -webkit-transform: translateZ(0);
-        -moz-transform: translateZ(0);
-        -ms-transform: translateZ(0);
-        -o-transform: translateZ(0);
-        transform: translateZ(0);
-    对于safari和chrome，可能会在animation和transition出现闪烁问题，解决方法：
-        webkit-backface-visibility: hidden;
-        -moz-backface-visibility: hidden;
-        -ms-backface-visibility: hidden;
-        backface-visibility: hidden;
+//文本属性
+color
+font
+text-decoration
+text-align
+vertical-align
+white-space
+other text
+content
+</code></pre><p>Css盒子模型：<br>    所有的元素都是容器，也叫盒子<br>    所有的元素都是盒子模型 </p>
+<pre><code>写在style属性里css，叫行内样式
+写在style标签里的css，叫内部样式
 
-        -webkit-perspective: 1000;
-        -moz-perspective: 1000;
-        -ms-perspective: 1000;
-        perspective: 1000;
+行内块和块级可以包所有类型的元素
+行内元素只能包行内元素（内联元素）
 
-        -webkit-transform: translate3d(0, 0, 0);
-        -moz-transform: translate3d(0, 0, 0);
-        -ms-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-</code></pre>
+padding: 内边距
+        内边距会增加盒子大小
+        举个例子：
+            padding:40px 30px 20px 10px;
+                    上    右   下    左
+            padding:40px 30px 20px;
+                    上   左右  下
+            padding:40px 30px;
+                    上下  左右
+            一个值表示四个方向
+border:边框
+        举个例子：
+            border:3px solid red;
+                   粗细  、 风格、  颜色
+                风格：solid 实线
+                      dotted 点线
+                      dashed 虚线
+        边框会增加盒子的大小
+margin:外边距
+        举个栗子：
+            margin:40px 30px 20px 10px;
+                    上   右   下   左
+            margin:40px 30px 20px;
+                    上  左右  下
+            margin:40px 30px;
+                   上下  左右
+            一个值表示四个方向
+        margin:外边距不能增加盒子的大小
+
+            复合样式：有多个值的样式
+            单样式：单个属性
+盒子实际大小 = width/height   +   内边距  +   边框
+盒子的实际占据位置大小 =  width/height   +   内边距  +   边框   + 外边距
+
+当一个元素出现在另一个元素上面时，第一个元素的下外边距与第二个元素的上外边距会发生合并
+如果不设置父div 的内边距和边框，那么内部 div 的上外边距将与外部 div 的上外边距合并（叠加）。
+
+（父元素包含子元素）解决外边距合并的方法
+    1：父容器：border：1px solid;（不能是0px）
+    2：父容器：overflow: hidden;（或auto）
+    3：父容器：padding：1px；（不能是0或auto，其他的任意数值都可以）
+    4：父容器或子容器： float：left；（不能是auto）
+    5：父容器或子容器：position：absolute；
+    6：子容器：display：inline-block;(或是inline-table)
+    7：相邻元素：任意一个添加float：left（不能是auto）
+</code></pre><p>Css盒模型解析模式<br>    box-sizing:盒模型解析模式<br>        content-box:标准盒模型(和测试2一样的计算)<br>                宽度和高度 之外绘制元素的内边距和边框<br>                width,height外绘制padding,border,盒子的大小变大<br>        border-box:怪异盒模型<br>                从已设定的宽度和高度分别减去边框和内边距才能得到内容的宽度和高度<br>                width,height内绘制padding,border,盒子大小不变<br>    border-box(怪异盒模型)和content-box(标准盒模型)                                                                                            的区别在于，怪异盒模型padding和border不会让元素整体宽度增加，而标准盒模型padding和border会让元素的整体宽度增加<br>    弹性盒模型<br>Css隐藏<br>    visibility:hidden;属性指定元素是否可见，即使不可见也会占据元素的空间<br>    display:none;元素隐藏消失(不会占据元素的空间)<br>Css元素类型<br>    display: 设置元素显示的类型；none:隐藏、消失<br>    block:块级;inline行内<br>    inline-block:行内块</p>
+<pre><code>块级元素：
+    1、独占一行
+    2、默认宽度为父级宽度
+    3、支持外边距
+    4、支持内边距
+    5、支持    margin:auto;居中
+    6、任何元素都可以包住
+    div  p   ul  li  ol  dl  dt  dd 
+    不听话的块级：p，它不能包含任何块级
+行内元素：本质上就是文字
+    1、能和其他行内元素在一行
+    2、宽高由内容撑开，不支持宽高的设置
+    3、不支持上下的外边距,支持左右外边距
+    4、支持左右的内边距，上下内边距只支持下内边距
+    5、不支持 margin:auto;居中
+    6、行内元素不能包块级
+    行内元素的内边距对左右下起作用；
+    行内元素的外边距对左右起作用；
+span   em   strong    i   b   a  img
+不听话的行内: a，a不能包含a
+inline-block 行内块特点：本质上还是一个文字
+    1、不支持margin:  auto; 居中
+    2、支持给父级设置text-align，从而实现自身的一个对齐
+    3、可以设置宽度和高度
+    4、可以设置margin
+    5、可以设置padding
+    6、能和行内元素呆一块
+text-align:设置文本的对齐方式
+left     左边
+right    右边
+center   居中
+行内元素和行内元素之间的空白距离都会压缩成一个空格
+    去除空格方法：
+        1、挨在一起
+        2、注释去空格
+        3、元素父级设置文字大小为0，自身再单独设置文字大小
+</code></pre><p>Css常用选择器：<br>      选择器                          例子                           描述<br>    类名选择器                        .类名名称         class=”类名名称”(可复用)<br>      id选择器                      #id名称         id=”id名称”(id不可重复，尽量不用(选择的是该标签的所有标签))<br>    标签选择器                         &lt;标签名&gt;        div{}(选择的是该标签的所有标签)<br>    标签名群组选择器                    标签名,标签名      可以同时查找多个标签对象设定样式(多个标签一起选)<br>    标签包含选择器                 标签名 标签名      div p :找到div盒子里面所有的p标签(查找某个标签下包含某个标签的选择器)<br>    父子标签选择器(子元素选择器 )        父标签&gt;子签名      选中父标签里面所有的子标签 (查找某个标签下所有的标签)</p>
+<pre><code>指定标签选择器                 标签1+标签2        选中紧接着标签1的标签2(选择器用于选取第一个指定的元素之后（不是内部）紧跟的元素)
+                                                   贴身兄弟元素选择器，只会往后面选择相邻的兄弟。只找到一个
+标签属性选择器         标签名[标签属性名]         选中带有该指定属性名的标签
+标签属性值选择器        标签名[标签属性名=属性值]      选中带有该指定属性名及属性值标签
+标签属性值包含选择器      标签名[标签属性名~=值]     选中带有该属性名包含属性值的标签
+                                                   选择后面所有符合条件的兄弟
+标签属性值匹配选择器      标签名[标签属性名|=值]     选中带有该属性名匹配(开头)属性值选择标签
+
+输入框焦点选择器         输入框:focus        选择获取焦点的输入框
+首字母选择器           元素对象:first-letter     选择元素首字母
+首行选择器            元素对象:first-line       选择元素首行
+字元素选择器           子元素:first-child        选择父元素里面的子元素
+元素前插入选择器          元素:before        在元素前面添加内容
+元素后插入选择器          元素:after             在元素后面添加内容
+
+属性选择器
+[class]             选择所有具有class属性的元素
+[class = &quot;value&quot;]       选择所有具有class属性完全等于value的元素
+[class ~= &quot;value&quot;]      选择所有有class属性并且值里面具有value的元素,
+                        这个value是一个整体
+[class |= &quot;value&quot;]      选择值为value-的元素，并且value-是第一个值，并且后面可以有其他值
+                        选择值为value的元素，并且class属性值完全等于value
+[title][class=&quot;value&quot;]  选择具有title属性的，并且class的值为value
+</code></pre><p>选择器的优先级：<br>    选择器个数不能超过5个，一般是3个最好<br>    优先级：<br>        id       &gt;      class     &gt;    标签      &gt;   *通配符<br>        钻石卡         黄金卡         白银卡         黄铜卡<br>        同级选择器：后面的优先级要比前面的优先级高<br>        优先级比法：<br>            比个数：首先比id个数，如果个数相同，<br>                    比类选择器的个数，如果个数相同，<br>                    比标签选择器的个数，如果个数相同，<br>                    比先后顺序。<br>            id:不管多少个class比不过一个id<br>            class:不管多少个标签比不过一个class<br>        特殊情况：<br>            在IE里面,256个class可以干掉一个ID;<br>            256个标签可以干掉一个class<br>        行内样式、内部样式、外部样式的优先级<br>            行内样式 &gt;  内部样式 == 外部样式<br>            link引入外部的css,还能引入其他的<br>            @import   只能引入css文件<br>                @import url(“css/02.css”);<br>                加载顺序在最后面<br>                只能写在样式里，内部样式或者外部样式<br>                一定要顶格写</p>
+<pre><code>!important  无视优先级，是当前这一个属性优先级最高
+</code></pre><p>超链接常用选择器：<br>    :link{}     ——   超链接默认访问选择器，不建议使用 可直接通过标签选择器替代<br>    :visited{}  ——   超链接访问过后选择器<br>    :hover{}    ——   超链接鼠标触发选择器<br>    :active{}   ——   超链接鼠标点击选择器<br>    不加空格选择器：<br>        li.item<br>        表示li的类名称为.item，他们指向的是同一个元素</p>
+<pre><code>    选择器的目的只为了精准的选择到你想选择的元素。
+    选择器的个数不超过5个，一般是3个
+
+class  类名称
+所有用class名称做选择器，一定要在类名称前面加 .   
+id的权重性非常高，所以不要滥用
+    整个网页最外面的1到3层盒子加ID
+    特殊重要的盒子也要加ID
+内部样式：写在style标签里的css样式
+行内样式：写在style属性里的css样式
+</code></pre><p>CSS伪元素：<br>    :before 在元素的内容后面增加元素,默认增加的是行内元素<br>    :after 在元素的内容的最前面增加元素,默认增加的是行内元素</p>
+<p>css浮动：<br>    float:设置元素的浮动<br>        left:左浮动；<br>        right:右浮动；<br>        作用：<br>            让元素并排在一起<br>            控制整个元素的水平方向<br>        特点：<br>        1、飞起来了<br>        2、在普通元素上面<br>        3、会挤压别人的文字<br>        4、会被别人占据位置<br>        5、半脱离文档流<br>        6、遇到父级的边缘会停止浮动<br>        7、造成父级的高度撑不开，也就是没有高度，父级塌陷<br>        8、宽高度默认都由内容撑开<br>        9、margin: 0 auto;失效<br>        10、浮动会将元素变成块级<br>        11、不会发生外边距合并<br>        12、父级宽度不够的时候，浮动元素会掉下去<br>        13、前面强壮的浮动的元素的高度会卡主后面的浮动元素<br>    clear   清除浮动带来的父级高度塌陷影响<br>    left<br>    right<br>    both    清除两边的浮动<br>    清除浮动的作用：让父级有高度<br>    清除浮动：<br>            1、给父元素加高度   不适用<br>            2、overflow:hidden;     不适用<br>            3、在浮动元素的最后面加块级，加清除    不适用<br>            4、伪元素清除  :after    目前主流的<br>               例子：<br>               .clearfix:after{<br>                    display:block;<br>                    content:””;<br>                    clear:both;<br>               }</p>
+<pre><code>文档流：元素空间。从左到右，从上到下
+        在文档流的元素：块级、行内块、行内
+        只有在文档流里的块级才会发生外边距合并
+</code></pre><p>Css定位<br>    position    设置定位<br>        static    不定位，默认值<br>        absolute    绝对定位<br>        relative    相对定位<br>    方位值：<br>        top<br>        left<br>        right<br>        bottom<br>    绝对定位的特性：<br>        1、默认内容撑开宽度<br>        2、完全脱离文档流<br>        3、不规定位置的时候，原地飞起<br>        4、在没有给参考对象前，它会以Body为参考对象<br>        5、任何定位属性都能做绝对定位的参考对象，static除外<br>        6、参考对象只能是绝对定位的直系长辈<br>        7、往上找参考对象<br>        8、让元素变成块级<br>    相对定位的特性：<br>        1、不会改变元素的特性<br>        2、相对于自身原本的位置移动<br>        3、人走了家还在<br>        4、即使移动了，原本的位置空间依然保留<br>        通常我们用相对定位做绝对定位的参考对象<br>    固定定位的特性：<br>        1、默认内容撑开宽度<br>        2、完全脱离文档流,不占据空间<br>        3、不规定位置的时候，原地飞起<br>        4、它的参考对象永远只是浏览器的窗口<br>        5、让元素变成块级，会改变元素的特性<br>    绝对定位元素和固定定位的元素层级比浮动和在文档流里的元素都高<br>        z-index   设置层级<br>            auto    默认值<br>        后面的元素层级会比前面的高<br>        比同级之间的层级<br>        z-index层级只对定位元素生效</p>
+<p>overflow:内容的溢出方式；<br>    visible:默认值 内容可见<br>    hidden:隐藏,并且其余内容是不可见的；<br>    scroll:出现滚动条；<br>    auto:根据内容来决定是否出现滚动条；<br>    over-flow-x:处理x轴方向的超出情况；<br>    over-flow-y:处理y轴方向的超出情况；<br>    只给一个方向的时候,另外一个方向是自动;</p>
+<p>Css背景样式<br>    background(背景颜色,背景图片,背景图像平铺展示方式,背景定位,背景图像固定)<br>    background-color:背景颜色;(十六进制(#ffffff),颜色三原色rgb(235,207,221),英文单词(red))默认值为transparent(透明)<br>    background-image:背景图片;<br>    background-repeat:背景图像平铺展示方式;<br>        默认为平铺，默认值为none<br>        repeat:图像将在垂直方向和水平方向重复平铺该图像;<br>        repeat-x:设置图像水平平铺;<br>        repeat-y:设置图像垂直平铺;<br>        no-repeat:设置图像不平铺展示(只渲染一次图像);<br>    background-position:(x,y)背景定位;background-position:(x,y)如果只有一个起始值，那么默认值为center<br>    background-size  x 宽 ,y 高  背景尺寸<br>        contain    让背景图片完全显示在盒子里面，但是会造成盒子有一部分空白<br>        cover       让背景图片完全填满在盒子里面，但是会造成图片有<br>                    一部分显示不出来<br>    方向值：<br>        left top         right top             center       top<br>        left center      right center          center       center<br>        left bottom      right bottom          center       bottom<br>    百分比：左上角为(0,0)、右下角为100%,100%、如果仅给一个值，那么另一个值为50%;<br>    像素和百分比类似<br>    background-attachment:背景图像固定；<br>        scroll:背景图像随页面滚动而滚动<br>        fixed:背景图片固定;<br>    background-clip 背景显示区域的裁剪<br>        border-box<br>            从边框区域外裁剪背景<br>        padding-box<br>            从内边距区域外裁剪背景<br>        content-box<br>            从内容区域外裁剪背景<br>    background-orign 设置背景定位的原点<br>        border-box<br>            以边框的左上角为原点<br>        padding-box<br>            以内边距区域的左上角为原点<br>        content-box<br>            以内容区域的左上角为原点</p>
+<p>Css字体样式<br>    font的所有属性都有继承性<br>    默认的字体大小是16px,最小的字体是12px，火狐除外<br>    px   像素值<br>    em   相对单位,相对于当前元素的文字大小来计算，如果当前没有，那么往上寻找<br>            em前的值是倍数.通常用在使用父级控制子级大小的时候<br>    rem  相对单位，相对根标签的文字大小。一般在移动端使用<br>    font-weight:/<em>设置文本的粗细</em>/<br>        normal    不加粗，正常<br>                    /<em>100-900</em>/<br>        bold      加粗<br>    font-style   设置字体是否倾斜<br>        italic    以斜体显示，强制斜体<br>        oblique   文字倾斜<br>        normal    正常显示，不倾斜<br>    font-variant<br>        small-caps    小写字母大写，并且变小<br>    color: 设置字体颜色<br>    line-height  设置每行文字的高度，单行文字能实现居中<br>    font: font-style  font-variant font-weight  font-size/line-height font-family；<br>    font:font-size/line-height font-family;<br>    font-style:normal设置字体样式：正常显示（就是不倾斜）;<br>    font-weight:normal设置字体加粗：正常显示（就是不加粗）;</p>
+<p>Css鼠标指针<br>    cursor:设置鼠标的指针样式<br>        pointer:抓手；<br>        text:文本输入；<br>        wait:正忙；<br>        help:帮助；<br>        move:移动；<br>    自定义指针样式cursor:url(hand.cur),pointer;</p>
+<p>Css文本样式<br>    color:字体颜色;<br>        (颜色名、rgb三原色、16进制色值)<br>    direction:文本方向;<br>        ltr(默认文本方向，从左到右);<br>        rtl(从右到左);<br>    letter-spacing:字(字母)间距;<br>    line-height:行高;<br>        (默认normal)、number(数字与字体大小相乘为获取行间距)、length、百分比<br>    text-align:元素中文本对齐;<br>        left、center、right、justify(文本两端对齐)<br>    text-decoration:文本修饰;<br>        none:默认;<br>        underline:文本下划线;<br>        overline:文本上划线;<br>        line-through:文本删除线;<br>        blink:闪烁文本；<br>    text-indent:文本缩进;<br>        百分比控制<br>    vertical-align:改变行内元素的垂直对齐方式;（inline、inline-block、img图片才可以生效);<br>        加vertical-align的元素，同排都得加vertical-align<br>        vertical-align可以解决img下方间隙问题；<br>        baseline:父元素基线上(默认);  基线:在小写字母中x的底边；<br>        top:该元素与元素中最高元素顶端对齐   bottom 一行中最高元素的底边对齐    受行高影响<br>        text-top:该元素与父元素顶端对齐      text-bottom 以父元素的底部对齐  受文字大小影响<br>        middle:元素的中垂点与 父元素的基线加1/2父元素中小写字母x的高度 对齐<br>               元素的中垂点与 大写字母x的中点高度 对齐<br>               让两个具备行内特点的元素，居中对齐，两个元素都给middle</p>
+<pre><code>text-transform:修饰元素字母;
+    capitalize文本首字母大写
+    uppercase全大写
+    lowercase全小写
+white-space:设置元素空白处理;
+    normal(忽略空白，默认)，宽度不够换一行;
+    pre(保留空白);
+    nowrap文本不换行，直到遇到br才换行;
+    pre-wrap保留换行，会正常的换行;
+    pre-line合并换行，保留换行符;
+word-spacing: 词（单词间距），以空格判断是否是一个词;
+word-break : 设置怎么自动换行，css3
+        normal    使用浏览器默认的换行规则
+        break-all    在单词里面换行
+        keep-all     只在空格处换行
+text-overflow   设置文本溢出的处理方式
+    clip     超出父级宽度就剪掉
+    ellipsis   被剪掉/隐藏的文本用省略号显示
+
+超出父级宽高的文本用省略号显示：
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    一定要有固定宽度
+&amp;nbsp;空格占位符
+text的所有属性都会被后代继承
+</code></pre><p>Css中有继承性的样式<br>    font<br>    text<br>    border-spacing<br>    lettworder-spacing<br>    line-height<br>    列表标记是列表标签有的，li继承这个列表标记</p>
+<pre><code>inherit 继承父级该属性的值
+</code></pre><p>css老版本总结<br>    选型卡标题图标引入方式<br>    <link rel="shortcut icon" href="图标的路径" type="image/x-icon"><br>    css样式多次利用,便于组件化开发：不同模块引入不同css文件使用link<br>    网页常用样式：宽度（width）、高度(height)、边框（border）、外边距(margin)、填充(padding);<br>    font-size:修改字体大小<br>    color:修改字体颜色<br>    font-family:修改字体风格样式<br>    font-weight:字体粗细;<br>    normal默认<br>    bold加粗  bolder更粗  lighter变细;<br>    自定义大小100到900</p>
+<pre><code>上下居中(两种）：
+    position:absolute;                          
+    top:0;
+    bottom:0;
+    margin:auto;
+   （必要时设置宽高）
+
+    position:absolute;
+    top:50%;
+    margin-top:-21px;(自身元素高度的一半)
+
+左右居中：
+    margin:0 auto;
+
+    元素外边距（标签距离标签之间间距）以及填充（标签距离“内容”）
+    外边距方向（上 右 下 左）
+    比如：margin:0px 0px 0px 0px;
+    外边距方向（上下 左右）
+    比如：margin:0px 0px;
+    外边距方向（上 左右 下）
+    比如：margin:0px auto(自适应) 0px;
+    填充方向（上、右、下、左）
+    比如：padding:0px 0px 0px 0px;
+让div内的文字垂直居中
+    1、display:table-cell;
+       vertical-align:middle;
+       text-align:center;
+    2、display:flex;
+       justify-content:center;
+       align-items:center;
+</code></pre><p>表格属性<br>    表格的特点：<br>        1、table定义了宽度，里面的东西永远都不会超出宽度；<br>        2、每个单元格的宽度默认根据table的宽度等比例分配；<br>        3、每一列中的单元格的宽度以最大值为准<br>        4、每一行中的单元格的高度以最大值为准<br>        5、表格里面的单元格的宽度最终其实都会转化成比例去设置<br>        6、td里面的内容默认垂直居中，左对齐<br>        7、tr不支持设置外边距和内边距<br>        8、td不支持外边距<br>        9、表格里的tbody会边下载数据边显示<br>    cellspacing=”0” 单元格间距  cellpadding 单元格边距<br>    colspan,合并单元格（跨列）;<br>    rowspan,合并单元格（跨行）;</p>
+<pre><code>display:
+    table           类似 table 标签
+    table-row       类似 tr 标签
+    table-cell      类似 td,th 标签
+</code></pre><p>表单属性<br>1、 form<br>    enctype指定表单数据的编码方式即指定什么样的数据可以提交给服务器；<br>    application/x-www-form-urlencoded，默认值，允许将普通字符，特殊字符提交给服务器；<br>    multipart/form-data，允许将 文件 提交给服务器；<br>    text/plain允许将普通字符提交给服务器。特殊字符，文件则不可以;<br>2、 textarea<br>    cols指定文本域显示的列数，变相的指定宽度;<br>    rows指定文本域显示的行数，变相的指定高度;<br>3、 select<br>    size指定选项框，默认显示选项的数量。大于1的话，则为滚动列表，否则就是下拉选项框;<br>    multiple设置多选;<br>4、 lable<br>    for : 表示要与该文本关联的控件的ID值<br>    单选按钮通过相同name属性值实现单选的效果，传值的时候，传的是value的值<br>5、伪类<br>    :focus获取焦点；</p>
+<p>CSS3部分<br>CSS3新单位<br>    px    绝对单位，页面按精确像素展示<br>    em    相对单位，基准点为父节点字体的大小，如果自身定义font-size(浏览器默认是16px),而整个页面1em不是一个固定的值<br>    rem   相对单位，相对于根节点html的字体大小来计算<br>    vw    viewpoint width,视窗宽度，1vw等于视窗宽度的1%；<br>    vh    viewpoint height,视窗高度，1vh等于视窗高度的1%；<br>    vmin  vw和vh中较小的那个<br>    vmax  vw和vh中较大的那个<br>    %     百分比<br>    in    寸<br>    cm    厘米<br>    mm    毫米<br>    pt    point,大约1/72寸<br>    pc    pica,大约6pt,1/6寸<br>    ex    取当前作用效果的字体的x的高度，在无法确定x高度的情况下以0.5em计算(IE11及以下均不支持，firefox/chrome/safari/opera/ios safari/android browser4.4+等均需属性加么有前缀)<br>    ch    以节点所使用字体中的“0”字符为基准，找不到时为0.5em(ie10+,chrome31+,safair7.1+,opera26+,ios safari 7.1+,android browser4.4+支持)<br>CSS3运算表达式(calc())<br>    calc()使用通用的数学运算规则：<br>        使用+  -  <em>  /  四则运算<br>        可以使用百分比、px、em、rem等单位<br>        可以使用各种单位进行混合运算<br>        表达式中有 +   -时，其前后必须要有空格，如<br>        width:calc(12%+5em)这种没有空格的写法是错误的<br>        表达式中有</em>和/时，其前后没有空格，但建议留有空格</p>
+<pre><code>    *  和   /前后不能带单位。
+浏览器的兼容性，需要添加浏览器的前缀  
+</code></pre><p>Css3圆角：<br>    border-radius:给元素添加圆角的边框;<br>    单位:% px;<br>    四个值:左上 右上  右下  左下<br>    三个值：左上   右上左下  右下;<br>    两个值：左上右下  右上左下;<br>    一个值：给所有的角一样的值；</p>
+<p>Css3阴影：<br>    box-shadow:盒子阴影;<br>    h-shadow:水平偏移量。允许负值 (必须);<br>    v-shadow:垂直偏移量。允许负值 (必须);<br>    blur:模糊半径(可选);<br>    spread:阴影的扩展半径(可选);<br>    color:阴影的颜色(可选);<br>    外部阴影(默认);<br>    内部阴影(inset可选)；</p>
+<p>Css3透明<br>    rgba()；设置颜色的透明度；<br>    opacity   设置元素的透明度<br>            0-1<br>            0  透明<br>            1  不透明<br>    只是透明，依然存在的<br>        在IE8及以下，不支持这种写法<br>        filter:alpha(opacity=50);  IE的滤镜写法<br>            opacity<br>                0-100<br>                0  透明<br>                100  不透明<br>    transparent 背景透明(全透明黑色)，transparent相当于rgba(0,0,0,0)]]</p>
+<p>CSS3过渡<br>    transition过渡———复合样式写法：transition-property transition-duration transition-delay transition-timing-function<br>    transition-property:指定过渡的属性名称;<br>        all(所有属性都得到过渡效果);默认<br>        attr(过渡效果的Css属性名称，列表以逗号分隔)<br>        none(没有属性会获得过渡效果)<br>    transition-duration:过渡时间<br>    transition-delay:延迟时间，多久之后在开始执行动画;<br>    transition-timing-function:动画的运动形式<br>        linear(匀速);<br>        ease(慢快慢)默认<br>        ease-in(慢入)<br>        ease-out(慢出)<br>        ease-in-out(慢入慢出)<br>        cubic-bezier(贝塞尔曲线(x1,y1,x2,y2))</p>
+<p>CSS3动画<br>    animation必须以@keyframes一起使用<br>    animation动画</p>
+<pre><code>animation-name:动画名称;
+    none：不引用任何动画名称
+animation-duration：动画时间
+animation-delay:动画效果延迟时间；
+animation-timing-function动画速度曲线;
+    同过渡运动形式
+    linear  匀速
+    ease  开始慢中间快结束慢
+    ease-in  渐入
+    ease-out  渐出
+    ease-in-out  渐入渐出
+    cubic-bezier  贝塞尔曲线
+animation-iteration-count:动画执行次数
+    infinite 无限循环
+    默认1次
+animation-direction:动画是否进行反响运动
+    normal正常方向
+    reverse反向运动
+    alternte动画先正方向后反方向运动（奇数次正常播放，偶数次反向播放）
+    alternte-reverse动画先反方向后正方向运动(奇数次反向播放，偶数次正常播放)
+animation-play-state:动画执行状态
+    running运动(默认);
+    paused暂停
+animation-fill-mode:动画对象时间之外的状态
+    none原始状态&gt;动画&gt;原始状态
+    forwards原始状态&gt;动画&gt;停在动画帧100%（原始动态--&gt;动画帧的开始状态---&gt;动画帧的100%（100%)(停留在结尾)
+    backwards(忽略原始状态)进入动画帧0%&gt;大于动画&gt;大于原始状态（忽略原始状态，直接进入动画0%）（也会停留在结尾）
+    both(忽略原始状态)进动画帧0%&gt;动画&gt;停在动画帧100%
+@keyframes规定动画帧
+    @keyframes 动画名称{
+        keyframes-selector(指的是动画时间百分比,合法值：0-100%|from to){css-styles (一个或多个合法的css样式属性)}
+        keyframes-selector{css-styles}
+    }       
+    动画的关键帧
+    @keyframes
+        from {
+            margin-left:300px;
+        }
+        to{
+            margin-left:900px;
+        }
+        from 100%;
+        to 0%;
+        原始状态
+            动画帧的开始状态
+            动画帧的100%
+</code></pre><p>CSS3新增颜色模式<br>    RGBA(R,G,B,A)透明颜色模式<br>    HSLA(H,S,L,A)<br>        A:Alpha(透明度) 取值0-1之间<br>    HSL<br>    H:hue(色调)<br>        0或360表示红色<br>        120位绿色，240为蓝色，取值为0-360<br>    S：Saturation(饱和度)<br>        取值为0%-100%，值越大，颜色越纯<br>    L：Lightness(亮度)<br>        取值为0%-100%,变暗&lt;50%&gt;变亮</p>
+<p>CSS3文字描边<br>    text-stroke-width<br>        设置或检索对象中的文字的描边厚度<br>    text-stroke-color<br>        设置或检索对象中的文字的描边颜色<br>    text-stroke:text-stroke-width text-stroke-color文字的描边</p>
+<p>CSS3变换<br>    trasnsform定义2D变换<br>        transfrom:rotate() skew() scale() translate();<br>        rotate(angle) 定义2D旋转，在参数中规定角度(单位deg)<br>            正直(顺时针)<br>            赋值(逆时针)<br>        scale(x,y) 定义2D缩放【正数|小数|0|负数】<br>            一个值的时候表示x和y轴的值一样<br>        translate(x,y)<br>            定义2D位移(length)<br>            一个值为X轴<br>        skew(x-angle,y-angle)定义沿着X和Y轴的倾斜 转换(单位deg)<br>            一个值时，表示水平方向的倾斜角度<br>        skewX(angle)定义沿着X轴的2D倾斜转换<br>        skewY(angle)定义沿着Y轴的2D倾斜转换<br>        transform-orign转换的基点(x,y,z) 默认【50%，50%】效果等同于center center<br>            X:定义基点被置于X轴的何处<br>                值；【left  center right】  【length】  【%】<br>            Y：定义基点被置于Y轴的何处<br>                值：【top center bottom】  【length】 【%】<br>            Z：定义基点被置于z轴的何处<br>                值【length】<br>        transform:scale() translate()  先scale()后translate()  受scale()影响<br>        transform定义3D变换</p>
+<p>CSS3的backface-visibility属性<br>    backface-visibility定义元素不面向屏幕时，是否可见<br>    visible(默认)：指定元素背面可见<br>    hideen:指定元素背面不可见</p>
+<p>CSS3的user-select<br>    禁止文字选中<br>    user-select:none<br>    -moz-user-select:none<br>    -ms-user-select:none<br>    -webkit-user-select:none<br>CSS3多列<br>    column-count属性制定了要分割的列数<br>    column-fill指定如何填充列  auto<br>    counmn-gap用来指定列与列之间的间隙<br>    colunm-rule复合属性  column-rule:边框宽度  边框样式  边框颜色<br>        column-rule-width 指定列边框的厚度<br>        column-rule-style 指定列边框的样式<br>        column-rule-color 指定列边框的颜色<br>    column-width:指定列的宽度<br>    columns复合属性  columns:列宽</p>
+<p>CSS3用户界面<br>    resize指定一个元素是否由用户去调整元素的大小   值为both<br>        resize要配合overflow:auto使用<br>    outline-offset 用来指定元素边框与轮廓之间的间距<br>    outline-offset 与 out-line配合使用<br>CSS3渐变<br>    gradient可以应用在所有接受图像的属性上<br>    linear-gradient 线性渐变<br>        起点：从什么方向开始渐变(顺时针)s<br>        关键词:(to是去，到的意思)<br>            to left 设置渐变从右到左 相当于270deg<br>            to right 设置渐变从左到右 相当于90deg<br>            to top  设置渐变从下到上 相当于0deg<br>            to bottom 设置渐变从上到下 相当于180deg<br>            to left top 顺时针旋转<br>            对角渐变 to top left/to top right/to bottom right/to bottom left<br>        角度：从什么地方开始渐变，角度deg<br>        渐变的颜色和位置(颜色，位置：%/px)<br>        linear-gradient(30deg,red 10%,green 10%)</p>
+<pre><code>    前缀写法  默认值-90deg  逆时针
+        不能加to  角度表示开始的起点
+        top  -90deg
+        bottom 90deg
+        left  0deg
+        right 180deg
+        left top
+        前缀写法写前面，标准写法写后面
+repeating-linear-gradient 重复性线性渐变
+    线性渐变重复平铺
+radial-gradient 经向渐变    
+    shape:circle(圆)，ellipse(椭圆)
+    shape size:半径
+    圆形的半径圆只有一个值,椭圆有两个值 
+    关键词:
+        closest-side 圆心到最近的边
+        closest-corner 圆心到最近的角
+        farthest-side 圆心的离圆心最远的边
+        farthest-corner(默认) 圆心到离圆心最远的角 
+
+        position确定圆心的位置,X坐标,Y坐标;如果只提供一个,第二个值默认为50% 
+    X关键词:left center right 
+    Y关键词:top center bottom
+    多背景 
+        background:url() 0 0,url() 0 100%;逗号分隔开 
+        带图片和透明的渐变 
+        background:linear-gradient(to right,rgba(255,255,255,0),rgba(255,255,255,1)),url();
+        兼容 
+        -webkit-linear-gradient() 
+        -moz-
+        IE低版本渐变(滤镜) 
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=’#ffffff’,end Colorstr=’#ff0000’,GradientType=’1’);
+repeating-radial-gradient 重复性经性渐变
+</code></pre><p>CSS3倒影<br>    倒影box-reflect<br>        box-reflect:none | direction offset mask-box-image<br>        direction:倒影在对象的位置<br>        above 上<br>        below 下<br>        left 左<br>        right 右<br>        offset:用长度值来定义倒影与对象之间的间隙,可以为负值<br>        mask-box-image:遮罩图像<br>        <url> 使用绝对或相对地址指定遮罩图像<br>        linear-gradient 使用线性渐变创建遮罩图像<br>        radial-gradient 使用经向渐变创建遮罩图像<br>        repeating-linear-gradient 使用重复的线性渐变创建背景遮罩图像<br>        repeating-radial-gradient 使用重复的经向渐变创建背景遮罩图像<br>        none 无遮罩图像</url></p>
+<p>CSS3遮罩<br>    MASKS遮罩/蒙版<br>        -moz-webkit-mask-image 遮罩图片<br>        ：url(”);<br>    linear-gradient<br>    radial-gradient<br>        -webkit-mask-repeat 遮罩平铺<br>        repeat<br>        no-repeat<br>        repeat-x<br>        repeat-y<br>    -webkit-mask-position 遮罩位置<br>        关键词 | % | length<br>    -webkit-mask-size 遮罩尺寸</p>
+<p>CSS3弹性盒模型<br>    FLEX,采用Flex布局的元素，称为Flex(Flex container),简称”容器”。它的所有子元素自动称为容器成员，称为Flex项目(felx item),简称”项目”，任何一个容器都可以指定为Flex布局<br>        display:flex | inline-flex 定义弹性伸缩盒容器类型<br>            flex  将对象作为弹性伸缩盒显示<br>            inline-flex 将对象作为内联块级弹性伸缩盒显示<br>                注意：设置为flex布局以后，子元素的float、clear和vertical-align属性将失效</p>
+<pre><code>容器默认存在两根轴：
+    水平的主轴和垂直的交叉轴。主轴的开始位置(与边框的交叉点)main-start,结束位置叫main end,交叉轴的开始位置叫cross start,结束位置叫cross end
+    项目默认沿主轴排列。单个项目占据的主轴空间叫做main size,占据的交叉轴空间叫做cross size
+容器的属性,以下6个属性设置在容器上
+    flex-direction(排列盒子方向)
+        row(默认)：横向从左到右排列(横向)
+        row-resverse 对齐方向与row相反             (倒序排列)
+        column：纵向从上往下排列(纵向)。
+        column-resverse:对齐方式与column相反       (倒序排列)
+    flex-wrap(nowrap | wrap | wrap-reverse)
+        控制flex容器是单行或者多行，同时横轴的方向决定了新行的堆叠方向
+        nowrap(默认) flex容器为单行，不换行
+        wrap:flex容器为多行。超出换行
+        wrap-reverse: 反转wrap排列
+    flex-flow
+        属性是flex-direction属性和flex-wrap属性的简写形式，默认值为(row  nowrap)
+    justify-content
+        定义了项目在主轴上的对齐方向
+        justify-content:flex-start | flex-end | center |space-between | space-around
+        flex-start(默认值)：左对齐
+        flex-end:右对齐
+        center:居中
+        space-between:两端对齐，项目之间的间隔都相等
+        space-around:每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍
+    align-items
+        定义了项目在交叉轴上的如何对齐
+        align-items:flex-start | flex-end |center | baseline | stretch;
+        具体的对齐方式与交叉轴的方向有关，下面假设交叉轴从上到下
+        flex-start:交叉轴的起点对齐。
+        flex-end:交叉轴的终点对齐。
+        center：交叉轴的中点对齐
+        baseline:项目第一行文字的基线对齐;
+        stretch(默认值)：如果项目未设置宽高或设为zuto,将沿交叉轴沾满整个容器的高度或宽度。
+    align-content
+        属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用
+        align-content:flex-start | flex-end | center | space-between |space-around |stretch;
+        flex-start: 与交叉轴的起点对齐。
+        flex-end:与交叉轴的终点对齐
+        center:与交叉轴的中点对齐
+
+        space-between:与交叉轴两端对齐，轴线之间的间隔平均分布。
+        space-around:每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍
+        stretch(默认值)：各行将会拉伸以占用剩余的空间。如果剩余的空间是负数，改值等效于‘flex-start’。在其他情况下，剩余空间被所有行平分，以扩大他们的侧轴尺寸
+        多行下的align-content使align-items,两者之间会有冲突，所以看情况使用
+
+    以下6个属性设置在项目上：
+        order 项目排序
+            定义项目的排列顺序。数值越小，排列越靠前，默认为0，可负值
+        flex-grow  项目拓展比例
+            &lt;number&gt;定义项目的放大比例，(默认为0) 即如果存在剩余空间，也不放大。
+                子元素的尺寸 =  父级盒子剩余空间尺寸*子元素的flex-grow属性值/所有子元素的flex-grow属性值的和
+        flex-shrink  项目缩小比例
+            定义项目缩小比例，(默认为1)，即如果空间不足，该项目将缩小。为0就不缩小
+            元素收缩宽度 = 超出的宽度 * 元素收缩比/收缩总比
+
+            如果一个项目的flex-shrink属性值为0，其他项目都为1，则空间不足时，前者不缩小。负值对该属性无效。
+        flex-basis  定义拓展剩余空间前，的交叉轴的宽
+            定义了项目再分配多余空间之前，项目占据主轴空间(main size)浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto.
+            值：&lt;length&gt; | &lt;percentage&gt; | auto | content
+                &lt;length&gt;: 用长度值来定义宽度。不允许负值
+                &lt;percentage&gt;: 用百分比来定义宽度。不用需负值
+                auto ： 无特定宽值，取决于其他属性值，auto的计算
+
+                规则是 检索一下你是否设置了width(或者height值，取决于flex-direction)就会采用这个值，否则的话最后采用的是content
+                content: 基于内容自动计算宽度
+        flex  复合属性
+            flex:flex-grow,flex-shrink 和 flex-basis的简写，默认值为0 1 auto.后两个属性可选
+            flex：none | [&lt;&apos;flex-grow&apos;&gt;&lt;&apos;flex-shrink&apos;&gt;? || &lt;&apos;flex-basis&apos;&gt;]
+            该属性有两个快捷值：auto(1 1 auto) 和 none(0 0 auto).
+            建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值
+        align-self 自定义项目属性align-items
+            属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items.(默认值为auto,表示继承父元素的align-items属性)。如果没有父元素，则等同于stretch
+            align-self:auto(默认) | flex-start | flex-end | center | baseline | stretch
+</code></pre><p>响应式布局；</p>
+<pre><code>移动端：
+    设备的宽度；
+    视口的宽度；(虚拟的可视化宽度)；
+    窗口的实际宽度
+
+响应式布局：
+    多用在pc端
+    不同的尺寸写不同的样式布局
+</code></pre><p>2<br>    自适应：多用在移动端布局<br>        布局不变，只是缩放</p>
+<pre><code>    百分比布局
+    px
+    rem:相对于根标签(html标签)的文字大小
+
+@media  媒体查询
+    all   所有的
+    print  打印机
+    screen  彩屏设备
+关键字
+    and  和
+    not  除了，用来排除
+    only  只有
+
+
+媒体类型
+    all                     所有媒体
+    screen                  彩屏设备
+    print                   用于打印机和打印预览
+    speech                  应用于屏幕阅读器等发声设备
+    braille                 应用于盲人触摸式(已废弃)
+    embossed                应用打印的盲人印刷设备(已废弃)
+    projection              用于投影设备(已废弃)
+    tty                     不用使用像素的设备(已废弃)
+    tv                      电视(已废弃)
+
+关键字 
+    and 
+    not                      用来排除某种指定的媒体类型
+    only                     (限定某种设备)某种特定的媒体类型
+
+媒体特性
+    (width:600px)            宽
+    max-width:600px         最大宽度 &lt;=600
+    min-width               最小宽度 &gt;=480
+    orientation:(portrait)  竖屏
+    orientation:(landscape) 横屏
+媒体查询
+    方法一:
+        媒体查询：@media[not | only] mediatype [and] (media feature)
+                {CSS-Code;}
+                例：@media screen and(min-width:400px)  and (max-width:500px){.box{margin:0 auto}}
+                    值与值之间需要有空格，and前后也要有空格
+    方法二：
+        @import url(&apos;index.css&apos;) [not | only] mediatype[and] (media feature) [and] (meadia feature);
+        需顶行写
+        例：@import url(&apos;css/reset.css&apos;) screen;
+    方式三：
+        样式引入
+            &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;print.css&quot; media=&quot;print&quot; /&gt;
+            &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;A.css&quot; media=&quot;screen and (min-width:800px)&quot; /&gt;
+            &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;B.css&quot; media=&quot;screen and (min-width:600px) and (max-width:800px)&gt;
+
+            &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;c.css&quot; media=&quot;screen and (max-width:600px)&quot;&gt;
+            &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;all and (orientation:protrait)&quot; href=&quot;protrait.css&quot;&gt;
+            &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;all and (orientation:landscape)&quot; href=&quot;landscape.css&quot;&gt;
+
+
+    &lt;meta name=&quot;viewport&quot; content=&quot;&quot;/&gt;
+        视口的作用；在移动浏览器中，当页面宽度超出设备，浏览器内部虚拟的一个页面容器，将页面容器缩放到设备这么大，然后展示
+        width           [pixel_value |device-width] 例如width=640
+        height          [pixel_vaslue | device-height]
+        initial-scale   初始比例
+        minimum-scale   允许缩放最小比例
+        maximum-scale   允许缩放的最大比例
+        user-scalable   是否允许缩放（yes || no 1  |   0)
+        &lt;meta name=&quot;viewpotrt&quot; content=&quot;width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no&quot;&gt;
+
+    老式浏览器自适应不支持meta解决办法(ie6,7,8)
+        &lt;!--[if lt IE 9]&gt;
+    　　　　&lt;script src=&quot;http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js&quot;&gt;&lt;/script&gt;
+    　　&lt;![endif]--&gt;
+</code></pre><p>Css兼容问题总结：<br>    Css Hack<br>        IE条件注释法(正常代码之外添加判别IE浏览器或者对应版本的条件注释)，符合条件的浏览器或者版本号才会执行里面的代码<br>            <!-- lt是小于  gt是大于   lte是小于等于    gte是不小于   !是不等于--><br>            <!--[if IE] -->         你想要执行的代码    &lt;![endif]–&gt;<br>            <!-- [if lt IE 8]>      你想要执行的代码    <![endif]--><br>            <!-- [if ! IE 8]>       你想要执行的代码    <![endif]--><br>        CSS属性前缀法<br>        选择器前缀法</p>
+<p>css中link和import的区别<br>    1、link是xhtml标签，除了可以加载css外还可以加载rss,@import属于css范畴，只能加载css<br>    2、link引入的css在页面加载的同时加载，import在页面完全加载完成后加载<br>    3、link无兼容性问题，@import低版本浏览器不支持(目前可以忽略)<br>    4、link支持使用js控制Dom去改变样式，@import不支持</p>
+<pre><code>http://blog.csdn.net/gyq04551/article/details/55254359
+</code></pre><p><a href="https://www.douban.com/group/topic/95227323/" target="_blank" rel="noopener">https://www.douban.com/group/topic/95227323/</a></p>
+<p>-</p>
+
       
 
       
@@ -280,7 +663,7 @@ select选择设置下拉右对齐
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">兼容</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
         		</li>
       		
 		</ul>
@@ -290,7 +673,7 @@ select选择设置下拉右对齐
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/23/webapp常见兼容问题解决/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/08/25/基础篇之CSS3/">展开全文 >></a>
         </p>
       
 
@@ -322,7 +705,7 @@ select选择设置下拉右对齐
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -427,35 +810,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -463,11 +818,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -475,7 +842,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
             
             <div class="clearfix"></div>
@@ -632,5 +1027,5 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>

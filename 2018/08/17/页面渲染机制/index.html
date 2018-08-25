@@ -6,22 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>页面渲染机制 | 我的成长记录</title>
+  <title>页面渲染机制 | 个人笔记整理与收集</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="浏览器        Chrome        FireFox        Safari    浏览器的基本结构        1.用户界面（User Interface）:用户所看到及与之交互的功能组件，如地址栏，返回，前进按钮等；        2.浏览器引擎（Browser engine）:负责控制和管理下一级的渲染引擎；        3.渲染引擎（Rendering engine）:">
+  <meta name="description" content="浏览器 Chrome FireFox Safari 浏览器的基本结构     1.用户界面（User Interface）:用户所看到及与之交互的功能组件，如地址栏，返回，前进按钮等；     2.浏览器引擎（Browser engine）:负责控制和管理下一级的渲染引擎；     3.渲染引擎（Rendering engine）:负责解析用户请求的内容（如HTML或XML，渲染引擎会解析HTML">
 <meta name="keywords" content="渲染">
 <meta property="og:type" content="article">
 <meta property="og:title" content="页面渲染机制">
 <meta property="og:url" content="http://yoursite.com/2018/08/17/页面渲染机制/index.html">
-<meta property="og:site_name" content="我的成长记录">
-<meta property="og:description" content="浏览器        Chrome        FireFox        Safari    浏览器的基本结构        1.用户界面（User Interface）:用户所看到及与之交互的功能组件，如地址栏，返回，前进按钮等；        2.浏览器引擎（Browser engine）:负责控制和管理下一级的渲染引擎；        3.渲染引擎（Rendering engine）:">
+<meta property="og:site_name" content="个人笔记整理与收集">
+<meta property="og:description" content="浏览器 Chrome FireFox Safari 浏览器的基本结构     1.用户界面（User Interface）:用户所看到及与之交互的功能组件，如地址栏，返回，前进按钮等；     2.浏览器引擎（Browser engine）:负责控制和管理下一级的渲染引擎；     3.渲染引擎（Rendering engine）:负责解析用户请求的内容（如HTML或XML，渲染引擎会解析HTML">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-21T05:58:12.452Z">
+<meta property="og:updated_time" content="2018-08-25T04:07:29.963Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="页面渲染机制">
-<meta name="twitter:description" content="浏览器        Chrome        FireFox        Safari    浏览器的基本结构        1.用户界面（User Interface）:用户所看到及与之交互的功能组件，如地址栏，返回，前进按钮等；        2.浏览器引擎（Browser engine）:负责控制和管理下一级的渲染引擎；        3.渲染引擎（Rendering engine）:">
+<meta name="twitter:description" content="浏览器 Chrome FireFox Safari 浏览器的基本结构     1.用户界面（User Interface）:用户所看到及与之交互的功能组件，如地址栏，返回，前进按钮等；     2.浏览器引擎（Browser engine）:负责控制和管理下一级的渲染引擎；     3.渲染引擎（Rendering engine）:负责解析用户请求的内容（如HTML或XML，渲染引擎会解析HTML">
   
-    <link rel="alternative" href="/atom.xml" title="我的成长记录" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="个人笔记整理与收集" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -178,16 +178,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>浏览器<br>        Chrome<br>        FireFox<br>        Safari<br>    浏览器的基本结构<br>        1.用户界面（User Interface）:用户所看到及与之交互的功能组件，如地址栏，返回，前进按钮等；<br>        2.浏览器引擎（Browser engine）:负责控制和管理下一级的渲染引擎；<br>        3.渲染引擎（Rendering engine）:负责解析用户请求的内容（如HTML或XML，渲染引擎会解析HTML或XML，以及相关CSS，然后返回解析后的内容）；<br>        4.网络（Networking）:负责处理网络相关的事务，如HTTP请求等；<br>        5.UI后端（UI backend）:负责绘制提示框等浏览器组件，其底层使用的是操作系统的用户接口；<br>        6.JavaScript解释器（JavaScript interpreter）:负责解析和执行JavaScript代码；<br>        7.数据存储（Data storage）:负责持久存储诸如cookie和缓存等应用数据。</p>
-<pre><code>                            用户界面——————————
+        <p>浏览器</p>
+<pre><code>Chrome
+FireFox
+Safari
+</code></pre><p>浏览器的基本结构</p>
+<pre><code>    1.用户界面（User Interface）:用户所看到及与之交互的功能组件，如地址栏，返回，前进按钮等；
+    2.浏览器引擎（Browser engine）:负责控制和管理下一级的渲染引擎；
+    3.渲染引擎（Rendering engine）:负责解析用户请求的内容（如HTML或XML，渲染引擎会解析HTML或XML，以及相关CSS，然后返回解析后的内容）；
+    4.网络（Networking）:负责处理网络相关的事务，如HTTP请求等；
+    5.UI后端（UI backend）:负责绘制提示框等浏览器组件，其底层使用的是操作系统的用户接口；
+    6.JavaScript解释器（JavaScript interpreter）:负责解析和执行JavaScript代码；
+    7.数据存储（Data storage）:负责持久存储诸如cookie和缓存等应用数据。
+
+                            用户界面——————— 
                             |             |
                             |             |
                         浏览器引擎————————————————&gt;数据存储
                             |              |
-                            |             |
-                    —————渲染引擎——————————|
+                            |              |
+                    —————渲染引擎———————————|
                     |        |             |
-                    |        |              |
+                    |        |             |
                 JavaScript   网络         UI后端
                     解释器
 
@@ -715,35 +727,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -751,11 +735,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -763,7 +759,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
             
             <div class="clearfix"></div>
@@ -920,5 +944,5 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>
