@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>jquery学习笔记 | 个人笔记整理与收集</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Jquery是一个javascript库Jquery文档就绪函数    $(document).ready(function(){});    $(function(){})Jquey事件函数   $(“#oBtn”).click(function(){})//单击事件Jquery效果    隐藏/显示   //参数为 slow、fast或者毫秒，callback是效果执行完后的回调函数    $">
+  <meta name="description" content="Jquery是一个javascript库 Jquery文档就绪函数 $(document).ready(function(){}); $(function(){}) &amp;lt;!-- more --&amp;gt; Jquey事件函数    $(“#oBtn”).click(function(){})//单击事件Jquery效果 隐藏/显示    //参数为 slow、fast或者毫秒，callback是效">
 <meta name="keywords" content="jquery">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jquery学习笔记">
 <meta property="og:url" content="http://yoursite.com/2018/08/17/jquery学习笔记/index.html">
 <meta property="og:site_name" content="个人笔记整理与收集">
-<meta property="og:description" content="Jquery是一个javascript库Jquery文档就绪函数    $(document).ready(function(){});    $(function(){})Jquey事件函数   $(“#oBtn”).click(function(){})//单击事件Jquery效果    隐藏/显示   //参数为 slow、fast或者毫秒，callback是效果执行完后的回调函数    $">
+<meta property="og:description" content="Jquery是一个javascript库 Jquery文档就绪函数 $(document).ready(function(){}); $(function(){}) &amp;lt;!-- more --&amp;gt; Jquey事件函数    $(“#oBtn”).click(function(){})//单击事件Jquery效果 隐藏/显示    //参数为 slow、fast或者毫秒，callback是效">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-17T04:31:31.890Z">
+<meta property="og:updated_time" content="2018-08-25T13:22:26.038Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jquery学习笔记">
-<meta name="twitter:description" content="Jquery是一个javascript库Jquery文档就绪函数    $(document).ready(function(){});    $(function(){})Jquey事件函数   $(“#oBtn”).click(function(){})//单击事件Jquery效果    隐藏/显示   //参数为 slow、fast或者毫秒，callback是效果执行完后的回调函数    $">
+<meta name="twitter:description" content="Jquery是一个javascript库 Jquery文档就绪函数 $(document).ready(function(){}); $(function(){}) &amp;lt;!-- more --&amp;gt; Jquey事件函数    $(“#oBtn”).click(function(){})//单击事件Jquery效果 隐藏/显示    //参数为 slow、fast或者毫秒，callback是效">
   
     <link rel="alternative" href="/atom.xml" title="个人笔记整理与收集" type="application/atom+xml">
   
@@ -184,7 +184,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Jquery是一个javascript库<br>Jquery文档就绪函数<br>    $(document).ready(function(){});<br>    $(function(){})<br>Jquey事件函数<br>   $(“#oBtn”).click(function(){})//单击事件<br>Jquery效果<br>    隐藏/显示<br>   //参数为 slow、fast或者毫秒，callback是效果执行完后的回调函数<br>    $(“选择器”).hide(speed,callback)<br>        ex：<br>            $(“#oBtn”).hide();//隐藏<br>            $(“#oBtn”).show();//显示<br>            $(“#oBtn”).toggle();//隐藏显示互相切换<br>   //淡入淡出<br>                $(“#oBtn”).fadeIn();//淡入已隐藏的元素<br>                $(“#oBtn”).fadeOut();//淡出可见元素<br>                $(“#oBtn”).fadeToggle();//淡入淡出互相切换;<br>       //参数为slow、fast或者毫秒，透明度，callback回调函数<br>       $(“选择器”).fadeTo(speed,opacity,callback)<br>            ex：<br>                $(“#oBtn”).fadeTo(“slow”,0.4);<br>   //滑动<br>        $(“选择器”).slideDown(speed,callback)<br>            ex:<br>                $(“#oBtn”).slideDown();//向下滑动<br>                $(“#oBtn”).slideUp();//向上滑动<br>                $(“#oBtn”).slideToggle();//上下切换<br>   //动画<br>         params定义形成动画的css属性，speed为速度，callback为回调函数<br>         $(“选择器”).animate({params},speed,callback);<br>   //停止动画<br>        //stopAll是否清除动画队列，默认false;goToEnd是否立即完成当前动画，默认false<br>        $(“选择器”).stop(stopAll,goToEnd);//<br>            $(“#oBtn”).stop();</p>
+        <p>Jquery是一个javascript库</p>
+<p>Jquery文档就绪函数</p>
+<pre><code>$(document).ready(function(){});
+$(function(){})
+&lt;!-- more --&gt;
+</code></pre><p>Jquey事件函数</p>
+<p>   $(“#oBtn”).click(function(){})//单击事件<br>Jquery效果</p>
+<pre><code>隐藏/显示
+</code></pre><p>   //参数为 slow、fast或者毫秒，callback是效果执行完后的回调函数<br>    $(“选择器”).hide(speed,callback)<br>        ex：<br>            $(“#oBtn”).hide();//隐藏<br>            $(“#oBtn”).show();//显示<br>            $(“#oBtn”).toggle();//隐藏显示互相切换<br>   //淡入淡出<br>                $(“#oBtn”).fadeIn();//淡入已隐藏的元素<br>                $(“#oBtn”).fadeOut();//淡出可见元素<br>                $(“#oBtn”).fadeToggle();//淡入淡出互相切换;<br>       //参数为slow、fast或者毫秒，透明度，callback回调函数<br>       $(“选择器”).fadeTo(speed,opacity,callback)<br>            ex：<br>                $(“#oBtn”).fadeTo(“slow”,0.4);<br>   //滑动<br>        $(“选择器”).slideDown(speed,callback)<br>            ex:<br>                $(“#oBtn”).slideDown();//向下滑动<br>                $(“#oBtn”).slideUp();//向上滑动<br>                $(“#oBtn”).slideToggle();//上下切换<br>   //动画<br>         params定义形成动画的css属性，speed为速度，callback为回调函数<br>         $(“选择器”).animate({params},speed,callback);<br>   //停止动画<br>        //stopAll是否清除动画队列，默认false;goToEnd是否立即完成当前动画，默认false<br>        $(“选择器”).stop(stopAll,goToEnd);//<br>            $(“#oBtn”).stop();</p>
 <p>Jquery操作Dom<br>    //都可以获取和设置值，并且都有回调函数，回调函数有两个参数，一个是备选元素列表当前元素的下标，以及原始值<br>        $(“#oBtn”).text();//获取所选元素的文本内容<br>        $(“#oBtn”).html();//设置元素的内容  包括html<br>        $(“#oBtn”).val();//返回表单的值<br>        $(“#oBtn”).attr();//设置和获取属性值</p>
 <pre><code>//jquery添加新元素和内容
     $(&quot;#oBtn&quot;).append();在被选元素的结尾插入内容（标签内部）
@@ -531,19 +539,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -551,11 +547,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -563,11 +563,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,15 +575,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -591,7 +583,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
             
             <div class="clearfix"></div>

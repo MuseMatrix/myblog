@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>ES6+进阶 | 个人笔记整理与收集</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="let    1、let的用法跟es5的var一样;    2、var会存在变量提升现象，let、const不会存在这种情况    3、只要块级作用域存在let、它声明的变量就会绑定这个区域，不在受外部的影响，形成封闭式作用域，言之，暂时性死区(简称TDZ),它的本质就是        只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使">
+  <meta name="description" content="let 1、let的用法跟es5的var一样; 2、var会存在变量提升现象，let、const不会存在这种情况 3、只要块级作用域存在let、它声明的变量就会绑定这个区域，不在受外部的影响，形成封闭式作用域，言之，暂时性死区(简称TDZ),它的本质就是     只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用变量 4、let不允许">
 <meta name="keywords" content="es6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6+进阶">
 <meta property="og:url" content="http://yoursite.com/2018/08/09/ES6-进阶/index.html">
 <meta property="og:site_name" content="个人笔记整理与收集">
-<meta property="og:description" content="let    1、let的用法跟es5的var一样;    2、var会存在变量提升现象，let、const不会存在这种情况    3、只要块级作用域存在let、它声明的变量就会绑定这个区域，不在受外部的影响，形成封闭式作用域，言之，暂时性死区(简称TDZ),它的本质就是        只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使">
+<meta property="og:description" content="let 1、let的用法跟es5的var一样; 2、var会存在变量提升现象，let、const不会存在这种情况 3、只要块级作用域存在let、它声明的变量就会绑定这个区域，不在受外部的影响，形成封闭式作用域，言之，暂时性死区(简称TDZ),它的本质就是     只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用变量 4、let不允许">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-25T04:03:38.268Z">
+<meta property="og:updated_time" content="2018-08-25T13:20:20.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6+进阶">
-<meta name="twitter:description" content="let    1、let的用法跟es5的var一样;    2、var会存在变量提升现象，let、const不会存在这种情况    3、只要块级作用域存在let、它声明的变量就会绑定这个区域，不在受外部的影响，形成封闭式作用域，言之，暂时性死区(简称TDZ),它的本质就是        只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使">
+<meta name="twitter:description" content="let 1、let的用法跟es5的var一样; 2、var会存在变量提升现象，let、const不会存在这种情况 3、只要块级作用域存在let、它声明的变量就会绑定这个区域，不在受外部的影响，形成封闭式作用域，言之，暂时性死区(简称TDZ),它的本质就是     只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用变量 4、let不允许">
   
     <link rel="alternative" href="/atom.xml" title="个人笔记整理与收集" type="application/atom+xml">
   
@@ -184,24 +184,44 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>let<br>    1、let的用法跟es5的var一样;<br>    2、var会存在变量提升现象，let、const不会存在这种情况<br>    3、只要块级作用域存在let、它声明的变量就会绑定这个区域，不在受外部的影响，形成封闭式作用域，言之，暂时性死区(简称TDZ),它的本质就是<br>        只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用变量<br>    4、let不允许在相同作用域内，重复声明同一个变量，因此不能再函数内部重新声明参数</p>
-<p>块级作用域<br>    ES5只有全局作用域和函数作用域，没有块级作用域<br>        需要块级作用域的两种情景<br>            1、内层变量、可能会覆盖外层变量<br>                var tmp = 123;<br>                function f(){<br>                    console.log(tmp);<br>                    if(false){<br>                        var tmp =”hello world”;<br>                    }<br>                }<br>                f();<br>            2、用计数的循环变量泄露为全局变量<br>                var s = “helloworld”;</p>
-<pre><code>        for(var i = 0;i&lt;s.length;i++){
-            console.log(s[i]);
-        }
-        console.log(i)
-es6的块级作用域
-    1、es6允许块级作用域的任意嵌套
-    2、块级作用域的出现，使得函数自执行IIFE不在需要了
-       //IIFE写法
-        (function(){
-            var tmp =.....;
-        }())
-       //块级作用域写法
-        {
-            let tmp =....;
-        }
-    3、块级作用域不返回值，除非t是全局变量
+        <p>let</p>
+<pre><code>1、let的用法跟es5的var一样;
+2、var会存在变量提升现象，let、const不会存在这种情况
+3、只要块级作用域存在let、它声明的变量就会绑定这个区域，不在受外部的影响，形成封闭式作用域，言之，暂时性死区(简称TDZ),它的本质就是
+    只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用变量
+4、let不允许在相同作用域内，重复声明同一个变量，因此不能再函数内部重新声明参数
+</code></pre><a id="more"></a>
+<p>块级作用域</p>
+<pre><code>ES5只有全局作用域和函数作用域，没有块级作用域
+    需要块级作用域的两种情景
+        1、内层变量、可能会覆盖外层变量
+            var tmp = 123;
+            function f(){
+                console.log(tmp);
+                if(false){
+                    var tmp =&quot;hello world&quot;;
+                }
+            }
+            f();
+        2、用计数的循环变量泄露为全局变量
+            var s = &quot;helloworld&quot;;
+
+            for(var i = 0;i&lt;s.length;i++){
+                console.log(s[i]);
+            }
+            console.log(i)
+    es6的块级作用域
+        1、es6允许块级作用域的任意嵌套
+        2、块级作用域的出现，使得函数自执行IIFE不在需要了
+           //IIFE写法
+            (function(){
+                var tmp =.....;
+            }())
+           //块级作用域写法
+            {
+                let tmp =....;
+            }
+        3、块级作用域不返回值，除非t是全局变量
 </code></pre><p> const<br>    1、const声明一个只读的常量<br>    2、const除以下两点 不同外，其他都相同<br>            const一旦声明，就必须立即初始化，不能留到以后赋值<br>            const一旦赋值，常量的值就不能改变</p>
 <pre><code>在声明引用性数据为常量时，const保存的是变量的指针，只要指针不变就不会保存
     const array = [];
@@ -1311,19 +1331,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1331,11 +1339,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1343,11 +1355,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1355,15 +1367,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1371,7 +1375,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
             
             <div class="clearfix"></div>
