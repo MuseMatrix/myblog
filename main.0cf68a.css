@@ -639,7 +639,7 @@ body {
 	background:hsla(0,0%,100%,.3)
 }
 .left-col {
-	background:#faf2ef;
+	background:#fff;
 	width:300px;
 	position:fixed;
 	opacity:1;
@@ -739,7 +739,7 @@ body {
 }
 .left-col #header .header-author {
 	text-align:center;
-	margin:.67em 0;
+	margin:.11em 0;
 	font-family:Roboto,serif;
 	font-size:30px;
 	transition:.3s
@@ -1648,7 +1648,7 @@ to {
 	border:1px solid #ddd;
 	border-top:1px solid #fff;
 	border-bottom:1px solid #fff;
-	background:#faf2ef;
+	background:#fff;
 	transition:all .2s ease-in
 }
 .article img {
