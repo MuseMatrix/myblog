@@ -440,89 +440,8 @@ ios4下不支持position：fixed
         &lt;ul&gt;&lt;/ul
     &lt;/div&gt;
 menuWrappers元素要有高度，要绝对定位
-&lt;!-- more --&gt;
-dom构建完成初始化：
-    this.$nextTick(() =&gt; {
-      this._initScroll();
-    });
-要执行的方法：
-    _initScroll:function () {
-      if(!this.meunScroll) {
-        this.meunScroll = new BScroll(this.$refs.menuWrappers,{});
-      }else{
-        this.scroll.refresh();
-      }
-</code></pre><p>ios下input会有阴影</p>
-<pre><code>    -webkit-appearance: none;
-h5页面嵌入app会遇到的问题
-    样式错乱，webview设置问题
-        字体设置setTextSize(16)
-        字体放大setTextZoom(100)
-    如果采用了缓存
-        setDomStorageEnabled(true);
-</code></pre><p>使用背景图片被放大</p>
-<pre><code>尽量使用字体图标
-background-size:contain;
-</code></pre><p>禁止复制和选中</p>
-<pre><code>-webkit-user-select: none;
--moz-user-select: none;
--khtml-user-select: none;
- user-select: none;
-</code></pre><p>长时间按住页面会出现闪退</p>
-<pre><code>-webkit-touch-callout: none;
-</code></pre><p>上下滑动卡顿</p>
-<pre><code>html和body下宽度和高度设置了100%,就会造成这个问题
-                    overflow : auto;
-            overflow-scrolling : touch;
-  -webkit-overflow-scrolling : touch;
-</code></pre><p>ios和android下触摸元素时出现半透明灰色遮罩</p>
-<pre><code>   -webkit-tap-highlight-color: rgba(0,0,0,0); 
-旋转屏幕时，字体大小调整的问题
-    html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {
-      -webkit-text-size-adjust:100%;
-    }
-</code></pre><p>安卓手机圆角失效</p>
-<pre><code>background-clip: padding-box;
-</code></pre><p>Ios键盘字母输入，默认首字母大写</p>
-<pre><code>    &lt;input type=&quot;text&quot; autocapitalize=&quot;off&quot; /&gt;
-select选择设置下拉右对齐
-    select option {
-        direction: rtl;
-    }
-</code></pre><p>某些手机border在做rem布局时，打包成app,border会不显示</p>
-<pre><code>经过测验根据rem比例，小于1px的会不显示，在转换rem时请进行四舍五入
-</code></pre><p>页面渲染优化：</p>
-<pre><code>禁止使用iframe(阻塞父文档onload事件)
-禁止使用gif图片loading效果(降低cpu消耗，提升渲染效果)
-使用css3代替Js动画
-
-开启GPU加速(注意事项：硬件加速最好只用在动画animation和变换transform上，不要滥用硬件加速，这样会增加性能的消耗，如果滥用会使动画变得更加卡)
-    使用3d效果来开启硬件加速
-        -webkit-transform: translate3d(250px,250px,250px)
-         rotate3d(250px,250px,250px,-120deg)
-         scale3d(0.5, 0.5, 0.5);
-    仅开启硬件加速
-        -webkit-transform: translateZ(0);
-        -moz-transform: translateZ(0);
-        -ms-transform: translateZ(0);
-        -o-transform: translateZ(0);
-        transform: translateZ(0);
-    对于safari和chrome，可能会在animation和transition出现闪烁问题，解决方法：
-        webkit-backface-visibility: hidden;
-        -moz-backface-visibility: hidden;
-        -ms-backface-visibility: hidden;
-        backface-visibility: hidden;
-
-        -webkit-perspective: 1000;
-        -moz-perspective: 1000;
-        -ms-perspective: 1000;
-        perspective: 1000;
-
-        -webkit-transform: translate3d(0, 0, 0);
-        -moz-transform: translate3d(0, 0, 0);
-        -ms-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
 </code></pre>
+        
       
 
       
@@ -773,54 +692,9 @@ app.wxss 小程序公共样式表
 SEO有三条最重要的规律，那就是原创的内容、高质量的外部链接和持之以恒适度的优化。
 
 前端的工作主要是负责页面的HTML+CSS+JS，优化好这几个方面会为SEO工作打好一个坚实的基础。突出重要内容可以让搜索引擎判断当前页面的重点是什么，提升网站访问速度可以让搜索引
-&lt;!-- more --&gt;擎的蜘蛛顺利、快速、大量的抓取网页内容，所以以突出重要内容和提升网站速度为主来总结:
-    1、突出重要内容(合理的title、description和keywords)
-        title：只强调重点即可，重要关键词出现不要超过2次，而且要靠前，每个页面title要有所不同
-        description：把网页内容高度概括到这里，长度要合理，不可过分堆砌关键词，每个页面description要有所不同
-        keywords：列举出几个重要关键词即可，也不可过分堆砌
-    2、语义化书写HTML代码，符合W3C标准(代码语义化)
-    3、利用布局，把重要内容HTML代码放在最前。(搜索引擎抓取HTML内容是从上到下，利用这一特点，可以让主要代码优先读取，广告等不重要代码放在下边)
-    4、重要内容不要用JS输出。(蜘蛛不会读取JS里的内容，所以重要内容必须放在HTML里。)
-    5、尽少使用iframe框架。(搜索引擎不会抓取到iframe里的内容，重要内容不要放在框架中。)
-    6、为图片设置高度和宽度，可提高页面的加载速度。为图片加上alt属性。(当网络速度很慢，或者图片地址失效的时候，就可以体现出alt属性的作用，他可以让用户在图片没有显示的时候知道这个图片的作用。)
-    7、需要强调的地方可以加上title属性
-    8、保留文字效果。
-    9、利用CSS截取字符。(如果文字长度过长，可以用样式截取，设置高度，超出的部分隐藏即可。这样做的好处是让文字完整呈现给搜索引擎，同时在表现上也保证了美观。)
-    10、尽量外链CSS和JS，保证网页代码的整洁，也有利于日后维护。
-    11、CSS放在文件头部，JS放在文件尾部，可使用工具对CSS和JS文件进行压缩。
-    12、为静态资源文件增加过期时间，让用户通过本地缓存来更快的访问网站。
-    13、减少大改版的频率。
-    14、压缩、格式化代码。
-    15、不使用CSS表达式，会影响效率。
-    16、使用CDN网络，可加快用户访问速度。
-    17、启用GZIP压缩，浏览速度变快，搜索引擎的蜘蛛抓取信息量也会增大
-    18、善于利用浏览器插件。
-    19、伪静态设置。(如果是动态网页，可以开启伪静态功能，让蜘蛛“误以为”这是静态网页，因为静态网页比较合蜘蛛的胃口，如果url中带有关键词效果更好。)
-</code></pre><p>HTML规范：</p>
-<pre><code>　　1.meta信息完善（包含title、keyword、description）。
-        　标准的html头部应该包含title、keyword、description这3个meta信息。这些meta信息是SEO优化必要的基础。
-　　2.合理使用H1-H6标签。
-        　在页面内合理应用H1-H6标签，能够让页面内容主次结构分明，利于搜索引擎识别页面内容偏重。
-　　3.整站优先使用伪静态。
-        　伪静态链接能够避免出现重复无效的动态链接。更利于整站链接规范。
-　　4.img标签需完善alt属性。
- 搜索引擎还不能有效的识别出图片的内容，给img添加alt属性就相当于告知搜索引擎图片的内容。从而获取较好的图片排名。
-　　5.尽量少的使用JS后加载。
-        　Google对JS抓取支持较好，ajax内容也能够抓取。但是现在国内搜索引擎大多不会抓取JS中的内容。重要链接静态化到html源码中。    
-　　6.页面主体内容需静态化到html中。
-页面主体内容请静态化到html源码中，不然搜索引擎很可能抓取不到。
-　　7.页面源代码控制在200K以内。
-超过200K的内容将不被百度搜索引擎抓取。
-</code></pre><p>CSS规范：</p>
-<pre><code>　　1.慎重使用CSS隐藏
-慎重使用display：none;text-indent:-9999px等CSS隐藏。过度使用可能会被搜索引擎识别为作弊。
-　　2.页面文字勿过度使用黑体、粗体、斜体。
-过度的使用黑体、粗体、斜体可能会被搜索引擎识别为作弊。
-　　3.禁用透明色和底色加关键词
-　　     使用颜色作弊的手法来提高关键词密度或者布局和页面不相关的关键词都是作弊行为。
-</code></pre><p>各标签对seo的影响</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;title&gt;标题标签：在优化的过程中，&lt;title&gt;标签起到了决定性作用，搜索引擎对一个网页的内容识别，很大的程度上是依靠&lt;title&gt;标签中的内容。</span><br><span class="line">&lt;H&gt;标签：是网页HTML中对文本标题进行强调的一种标签；H1标签按套路来说，一个页面只能用一次，H2 H3 可以多次使用（一般是长尾词使用）。</span><br><span class="line">&lt;description&gt;描述标签：标签内容能够如实反映网页内容，简单告诉用户这个页面是有什么内容。如果描述标签写得好可以大大促进提高点击率，是站长应该重视的标签，如果直接出现用户需要的答案则更佳，如下图搜索多少钱出现具体的价格，大大降低用户获取信息的难度。</span><br><span class="line">&lt;keyword&gt;关键词标签：关键词标签虽然没什么用了，但写上可以方便查关键词排名，对于没有指数的关键词，用站长工具也能查出来，并且排名更新较快，所以keyword标签一直是搜索引擎判断网页内容和主题的重要依据；</span><br><span class="line">&lt;a&gt;标签：外链和定向锚文本都依靠它发挥作用，格式是&lt;a href =””&gt;链接文字&lt;/a&gt;;”href”后面可以站内链接，也可以站外链接。但是我们要注意它的两个属性，一是【target】，它决定了链接以何种方式打开，一般站内链接会被定义为在当前页面打开，外部链接被定义为在新窗口中打开。另外一个属性是【rel】，其最让SEO人员关注的就是【Nofollow】值，因为它代表不传递权重。对内可以集中权重，不使其分散到无意义的页面；对外，可以防止权重流失和避免被骗友情链接。</span><br><span class="line">&lt;img&gt;标签：在站群实验中，标题如果是包含“图文”等字眼，点击率是普通页面的2~3倍，由于以前网速，上网设备受限等原因，网站要求是越简单越好，随着技术进步，现在的要求是需要把网站丰富起来，摆放更多的图片等元素丰富起来。</span><br><span class="line">&lt;STRONG&gt;标签：主要用于强调文本，与&lt;EM&gt;、&lt;b&gt;标签同样的效果。</span><br><span class="line">&lt;nofloolw&gt;标签：该标签告诉搜索引擎“不要追踪此网页上的链接”，目前各大搜索引擎都支持该标签，这对防止权重分散有重大意义</span><br></pre></td></tr></table></figure>
+擎的蜘蛛顺利、快速、大量的抓取网页内容，所以以突出重要内容和提升网站速度为主来总结:
 </code></pre>
+        
       
 
       
@@ -897,66 +771,9 @@ SEO有三条最重要的规律，那就是原创的内容、高质量的外部�
 <p>Jquery文档就绪函数</p>
 <pre><code>$(document).ready(function(){});
 $(function(){})
-&lt;!-- more --&gt;
 </code></pre><p>Jquey事件函数</p>
-<p>   $(“#oBtn”).click(function(){})//单击事件<br>Jquery效果</p>
-<pre><code>隐藏/显示
-</code></pre><p>   //参数为 slow、fast或者毫秒，callback是效果执行完后的回调函数<br>    $(“选择器”).hide(speed,callback)<br>        ex：<br>            $(“#oBtn”).hide();//隐藏<br>            $(“#oBtn”).show();//显示<br>            $(“#oBtn”).toggle();//隐藏显示互相切换<br>   //淡入淡出<br>                $(“#oBtn”).fadeIn();//淡入已隐藏的元素<br>                $(“#oBtn”).fadeOut();//淡出可见元素<br>                $(“#oBtn”).fadeToggle();//淡入淡出互相切换;<br>       //参数为slow、fast或者毫秒，透明度，callback回调函数<br>       $(“选择器”).fadeTo(speed,opacity,callback)<br>            ex：<br>                $(“#oBtn”).fadeTo(“slow”,0.4);<br>   //滑动<br>        $(“选择器”).slideDown(speed,callback)<br>            ex:<br>                $(“#oBtn”).slideDown();//向下滑动<br>                $(“#oBtn”).slideUp();//向上滑动<br>                $(“#oBtn”).slideToggle();//上下切换<br>   //动画<br>         params定义形成动画的css属性，speed为速度，callback为回调函数<br>         $(“选择器”).animate({params},speed,callback);<br>   //停止动画<br>        //stopAll是否清除动画队列，默认false;goToEnd是否立即完成当前动画，默认false<br>        $(“选择器”).stop(stopAll,goToEnd);//<br>            $(“#oBtn”).stop();</p>
-<p>Jquery操作Dom<br>    //都可以获取和设置值，并且都有回调函数，回调函数有两个参数，一个是备选元素列表当前元素的下标，以及原始值<br>        $(“#oBtn”).text();//获取所选元素的文本内容<br>        $(“#oBtn”).html();//设置元素的内容  包括html<br>        $(“#oBtn”).val();//返回表单的值<br>        $(“#oBtn”).attr();//设置和获取属性值</p>
-<pre><code>//jquery添加新元素和内容
-    $(&quot;#oBtn&quot;).append();在被选元素的结尾插入内容（标签内部）
-    $(&quot;#oBtn&quot;).prepend();在被选元素的开头插入内容(标签内部)
-    $(&quot;#oBtn&quot;).after();在被选元素之后插入内容（标签外部）
-    $(&quot;#oBtn&quot;).befroe();在被选元素之前插入内容(标签外部)
-
-//jquery删除元素/内容
-    $(&quot;#oBtn&quot;).remove();删除被选元素及其子元素(允许接受一个参数,允许对被删除元素进行过滤)
-    $(&quot;#oBtn&quot;).empty();删除被选元素里面的子元素
-
-//Jquery操作Css
-     $(&quot;#oBtn&quot;).addClass();向被选元素添加一个类或多个类
-     $(&quot;#oBtn&quot;).removeClass();向被选元素删除一个类或多个类
-     $(&quot;#oBtn&quot;).toggleClass();对被选元素进行添加和删除类的切换操作
-     $(&quot;#oBtn&quot;).css();返回或者设置匹配元素的一个或者多个样式属性
-
-//Jquery获取尺寸
-    $(&quot;#oBtn&quot;).width();返回设置元素的宽(不包括内边距、边框或外边距)
-    $(&quot;#oBtn&quot;).height();返回设置元素的高(不包括内边距、边框或外边距)
-    $(&quot;#oBtn&quot;).innerWidth();返回元素的宽(包括内边距)
-    $(&quot;#oBtn&quot;).innerHeight();返回元素的高(包括内边距)
-    $(&quot;#oBtn&quot;).outerWidth();返回元素的宽(包括内边距和边框)
-    $(&quot;#oBtn&quot;).outerHeight();返回元素的高(包括内边距和边框)
-
-//Jquery之遍历
-    $(&quot;#oBtn&quot;).parent();返回被选元素的直接父元素
-    $(&quot;#oBtn&quot;).parents();返回被选元素的所有祖先元素
-    $(&quot;#oBtn&quot;).parentsUntil(&quot;div&quot;)返回介于两个给定元素之间的所有祖先元素
-    $(&quot;#oBtn&quot;).children();方法返回被选元素的所有直接子元素
-    $(&quot;#oBtn&quot;).find(&quot;span&quot;);返回被选元素的后代元素，一路向下直到最后一个后代
-    $(&quot;#oBtn&quot;).siblings();返回被选元素的所有同胞元素
-    $(&quot;#oBtn&quot;).next();返回被选元素的下一个同胞元素(只返回一个元素)
-    $(&quot;#oBtn&quot;).nextAll();返回被选元素的所有跟随同胞元素
-    $(&quot;#oBtn&quot;).nextUntil();介于两个给定元素之间的所有同胞元素
-        prev(),prevAll(),prevUntil()方法类似，方向相反
-    $(&quot;#oBtn&quot;).first();返回该元素内部的第一个元素
-    $(&quot;#oBtn&quot;).last();返回该元素内部的最后一个元素
-    $(&quot;#oBtn&quot;).eq();返回被选元素中带有指定索引号的元素
-    $(&quot;#oBtn&quot;).filter();匹配的元素被返回，不匹配的会删除
-    $(&quot;#oBtn&quot;).not();返回不匹配标准的所有元素
-
-//Jquery之Ajax
-    $(selector).load(URL,data,callback);
-    $(&quot;#oBtn&quot;).load() 方法从服务器加载数据，并把返回的数据放入被选元素中。
-    $.get(URL,callback);
-    $.post(URL,data,callback);
-//杂项
-    $.noConflict();方法会释放会 $ 标识符的控制，这样其他脚本就可以使用它了。$换为Jquery
-//Jquery之事件
-    $(&quot;#oBtn&quot;).click(function(){});
-    $(&quot;#oBtn&quot;).dbclick(function(){});
-    $(&quot;#oBtn&quot;).focus(function(){});
-    $(&quot;#oBtn&quot;).mouseover(function(){});
-</code></pre>
+<p>   $(“#oBtn”).click(function(){})//单击事件<br>Jquery效果<br>
+        
       
 
       
@@ -1284,6 +1101,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
@@ -1292,15 +1117,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1312,15 +1133,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SEO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1332,7 +1149,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1340,11 +1157,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
               </li>
             
             <div class="clearfix"></div>
