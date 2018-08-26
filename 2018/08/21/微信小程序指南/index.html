@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:description" content="小程序之文件说明 app.json 小程序的全局配置，决定页面文件的路径、窗口表现、设置网络超时时间，设置多tab等     pages:设置页面的路径     window:设置默认页面的窗口表现         backgroundTextStyle：下拉loading 的样式，仅支持dark和light         navigationBarBackgroundColor:导航栏背景颜色">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-25T13:24:01.143Z">
+<meta property="og:updated_time" content="2018-08-26T13:10:10.437Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信小程序指南">
 <meta name="twitter:description" content="小程序之文件说明 app.json 小程序的全局配置，决定页面文件的路径、窗口表现、设置网络超时时间，设置多tab等     pages:设置页面的路径     window:设置默认页面的窗口表现         backgroundTextStyle：下拉loading 的样式，仅支持dark和light         navigationBarBackgroundColor:导航栏背景颜色">
@@ -30,7 +30,7 @@
   <style type="text/css">
   
     #container.show {
-      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+      background: linear-gradient(200deg,#a0cfe4,#23B7A4);
     }
   </style>
   
@@ -44,7 +44,7 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: #009688"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -53,6 +53,8 @@
 		<hgroup>
 		  <h1 class="header-author"><a href="/">老先生</a></h1>
 		</hgroup>
+		
+		<p class="header-subtitle">凡是总须研究，才会明白。</p>
 		
 
 		<nav class="header-menu">
@@ -110,7 +112,7 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+  	<div class="overlay js-overlay" style="background: #009688"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -122,6 +124,8 @@
 			<hgroup>
 			  <h1 class="header-author js-header-author">老先生</h1>
 			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>凡是总须研究，才会明白。<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -492,9 +496,10 @@ cover-view------覆盖在原生组建上的文本视图，可覆盖的原生组�
         backgroundColor Color  未选择的进度条的颜色  
         active Boolean false 进度条从左往右的动画  
         active-mode String backwards backwards: 动画从头播；forwards：动画从上次结束点接着播 1. 
-表单组件
-    button(按钮)
 
+表单组件
+
+    button(按钮)
     checkbox(多选项目。)
         checkbox-group 多项选择器，内部由多个 checkbox 组成。
     form(表单)
@@ -502,31 +507,34 @@ cover-view------覆盖在原生组建上的文本视图，可覆盖的原生组�
         当点击  &lt;form/&gt;  表单中 formType 为 submit 的  &lt;button/&gt;  组件时，会将表单组件中的 value 值进行提交，需要在表单组件中加上 name 来作为 key。
     input(输入框)
     lable(用来改进表单组件的可用性，使用 for 属性找到对应的 id ，或者将控件放在该标签下，当点击时，就会触发对应的控件。
-         for 优先级高于内部控件，内部有多个控件的时候默认触发第一个控件。)
-     picker(从底部弹起的滚动选择器，现支持五种选择器，通过mode来区分，分别是普通选择器，多列选择器，时间选择器，日期选择器，省市区选择器，默认是普通选择器。)
-     picker-view(嵌入页面的滚动选择器)
-     radio(单选项目)
-     radio-group(单项选择器，内部由多个&lt;radio/&gt;组成)
-     slider(滑动选择器)
-     switch(开关选择器。)
-     textarea(多行输入框)
- 导航
-     navigator(页面连接)
- 媒体组件
-     audio(音频)
-     image(图片)
-     video(视频)
-     camera(系统相机)
-     live-player(实时音频播放)
-     live-pusher(实时音频录制)
- 地图
-     map(地图)
- 画布
-     canvas(画布)
- 开放能力
-     open-data(用于展示微信开放的数据。)
-     web-view(web-view 组件是一个可以用来承载网页的容器，会自动铺满整个小程序页面。个人类型与海外类型的小程序暂不支持使用。)
-     ad(广告。目前暂时以邀请制开放申请，请留意后续模板消息的通知)
+    for 优先级高于内部控件，内部有多个控件的时候默认触发第一个控件。)
+    picker(从底部弹起的滚动选择器，现支持五种选择器，通过mode来区分，分别是普通选择器，多列选择器，时间选择器，日期选择器，省市区选择器，默认是普通选择器。)
+    picker-view(嵌入页面的滚动选择器)
+    radio(单选项目)
+    radio-group(单项选择器，内部由多个&lt;radio/&gt;组成)
+    slider(滑动选择器)
+    switch(开关选择器。)
+    textarea(多行输入框)
+</code></pre><p> 导航<br>         navigator(页面连接)</p>
+<p> 媒体组件</p>
+<pre><code>    audio(音频)
+    image(图片)
+    video(视频)
+    camera(系统相机)
+    live-player(实时音频播放)
+    live-pusher(实时音频录制)
+
+地图
+
+    map(地图)
+画布
+
+    canvas(画布)
+开放能力
+
+    open-data(用于展示微信开放的数据。)
+    web-view(web-view 组件是一个可以用来承载网页的容器，会自动铺满整个小程序页面。个人类型与海外类型的小程序暂不支持使用。)
+    ad(广告。目前暂时以邀请制开放申请，请留意后续模板消息的通知)
 </code></pre><p>小程序之api</p>
 <p>小程序之框架</p>
 
@@ -825,10 +833,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
@@ -837,19 +841,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -857,7 +853,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SEO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -869,19 +889,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">渲染</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
             
             <div class="clearfix"></div>

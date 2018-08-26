@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:description" content="企业命名规范： http://tguide.qq.com http://www.htmleaf.com/ http://www.dreamdu.com/javascript/what_is_bom/ http://www.51yuansu.com/?z=jqliyhbpz (一)网页内容类">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-25T13:23:02.988Z">
+<meta property="og:updated_time" content="2018-08-26T13:04:45.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="web前端命名规范">
 <meta name="twitter:description" content="企业命名规范： http://tguide.qq.com http://www.htmleaf.com/ http://www.dreamdu.com/javascript/what_is_bom/ http://www.51yuansu.com/?z=jqliyhbpz (一)网页内容类">
@@ -30,7 +30,7 @@
   <style type="text/css">
   
     #container.show {
-      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+      background: linear-gradient(200deg,#a0cfe4,#23B7A4);
     }
   </style>
   
@@ -44,7 +44,7 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: #009688"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -53,6 +53,8 @@
 		<hgroup>
 		  <h1 class="header-author"><a href="/">老先生</a></h1>
 		</hgroup>
+		
+		<p class="header-subtitle">凡是总须研究，才会明白。</p>
 		
 
 		<nav class="header-menu">
@@ -110,7 +112,7 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+  	<div class="overlay js-overlay" style="background: #009688"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -122,6 +124,8 @@
 			<hgroup>
 			  <h1 class="header-author js-header-author">老先生</h1>
 			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>凡是总须研究，才会明白。<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -361,9 +365,29 @@ content
 
 行为层：
     js，“让网页动起来”
-</code></pre><p>标签一定要正确的闭合<br>标签属性的属性值一定要用引号引起来，建议使用双引号<br>    1、标签一定要正确的闭合<br>    2、标签属性的属性值一定要用引号引起来，建议使用双引号<br>    3、class命名：见名知意，不要用拼音<br>    4、连词之间用 - 横杆连接<br>    5、命名一定要是英文，一定要是小写<br>    6、结构层和样式层最好分离<br>    7、结构层遵循从大到小的规律</p>
-<p>局外篇：<br>    页面性能优化<br>    1、减少HTTP请求次数<br>        什么是CSS Sprite ？<br>            不知道您在浏览yahoo.com的网页中是否注意到,yahoo在页面制作上的技术和大多数网站不一样,他们把页面上的 ICON，栏目背景啊，图片按钮啊等都有会有规则的合并一张背景图,然后用background-position来实现背景图片的定位，他们为什么要花费一些时间来合并这些CSS背景图片呢,CSS中用一张背景图做页面的技术到底有什么优势呢?<br>        CSS Sprite的应用：通常我们把它叫做CSS图像拼合技术,当然还有人把CSS Sprites叫做”CSS贴图定位”。<br>        CSS Sprites(图片整合技术) 的目的就是通过整合图片，减少对服务器的请求数量，从而加快页面加载速度。<br>        9张图要请求9次，总大小36k,图像拼合，一张图，请求一次。<br>        使用方法：背景定位background-position:-8px -95px;<br>    2、减小请求带宽<br>        精简JavaScript，<br>        移除重复脚本，<br>        图像优化：正确的图片格式可以让图片缩小数倍；对图片进行压缩，详细可见图片优化<br>    3、</p>
-<pre><code>路径问题：
+</code></pre><p>标签一定要正确的闭合<br>标签属性的属性值一定要用引号引起来，建议使用双引号</p>
+<pre><code>1、标签一定要正确的闭合
+2、标签属性的属性值一定要用引号引起来，建议使用双引号
+3、class命名：见名知意，不要用拼音
+4、连词之间用 - 横杆连接
+5、命名一定要是英文，一定要是小写
+6、结构层和样式层最好分离
+7、结构层遵循从大到小的规律
+</code></pre><p>局外篇：<br>    页面性能优化</p>
+<pre><code>1、减少HTTP请求次数
+    什么是CSS Sprite ？
+        不知道您在浏览yahoo.com的网页中是否注意到,yahoo在页面制作上的技术和大多数网站不一样,他们把页面上的 ICON，栏目背景啊，图片按钮啊等都有会有规则的合并一张背景图,然后用background-position来实现背景图片的定位，他们为什么要花费一些时间来合并这些CSS背景图片呢,CSS中用一张背景图做页面的技术到底有什么优势呢?
+    CSS Sprite的应用：通常我们把它叫做CSS图像拼合技术,当然还有人把CSS Sprites叫做”CSS贴图定位”。
+    CSS Sprites(图片整合技术) 的目的就是通过整合图片，减少对服务器的请求数量，从而加快页面加载速度。
+    9张图要请求9次，总大小36k,图像拼合，一张图，请求一次。
+    使用方法：背景定位background-position:-8px -95px; 
+2、减小请求带宽
+    精简JavaScript，
+    移除重复脚本，
+    图像优化：正确的图片格式可以让图片缩小数倍；对图片进行压缩，详细可见图片优化
+3、
+
+路径问题：
     根目录、子目录、绝对路径、相对路径问题？
     根目录：存放整个网站（网页、图片、样式、脚本...）文件的总文件
     子目录：存放某个区块（网页文件夹、图片文件夹、样式文件夹、脚本文件夹）
@@ -375,9 +399,33 @@ content
         经常使用、方便维护
         从当前文件的地方开始寻找
         ../ 返回上一层
-</code></pre><p>浏览器支持<br>    H5有部分内容兼容到ie9,ie8及以下完全不兼容的内容不再考虑<br>    部分内容兼容需要添加前缀<br>    -webkit- 兼容谷歌<br>    -moz- 兼容火狐<br>    -o- 兼容欧鹏<br>    -ms- 兼容ie</p>
-<p>WEB前端开发兼容问题<br>    1、*{margin:0;padding:0px}解决浏览器默认;<br>    2、img{display:block}这样可以取消图片自带的3px,让布局更加美观;<br>       当然vercital-align也可以<br>    3、如果使用了浮动，那么下边一定要清除浮动;<br>    4、如果使用了width:100%(头部，底部，导航等等)，大家会发现当缩小了浏览器窗口的大小以后，有时候布局会出错，这时候给对应的盒子加个min-width:1180px就可以解决了；<br>    5、各大浏览器的兼容代码：(以旋转30deg为例)<br>        transform:rotate(30deg);———————————-(统一标识语句，最好写上，复合w3c标准)<br>        -ms-transform:rotate(30deg);——————————(-ms代表ie内核识别码)<br>        -moz-transform:rotate(30deg);—————————–(-moz代表火狐内核识别码)<br>        -webkit-transform:rotate(30deg);————————–(-webkit代表谷歌内核识别码)<br>        -o-transform:rotate(30deg);——————————-(-o代表欧鹏内核识别码)<br>    6、列表中超出部分显示省略号<br>        overflow:hidden;<br>        text-overflow:ellipsis;<br>        white-nowrap:nowrap;<br>    7、搜索框：当input框与旁边的搜索按钮没发对齐的时候，采用定位布局(position:absolute)<br>    8、谷歌内核兼容，ie内核不兼容的解决方法<br>        <meta http-equiv="X-UA-Compatible" content="IE9;IE8;IE7;IE=EDGE"></p>
-
+</code></pre><p>浏览器支持</p>
+<pre><code>H5有部分内容兼容到ie9,ie8及以下完全不兼容的内容不再考虑
+部分内容兼容需要添加前缀
+-webkit- 兼容谷歌
+-moz- 兼容火狐
+-o- 兼容欧鹏
+-ms- 兼容ie
+</code></pre><p>WEB前端开发兼容问题</p>
+<pre><code>1、*{margin:0;padding:0px}解决浏览器默认;
+2、img{display:block}这样可以取消图片自带的3px,让布局更加美观;
+   当然vercital-align也可以
+3、如果使用了浮动，那么下边一定要清除浮动;
+4、如果使用了width:100%(头部，底部，导航等等)，大家会发现当缩小了浏览器窗口的大小以后，有时候布局会出错，这时候给对应的盒子加个min-width:1180px就可以解决了；
+5、各大浏览器的兼容代码：(以旋转30deg为例)
+    transform:rotate(30deg);----------------------------------(统一标识语句，最好写上，复合w3c标准)
+    -ms-transform:rotate(30deg);------------------------------(-ms代表ie内核识别码)
+    -moz-transform:rotate(30deg);-----------------------------(-moz代表火狐内核识别码)
+    -webkit-transform:rotate(30deg);--------------------------(-webkit代表谷歌内核识别码)
+    -o-transform:rotate(30deg);-------------------------------(-o代表欧鹏内核识别码) 
+6、列表中超出部分显示省略号
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-nowrap:nowrap;
+7、搜索框：当input框与旁边的搜索按钮没发对齐的时候，采用定位布局(position:absolute)
+8、谷歌内核兼容，ie内核不兼容的解决方法
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE9;IE8;IE7;IE=EDGE&quot;&gt;
+</code></pre>
       
 
       
@@ -673,10 +721,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
@@ -685,19 +729,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -705,7 +741,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SEO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -717,19 +777,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">渲染</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
             
             <div class="clearfix"></div>

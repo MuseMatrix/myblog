@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:description" content="HTML部分 meta常用标签总结     meta元素有三个可选属性（http-equiv、name和scheme）和一个必选属性,content定义与 http-equiv 或 name 属性相关的元信息      属性                                               值">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-25T13:23:27.580Z">
+<meta property="og:updated_time" content="2018-08-26T13:05:48.904Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基础篇之HTML5">
 <meta name="twitter:description" content="HTML部分 meta常用标签总结     meta元素有三个可选属性（http-equiv、name和scheme）和一个必选属性,content定义与 http-equiv 或 name 属性相关的元信息      属性                                               值">
@@ -30,7 +30,7 @@
   <style type="text/css">
   
     #container.show {
-      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+      background: linear-gradient(200deg,#a0cfe4,#23B7A4);
     }
   </style>
   
@@ -44,7 +44,7 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: #009688"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -53,6 +53,8 @@
 		<hgroup>
 		  <h1 class="header-author"><a href="/">老先生</a></h1>
 		</hgroup>
+		
+		<p class="header-subtitle">凡是总须研究，才会明白。</p>
 		
 
 		<nav class="header-menu">
@@ -110,7 +112,7 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+  	<div class="overlay js-overlay" style="background: #009688"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -122,6 +124,8 @@
 			<hgroup>
 			  <h1 class="header-author js-header-author">老先生</h1>
 			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>凡是总须研究，才会明白。<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -401,13 +405,69 @@ ol有序列表特点：默认显示方式为垂直对齐方式，自带排序序
 类型小技巧：ol有序列表类型不能随便给，如果有请使用背景图片替代
 dl自定义列表
 dt:列表项标题;dd:列表项
-</code></pre><p>H5部分<br>    新增标签<br>        结构性标签<br>            <header></header>页眉，用于块头部<br>            <nav></nav>导航<br>            <section></section>页面上的区块<br>            <article></article>用来在页面上表示一套结构完整而独立的内容部分(article套article表示文章下面的评论)<br>            <aside></aside>侧边栏，广告，nav元素组，aside的标签应该与article的内容相关<br>            <footer></footer>页面的底部或者板块的底部<br>        语义化标签<br>            <hgroup></hgroup>一个标题和一个子标题，或者标语的组合(标题组)<br>            <figure></figure>用于对元素进行组合，一般用于图片或者视频(图片视频组)<br>            <figcaption></figcaption>图片或视频组的标题<br>            <time></time>用来表示时间或者日期<br>            <datalist></datalist>标签定义列表选项，请与input配合使用，来定义input可能的值，请使用input元素的list属性来绑定datalist 的ID<br>            例如：<br>                <input type="text" list="data"><br>                <datalist id="data"><br>                    <option>1</option><br>                    <option>2</option><br>                    <option>3</option><br>                    <option>4</option><br>                </datalist><br>            <details></details>用于描述文档或文档某部分的细节.该元素用于摘录引用等,与标签配合使用(默认折叠，添加open展开)<br>            <summary></summary>details元素的标题(默认标题为详细信息)<br>            例如：<br>            <details open><br>                <summary>闺怨</summary><br>                谷中少妇不知愁，春日应著上翠柳；<br>            </details><br>            <dialog></dialog>定义一段对话,默认展开需要添加open属性<br>                例如：<br>                <dialog open>对话框</dialog><br>            <address></address>定义文章或页面作者的详细联系信息<br>            <meter></meter>定义已知范围或数值内的标量测量.也被称为gauge(尺度).<br>            <progress></progress>进度条<br>            <mark></mark>需要标记的词或句子,默认黄色背景</p>
-<p>IE低版本兼容<br>    在页面头部如下注意:样式属性display:block;<br>        <script><br>        document.createElement(header);<br>        document.createElement(nav);<br>        document.createElement(footer);<br>        </script><br>    在页面头部如下(注释语法)<br>        <!--[if lt IE 9]> 
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> 
-        <![endif]--><br>        <!-- IE条件注释语句 
-        针对的浏览器版本 
-        <!--[if lt IE 7]> 内容 <![endif]--><br>        IE7 以下版本 （小于IE7）<br>        <!--[if lte IE 7]>内容<![endif]--><br>        IE7及以下版本 （包含IE7）<br>        <!--[if gt IE 7]>内容<![endif]--><br>        IE7 以上版本 （大于IE7）<br>        <!--[if gte IE 7]>内容<![endif]--><br>        IE7及以上版本 （包含IE7）<br>        <!--[if !IE 7]>内容<![endif]--><br>        非IE7版本<br>        <!--[if !IE]><!--><br>        非IE版本<br>        <!--<![endif]--> </p>
-
+</code></pre><p>H5部分<br>    新增标签</p>
+<pre><code>结构性标签
+    &lt;header&gt;&lt;/header&gt;页眉，用于块头部
+    &lt;nav&gt;&lt;/nav&gt;导航
+    &lt;section&gt;&lt;/section&gt;页面上的区块
+    &lt;article&gt;&lt;/article&gt;用来在页面上表示一套结构完整而独立的内容部分(article套article表示文章下面的评论)
+    &lt;aside&gt;&lt;/aside&gt;侧边栏，广告，nav元素组，aside的标签应该与article的内容相关
+    &lt;footer&gt;&lt;/footer&gt;页面的底部或者板块的底部
+语义化标签
+    &lt;hgroup&gt;&lt;/hgroup&gt;一个标题和一个子标题，或者标语的组合(标题组)
+    &lt;figure&gt;&lt;/figure&gt;用于对元素进行组合，一般用于图片或者视频(图片视频组)
+    &lt;figcaption&gt;&lt;/figcaption&gt;图片或视频组的标题
+    &lt;time&gt;&lt;/time&gt;用来表示时间或者日期
+    &lt;datalist&gt;&lt;/datalist&gt;标签定义列表选项，请与input配合使用，来定义input可能的值，请使用input元素的list属性来绑定datalist 的ID
+    例如：
+        &lt;input type=&quot;text&quot; list=&quot;data&quot;&gt;
+        &lt;datalist id=&quot;data&quot;&gt;
+            &lt;option&gt;1&lt;/option&gt;
+            &lt;option&gt;2&lt;/option&gt;
+            &lt;option&gt;3&lt;/option&gt;
+            &lt;option&gt;4&lt;/option&gt;
+        &lt;/datalist&gt;
+    &lt;details&gt;&lt;/details&gt;用于描述文档或文档某部分的细节.该元素用于摘录引用等,与标签配合使用(默认折叠，添加open展开)
+    &lt;summary&gt;&lt;/summary&gt;details元素的标题(默认标题为详细信息)
+    例如：
+    &lt;details open&gt;
+        &lt;summary&gt;闺怨&lt;/summary&gt;
+        谷中少妇不知愁，春日应著上翠柳；
+    &lt;/details&gt;
+    &lt;dialog&gt;&lt;/dialog&gt;定义一段对话,默认展开需要添加open属性
+        例如：
+        &lt;dialog open&gt;对话框&lt;/dialog&gt;
+    &lt;address&gt;&lt;/address&gt;定义文章或页面作者的详细联系信息
+    &lt;meter&gt;&lt;/meter&gt;定义已知范围或数值内的标量测量.也被称为gauge(尺度).
+    &lt;progress&gt;&lt;/progress&gt;进度条
+    &lt;mark&gt;&lt;/mark&gt;需要标记的词或句子,默认黄色背景
+</code></pre><p>IE低版本兼容</p>
+<pre><code>在页面头部如下注意:样式属性display:block; 
+    &lt;script&gt; 
+    document.createElement(header); 
+    document.createElement(nav); 
+    document.createElement(footer); 
+    &lt;/script&gt;
+在页面头部如下(注释语法)
+    &lt;!--[if lt IE 9]&gt; 
+    &lt;script src=&quot;https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js&quot;&gt;&lt;/script&gt; 
+    &lt;![endif]--&gt; 
+    &lt;!-- IE条件注释语句 
+    针对的浏览器版本 
+    &lt;!--[if lt IE 7]&gt; 内容 &lt;![endif]--&gt; 
+    IE7 以下版本 （小于IE7） 
+    &lt;!--[if lte IE 7]&gt;内容&lt;![endif]--&gt; 
+    IE7及以下版本 （包含IE7） 
+    &lt;!--[if gt IE 7]&gt;内容&lt;![endif]--&gt; 
+    IE7 以上版本 （大于IE7） 
+    &lt;!--[if gte IE 7]&gt;内容&lt;![endif]--&gt; 
+    IE7及以上版本 （包含IE7） 
+    &lt;!--[if !IE 7]&gt;内容&lt;![endif]--&gt; 
+    非IE7版本 
+    &lt;!--[if !IE]&gt;&lt;!--&gt; 
+    非IE版本 
+    &lt;!--&lt;![endif]--&gt; 
+</code></pre>
       
 
       
@@ -703,10 +763,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
@@ -715,19 +771,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -735,7 +783,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SEO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -747,19 +819,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">渲染</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
             
             <div class="clearfix"></div>

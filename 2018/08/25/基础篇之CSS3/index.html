@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:description" content="CSS部分 兼容查询网址：https://www.caniuse.com/  CSS书写顺序 //显示属性 display list-style position float clear">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-25T13:21:16.037Z">
+<meta property="og:updated_time" content="2018-08-26T13:05:28.321Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基础篇之CSS3">
 <meta name="twitter:description" content="CSS部分 兼容查询网址：https://www.caniuse.com/  CSS书写顺序 //显示属性 display list-style position float clear">
@@ -30,7 +30,7 @@
   <style type="text/css">
   
     #container.show {
-      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+      background: linear-gradient(200deg,#a0cfe4,#23B7A4);
     }
   </style>
   
@@ -44,7 +44,7 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: #009688"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -53,6 +53,8 @@
 		<hgroup>
 		  <h1 class="header-author"><a href="/">老先生</a></h1>
 		</hgroup>
+		
+		<p class="header-subtitle">凡是总须研究，才会明白。</p>
 		
 
 		<nav class="header-menu">
@@ -110,7 +112,7 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+  	<div class="overlay js-overlay" style="background: #009688"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -122,6 +124,8 @@
 			<hgroup>
 			  <h1 class="header-author js-header-author">老先生</h1>
 			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>凡是总须研究，才会明白。<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -201,6 +205,7 @@ float
 clear
 </code></pre><a id="more"></a>
 <pre><code>//自身属性
+
 width
 height
 margin
@@ -1131,9 +1136,15 @@ radial-gradient
         &lt;!--[if lt IE 9]&gt;
     　　　　&lt;script src=&quot;http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js&quot;&gt;&lt;/script&gt;
     　　&lt;![endif]--&gt;
-</code></pre><p>Css兼容问题总结：<br>    Css Hack<br>        IE条件注释法(正常代码之外添加判别IE浏览器或者对应版本的条件注释)，符合条件的浏览器或者版本号才会执行里面的代码<br>            <!-- lt是小于  gt是大于   lte是小于等于    gte是不小于   !是不等于--><br>            <!--[if IE] -->         你想要执行的代码    &lt;![endif]–&gt;<br>            <!-- [if lt IE 8]>      你想要执行的代码    <![endif]--><br>            <!-- [if ! IE 8]>       你想要执行的代码    <![endif]--><br>        CSS属性前缀法<br>        选择器前缀法</p>
-<p>css中link和import的区别<br>    1、link是xhtml标签，除了可以加载css外还可以加载rss,@import属于css范畴，只能加载css<br>    2、link引入的css在页面加载的同时加载，import在页面完全加载完成后加载<br>    3、link无兼容性问题，@import低版本浏览器不支持(目前可以忽略)<br>    4、link支持使用js控制Dom去改变样式，@import不支持</p>
-<pre><code>http://blog.csdn.net/gyq04551/article/details/55254359
+</code></pre><p>Css兼容问题总结：</p>
+<p> —Css Hack<br>        IE条件注释法(正常代码之外添加判别IE浏览器或者对应版本的条件注释)，符合条件的浏览器或者版本号才会执行里面的代码<br>            <!-- lt是小于  gt是大于   lte是小于等于    gte是不小于   !是不等于--><br>            <!--[if IE] -->         你想要执行的代码    &lt;![endif]–&gt;<br>            <!-- [if lt IE 8]>      你想要执行的代码    <![endif]--><br>            <!-- [if ! IE 8]>       你想要执行的代码    <![endif]--><br>        CSS属性前缀法<br>        选择器前缀法—</p>
+<p>css中link和import的区别</p>
+<pre><code>1、link是xhtml标签，除了可以加载css外还可以加载rss,@import属于css范畴，只能加载css
+2、link引入的css在页面加载的同时加载，import在页面完全加载完成后加载
+3、link无兼容性问题，@import低版本浏览器不支持(目前可以忽略)
+4、link支持使用js控制Dom去改变样式，@import不支持
+
+http://blog.csdn.net/gyq04551/article/details/55254359
 </code></pre><p><a href="https://www.douban.com/group/topic/95227323/" target="_blank" rel="noopener">https://www.douban.com/group/topic/95227323/</a></p>
 <p>-</p>
 
@@ -1423,10 +1434,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
@@ -1435,19 +1442,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1455,7 +1454,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SEO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1467,19 +1490,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">渲染</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
             
             <div class="clearfix"></div>

@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:description" content="let 1、let的用法跟es5的var一样; 2、var会存在变量提升现象，let、const不会存在这种情况 3、只要块级作用域存在let、它声明的变量就会绑定这个区域，不在受外部的影响，形成封闭式作用域，言之，暂时性死区(简称TDZ),它的本质就是     只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用变量 4、let不允许">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-25T13:20:20.029Z">
+<meta property="og:updated_time" content="2018-08-26T13:02:11.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6+进阶">
 <meta name="twitter:description" content="let 1、let的用法跟es5的var一样; 2、var会存在变量提升现象，let、const不会存在这种情况 3、只要块级作用域存在let、它声明的变量就会绑定这个区域，不在受外部的影响，形成封闭式作用域，言之，暂时性死区(简称TDZ),它的本质就是     只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用变量 4、let不允许">
@@ -30,7 +30,7 @@
   <style type="text/css">
   
     #container.show {
-      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+      background: linear-gradient(200deg,#a0cfe4,#23B7A4);
     }
   </style>
   
@@ -44,7 +44,7 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: #009688"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -53,6 +53,8 @@
 		<hgroup>
 		  <h1 class="header-author"><a href="/">老先生</a></h1>
 		</hgroup>
+		
+		<p class="header-subtitle">凡是总须研究，才会明白。</p>
 		
 
 		<nav class="header-menu">
@@ -110,7 +112,7 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+  	<div class="overlay js-overlay" style="background: #009688"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -122,6 +124,8 @@
 			<hgroup>
 			  <h1 class="header-author js-header-author">老先生</h1>
 			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>凡是总须研究，才会明白。<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -338,8 +342,13 @@ e//o
 
 类似数组的对象都有一个length,因此还可以对这个属性解构赋值
 let {length:len}=&quot;hello&quot;;
-</code></pre><p>函数参数的解构赋值<br>    function fun([a,b]){<br>    return a+b;<br>    }<br>    函数参数的解构也可以使用默认值。</p>
-<pre><code>function move({x = 0, y = 0} = {}) {
+</code></pre><p>函数参数的解构赋值</p>
+<pre><code>function fun([a,b]){
+return a+b;
+}
+函数参数的解构也可以使用默认值。
+
+function move({x = 0, y = 0} = {}) {
   return [x, y];
 }
 
@@ -522,8 +531,16 @@ padStart()、padEnd()
     tag`Hello ${ a + b } world ${ a * b }`;
     // 等同于
     tag([&apos;Hello &apos;, &apos; world &apos;, &apos;&apos;], 15, 50);
-</code></pre><p>ES6函数的扩展<br>    Es6之前 不能为函数参数指定默认值，只能采用变通的方法<br>        function log(x,y = ‘world’){<br>            console.log(x,y);<br>        }<br>        log(‘Hello’) // Hello World<br>        log(‘Hello’, ‘China’) // Hello China<br>        log(‘Hello’, ‘’) // Hello</p>
-<pre><code>与解构赋值结合使用
+</code></pre><p>ES6函数的扩展</p>
+<pre><code>Es6之前 不能为函数参数指定默认值，只能采用变通的方法
+    function log(x,y = &apos;world&apos;){
+        console.log(x,y);
+    }
+    log(&apos;Hello&apos;) // Hello World
+    log(&apos;Hello&apos;, &apos;China&apos;) // Hello China
+    log(&apos;Hello&apos;, &apos;&apos;) // Hello
+
+与解构赋值结合使用
     function foo({x, y = 5}) {
       console.log(x, y);
     }
@@ -613,8 +630,10 @@ arguments.length 返回实参个数
 
     foo() // 2
     x // 1
-</code></pre><p>Es6之rest参数<br>    ES6 引入 rest 参数（形式为…变量名），用于获取函数的多余参数，这样就不需要使用arguments对象了。rest 参数搭配的变量是一个数组，该变量将多余的参数放入数组中。</p>
-<pre><code>function add(...values) {
+</code></pre><p>Es6之rest参数</p>
+<pre><code>ES6 引入 rest 参数（形式为...变量名），用于获取函数的多余参数，这样就不需要使用arguments对象了。rest 参数搭配的变量是一个数组，该变量将多余的参数放入数组中。
+
+function add(...values) {
   let sum = 0;
 
   for (var val of values) {
@@ -649,9 +668,17 @@ function f(a, ...b, c) {
 (function(a, ...b) {}).length  // 1
 </code></pre><p>严格模式<br>    从 ES5 开始，函数内部可以设定为严格模式。</p>
 <pre><code>ES2016 做了一点修改，规定只要函数参数使用了默认值、解构赋值、或者扩展运算符，那么函数内部就不能显式设定为严格模式，否则会报错
-</code></pre><p>函数的name属性<br>   返回函数名<br>   function foo() {}<br>   foo.name // “foo”<br>   var f = function () {}; // “f”</p>
-<p>箭头函数<br>    Es6允许使用箭头(=&gt;)定义函数<br>    var f = v =&gt; v;<br>    相当于<br>    function f(v){<br>        return v;<br>    }</p>
-<pre><code>var f = () =&gt;5;
+</code></pre><p>函数的name属性</p>
+<p>   返回函数名<br>   function foo() {}<br>   foo.name // “foo”<br>   var f = function () {}; // “f”</p>
+<p>箭头函数</p>
+<pre><code>Es6允许使用箭头(=&gt;)定义函数
+var f = v =&gt; v;
+相当于
+function f(v){
+    return v;
+}
+
+var f = () =&gt;5;
 相当于
 function f(){
     return 5;
@@ -699,124 +726,127 @@ function foo() {
 }
 //转换后的 ES5 版本清楚地说明了，箭头函数里面根本没有自己的this，而是引用外层的this。
 由于箭头函数没有自己的this，所以当然也就不能用call()、apply()、bind()这些方法去改变this的指向。
-</code></pre><p>   函数参数的尾逗号</p>
-<p>   ES2017 允许函数的最后一个参数有尾逗号（trailing comma）。</p>
-<p>   这样的规定也使得，函数参数与数组和对象的尾逗号规则，保持一致了。</p>
-<p>   function clownsEverywhere(<br>     param1,<br>     param2,<br>   ) { /<em> … </em>/ }</p>
+</code></pre><p>函数参数的尾逗号</p>
+<p>   ES2017 允许函数的最后一个参数有尾逗号（trailing comma）。<br>   这样的规定也使得，函数参数与数组和对象的尾逗号规则，保持一致了。<br>   function clownsEverywhere(<br>     param1,<br>     param2,<br>   ) { /<em> … </em>/ }</p>
 <p>   clownsEverywhere(<br>     ‘foo’,<br>     ‘bar’,<br>   );</p>
-<p>数组的扩展<br>    扩展运算符<br>        扩展运算符是三个点(…)。它好比rest参数的逆运算，将一个素组转为用逗号分割的参数序列<br>        console.log(…[1,2,3])<br>        //1 2 3</p>
-<pre><code>  console.log(2,3,4...[56,45,4],2)
-  //2 3 4 56 45 4 2
+<p>数组的扩展</p>
+<pre><code>扩展运算符
+    扩展运算符是三个点(...)。它好比rest参数的逆运算，将一个素组转为用逗号分割的参数序列
+    console.log(...[1,2,3])
+    //1 2 3
 
-  [...document.querySelectorAll(&apos;div&apos;)]
-  // [&lt;div&gt;, &lt;div&gt;, &lt;div&gt;]
+    console.log(2,3,4...[56,45,4],2)
+    //2 3 4 56 45 4 2
 
-  该运算符将一个数组，变为参数序列。
+    [...document.querySelectorAll(&apos;div&apos;)]
+    // [&lt;div&gt;, &lt;div&gt;, &lt;div&gt;]
 
-  扩展运算符后面还可以放置表达式。
+    该运算符将一个数组，变为参数序列。
 
-  const arr = [
-    ...(x &gt; 0 ? [&apos;a&apos;] : []),
-    &apos;b&apos;,
-  ];
-  如果扩展运算符后面是一个空数组，则不产生任何效果。
+    扩展运算符后面还可以放置表达式。
 
-  [...[], 1]
-  // [1]
+    const arr = [
+      ...(x &gt; 0 ? [&apos;a&apos;] : []),
+      &apos;b&apos;,
+    ];
+    如果扩展运算符后面是一个空数组，则不产生任何效果。
 
- 替代数组的apply方法
- 由于扩展运算符可以展开数组，所以不再需要apply方法，将数组转为函数的参数了。
+    [...[], 1]
+    // [1]
 
- // ES5 的写法
- function f(x, y, z) {
-   // ...
- }
- var args = [0, 1, 2];
- f.apply(null, args);
+   替代数组的apply方法
+   由于扩展运算符可以展开数组，所以不再需要apply方法，将数组转为函数的参数了。
 
- // ES6的写法
- function f(x, y, z) {
-   // ...
- }
- let args = [0, 1, 2];
- f(...args);
- es5教大家的利用Math.max拿数组最大值
+   // ES5 的写法
+   function f(x, y, z) {
+     // ...
+   }
+   var args = [0, 1, 2];
+   f.apply(null, args);
 
- //es5
- Math.max.apply(null,[1,5,2,8]) // 8
- //es6
- Math.max(...[1,5,2,8])//8
- //上面两种方法等同于
- Math.max(1,5,2,8)
+   // ES6的写法
+   function f(x, y, z) {
+     // ...
+   }
+   let args = [0, 1, 2];
+   f(...args);
+   es5教大家的利用Math.max拿数组最大值
 
- 扩展运算符的应用
-复制数组
-  //es5复制数组写法
-  const a1 =[1,2];
-  const a2 = a1.concat();
+   //es5
+   Math.max.apply(null,[1,5,2,8]) // 8
+   //es6
+   Math.max(...[1,5,2,8])//8
+   //上面两种方法等同于
+   Math.max(1,5,2,8)
 
-  es6扩展运算符复制数组写法
-  const a1 =[1,2];
-  const a2 =[...a1];//写法一
-  const [...a2] = a1; // 写法二
+   扩展运算符的应用
+  复制数组
+    //es5复制数组写法
+    const a1 =[1,2];
+    const a2 = a1.concat();
 
-  合并数组
-  合并数组
+    es6扩展运算符复制数组写法
+    const a1 =[1,2];
+    const a2 =[...a1];//写法一
+    const [...a2] = a1; // 写法二
 
-  扩展运算符提供了数组合并的新写法。
+    合并数组
+    合并数组
 
-  // ES5
-  [1, 2].concat(more)
-  // ES6
-  [1, 2, ...more]
-
-  var arr1 = [&apos;a&apos;, &apos;b&apos;];
-  var arr2 = [&apos;c&apos;];
-  var arr3 = [&apos;d&apos;, &apos;e&apos;];
-
-  // ES5的合并数组
-  arr1.concat(arr2, arr3);
-  // [ &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos; ]
-
-  // ES6的合并数组
-  [...arr1, ...arr2, ...arr3]
-  // [ &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos; ]
-
-  与解构赋值结合
+    扩展运算符提供了数组合并的新写法。
 
     // ES5
-    a = list[0], rest = list.slice(1)
+    [1, 2].concat(more)
     // ES6
-    [a, ...rest] = list
-    下面是另外一些例子。
+    [1, 2, ...more]
 
-    const [first, ...rest] = [1, 2, 3, 4, 5];
-    first // 1
-    rest  // [2, 3, 4, 5]
+    var arr1 = [&apos;a&apos;, &apos;b&apos;];
+    var arr2 = [&apos;c&apos;];
+    var arr3 = [&apos;d&apos;, &apos;e&apos;];
 
-    const [first, ...rest] = [];
-    first // undefined
-    rest  // []
+    // ES5的合并数组
+    arr1.concat(arr2, arr3);
+    // [ &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos; ]
 
-    const [first, ...rest] = [&quot;foo&quot;];
-    first  // &quot;foo&quot;
-    rest   // []
-    const [...butLast, last] = [1, 2, 3, 4, 5];
-    // 报错
+    // ES6的合并数组
+    [...arr1, ...arr2, ...arr3]
+    // [ &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos; ]
 
-    const [first, ...middle, last] = [1, 2, 3, 4, 5];
-    // 报错
+    与解构赋值结合
 
-    字符串
+      // ES5
+      a = list[0], rest = list.slice(1)
+      // ES6
+      [a, ...rest] = list
+      下面是另外一些例子。
 
-    扩展运算符还可以将字符串转为真正的数组。
+      const [first, ...rest] = [1, 2, 3, 4, 5];
+      first // 1
+      rest  // [2, 3, 4, 5]
 
-        [...&apos;hello&apos;]
-        // [ &quot;h&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot; ]
-    实现了 Iterator 接口的对象
+      const [first, ...rest] = [];
+      first // undefined
+      rest  // []
 
-        let nodeList = document.querySelectorAll(&apos;div&apos;);
-        let array = [...nodeList];
+      const [first, ...rest] = [&quot;foo&quot;];
+      first  // &quot;foo&quot;
+      rest   // []
+      const [...butLast, last] = [1, 2, 3, 4, 5];
+      // 报错
+
+      const [first, ...middle, last] = [1, 2, 3, 4, 5];
+      // 报错
+
+      字符串
+
+      扩展运算符还可以将字符串转为真正的数组。
+
+          [...&apos;hello&apos;]
+          // [ &quot;h&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot; ]
+      实现了 Iterator 接口的对象
+
+          let nodeList = document.querySelectorAll(&apos;div&apos;);
+          let array = [...nodeList];
 </code></pre><p> Array.form()<br>    Array.form()将两类对象转为真正的数组<br>        // NodeList对象(节点对象)<br>        let ps = document.querySelectorAll(‘p’);<br>        Array.from(ps).forEach(function (p) {<br>          console.log(p);<br>        });</p>
 <pre><code>// arguments对象
 function foo() {
@@ -842,209 +872,219 @@ Array.of(3, 11, 8) // [3,11,8]
 Array.of(3) // [3]
 Array.of(3).length // 1
 </code></pre><p>数组实例的copyWithin()<br>    copayWithin()，在当前数组的内部，将指定位置的成员复制到其他位置(会覆盖原有成员)，然后返回当前数组，也就是说，使用这个方法会修改当前数组</p>
-<p>Es6之Class和extends<br>    es5的写法<br>        方法一:<br>            function Person(name, age){<br>                this.name = name;<br>                this.age = age;<br>            }<br>            Person.prototype.showName = function(){<br>                return <code>名字为: ${this.name}</code>;<br>            };</p>
-<pre><code>     let p1 = new Person(&apos;Strive&apos;, 18);
-     console.log(p1.showName());
-方法二：
-     function Person(name, age){
-         this.name = name;
-         this.age = age;
-     }
-     Object.assign(Person.prototype,{
-         showName(){
-             return `名字为: ${this.name}`;
-         },
-         showAge(){
-             return `年龄为: ${this.age}`;
-         }
-     });
+<p>Es6之Class和extends</p>
+<pre><code>es5的写法
+    方法一:
+        function Person(name, age){
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.showName = function(){
+            return `名字为: ${this.name}`;
+        };
 
-     let p1 = new Person(&apos;Strive&apos;, 18);
-     console.log(p1.showName());
-     console.log(p1.showAge());
- es6的写法
-     class Person{
-         constructor(name,age){ //构造方法(函数), 调用new，自动执行
-             //console.log(`构造函数执行了, ${name}, ${age}`);
-             this.name = name;
-             this.age = age;
-         }
-         showName(){
-             return `名字为: ${this.name}`;
-         }
-         showAge(){
-             return `年龄: ${this.age}`;
-         }
-     }
-     let p1 = new Person(&apos;Strive&apos;, 18);
-     console.log(p1.showName(), p1.showAge());
+        let p1 = new Person(&apos;Strive&apos;, 18);
+        console.log(p1.showName());
+   方法二：
+        function Person(name, age){
+            this.name = name;
+            this.age = age;
+        }
+        Object.assign(Person.prototype,{
+            showName(){
+                return `名字为: ${this.name}`;
+            },
+            showAge(){
+                return `年龄为: ${this.age}`;
+            }
+        });
 
-     表达式写法
-         const Person = class{
-             constructor(name,age){ //构造方法(函数), 调用new，自动执行
-                 //console.log(`构造函数执行了, ${name}, ${age}`);
-                 this.name = name;
-                 this.age = age;
-             }
-             showName(){
-                 return `名字为: ${this.name}`;
-             }
-             showAge(){
-                 return `年龄: ${this.age}`;
-             }
-         }
-         let p1 = new Person(&apos;Strive&apos;, 18);
-         console.log(p1.showName(), p1.showAge());
+        let p1 = new Person(&apos;Strive&apos;, 18);
+        console.log(p1.showName());
+        console.log(p1.showAge());
+    es6的写法
+        class Person{
+            constructor(name,age){ //构造方法(函数), 调用new，自动执行
+                //console.log(`构造函数执行了, ${name}, ${age}`);
+                this.name = name;
+                this.age = age;
+            }
+            showName(){
+                return `名字为: ${this.name}`;
+            }
+            showAge(){
+                return `年龄: ${this.age}`;
+            }
+        }
+        let p1 = new Person(&apos;Strive&apos;, 18);
+        console.log(p1.showName(), p1.showAge());
 
-     函数名拼接写法
-         let aaa =&apos;strive&apos;;
-         let bbb =&apos;method&apos;;
+        表达式写法
+            const Person = class{
+                constructor(name,age){ //构造方法(函数), 调用new，自动执行
+                    //console.log(`构造函数执行了, ${name}, ${age}`);
+                    this.name = name;
+                    this.age = age;
+                }
+                showName(){
+                    return `名字为: ${this.name}`;
+                }
+                showAge(){
+                    return `年龄: ${this.age}`;
+                }
+            }
+            let p1 = new Person(&apos;Strive&apos;, 18);
+            console.log(p1.showName(), p1.showAge());
 
-         class Person{
-             constructor(name,age){ //构造方法(函数), 调用new，自动执行
-                 //console.log(`构造函数执行了, ${name}, ${age}`);
-                 this.name = name;
-                 this.age = age;
-             }
-             showName(){
-                 return `名字为: ${this.name}`;
-             }
-             showAge(){
-                 return `年龄: ${this.age}`;
-             }
-             [aaa+bbb](){
-                 return &apos;随便了....&apos;
-             }
-         }
-         let p1 = new Person(&apos;Strive&apos;, 18);
-         console.log(p1[aaa+bbb]());
+        函数名拼接写法
+            let aaa =&apos;strive&apos;;
+            let bbb =&apos;method&apos;;
 
-     结构后会是undefined,this会找不见
-     class Person{
-         constructor(){
-             this.name = &apos;Strive&apos;;
-             this.showName = this.showName.bind(this); //在这里改变this的指向，矫正this
-         }
-         showName(){
-             console.log(&apos;this:&apos;, this);
-             return `名字为: ${this.name}`;
-         }
-     }
+            class Person{
+                constructor(name,age){ //构造方法(函数), 调用new，自动执行
+                    //console.log(`构造函数执行了, ${name}, ${age}`);
+                    this.name = name;
+                    this.age = age;
+                }
+                showName(){
+                    return `名字为: ${this.name}`;
+                }
+                showAge(){
+                    return `年龄: ${this.age}`;
+                }
+                [aaa+bbb](){
+                    return &apos;随便了....&apos;
+                }
+            }
+            let p1 = new Person(&apos;Strive&apos;, 18);
+            console.log(p1[aaa+bbb]());
 
-     let p1 = new Person();
+        结构后会是undefined,this会找不见
+        class Person{
+            constructor(){
+                this.name = &apos;Strive&apos;;
+                this.showName = this.showName.bind(this); //在这里改变this的指向，矫正this
+            }
+            showName(){
+                console.log(&apos;this:&apos;, this);
+                return `名字为: ${this.name}`;
+            }
+        }
 
-     let {showName } = p1;
+        let p1 = new Person();
 
-     console.log(showName());
+        let {showName } = p1;
 
-    拖拽小封装
-             &lt;div id=&quot;div1&quot; class=&quot;box left&quot;&gt;DIV1&lt;/div&gt;
-             &lt;div id=&quot;div2&quot; class=&quot;box right&quot;&gt;DIV2&lt;/div&gt;
+        console.log(showName());
 
-             &lt;script&gt;
-                 //普通拖拽 -- 父类
-                 class Drag{
-                     constructor(id){
-                         this.oDiv = document.querySelector(id);
-                         this.disX = 0;
-                         this.disY = 0;
-                         this.init();
-                     }
-                     init(){
-                         this.oDiv.onmousedown = function(ev){
-                             this.disX = ev.clientX - this.oDiv.offsetLeft;
-                             this.disY = ev.clientY - this.oDiv.offsetTop;
+       拖拽小封装
+                &lt;div id=&quot;div1&quot; class=&quot;box left&quot;&gt;DIV1&lt;/div&gt;
+                &lt;div id=&quot;div2&quot; class=&quot;box right&quot;&gt;DIV2&lt;/div&gt;
 
-                             document.onmousemove = this.fnMove.bind(this);
-                             document.onmouseup = this.fnUp.bind(this);
+                &lt;script&gt;
+                    //普通拖拽 -- 父类
+                    class Drag{
+                        constructor(id){
+                            this.oDiv = document.querySelector(id);
+                            this.disX = 0;
+                            this.disY = 0;
+                            this.init();
+                        }
+                        init(){
+                            this.oDiv.onmousedown = function(ev){
+                                this.disX = ev.clientX - this.oDiv.offsetLeft;
+                                this.disY = ev.clientY - this.oDiv.offsetTop;
 
-                             return false;
-                         }.bind(this);
-                     }
-                     fnMove(ev){
-                         this.oDiv.style.left = ev.clientX - this.disX+&apos;px&apos;;
-                         this.oDiv.style.top = ev.clientY - this.disY+&apos;px&apos;;
-                     }
-                     fnUp(){
-                         document.onmousemove=null;
-                         document.onmouseup=null;
-                     }
-                 }
+                                document.onmousemove = this.fnMove.bind(this);
+                                document.onmouseup = this.fnUp.bind(this);
 
-                 //子类—— 限制范围
-                 class LimitDrag extends Drag{
-                     fnMove(ev){
-                         super.fnMove(ev);
+                                return false;
+                            }.bind(this);
+                        }
+                        fnMove(ev){
+                            this.oDiv.style.left = ev.clientX - this.disX+&apos;px&apos;;
+                            this.oDiv.style.top = ev.clientY - this.disY+&apos;px&apos;;
+                        }
+                        fnUp(){
+                            document.onmousemove=null;
+                            document.onmouseup=null;
+                        }
+                    }
 
-                         //限制范围
-                         if(this.oDiv.offsetLeft&lt;=0){
-                             this.oDiv.style.left =0;
-                         }
-                     }
-                 }
+                    //子类—— 限制范围
+                    class LimitDrag extends Drag{
+                        fnMove(ev){
+                            super.fnMove(ev);
 
-                 //调用
-                 new Drag(&apos;#div1&apos;);
-                 new LimitDrag(&apos;#div2&apos;);
-             &lt;/script&gt;
+                            //限制范围
+                            if(this.oDiv.offsetLeft&lt;=0){
+                                this.oDiv.style.left =0;
+                            }
+                        }
+                    }
 
-         类的继承
-             es5的继承：
-              //父类(组合继承)
-             function Person(name){
-                 this.name = name;
-             }
-             Person.prototype.showName = function(){
-                 return `名字是: ${this.name}`;
-             };
+                    //调用
+                    new Drag(&apos;#div1&apos;);
+                    new LimitDrag(&apos;#div2&apos;);
+                &lt;/script&gt;
 
-             //子类
-             function Student(name,skill){
-                 Person.call(this,name); //继承属性
+            类的继承
+                es5的继承：
+                 //父类(组合继承)
+                function Person(name){
+                    this.name = name;
+                }
+                Person.prototype.showName = function(){
+                    return `名字是: ${this.name}`;
+                };
 
-                 this.skill = skill;
-             }
-             Student.prototype = new Person(); //继承方法
+                //子类
+                function Student(name,skill){
+                    Person.call(this,name); //继承属性
 
-
-             //调用
-
-             let stu1 = new Student(&apos;Strive&apos;,&apos;逃学&apos;);
-             console.log(stu1.showName());
-             es6的继承
-                //父类
-                 class Person{
-                     constructor(name){
-                         this.name = name;
-                     }
-                     showName(){
-                         console.log(&apos;父类showName&apos;);
-                         return `名字为: ${this.name}`;
-                     }
-                 }
-
-                 //子类
-                 class Student extends Person{
-                     constructor(name,skill){
-                         super(name);
-                         this.skill = skill;
-                     }
-                     showName(){
-                         super.showName(); //父级的方法执行
-
-                         //TODO 做子级事情
-                         console.log(&apos;子类里的showName&apos;);
-                     }
-                     showSkill(){
-                         return  `哥们儿的技能为: ${this.skill}`;
-                     }
-                 }
+                    this.skill = skill;
+                }
+                Student.prototype = new Person(); //继承方法
 
 
-                 //调用
+                //调用
 
-                 let stu1 = new Student(&apos;Strive&apos;,&apos;逃学&apos;);
-                 console.log(stu1.showName());
+                let stu1 = new Student(&apos;Strive&apos;,&apos;逃学&apos;);
+                console.log(stu1.showName());
+                es6的继承
+                   //父类
+                    class Person{
+                        constructor(name){
+                            this.name = name;
+                        }
+                        showName(){
+                            console.log(&apos;父类showName&apos;);
+                            return `名字为: ${this.name}`;
+                        }
+                    }
+
+                    //子类
+                    class Student extends Person{
+                        constructor(name,skill){
+                            super(name);
+                            this.skill = skill;
+                        }
+                        showName(){
+                            super.showName(); //父级的方法执行
+
+                            //TODO 做子级事情
+                            console.log(&apos;子类里的showName&apos;);
+                        }
+                        showSkill(){
+                            return  `哥们儿的技能为: ${this.skill}`;
+                        }
+                    }
+
+
+                    //调用
+
+                    let stu1 = new Student(&apos;Strive&apos;,&apos;逃学&apos;);
+                    console.log(stu1.showName());
 </code></pre>
       
 
@@ -1341,10 +1381,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
@@ -1353,19 +1389,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1373,7 +1401,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SEO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1385,19 +1437,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">渲染</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
             
             <div class="clearfix"></div>

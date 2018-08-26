@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:description" content="环境搭建： 1、安装git,安装完后设置标识         git config --global user.name “名字”;         git config --golbal user.email “邮箱”;          创建SSH key，打开C:\Users\wzs\.ssh查看是否拥有id_rsa和id_rsa.pub,如果有的话，直接跳过，如果没有，输入以下命令">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-26T00:19:57.749Z">
+<meta property="og:updated_time" content="2018-08-26T13:02:50.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git学习速记">
 <meta name="twitter:description" content="环境搭建： 1、安装git,安装完后设置标识         git config --global user.name “名字”;         git config --golbal user.email “邮箱”;          创建SSH key，打开C:\Users\wzs\.ssh查看是否拥有id_rsa和id_rsa.pub,如果有的话，直接跳过，如果没有，输入以下命令">
@@ -30,7 +30,7 @@
   <style type="text/css">
   
     #container.show {
-      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+      background: linear-gradient(200deg,#a0cfe4,#23B7A4);
     }
   </style>
   
@@ -44,7 +44,7 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: #009688"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -53,6 +53,8 @@
 		<hgroup>
 		  <h1 class="header-author"><a href="/">老先生</a></h1>
 		</hgroup>
+		
+		<p class="header-subtitle">凡是总须研究，才会明白。</p>
 		
 
 		<nav class="header-menu">
@@ -110,7 +112,7 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+  	<div class="overlay js-overlay" style="background: #009688"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -122,6 +124,8 @@
 			<hgroup>
 			  <h1 class="header-author js-header-author">老先生</h1>
 			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>凡是总须研究，才会明白。<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -215,11 +219,19 @@
 4、为了确保安装后的工具能直接在git下使用，请安装在同一目录下(node目录下)
     新建相应的文件夹然后把文件放进去
 </code></pre><p>Git/GitHub</p>
-<p>git是什么？<br>    Git是目前世界上最先进的分布式版本控制系统。</p>
-<p>git与svn的区别<br>    svn是集中版本控制系统，版本库是集中放在中央服务器的，而干活的时候，用的都是自己的电脑，所以首先要从中央服务器那里得到最新的服务器版本，然后干活，干完活后把自己的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，如果在局域网可以，带宽够大，速度够快，如果在互联网下，网速慢了，就尴尬了。<br>    git是分布式版本控制系统，它没有中央服务器，每个人的电脑就是一个完整的版本库，这样，工作的时候就不需要联网了，因为版本都是在自己电脑上，既然每个人都有一个版本库，那么多个人如何协作呢？比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。</p>
-<p>git工作区与缓存区的区别<br>    工作区：就是在你电脑上看到的目录，或者以后要新建的目录文件等等都属于工作范畴<br>    版本库：工作区有一个隐藏目录.git,这个不属于工作区，这是版本库，版本库里面存了很多东西，其中最重要的就是stage(暂存区)，还有Git为我们自动创建了第一个分支master,以及指向master的一个指针HEAD.</p>
-<p>git提交<br>    git提交到版本库有两个步骤：<br>        1、使用git add把文件加进去，实际就是把文件添加到暂存区<br>        2、使用git commit提交更改，实际上就是把暂存区的所有内容提交到分支上</p>
-<p>git使用<br>    安装完成后，</p>
+<p>git是什么？</p>
+<pre><code>Git是目前世界上最先进的分布式版本控制系统。
+</code></pre><p>git与svn的区别</p>
+<pre><code>svn是集中版本控制系统，版本库是集中放在中央服务器的，而干活的时候，用的都是自己的电脑，所以首先要从中央服务器那里得到最新的服务器版本，然后干活，干完活后把自己的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，如果在局域网可以，带宽够大，速度够快，如果在互联网下，网速慢了，就尴尬了。
+git是分布式版本控制系统，它没有中央服务器，每个人的电脑就是一个完整的版本库，这样，工作的时候就不需要联网了，因为版本都是在自己电脑上，既然每个人都有一个版本库，那么多个人如何协作呢？比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。
+</code></pre><p>git工作区与缓存区的区别</p>
+<pre><code>工作区：就是在你电脑上看到的目录，或者以后要新建的目录文件等等都属于工作范畴
+版本库：工作区有一个隐藏目录.git,这个不属于工作区，这是版本库，版本库里面存了很多东西，其中最重要的就是stage(暂存区)，还有Git为我们自动创建了第一个分支master,以及指向master的一个指针HEAD.
+</code></pre><p>git提交</p>
+<pre><code>git提交到版本库有两个步骤：
+    1、使用git add把文件加进去，实际就是把文件添加到暂存区
+    2、使用git commit提交更改，实际上就是把暂存区的所有内容提交到分支上
+</code></pre><p>git使用<br>    安装完成后，</p>
 <pre><code>git config --global user.name “名字”;
 git config --golbal user.email “邮箱”;
 
@@ -265,8 +277,15 @@ git config --golbal user.email “邮箱”;
  git remote----------查看当前配置有哪些远程仓库
 
  git remote -v------------显示对应的克隆地址
-</code></pre><p>git远程仓库<br>    git本地仓库及github远程仓库配置<br>    1、创建SSH Key<br>        C盘用户目录下查找.shh目录，如果有查看是否有id_rsa和id_rsa.pub两个文件<br>        如果没有，打开命令行，执行：<br>            ssh-keygen -t rsa -C “邮箱”<br>        如果有，跳过此步骤</p>
-<pre><code>2、如何添加远程工作？(本地仓库与github相关联)
+</code></pre><p>git远程仓库</p>
+<pre><code>git本地仓库及github远程仓库配置
+1、创建SSH Key
+    C盘用户目录下查找.shh目录，如果有查看是否有id_rsa和id_rsa.pub两个文件
+    如果没有，打开命令行，执行：
+        ssh-keygen -t rsa -C &quot;邮箱&quot;
+    如果有，跳过此步骤
+
+2、如何添加远程工作？(本地仓库与github相关联)
     第一步：git remote add origin 自己本地git-------------本地仓库已经存在，直接推送到远程仓库命令
     第二步：git push -u origin master -------------------实际上把当前分支master推送到远程
     第三步：弹出github登录页，登录成功刷新
@@ -322,7 +341,7 @@ git config --golbal user.email “邮箱”;
 <pre><code>首先，可以试图用git push origin branch-name推送自己的修改.
 如果推送失败，则因为远程分支比你的本地更新早，需要先用git pull试图合并。
 如果合并有冲突，则需要解决冲突，并在本地提交。再用git push origin branch-name推送。
-</code></pre><p>　　Git基本常用命令如下：</p>
+</code></pre><p>Git基本常用命令如下：</p>
 <p>　　mkdir：         XX (创建一个空目录 XX指目录名)</p>
 <p>　　pwd：          显示当前目录的路径。</p>
 <p>　　git init          把当前的目录变成可以管理的git仓库，生成隐藏.git文件。</p>
@@ -354,7 +373,16 @@ git config --golbal user.email “邮箱”;
 <p>　　git remote 查看远程库的信息</p>
 <p>　　git remote –v 查看远程库的详细信息</p>
 <p>　　git push origin master  Git会把master分支推送到远程库对应的远程分支上</p>
-<p>git/github挂载静态页面<br>    1、新建资源仓库repository<br>    2、设置settings,更改github pages为master分支<br>    3、选择盘符，新建文件件，将仓库克隆到本地，git clone 地址<br>    4、将网页文件添加到此文件夹里<br>        git status查看分支状态<br>        git add .  添加到缓存区<br>        git commit -m “注释”   提交<br>        git push  推送到github,链接访问<br>Node<br>    nodejs是一个让javaScript运行在服务端的开发平台。(javaScript(v8引擎))</p>
+<p>git/github挂载静态页面</p>
+<pre><code>1、新建资源仓库repository
+2、设置settings,更改github pages为master分支
+3、选择盘符，新建文件件，将仓库克隆到本地，git clone 地址
+4、将网页文件添加到此文件夹里
+    git status查看分支状态
+    git add .  添加到缓存区
+    git commit -m &quot;注释&quot;   提交
+    git push  推送到github,链接访问
+</code></pre><p>Node<br>    nodejs是一个让javaScript运行在服务端的开发平台。(javaScript(v8引擎))</p>
 <pre><code>npm更新命令--------npm install npm@latest -g
 
 require-----------NodeJs自带的http模块，createServer(),http模块提供的函数，这个函数会返回一个对象，这个对象有一个叫listen的方法，这个方法有一个数值参数，指定这个Http
@@ -660,10 +688,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
@@ -672,19 +696,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -692,7 +708,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SEO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -704,19 +744,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">渲染</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
             
             <div class="clearfix"></div>

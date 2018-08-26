@@ -639,7 +639,7 @@ body {
 	background:hsla(0,0%,100%,.3)
 }
 .left-col {
-	background:#fff;
+	background:#faf2ef;
 	width:300px;
 	position:fixed;
 	opacity:1;
@@ -796,7 +796,7 @@ body {
 	background:url(./img/scrollbar_arrow.png) no-repeat -30px -18px
 }
 .article-entry .highlight,.article-entry pre {
-	background:#272822;
+	background: #393d49;
 	margin:10px 0;
 	padding:10px;
 	overflow:auto;
@@ -1648,7 +1648,7 @@ to {
 	border:1px solid #ddd;
 	border-top:1px solid #fff;
 	border-bottom:1px solid #fff;
-	background:#fff;
+	background:#faf2ef;
 	transition:all .2s ease-in
 }
 .article img {
@@ -1664,7 +1664,7 @@ to {
 	transition:color .3s
 }
 .article-header {
-	border-left:5px solid #4d4d4d;
+	border-left:5px solid #009688;
 	padding:30px 0 15px 25px;
 	padding-left:7.6923%
 }
@@ -1691,7 +1691,7 @@ to {
 	float:right
 }
 .article-more-link a {
-	background:#4d4d4d;
+	background:#009688;
 	color:#fff;
 	font-size:12px;
 	padding:5px 8px;
