@@ -171,6 +171,170 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JSX语法糖" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/27/JSX语法糖/">JSX语法糖</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/27/JSX语法糖/" class="archive-article-date">
+  	<time datetime="2018-08-27T14:18:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JSX语法</p>
+<pre><code>1、不是一门语言，是一个语法或者说是语法糖
+2、JSX标签其实就是HTML标签，在解析时：遇到尖括号，在js中以HTML规则解析，遇到大括号以js代码块进行解析
+3、JSX语法不被浏览器所解析，需要使用插件Brower转化为js代码
+</code></pre><p>JSX注释</p>
+<pre><code>在JSX语法中，添加注释需要写在 { } 中
+可以使用多行注释与单行注释
+
+ex:
+    class HelloWorld extends React.component({
+        render:function(){
+            // 现在这里是属于js的部分,不属于JSX语法的部分
+            return (
+                &lt;div className=&quot;box&quot; // class名字
+                &gt;
+                    {/*这是一个标题*/}
+                    &lt;h1 className=&quot;title&quot;&gt;Hello World&lt;/h1&gt;
+                    {/*这是说明*/}
+                    &lt;p&gt;你好世界！&lt;/p&gt;
+                    &lt;div className=&quot;box2&quot;&gt;你好&lt;/div&gt;
+                &lt;/div&gt;
+            )
+        }
+    })
+    ReactDOM.render(&lt;HelloWorld/&gt;,document.getElementById(&quot;app&quot;))
+</code></pre><p>JSX中的样式</p>
+<pre><code>class样式写法
+其余样式写法介绍
+class HelloWorld extends React.component({
+        render:function(){
+            //对象写法
+            var styles = {
+                color: &apos;blue&apos;,
+                fontSize: &apos;30&apos;
+            }
+            return (
+                &lt;div className=&quot;box&quot;&gt;
+                    //行内样式
+                    &lt;h3 className=&quot;title&quot; style={{color:'red',backgroundColor:'lime'}}&gt;默认标题&lt;/h3&gt;
+                    &lt;p className=&quot;subtitle&quot; style={styles}&gt;说明&lt;/p&gt;
+                    &lt;p className=&quot;details&quot;&gt;这个是用来教学的案例&lt;/p&gt;
+                &lt;/div&gt;
+            )
+        }
+    })
+    ReactDOM.render(&lt;HelloWorld/&gt;,document.getElementById(&quot;app&quot;))
+</code></pre><p>JSX中的条件判断与非DOM操作</p>
+<pre><code>条件判断：
+
+    1、三元表达式     ?   :
+    2、使用变量，通过函数使用条件判断语句，返回一个字符串
+    3、直接在{}中调用函数
+    4、使用比较运算符   &amp;&amp;   ||  ！
+    Class Demo extends React.component({
+        // 设置初始的状态
+        getInitialState(){
+            return {
+                onOff:true
+            }
+        },
+        // 自定义一个点击事件
+        handleClick() {
+            this.setState({
+                onOff:!this.state.onOff
+            })
+        },
+        render(){
+            return &lt;div className={this.state.onOff?&quot;box2&quot;:&quot;box1&quot;} onClick={this.handleClick}&gt;我是一个盒子&lt;/div&gt;
+        }
+    })
+    ReactDOM.render(&lt;Demo/&gt;,document.body)
+
+非DOM操作
+    React中自定的属性
+        1、dangerouslySetInnerHTML：在JSX中直接插入HTML代码，动态的添加HTML内容，由用户添加
+        需要使用属性，__html
+        2、ref：父组件引用子组件  this.refs.name
+        3、key：目的是提高渲染性能 ，涉及到React diff算法，React通过key值判断是否重新渲染
+
+    class Demo extends React.component({
+        render(){
+            var text = {
+                __html:&apos;&lt;span&gt;我是在div中的span标签&lt;/span&gt;&apos;
+            }
+            return (&lt;div&gt;
+                &lt;div dangerouslySetInnerHTML={text}&gt;&lt;/div&gt;
+                &lt;input ref=&quot;userInput&quot; type=&quot;text&quot;/&gt;
+            &lt;/div&gt;)
+        }
+    })
+    ReactDOM.render(&lt;Demo/&gt;,document.getElementById(&quot;app&quot;))
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JSX</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/27/JSX语法糖/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-基础篇之CSS3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -919,88 +1083,6 @@ Safari
 
 
   
-    <article id="post-网络爬虫" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/15/网络爬虫/">网络爬虫</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/15/网络爬虫/" class="archive-article-date">
-  	<time datetime="2018-08-15T04:59:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>网络爬虫的基本原理</p>
-<pre><code>网络爬虫是搜索引擎抓取系统的重要组成部分.爬虫的主要目的是将互联网上的网页下载到本地形成一个或互联网内容的镜像备份
-
-网络爬虫抓取的工作流程：
-    1.首先选取一部分精心挑选的种子URL；
-    2.将这些URL放入待抓取URL队列；
-    3.从待抓取URL队列中取出待抓取在URL，解析DNS，并且得到主机的ip，并将URL对应的网页下载下来，存储进已下载网页库中。此外，将这些URL放进已抓取URL队列。
-    4.分析已抓取URL队列中的URL，分析其中的其他URL，并且将URL放入待抓取URL队列，从而进入下一个循环。
-</code></pre>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/15/网络爬虫/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1108,7 +1190,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JSX</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1116,7 +1202,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1124,15 +1210,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1144,6 +1222,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SEO</a>
               </li>
              
@@ -1152,19 +1242,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">

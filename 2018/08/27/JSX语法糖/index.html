@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>VUE常见问题及笔记 | 个人笔记整理与收集</title>
+  <title>JSX语法糖 | 个人笔记整理与收集</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言 围绕vue.js的一系列工具     vue.js核心,不解释     VueRouter2 实现路由组织工具     webpack项目打包以及编译工具     nodejs前端开发环境     npm前端包管理器     axiso ajax接口请求工具     sass-loader和node-sass css预处理     element基于vue的后台组件库     iview基于">
-<meta name="keywords" content="vue">
+  <meta name="description" content="JSX语法 1、不是一门语言，是一个语法或者说是语法糖 2、JSX标签其实就是HTML标签，在解析时：遇到尖括号，在js中以HTML规则解析，遇到大括号以js代码块进行解析 3、JSX语法不被浏览器所解析，需要使用插件Brower转化为js代码 JSX注释 在JSX语法中，添加注释需要写在 { } 中 可以使用多行注释与单行注释  ex:     class HelloWorld extends">
+<meta name="keywords" content="JSX">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VUE常见问题及笔记">
-<meta property="og:url" content="http://yoursite.com/2018/08/21/VUE常见问题及笔记/index.html">
+<meta property="og:title" content="JSX语法糖">
+<meta property="og:url" content="http://yoursite.com/2018/08/27/JSX语法糖/index.html">
 <meta property="og:site_name" content="个人笔记整理与收集">
-<meta property="og:description" content="前言 围绕vue.js的一系列工具     vue.js核心,不解释     VueRouter2 实现路由组织工具     webpack项目打包以及编译工具     nodejs前端开发环境     npm前端包管理器     axiso ajax接口请求工具     sass-loader和node-sass css预处理     element基于vue的后台组件库     iview基于">
+<meta property="og:description" content="JSX语法 1、不是一门语言，是一个语法或者说是语法糖 2、JSX标签其实就是HTML标签，在解析时：遇到尖括号，在js中以HTML规则解析，遇到大括号以js代码块进行解析 3、JSX语法不被浏览器所解析，需要使用插件Brower转化为js代码 JSX注释 在JSX语法中，添加注释需要写在 { } 中 可以使用多行注释与单行注释  ex:     class HelloWorld extends">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-25T13:22:48.097Z">
+<meta property="og:updated_time" content="2018-08-27T14:21:42.329Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="VUE常见问题及笔记">
-<meta name="twitter:description" content="前言 围绕vue.js的一系列工具     vue.js核心,不解释     VueRouter2 实现路由组织工具     webpack项目打包以及编译工具     nodejs前端开发环境     npm前端包管理器     axiso ajax接口请求工具     sass-loader和node-sass css预处理     element基于vue的后台组件库     iview基于">
+<meta name="twitter:title" content="JSX语法糖">
+<meta name="twitter:description" content="JSX语法 1、不是一门语言，是一个语法或者说是语法糖 2、JSX标签其实就是HTML标签，在解析时：遇到尖括号，在js中以HTML规则解析，遇到大括号以js代码块进行解析 3、JSX语法不被浏览器所解析，需要使用插件Brower转化为js代码 JSX注释 在JSX语法中，添加注释需要写在 { } 中 可以使用多行注释与单行注释  ex:     class HelloWorld extends">
   
     <link rel="alternative" href="/atom.xml" title="个人笔记整理与收集" type="application/atom+xml">
   
@@ -174,1025 +174,117 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-VUE常见问题及笔记" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JSX语法糖" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      VUE常见问题及笔记
+      JSX语法糖
     </h1>
   
 
         
-        <a href="/2018/08/21/VUE常见问题及笔记/" class="archive-article-date">
-  	<time datetime="2018-08-21T05:50:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
+        <a href="/2018/08/27/JSX语法糖/" class="archive-article-date">
+  	<time datetime="2018-08-27T14:18:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>前言</p>
-<pre><code>围绕vue.js的一系列工具
-    vue.js核心,不解释
-    VueRouter2 实现路由组织工具
-    webpack项目打包以及编译工具
-    nodejs前端开发环境
-    npm前端包管理器
-    axiso ajax接口请求工具
-    sass-loader和node-sass css预处理
-    element基于vue的后台组件库
-    iview基于vue的另一套后台组件库
-    vue -cli vue的项目脚手架
-</code></pre><a id="more"></a>
-<p>如何运行vue项目</p>
-<pre><code>需要的东西
-    node.js环境(npm包管理器)
-    vue cli 脚手架构建工具
-    cnpm npm的淘宝镜像
+        <p>JSX语法</p>
+<pre><code>1、不是一门语言，是一个语法或者说是语法糖
+2、JSX标签其实就是HTML标签，在解析时：遇到尖括号，在js中以HTML规则解析，遇到大括号以js代码块进行解析
+3、JSX语法不被浏览器所解析，需要使用插件Brower转化为js代码
+</code></pre><p>JSX注释</p>
+<pre><code>在JSX语法中，添加注释需要写在 { } 中
+可以使用多行注释与单行注释
 
-node.js安装完后
-    安装cnpm(淘宝镜像)使用npm下载会比较卡
-        npm install -g cnpm --registry=http://registry.npm.taobao.org
-    安装webpack
-        npm install webpack -g
-    安装vue-cli脚手架构建工具
-        cnpm install -g vue-cli
-
-切换指定目录进行构建
-    1、新建工作空间并切换
-    2、vue init webpack 项目文件夹的名称
-安装依赖包并运行
-    打开项目路径并 cnpm install
-    npm run dev (热加载的方式运行)  启动项目
-        run对应的是package.json文件
-        dev对应的是bulid下的带有dev的js文件
-    npm run build
-        发布项目
-</code></pre><p>Vue的包构造：</p>
-<pre><code>├── README.md                       // 项目说明文档
-├── node_modules                    // 项目依赖包文件夹
-├── build                           // 编译配置文件，一般不用管
-│   ├── build.js
-│   ├── check-versions.js
-│   ├── dev-client.js
-│   ├── dev-server.js
-│   ├── utils.js
-│   ├── vue-loader.conf.js
-│   ├── webpack.base.conf.js
-│   ├── webpack.dev.conf.js
-│   └── webpack.prod.conf.js
-├── config                          // 项目基本设置文件夹
-│   ├── dev.env.js              // 开发配置文件
-│   ├── index.js                    // 配置主文件
-│   └── prod.env.js             // 编译配置文件
-├── index.html                      // 项目入口文件
-├── package-lock.json           // npm5 新增文件，优化性能
-├── package.json                    // 项目依赖包配置文件
-├── src                             // 我们的项目的源码编写文件
-│   ├── App.vue                 // APP入口文件
-│   ├── assets                      // 初始项目资源目录，回头删掉
-│   │   └── logo.png
-│   ├── components              // 组件目录
-│   │   └── Hello.vue           // 测试组件，回头删除
-│   ├── main.js                 // 主配置文件
-│   └── router                      // 路由配置文件夹
-│       └── index.js            // 路由配置文件
-└── static                          // 资源放置目录
-</code></pre><p>Vue是什么？</p>
-<pre><code>读音：V-U-E---------------view
-vue到底是什么？
-    一个MVVM框架(库)、和angular类似
-    比较容易上手，小巧
-mvc:
-    在mvc里，model是数据模型;view是视图层，即为要展示的东西;controller是控制器，用来控制model的读取、存储，以及如何在view上展示数据
-mvp:
-    在mvp里，model
-    mvvm
-    mv*
-    mvx
-  官网:http://cn.vuejs.org/
-  手册： http://cn.vuejs.org/api/
-
-  vue和angular的区别？
-    vue-简单、易学
-        指令以v-xxx
-        一片html代码配合上json,然后在new出来vue实例
-        个人维护项目
-
-        适合：移动端项目、小巧
-        vue的发展势头很猛，github在start数量已经超越angular
-    angular-上手难
-        指令以ng-XXX
-        所有属性和方法都挂到$scope身上
-        angular由谷歌维护
-共同点：不兼容低版本ie
-Vue的基本雏形：
-    angular展示一条基本数据：
-       js部分：
-           var app = angular.module(&apos;app&apos;,[]);
-           app.controller(&apos;xxx&apos;,function($scope){
-                $scope.msg = &apos;welocme&apos;
-           }
-       html部分：
-            div ng-controller = &quot;xxx&quot;
-            {{msg}}
-    vue展示一条基本数据：
-       js部分：
-            var c = new Vue({
-                el:&apos;#box&apos;,   //选择器  className  tagName
-                data:{
-                    msg:&apos;welcome vue&apos;
-                }
-            })
-       html部分:
-            &lt;div id=&quot;box&quot;&gt;
-                {{msg}}
-            &lt;/div&gt;
-常用指令：
-    angular:
-        ng-model    ng-controller
-        ng-repeat
-        ng-click
-        ng-show
-    $scope.show = function(){}
-    指令：扩展html标签功能，属性
-
-    说明：
-        el代表dom元素的选择器
-        data用于定义属性
-        methods用于定义函数，可以通过return来返回函数值
-        computed是计算属性，主要用于  处理复杂的逻辑  默认只有getter,不过也可以提供一个setter
-            methods和computed效果上，两个基本一致，但是computed是基于它的依赖缓存，只有相关依赖发生改变时才会冲新区至
-            而使用methods,在重新渲染的时候，函数总会重新调用执行
-        {{}}用于输出对象属性和函数返回值
-        在vue中，提供了一些实例属性与方法，他们都有前缀，用于区分用户定义的属性
-
-        watch属性  实时监听数据变化而改变自身的值
-    ex:
-        html部分：
-            &lt;div id=&quot;app5&quot;&gt;
-                &lt;p&gt;{{message}}&lt;/p&gt;
-                &lt;button v-on:click=&quot;rever&quot;&gt;逆转信息&lt;/button&gt;
-            &lt;/div&gt;
-        js部分：
-            var app5 = new Vue({
-                el:&quot;#app5&quot;,
-                data:{
-                    message:&quot;hello vue.js&quot;
-                },
-                methods:{
-                    rever:function(){
-                        this.message = this.message.split(&apos;&apos;).reverse().join(&apos;&apos;);
-                    }
-                }
-            })
-</code></pre><p>Vue指令 </p>
-<pre><code>    {{}}  文本插值
-    v-once 只执行一次插值
-
-    v-html 用于输出html代码(不要随意渲染，容易xss攻击)
-
-    v-model 一般表单元素，双向数据绑定
-
-    v-bind:title=&quot;message&quot; 将这个元素节点的title和vue实例的message属性保持一致
-        缩写：直接冒号加属性名
-
-    v-if=&quot;seen&quot; 条件与循环，控制一个元素是否显示
-
-    v-show  根据条件来展示元素
-        注意，v-show 不支持 &lt;template&gt; 元素，也不支持 v-else。
-    v-else 指令给v-if添加一个&quot;else&quot;块
-
-    v-else-if 指令用作v-if的else-if块
-
-循环
-    数组
-    v-for = &quot;(item,name) in arr&quot; ：key=&quot;index&quot; 
-        {{index}}
-    对象
-    v-for = &quot;(value,key,index) in json&quot; ：key=&quot;index&quot; 
-        {{index}} {{key}}
-    v-for = &quot;(value,key) in json&quot;  //in可以用of来代替，
-在for块中，我们拥有对父作用域的完全访问权限
-
-    v-for = &quot;(value,key,index) in object&quot;
-
-    v-for = &quot;n in 10&quot;  循环整数
-事件
-    v-on:click = &quot;函数&quot;
-    v-on:keyup.enter = &quot;函数&quot;(enter为键盘值)
-
-    v-on:click/mouseout/mouseover/dblclick/mousedown、、、、、、
-    @click/mouseout/mouseover/dblclick/mousedown、、、、、、
-
-
-    当 v-if 与 v-for 一起使用时，v-for 具有比 v-if 更高的优先级。
-</code></pre><p>Vue全局api</p>
-<pre><code> 扩展实例构造器
-     &lt;dream&gt;&lt;/dream&gt;
-     let App = Vue.extend({
-        template:`&lt;h2&gt;&lt;/h2&gt;`,//组件
-     })
-     new App.$mount(&apos;dream&apos;);挂载标签
-dom更新循环结束后回调延迟函数
-    Vue.nextTick(function(){
-
-    })
-    Vue.nextTick().then(()=&gt;{
-
-    })
-向响应式对象中添加一个属性，并确保这个新属性同样是响应式的，且触发视图更新。它必须用于向响应式对象上添加新属性，因为 Vue 无法探测普通的新增属性
-    理解：现在有一个数组对象，和一个vue实例，let app = new Vue();
-    app.arr,j将arr数组添加到app实例上去修改数组的值
-    只是静态的修改，页面上并没有响应数据的变化
-    Vue.set(app.arr,2,123)
-    target:要更改的对象
-    key:要更改的key
-    value:要更改的value
-    页面触发修改内存，内存的改变再返回影响页面
-Vue.delete()与上述类似
-注册获取全局指令(自定义指令)
-    Vue.directive();
-    例：
-        &lt;div id=&quot;app&quot;&gt;
-            &lt;h1&gt;{{msg}}&lt;/h1&gt;
-            &lt;h2 v-dream=&quot;custom&quot;&gt;{{msg}}  - {{num}}&lt;/h2&gt;
-            &lt;h2 v-coutom=&quot;info&quot;&gt;{{msg}} - {{num}}&lt;/h2&gt;
-            &lt;button @click=&quot;add&quot;&gt; 点击改变num &lt;/button&gt;
-        &lt;/div&gt;
-        &lt;button onclick=&quot;ubbind()&quot;&gt;解绑&lt;/button&gt;
-        &lt;script&gt;
-            function ubbind() {
-                app.$destroy();
-            }
-            Vue.directive(&apos;dream&apos;,function (el,bind) {
-                console.log( el );
-                el.style = &apos;color:&apos; + bind.value
-                console.log(bind)
-            });
-            Vue.directive(&apos;coutom&apos;,{
-                // 事件函数 -&gt; 钩子
-                bind: function () {
-                    console.log(&apos;1. 被绑定&apos;)
-                },
-                inserted: function (el,bind) {
-                    console.log(&apos;2. 绑定到节点&apos;)
-                    el.style.color = bind.value
-                },
-                update: function () {
-                    console.log(&apos;3. 组件更新&apos;)
-                },
-                componentUpdated: function () {
-                    console.log(&apos;4.组件更新完成 &apos;)
-                },
-                unbind: function () {
-                    console.log(&apos;5.解绑&apos;)
-                }
-            })
-            let app = new Vue({
-                el:&apos;#app&apos;,
-                data:{
-                    msg:&apos;Vue.directive&apos;,
-                    custom:&apos;hotpink&apos;,
-                    info:&apos;blue&apos;,
-                    num:0
-                },
-                methods:{
-                    add(){
-                        this.num ++
-                    }
-                }
-
-            })
-        &lt;/script&gt;
-Vue全局过滤器
-    Vue.filter(&quot;&quot;,function(){})
-    例、
-        &lt;div id=&quot;app&quot;&gt;
-            &lt;h1&gt;{{msg}}&lt;/h1&gt;
-            &lt;h2&gt;{{ text | myFilter }}&lt;/h2&gt;
-            &lt;input type=&quot;text&quot; v-model=&quot;text&quot;&gt;
-        &lt;/div&gt;
-        &lt;script&gt;
-            // 在选项中使用
-            /*let app = new Vue({
-                el:&apos;#app&apos;,
-                data:{
-                    msg:&apos;Vue.filter 过滤器&apos;,
-                    text:&apos;&apos;
-                },
-                filters:{
-                    myFilter:function (value) {
-                        return value.split(&apos;&apos;).reverse().join(&apos;&apos;);
-                    }
-                }
-            })*/
-            new Vue({
-                el: &apos;#app&apos;,
-                data: {
-                    msg: &apos;Vue.filter 过滤器&apos;,
-                    text: &apos;&apos;
-                }
-            })
-
-            // 在全局设置  Vue 构造器
-            Vue.filter(&apos;myFilter&apos;,function (value) {
-                return &apos;￥&apos;+value+&apos;元&apos;;
-            })
-        &lt;/script&gt;
-Vue全局组件
-    例：
-         &lt;div id=&quot;app&quot;&gt;
-            &lt;hd-nav&gt;&lt;/hd-nav&gt;   &lt;!--小写--&gt;
-        &lt;/div&gt;
-        &lt;script&gt;
-            // 组件就像公式样式，可以在任何vue作用域下复用
-            // 全局组件
-            Vue.component(
-                &apos;hdNav&apos;,    // 驼峰命名
-                {
-                    template:`&lt;h2 style=&quot;color: skyblue&quot;&gt;全局组件&lt;/h2&gt;`
-                }
+ex:
+    class HelloWorld extends React.component({
+        render:function(){
+            // 现在这里是属于js的部分,不属于JSX语法的部分
+            return (
+                &lt;div className=&quot;box&quot; // class名字
+                &gt;
+                    {/*这是一个标题*/}
+                    &lt;h1 className=&quot;title&quot;&gt;Hello World&lt;/h1&gt;
+                    {/*这是说明*/}
+                    &lt;p&gt;你好世界！&lt;/p&gt;
+                    &lt;div className=&quot;box2&quot;&gt;你好&lt;/div&gt;
+                &lt;/div&gt;
             )
-            new Vue({
-                el:&apos;#app&apos;
-            })
-        &lt;/script&gt;
-    局部组件
-        &lt;div id=&quot;app&quot;&gt;
-            /* 要在vue的作用域 */
-            &lt;hd-nav&gt;&lt;/hd-nav&gt;   &lt;!--小写--&gt;
-        &lt;/div&gt;
-        &lt;script&gt;
-            // 全局组件
-            new Vue({
-                el:&apos;#app&apos;,
-                // 声明组件
-                components:{
-                    hdNav:{
-                        template:`&lt;h2 style=&quot;color: hotpink&quot;&gt; 局部组件&lt;/h2&gt;`
-                    }
-                }
-            })
-        &lt;/script&gt;
-    选项模板
-         &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
-        &lt;script&gt;
-            // 全局组件
-            new Vue({
-                el:&apos;#app&apos;,
-                template:`&lt;h2 style=&quot;color: hotpink&quot;&gt; 选项模板&lt;/h2&gt;`
-            })
-        &lt;/script&gt;
-    标签模板
-         &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
-            &lt;template id=&quot;tpl&quot;&gt;
-                &lt;h2 style=&quot;color: hotpink&quot;&gt;
-                    template标签模板
-                &lt;/h2&gt;
-            &lt;/template&gt;
-            &lt;script&gt;
-
-                new Vue({
-                    el:&apos;#app&apos;,
-                    template:&apos;#tpl&apos;
-                })
-            &lt;/script&gt;
-    script模板
-        &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
-        &lt;script type=&quot;text/x-template&quot;  id=&quot;tpl&quot;&gt;
-            &lt;h2 style=&quot;color: hotpink&quot;&gt;
-                script标签模板
-            &lt;/h2&gt;
-        &lt;/script&gt;
-        &lt;script&gt;
-
-            new Vue({
-                el:&apos;#app&apos;,
-                template:&apos;#tpl&apos;
-            })
-        &lt;/script&gt;
-    component标签
-         &lt;div id=&quot;app&quot;&gt;
-            &lt;h2&gt;{{msg}}&lt;/h2&gt;
-            &lt;!--根据值的不同 ，显示不同的组件--&gt;
-            &lt;component v-bind:is=&quot;componentA&quot;&gt;&lt;/component&gt;
-            &lt;component :is=&quot;componentB&quot;&gt;&lt;/component&gt;
-            &lt;component :is=&quot;componentC&quot;&gt;&lt;/component&gt;
-            &lt;hr&gt;
-            &lt;component v-bind:is=&quot;toggleComponent&quot;&gt;&lt;/component&gt;
-            &lt;button @click=&quot;toggle&quot;&gt; 切换component组件 &lt;/button&gt;
-        &lt;/div&gt;
-
-        &lt;script&gt;
-            // 在外部声明组件
-            let componentA = {
-                template:`&lt;h2 style=&quot;color: orangered&quot;&gt;组件A&lt;/h2&gt;`
-            }
-            let componentB = {
-                template:`&lt;h2 style=&quot;color: yellowgreen&quot;&gt;组件B&lt;/h2&gt;`
-            }
-            let componentC = {
-                template:`&lt;h2 style=&quot;color: skyblue&quot;&gt;组件C&lt;/h2&gt;`
-            }
-            new Vue({
-                el:&apos;#app&apos;,
-                data:{
-                    msg:&apos;component标签&apos;,
-                    componentA:componentA,
-                    componentB,
-                    componentC,
-                    toggleComponent:componentA,
-                    arr:[
-                        componentA,
-                        componentB,
-                        componentC,
-                    ]
-                },
-                components:{
-                    componentA:componentA,
-                    componentB,
-                    componentC
-                },
-                methods:{
-                    toggle(){
-                        this.toggleComponent =this.arr[Math.floor(Math.random()*3)]
-                    }
-                }
-            })
-        &lt;/script&gt;
-Vue全局混入
-    Vue.mixin({
-        update(){
-
         }
     })
-
-    &lt;div id=&quot;app&quot;&gt;
-        &lt;h2&gt; {{msg}} - {{ num }}&lt;/h2&gt;
-        &lt;input type=&quot;button&quot; v-on:click=&quot;add&quot; value=&quot;add&quot;&gt;
-    &lt;/div&gt;
-    &lt;script&gt;
-        let addLog = {
-            updated(){
-                console.log(&apos;选项的混入&apos;)
+    ReactDOM.render(&lt;HelloWorld/&gt;,document.getElementById(&quot;app&quot;))
+</code></pre><p>JSX中的样式</p>
+<pre><code>class样式写法
+其余样式写法介绍
+class HelloWorld extends React.component({
+        render:function(){
+            //对象写法
+            var styles = {
+                color: &apos;blue&apos;,
+                fontSize: &apos;30&apos;
             }
-        }
-        Vue.mixin({
-            updated(){
-                console.log(&apos;全局的混入&apos;)
-            }
-        })
-        new Vue({
-            el:&apos;#app&apos;,
-            data:{
-                msg:&apos;Vue.mixin&apos;,
-            },
-            methods:{
-                add(){
-                    this.num++
-                }
-            },
-        })
-    &lt;/script&gt;
-compile编译渲染
-     &lt;div id=&quot;app&quot;&gt;
-        &lt;h2&gt; {{msg}} - {{ num }}&lt;/h2&gt;
-    &lt;/div&gt;
-    &lt;script&gt;
-        let res = Vue.compile(&apos;&lt;h2&gt;{{num}}&lt;/h2&gt;&apos;)
-        new Vue({
-            el:&apos;#app&apos;,
-            data:{
-                msg:&apos;Vue.mixin&apos;,
-                num:520
-            },
-            render:res.render
-        })
-    &lt;/script&gt;
-Vue.version
-    获取vue的版本
-     &lt;div id=&quot;app&quot;&gt;
-        &lt;h2&gt; {{msg}}  - ${msg} &lt;/h2&gt;
-    &lt;/div&gt;
-    &lt;script&gt;
-        console.log( Number(Vue.version.split(&apos;.&apos;)[0]) )
-        let version = Number(Vue.version.split(&apos;.&apos;)[0]);
-        if( version === 2 ){
-            console.log(&apos;Vue.JS 是2.x版本&apos;)
-        }else if( version === 1 ){
-            console.log(&apos;你使用的版本过低&apos;)
-        }else {
-            console.log(&apos;使用的版本有问题，请联系开发者&apos;)
-        }
-        // ${es6的变量}
-        new Vue({
-            el:&apos;#app&apos;,
-            data:{
-                msg:&apos;version&apos;
-            },
-            delimiters:[&apos;${&apos;,&apos;}&apos;] // 重新定义插值符号
-        })
-    &lt;/script&gt;
-具名插槽
-    &lt;div id=&quot;app&quot;&gt;
-        &lt;h2&gt;{{msg}}&lt;/h2&gt;
-        &lt;hi-dream&gt;
-            &lt;span slot=&quot;name&quot;&gt;{{con.name}}&lt;/span&gt;
-            &lt;span slot=&quot;age&quot;&gt;{{con.age}}&lt;/span&gt;
-            &lt;span slot=&quot;job&quot;&gt;{{con.job}}&lt;/span&gt;
-        &lt;/hi-dream&gt;
-    &lt;/div&gt;
-    &lt;template id=&quot;tpl&quot;&gt;
-        &lt;div&gt;
-            &lt;h1&gt;我是: &lt;slot name=&quot;name&quot;&gt;&lt;/slot&gt; &lt;/h1&gt;
-            &lt;h2&gt;年龄: &lt;slot name=&quot;age&quot;&gt;&lt;/slot&gt; &lt;/h2&gt;
-            &lt;h3&gt;job: &lt;slot name=&quot;job&quot;&gt;&lt;/slot&gt; &lt;/h3&gt;
-        &lt;/div&gt;
-    &lt;/template&gt;
-&lt;script&gt;
-
-    let vm = new Vue({
-        el:&apos;#app&apos;,
-        data:{
-            msg:&apos;用于标记往哪个具名插槽中插入子组件内容。会在第三方组件上看到有slot属性&apos;,
-            con:{
-                name:&apos;追梦&apos;,
-                age:18,
-                job:&apos;讲师&apos;
-            }
-        },
-        components:{ // 声明组件
-            &apos;hi-dream&apos;:{
-                template:&apos;#tpl&apos;
-            }
+            return (
+                &lt;div className=&quot;box&quot;&gt;
+                    //行内样式
+                    &lt;h3 className=&quot;title&quot; style={{color:'red',backgroundColor:'lime'}}&gt;默认标题&lt;/h3&gt;
+                    &lt;p className=&quot;subtitle&quot; style={styles}&gt;说明&lt;/p&gt;
+                    &lt;p className=&quot;details&quot;&gt;这个是用来教学的案例&lt;/p&gt;
+                &lt;/div&gt;
+            )
         }
     })
-&lt;/script&gt;
-</code></pre><p>扩展事件</p>
-<pre><code> &lt;div id=&quot;app&quot;&gt;
-    &lt;h2&gt;{{msg}} - {{num}}&lt;/h2&gt;
-    &lt;input type=&quot;button&quot; value=&quot;add&quot; @click=&quot;add&quot;&gt;
-&lt;/div&gt;
-&lt;hr&gt;
-&lt;input type=&quot;button&quot; value=&quot;reduce&quot; onclick=&quot;reduce()&quot;&gt; &lt;br&gt;
-&lt;input type=&quot;button&quot; value=&quot;reduceOne&quot; onclick=&quot;reduceOne()&quot;&gt; &lt;br&gt;
-&lt;input type=&quot;button&quot; value=&quot;off&quot; onclick=&quot;off()&quot;&gt; &lt;br&gt;
-&lt;script&gt;
+    ReactDOM.render(&lt;HelloWorld/&gt;,document.getElementById(&quot;app&quot;))
+</code></pre><p>JSX中的条件判断与非DOM操作</p>
+<pre><code>条件判断：
 
-    let vm = new Vue({
-        el:&apos;#app&apos;,
-        data:{
-            msg:&apos;实例方法 / 事件&apos;,
-            num:0
-        },
-        methods:{
-            add(){
-                this.num ++
-            }
-        }
-    })
-    // 事件监听
-    vm.$on(&apos;reduce&apos;,function () {
-        this.num --
-    })
-    vm.$once(&apos;reduceOne&apos;,function () {
-        this.num --
-    })
-
-    function off() {
-        vm.$off(&apos;reduce&apos;);
-    }
-    function reduceOne() {
-        vm.$emit(&apos;reduceOne&apos;)
-    }
-    // 发送信息
-    function reduce() {
-        vm.$emit(&apos;reduce&apos;)
-    }
-&lt;/script&gt;
-Vue生命周期
-    &lt;div id=&quot;app&quot;&gt;
-    {{msg}}
-    &lt;br&gt;
-    &lt;em&gt;{{num}}&lt;/em&gt;&lt;br&gt;
-    &lt;button @click=&quot;add&quot;&gt;add&lt;/button&gt;
-&lt;/div&gt;
-&lt;script&gt;
-    let vm = new Vue({
-        el:&apos;#app&apos;,
-        data(){
+    1、三元表达式     ?   :
+    2、使用变量，通过函数使用条件判断语句，返回一个字符串
+    3、直接在{}中调用函数
+    4、使用比较运算符   &amp;&amp;   ||  ！
+    Class Demo extends React.component({
+        // 设置初始的状态
+        getInitialState(){
             return {
-                msg:&apos;生命周期 钩子函数 事件函数 例如，Dom加载之前，DOM加载完成后，数据更新后，操作。。。&apos;,
-                num:0
+                onOff:true
             }
         },
-        methods:{
-            add(){
-                this.num++
-            }
+        // 自定义一个点击事件
+        handleClick() {
+            this.setState({
+                onOff:!this.state.onOff
+            })
         },
-        beforeCreate(){
-            console.log(&apos;1.beforeCreate&apos;)
-        },
-        created(){
-            console.log(&apos;2.created&apos;)
-        },
-        beforeMount(){
-            console.log(&apos;3.beforeMount&apos;)
-        },
-        mounted(){
-            console.log(&apos;4.mounted&apos;)
-        },
-        beforeUpdate(){
-            console.log(&apos;5.beforeUpdate&apos;)
-        },
-        updated(){
-            console.log(&apos;6.updated&apos;)
-        },
-        activated(){
-            console.log(&apos;7.activated&apos;)
-        },
-        deactivated(){
-            console.log(&apos;8.deactivated&apos;)
-        },
-        beforeDestroy(){
-            console.log(&apos;9.beforeDestroy&apos;)
-        },
-        destroyed(){
-            console.log(&apos;10.destroyed&apos;)
-        },
-        errorCaptured(){
-            console.log(&apos;11.errorCaptured&apos;)
-        },
-    });
-&lt;/script&gt;
-</code></pre><p>Vue 中的javascript表达式</p>
-<pre><code>每个绑定只能包含单个表达式。
-</code></pre><p>Vue 中的计算属性</p>
-<pre><code>computed，任何复杂的逻辑都应该使用  计算属性
-    计算属性只有在它的相关依赖发生改变时才会重新求值。
-</code></pre><p>Vue 中的侦听属性</p>
-<pre><code>当你有一些数据需要随着其它数据变动而变动时，你很容易滥用 watch——特别是如果你之前使用过 AngularJS。
-然而，通常更好的做法是使用计算属性而不是命令式的 watch 回调
-watch(侦听属性)
-    例：watch:{
-        message:{//侦听message属性
-            handler:function(new,old){
-                new//新值
-                old//旧值
-            }
+        render(){
+            return &lt;div className={this.state.onOff?&quot;box2&quot;:&quot;box1&quot;} onClick={this.handleClick}&gt;我是一个盒子&lt;/div&gt;
         }
-    }
-</code></pre><p>计算属性、方法、侦听属性的区别：</p>
-<pre><code>当data中数据发生变化时，计算属性的值也会发生改变
-methods是方法，只要调用它，函数就会执行
-在vue中，计算属性和方法达到的效果是一样的，但是计算属性是依赖缓存的，只有相关依赖发生改变时才会重新求职，只要依赖未改变，只会返回之前的结果，不在执行函数
-watched它检测的值是谁，然后相应的改变其他的值
-</code></pre><p>Vue 自定义指令来操作Dom</p>
-<pre><code>Vue.directive(id, definition)注册全局自定义指令
-    bind：只调用一次，在指令第一次绑定到元素上时调用。
-    update： 在 bind 之后立即以初始值为参数第一次调用，之后每当绑定值变化时调用，参数为新值与旧值。
-    unbind：只调用一次，在指令从元素上解绑时调用。
-
-全局自定义指令
-    // 注册一个全局自定义指令 `v-focus`
-    Vue.directive(&apos;focus&apos;, {
-      // 当被绑定的元素插入到 DOM 中时……
-      inserted: function (el) {
-        // 聚焦元素
-        el.focus()
-      }
     })
-局部自定义指令
-    directives: {
-      focus: {
-        // 指令的定义
-        inserted: function (el) {
-          el.focus()
-        }
-      }
-    }
-</code></pre><p>Vue组件化：</p>
-<pre><code>全局注册组件
-    Vue.component(&apos;my-component&apos;,MyComponent)    
-        全局组件必须写在Vue实例创建之前，才在该根元素下面生效；
-        模板里面第一级只能有一个标签，不能并行；
-        data必须为一个函数
-局部组件注册
-    方式，直接在Vue实例里面注册
-        属性名为components，s千万别忘了;
-        data必须为一个函数
-父组件向子组件传递数据
-   父级组件绑定传递的参数,使用props来接受参数
-子组件向父组件传值
-    使用$emit来触发一个自定义事件，并传递参数
-    子组件自定义事件，this.$emit(&quot;事件名&quot;,&quot;参数&quot;)
-    父组件用该事件接受
+    ReactDOM.render(&lt;Demo/&gt;,document.body)
 
-各组件之间传值的方法
-    1、路由传参
-        使用params,此方法在刷新页面的时候，参数会丢失，要想不丢失请使用query,另外在使用这两个参数时要注意，路由跳转应该使用name,通过path来跳转是接受不到参数的
-    2、子传父，父传子(见上)  
-    3通过缓存localstorage
-    4、vue-bus(未使用过)
-    5、vueX(见说明)
-</code></pre><p>Vue实例生命周期钩子</p>
-<pre><code>created---实例创建完成立即被调用。在这一步，已经完成的配置：数据观测，属性和方法的运算，watch/event事件回调
-    然而挂载阶段还没开始，$el属性目前不可见
-mounted---el 被新创建的 vm.$el 替换，并挂载到实例上去之后调用该钩子。如果 root 实例挂载了一个文档内元素，当 mounted 被调用时 vm.$el 也在文档内。
-    注意 mounted 不会承诺所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染完毕，可以用 vm.$nextTick 替换掉 mounted：
-updated---由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子。
-    当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态。如果要相应状态改变，通常最好使用计算属性或 watcher 取而代之。
-    注意 updated 不会承诺所有的子组件也都一起被重绘。如果你希望等到整个视图都重绘完毕，可以用 vm.$nextTick 替换掉 updated：
-destoryed---Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。
+非DOM操作
+    React中自定的属性
+        1、dangerouslySetInnerHTML：在JSX中直接插入HTML代码，动态的添加HTML内容，由用户添加
+        需要使用属性，__html
+        2、ref：父组件引用子组件  this.refs.name
+        3、key：目的是提高渲染性能 ，涉及到React diff算法，React通过key值判断是否重新渲染
 
-创建前——创建后
-挂在前——挂载后
-更新前——更新后
-摧毁前——摧毁后
-</code></pre><p>Vue的路由</p>
-<pre><code>vue的路由模式有history,hash模式
-    在hash模式下，是不带#号的
-    在history模式下，url中#去掉，这时在本地编译完访问是空白的，这时需要配置一个二级目录做nginx代理
-    嵌套路由的使用方法：
-        在一个模块下的路由，例：/deta,在此模块下有三个子路由
-            /deta/details
-            /deta/spec
-            /deta/afterservice
-        使用方法：
-            模块写法：
-                &lt;template&gt;
-                  &lt;div class=&quot;details-title&quot;&gt;
-                      &lt;ul class=&quot;d-title&quot;&gt;
-                         &lt;li v-for=&quot;(item,index) in menuls&quot;&gt;&lt;router-link :to=&quot;{name:item.name}&quot;&gt;{{item.text}}&lt;/router-link&gt;&lt;/li&gt;
-                      &lt;/ul&gt;
-                    &lt;div class=&quot;content&quot;&gt;
-                      &lt;router-view&gt;&lt;/router-view&gt;
-                    &lt;/div&gt;
-                  &lt;/div&gt;
-                &lt;/template&gt;
-                &lt;script&gt;
-                    export default {
-                        name: &quot;details-title&quot;,
-                        data(){
-                          return{
-                            a:window.global.twoLevelUrl,
-                            menuls:[
-                              {text:&quot;商品介绍&quot;,path:window.global.twoLevelUrl+&quot;/deta/details&quot;,name:&quot;details&quot;},
-                              {text:&quot;规格参数&quot;,path:window.global.twoLevelUrl+&quot;/deta/spec&quot;,name:&quot;spec&quot;},
-                              {text:&quot;售后服务&quot;,path:window.global.twoLevelUrl+&quot;/deta/afterservice&quot;,name:&quot;afterservice&quot;},
-                            ]
-                          }
-                        },
-                    }
-                &lt;/script&gt;
-            路由处理：
-                const router = new Router({
-                    routes:[{
-                          path:&apos;/deta&apos;,
-                          name:&apos;deta&apos;,
-                          component:resolve =&gt; require([&apos;@/components/details/DetailsTitle&apos;],resolve),
-                          redirect:&apos;/deta/details&apos;,
-                          children:[{
-                              path:&apos;/deta/details&apos;,
-                              name:&apos;details&apos;,
-                              component:Details,
-                            },
-                            {
-                              path:&apos;/deta/spec&apos;,
-                              name:&apos;spec&apos;,
-                              component:Spec,
-                            },
-                            {
-                              path:&apos;/deta/afterservice&apos;,
-                              name:&apos;afterservice&apos;,
-                              component:AfterService,
-                            },
-                          ]},
-                    ]})
-        嵌套默认打开路由，需要重定向到子路由
-</code></pre><p>VueX中央处理vuex分发处理(状态管理器)</p>
-<pre><code>用于保存数据状态，数据共享，处理模块之间的数据共享
-使用方式：
-    1、App.vue入口，导入import {store} from &apos;./store/store&apos;;
-    2、new Vue({router,store,render: h =&gt; h(App)}).$mount(&apos;#app&apos;);
-    3、新建js,store.js
-        5种状态
-            state
-            getters
-                此方法主要和vue中的computed类似，都是用来计算state然后生成新的数据状态的
-            mutations
-                主要用来修改状态，所有的操作必须是同步的，官方推荐尽量不使用异步操作，一般在这里处理逻辑与修改
-                可以通过$store.commit(&apos;switch_dialog&apos;)来触发mutations里的方法
-            actions
-                多个state的操作，使用mutations触发会比较好维护，但要执行多个mutations就需要action,
-                actions里的context和$store拥有相同的对象和方法，这里的操作主要是异步操作，可以使用
-                $store.dispatch(&apos;switch_dialog&apos;)分发处理actions里的请求
-            modules 组件多了，状态也多了会不好维护，那么使用vuex的modules
-
-            vuex使用方法(其余方法类似)
-                &lt;script&gt;
-                    import {mapState} from &apos;vuex&apos;;
-                    export default {
-                      computed:{
-                        ...mapState({
-                          show:state=&gt;state.dialog.show
-                        }),
-                      }
-                    }
-                &lt;/script&gt;
-            例：
-                总状态管理器：
-                    import Vue from &apos;vue&apos;
-                    import vuex from &apos;vuex&apos;
-                    Vue.use(vuex);
-                    import dialog_store from &apos;../components/dialog_store.js&apos;;//引入某个store对象
-                    export default new vuex.Store({
-                        modules: {
-                            dialog: dialog_store
-                        }
-                    })
-                子状态管理：dialog_store.js
-                    export default {
-                        state:{
-                            show:false
-                        }
-                    }
-</code></pre><p>Vue分环境打包部署</p>
-<pre><code>更新cross-env模块
-config文件下
-    新建pre.env.js,
-        &apos;use strict&apos;
-        module.exports = {
-          NODE_ENV: &apos;&quot;presentation&quot;&apos;,
-          EVN_CONFIG:&apos;&quot;pre&quot;&apos;,
-        }
-    新建test.env.js
-        &apos;use strict&apos;
-        module.exports = {
-          NODE_ENV: &apos;&quot;testing&quot;&apos;,
-          EVN_CONFIG:&apos;&quot;test&quot;&apos;,
-        }
-    修改prod.env.js
-        &apos;use strict&apos;
-        module.exports = {
-          NODE_ENV: &apos;&quot;production&quot;&apos;,
-          EVN_CONFIG:&apos;&quot;prod&quot;&apos;
-        }
-    新建env.js判断个环境的参数配置
-        let baseUrl = &apos;&apos;;
-        if (process.env.NODE_ENV == &apos;development&apos;) {
-          baseUrl = &quot;&quot;;
-        }else if(process.env.NODE_ENV == &apos;testing&apos;){
-          baseUrl = &quot;http://192.168.1.194:10001/api&quot;;
-        }else if(process.env.NODE_ENV == &apos;presentation&apos;){
-          baseUrl = &quot;http://192.168.1.194:10001/pre&quot;;
-        } else if(process.env.NODE_ENV == &apos;production&apos;){
-          baseUrl = &quot;http://192.168.1.194:10001/prod&quot;;
-        }
-        export{
-          baseUrl
-        }
-    修改index.js为
-        build下添加
-        prodEnv: require(&apos;./prod.env&apos;),
-        preEnv: require(&apos;./pre.env&apos;),
-        testEnv: require(&apos;./test.env&apos;),
-    build文件下修改
-        bulid.js中const spinner = ora(&apos;building for production...&apos;)修改为
-        var spinner = ora(&apos;building for &apos; + process.env.NODE_ENV + &apos; of &apos; + process.env.env_config+ &apos; mode...&apos; )
-
-        webpack.prod.conf.js修改const env = require(&apos;../config/prod.env&apos;)为
-        const env = config.build[process.env.env_config+&apos;Env&apos;]
-    main.js里引入env.js,设置axios的baseurl为export的baseurl
-    package.json里设置scripts启动命令
-      &quot;scripts&quot;: {
-        &quot;dev&quot;: &quot;webpack-dev-server --inline --progress --config build/webpack.dev.conf.js&quot;,
-        &quot;start&quot;: &quot;npm run dev&quot;,
-        &quot;build&quot;: &quot;node build/build.js&quot;,
-        &quot;build:test&quot;: &quot;cross-env NODE_ENV=production env_config=test node build/build.js&quot;,
-        &quot;build:pre&quot;: &quot;cross-env NODE_ENV=production env_config=pre node build/build.js&quot;,
-        &quot;build:prod&quot;: &quot;cross-env NODE_ENV=production env_config=prod node build/build.js&quot;
-      },
-    http://blog.csdn.net/fungleo/article/details/53171052
-</code></pre><p>VUE项目实战<a href="https://segmentfault.com/p/1210000008583242/read?from=timeline" target="_blank" rel="noopener">https://segmentfault.com/p/1210000008583242/read?from=timeline</a></p>
-<p>Vue常见配置问题</p>
-<pre><code>1、cnpm install build,vue发布项目空白页webpack配置
-    config文件下index.js配置 assetsPublicPath: &apos;./&apos;;
-    build文件下util.js配置publicPath: &apos;../../&apos;
-2、axios使用ajax跨域问题配置
-    config文件下index.js里proxyTable进行代理配置
-    &apos;/api&apos;: {
-        target: &apos;http://192.168.1.99:8080/malls-provider-http&apos;,    //api代理的实际路径
-        changeOrigin: true,
-        pathRewrite: {
-          &apos;^/api&apos;: &apos;&apos;
-        }
-    }
-3、axios post请求后台，后台接收不到数据问题：
-    vue集成axios后，发送的post请求默认为payload格式，如果要改为正常的格式，需要增加headers头，并且将发送的数据改为querystring方式
-    cnpm install qs安装 qs模块
-    导入依赖import Qs from &apos;qs&apos;
-    添加headers
-     headers: {
-        &apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded; charset=UTF-8&apos;
-     },
-     data: Qs.stringify(postData)
-4、如果在安装了某模块，找不见模块的时候，使用rm -rf node_modules删除，然后cnpm install
-
-5、vue使用ip访问配置
-    host改为ip即可
-6、vue中使用px编译自动转rem插件
-
-    在此说明配合使用sass
-        cnpm install node-sass --save-dev
-        cnpm install sass-loader --save-dev
-
-        cnpm install px2rem-loader
-    遇到的问题：
-        使用px2rem-loader在vue-loader.conf修改后，会出现背景图片找不见的问题，postcss会自动添加路径，因此采用如下解决方法：
-    在exports.cssLoaders函数内添加
-      const px2remLoader = {
-        loader: &apos;px2rem-loader&apos;,
-        options: {
-          remUnit: 37.5
-        }
-      }
-
-    然后修改generateLoaders函数const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
-    在最后cssLoader后添加px2remLoader即可配合sass使用高度还原设计图
-7、vue在打包后都是经过压缩加密的，如果运行时报错，输出的错误信息无法准确得知是哪里的代码报错,而生成的.map后缀文件，就可以像未加密的代码一样，准确的输出是哪一行哪一列有错可以通过设置来可以不生成该类文件，生产环境是不需要.map文件的，所    以打包时不生成这些文件在conf/index.js中，设置productionSourceMap：false
-8、如果是vue-cli初始化的项目，默认安装webpack-bundle-analyer插件，该插件可以帮助我们查看项目的提及结构和项目中对象的所有依赖，也可以直观地看到个模块体积在整个项目中的占比
-    cnpm run build --report //打开浏览器http://127.0.0.1:8888
-</code></pre><p>vue常见问题解决</p>
-<pre><code>vue首次项目加载速度慢
-    采用懒加载，提升首次加载速度，实现按需加载
-    实现方式3种：
-        第一种：
-            const hyh = resolve =&gt;{import(&apos;@components/index/hyh&apos;).then(module =&gt;{resolve(module)})}
-            const router = new Router({router:[{
-                path:&apos;yhy&apos;,
-                comnent:hyh,
-                name:&apos;hyh&apos;
-            }]})
-        第二种：
-            const router = new Router({
-                router:[{
-                    path:&quot;/index&quot;,
-                    component:(resolve) =&gt; { require([&apos;../components/index/index&apos;],resolve)}
-                }]
-            })
-        第三种：强烈推荐
-            const list = r =&gt; require.ensure([],() =&gt; r(require(&apos;../components/list/list)),&apos;list&apos;);
-            const router = new Router({
-                routes:[
-                    {
-                        path:&apos;/list/blog&apos;,
-                        component:list,
-                        name:&apos;blog&apos;
-                    }
-                ]
-            })
-vue在ios中第一次加载有时会出现有的名称显示，有的名称不显示
-    解决方法：
-    overflow:auto
-vue在history模式下，刷新页面会404
-    如果服务器找不见任何的静态资源，就让它转到默认的404
-        方案一 （这种方式容易被第三方劫持）
-            location /{
-                    root   /data/nginx/html;
-                    index  index.html index.htm;
-                    error_page 404 /index.html;
+    class Demo extends React.component({
+        render(){
+            var text = {
+                __html:&apos;&lt;span&gt;我是在div中的span标签&lt;/span&gt;&apos;
             }
-        方案二
-            location /{
-                root   /data/nginx/html;
-                index  index.html index.htm;
-                if (!-e $request_filename) {
-                    rewrite ^/(.*) /index.html last;
-                    break;
-                }
-            }
-        方案三
-         server {
-            listen       8888;#默认端口是80，如果端口没被占用可以不用修改
-            server_name  localhost;
-            root        E:/vue/my_project/dist;#vue项目的打包后的dist
-            location / {
-                try_files $uri $uri/ @router;#需要指向下面的@router否则会出现vue的路由在nginx中刷新出现404
-                index  index.html index.htm;
-            }
-            #对应上面的@router，主要原因是路由的路径资源并不是一个真实的路径，所以无法找到具体的文件
-            #因此需要rewrite到index.html中，然后交给路由在处理请求资源
-            location @router {
-                rewrite ^.*$ /index.html last;
-            }
-            #.......其他部分省略
-      }
+            return (&lt;div&gt;
+                &lt;div dangerouslySetInnerHTML={text}&gt;&lt;/div&gt;
+                &lt;input ref=&quot;userInput&quot; type=&quot;text&quot;/&gt;
+            &lt;/div&gt;)
+        }
+    })
+    ReactDOM.render(&lt;Demo/&gt;,document.getElementById(&quot;app&quot;))
 </code></pre>
       
 
@@ -1237,7 +329,7 @@ vue在history模式下，刷新页面会404
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JSX</a>
         		</li>
       		
 		</ul>
@@ -1293,7 +385,7 @@ vue在history模式下，刷新页面会404
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/21/VUE常见问题及笔记/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/27/JSX语法糖/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -1307,18 +399,9 @@ vue在history模式下，刷新页面会404
   
 <nav id="article-nav">
   
-    <a href="/2018/08/23/webapp常见兼容问题解决/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          webapp常见兼容问题解决
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/08/21/微信小程序指南/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">微信小程序指南</div>
+    <a href="/2018/08/25/基础篇之CSS3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">基础篇之CSS3</div>
       <i class="icon-circle-right"></i>
     </a>
   
