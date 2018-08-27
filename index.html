@@ -198,91 +198,8 @@
 </code></pre><p>JSX注释</p>
 <pre><code>在JSX语法中，添加注释需要写在 { } 中
 可以使用多行注释与单行注释
-
-ex:
-    class HelloWorld extends React.component({
-        render:function(){
-            // 现在这里是属于js的部分,不属于JSX语法的部分
-            return (
-                &lt;div className=&quot;box&quot; // class名字
-                &gt;
-                    {/*这是一个标题*/}
-                    &lt;h1 className=&quot;title&quot;&gt;Hello World&lt;/h1&gt;
-                    {/*这是说明*/}
-                    &lt;p&gt;你好世界！&lt;/p&gt;
-                    &lt;div className=&quot;box2&quot;&gt;你好&lt;/div&gt;
-                &lt;/div&gt;
-            )
-        }
-    })
-    ReactDOM.render(&lt;HelloWorld/&gt;,document.getElementById(&quot;app&quot;))
-</code></pre><p>JSX中的样式</p>
-<pre><code>class样式写法
-其余样式写法介绍
-class HelloWorld extends React.component({
-        render:function(){
-            //对象写法
-            var styles = {
-                color: &apos;blue&apos;,
-                fontSize: &apos;30&apos;
-            }
-            return (
-                &lt;div className=&quot;box&quot;&gt;
-                    //行内样式
-                    &lt;h3 className=&quot;title&quot; style={{color:'red',backgroundColor:'lime'}}&gt;默认标题&lt;/h3&gt;
-                    &lt;p className=&quot;subtitle&quot; style={styles}&gt;说明&lt;/p&gt;
-                    &lt;p className=&quot;details&quot;&gt;这个是用来教学的案例&lt;/p&gt;
-                &lt;/div&gt;
-            )
-        }
-    })
-    ReactDOM.render(&lt;HelloWorld/&gt;,document.getElementById(&quot;app&quot;))
-</code></pre><p>JSX中的条件判断与非DOM操作</p>
-<pre><code>条件判断：
-
-    1、三元表达式     ?   :
-    2、使用变量，通过函数使用条件判断语句，返回一个字符串
-    3、直接在{}中调用函数
-    4、使用比较运算符   &amp;&amp;   ||  ！
-    Class Demo extends React.component({
-        // 设置初始的状态
-        getInitialState(){
-            return {
-                onOff:true
-            }
-        },
-        // 自定义一个点击事件
-        handleClick() {
-            this.setState({
-                onOff:!this.state.onOff
-            })
-        },
-        render(){
-            return &lt;div className={this.state.onOff?&quot;box2&quot;:&quot;box1&quot;} onClick={this.handleClick}&gt;我是一个盒子&lt;/div&gt;
-        }
-    })
-    ReactDOM.render(&lt;Demo/&gt;,document.body)
-
-非DOM操作
-    React中自定的属性
-        1、dangerouslySetInnerHTML：在JSX中直接插入HTML代码，动态的添加HTML内容，由用户添加
-        需要使用属性，__html
-        2、ref：父组件引用子组件  this.refs.name
-        3、key：目的是提高渲染性能 ，涉及到React diff算法，React通过key值判断是否重新渲染
-
-    class Demo extends React.component({
-        render(){
-            var text = {
-                __html:&apos;&lt;span&gt;我是在div中的span标签&lt;/span&gt;&apos;
-            }
-            return (&lt;div&gt;
-                &lt;div dangerouslySetInnerHTML={text}&gt;&lt;/div&gt;
-                &lt;input ref=&quot;userInput&quot; type=&quot;text&quot;/&gt;
-            &lt;/div&gt;)
-        }
-    })
-    ReactDOM.render(&lt;Demo/&gt;,document.getElementById(&quot;app&quot;))
 </code></pre>
+        
       
 
       
@@ -1190,15 +1107,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JSX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1210,6 +1119,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Http</a>
               </li>
              
@@ -1218,19 +1135,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1238,15 +1143,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1254,7 +1155,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
             
             <div class="clearfix"></div>
