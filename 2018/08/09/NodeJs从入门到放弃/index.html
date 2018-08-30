@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:description" content="IO/密集型、cpu密集型: 可以把任务分为计算密集型和IO密集型。 计算密集型:     任务的特点是要进行大量的计算，消耗CPU资源，比如计算圆周率、对视频进行高清解码等等，全靠CPU的运算能力。这种计算密集型任务虽然也可以用多任务完成，但是任务越多，花在任务切换的时间就越多，CPU执行任务的效率就越低，所以，要最高效地利用CPU，计算密集型任务同时进行的数量应当等于CPU的核心数。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-26T13:03:32.512Z">
+<meta property="og:updated_time" content="2018-08-30T04:39:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NodeJs从入门到放弃">
 <meta name="twitter:description" content="IO/密集型、cpu密集型: 可以把任务分为计算密集型和IO密集型。 计算密集型:     任务的特点是要进行大量的计算，消耗CPU资源，比如计算圆周率、对视频进行高清解码等等，全靠CPU的运算能力。这种计算密集型任务虽然也可以用多任务完成，但是任务越多，花在任务切换的时间就越多，CPU执行任务的效率就越低，所以，要最高效地利用CPU，计算密集型任务同时进行的数量应当等于CPU的核心数。">
@@ -233,10 +233,98 @@
     程序自上而下运行
 异步
     不用等待上面的程序执行完后再运行下面的操作
-</code></pre><p>AMD和CMD规范</p>
-<p>Nodejs模块的引入与导出</p>
-<p>Nodejs事件循环机制</p>
+</code></pre><p>AMD、CMD规范及 CommonJS规范</p>
+<pre><code>CommonJS规范
+   CommonJS是在浏览器环境之外构建JavaScript生态系统为目标产生的项目，比如服务器和桌面环境中。CommonJS规范是为了解决JavaScript的作用域问题而定义的模块形式，可以使每个模块在它自身的命名空间中执行。该规范的主要内容是：模块必须通过  module.exports导出对外的变量或接口，通过require()来导入其他模块的输出到当前模块。
 
+   ex:
+       // moduleA.js
+       module.exports = function( value ){
+           return value * 2;
+       }
+       // moduleB.js
+       var multiplyBy2 = require(&apos;./moduleA&apos;);
+       var result = multiplyBy2(4);
+
+   CommonJS是同步加载模块，但其实也有浏览器端的实现，其原理是将所有模块都定义好并通过id进行索引，这样就可以浏览器进行解析了服务器端的Node.js遵循CommonJS规范。核心思想是允许模块通过require 方法来同步加载所要依赖的其他模块，然后通过 exports或module.exports来导出需要暴露的接口。
+       ex:
+           require(&quot;module&quot;);
+           require(&quot;../file.js&quot;);
+           exports.doStuff = function() {};
+           module.exports = someValue;
+   优点：
+       服务器端便于重用
+       NPM中已经将近20w个模块包
+       简单并容易使用
+   缺点：
+       同步的模块方式不适合不适合在浏览器环境中，同步意味着阻塞加载，浏览器资源是异步加载的
+   不能非阻塞的并行加载多个模块      
+
+   AMD规范
+       AMD规范其实只有一个主要接口 define(id,dependencies,factory)，它要在声明模块的时候指定所有的依赖dependencies，并且还要当做形参传到factory中，对于依赖的模块提前执行，依赖前置
+
+       ex:
+           define(&quot;module&quot;, [&quot;dep1&quot;, &quot;dep2&quot;], function(d1, d2) {
+                return someExportedValue;
+           });
+           require([&quot;module&quot;, &quot;../file&quot;], function(module, file) { /* ... */ });
+       优点：
+           适合在浏览器环境异步加载
+           并行加载多个模块
+       缺点：
+           提高开发成本，代码阅读和书写比较困难
+       不符合通用的模块思维方式，是一种妥协的实现
+   CMD规范
+       CMD规范和AMD相似，尽量保持简单，并且与CommonJS和NodeJS的Modules规范保持了很大的兼容性
+
+       ex：
+           define(function(require, exports, module) {
+               var $ = require(&apos;jquery&apos;);
+               var Spinning = require(&apos;./spinning&apos;);
+               exports.doSomething = ...
+               module.exports = ...
+           })
+
+       优点：
+           依赖就近，延迟执行
+           很容易在node中运行
+       缺点：
+           依赖SPM打包，模块的加载逻辑偏重
+</code></pre><p>Nodejs模块的引入与导出</p>
+<pre><code>nodejs的模块引入和导出遵循Commjs规范
+引入
+    require()
+
+导出
+    module.exports(由export模块提供)，导出的都是对象类型，若同时在一个文件里有两个
+     module.exports，那么 module.exports第一个生效
+
+nodejs模块引入导出与ES6的区别
+    // nodejs默认导出
+    // module.exports = &apos;default module exports&apos;;
+
+    // nodejs指定导出
+    // 如果显式指定了module.exports 则exports收集的属性不生效
+    // 如果不指定module.exports，则exports收集的属性其实默认都指向了module.exports;
+    // exports.info = &apos;exports指定的info&apos;;
+    // exports.info2 = &apos;exports指定的info2&apos;;
+
+    // nodejs导入
+    // const v = require(&apos;./other&apos;);
+
+
+    // es6默认导出
+    export default &apos;es6 default OHTER&apos;;
+    // es6指定导出
+    export var info = &apos;es6 info&apos;;
+
+    // es6导入默认值
+    // import v from &apos;./other&apos;;
+    // es6导入指定值
+    // import {info} from &apos;./other&apos;;
+</code></pre><p>Nodejs事件循环机制(Event Loop)</p>
+<pre><code>Node.js 采用事件驱动和异步 I/O 的方式,实现了一个单线程、高并发的JavaScript运行时环境，而单线程意味着同一时间只能做一件事情;(https://www.cnblogs.com/onepixel/p/7143769.html)
+</code></pre>
       
 
       
@@ -528,19 +616,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JSX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -548,15 +624,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Http</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+                <a href="javascript:void(0)" class="js-tag color4">JSX</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,19 +656,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -588,11 +668,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
               </li>
             
             <div class="clearfix"></div>
