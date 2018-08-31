@@ -12,11 +12,11 @@
 <meta name="keywords" content="node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NodeJs从入门到放弃">
-<meta property="og:url" content="http://yoursite.com/2018/08/09/NodeJs从入门到放弃/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/08/28/NodeJs从入门到放弃/index.html">
 <meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:description" content="IO/密集型、cpu密集型: 可以把任务分为计算密集型和IO密集型。 计算密集型:     任务的特点是要进行大量的计算，消耗CPU资源，比如计算圆周率、对视频进行高清解码等等，全靠CPU的运算能力。这种计算密集型任务虽然也可以用多任务完成，但是任务越多，花在任务切换的时间就越多，CPU执行任务的效率就越低，所以，要最高效地利用CPU，计算密集型任务同时进行的数量应当等于CPU的核心数。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-30T04:39:32.000Z">
+<meta property="og:updated_time" content="2018-08-31T12:40:24.232Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NodeJs从入门到放弃">
 <meta name="twitter:description" content="IO/密集型、cpu密集型: 可以把任务分为计算密集型和IO密集型。 计算密集型:     任务的特点是要进行大量的计算，消耗CPU资源，比如计算圆周率、对视频进行高清解码等等，全靠CPU的运算能力。这种计算密集型任务虽然也可以用多任务完成，但是任务越多，花在任务切换的时间就越多，CPU执行任务的效率就越低，所以，要最高效地利用CPU，计算密集型任务同时进行的数量应当等于CPU的核心数。">
@@ -186,8 +186,8 @@
   
 
         
-        <a href="/2018/08/09/NodeJs从入门到放弃/" class="archive-article-date">
-  	<time datetime="2018-08-09T01:13:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-09</time>
+        <a href="/2018/08/28/NodeJs从入门到放弃/" class="archive-article-date">
+  	<time datetime="2018-08-28T01:13:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-28</time>
 </a>
         
       </header>
@@ -323,7 +323,58 @@ nodejs模块引入导出与ES6的区别
     // es6导入指定值
     // import {info} from &apos;./other&apos;;
 </code></pre><p>Nodejs事件循环机制(Event Loop)</p>
-<pre><code>Node.js 采用事件驱动和异步 I/O 的方式,实现了一个单线程、高并发的JavaScript运行时环境，而单线程意味着同一时间只能做一件事情;(https://www.cnblogs.com/onepixel/p/7143769.html)
+<pre><code>Node.js 采用事件驱动和异步 I/O 的方式,实现了一个单线程、高并发的JavaScript运行时环境，而单线程意味着同一时间只能做一件事情;
+Node.js也是单线程的Event Loop，但是它的运行机制不同于浏览器环境。
+
+NodeJs的运行机制
+    1）V8引擎解析JavaScript脚本。
+    2）解析后的代码，调用Node API
+    3）libuv库负责Node API的执行。它将不同的任务分配给不同的线程，形成一个Event Loop（事件循环），以异步的方式将任务的执行结果返回给V8引擎。
+    4）V8引擎再将结果返回给用户。
+
+process.nextTick方法可以在当前&quot;执行栈&quot;的尾部----下一次Event Loop（主线程读取&quot;任务队列&quot;）之前----触发回调函数(所有异步任务之前)
+
+
+ex:
+    process.nextTick(function A() {
+        console.log(1);
+        process.nextTick(function B(){console.log(2);});
+    });
+
+    setTimeout(function timeout() {
+        console.log(&apos;TIMEOUT FIRED&apos;);
+    }, 0)
+
+    执行结果：1，2，TIMEOUT FIRED
+
+setImmediate方法则是在当前&quot;任务队列&quot;的尾部添加事件(在下一次Event Loop时执行)
+    ex:
+        setImmediate(function A() {
+            console.log(1);
+            setImmediate(function B(){console.log(2);});
+        });
+
+        setTimeout(function timeout() {
+            console.log(&apos;TIMEOUT FIRED&apos;);
+        }, 0);
+
+        执行结果可能是1--TIMEOUT FIRED--2，也可能是TIMEOUT FIRED--1--2。
+
+    Node.js文档中称，setImmediate指定的回调函数，总是排在setTimeout前面。(只发生递归调用)
+
+        setImmediate(function (){
+            setImmediate(function A() {
+                console.log(1);
+                setImmediate(function B(){console.log(2);});
+            });
+            setTimeout(function timeout() {
+                console.log(&apos;TIMEOUT FIRED&apos;);
+            }, 0);
+        });
+
+    执行结果：1，TIMEOUT FIRED，2
+</code></pre><p>NodeJs常用模块</p>
+<pre><code>(https://www.cnblogs.com/onepixel/p/7143769.html)
 </code></pre>
       
 
@@ -424,7 +475,7 @@ nodejs模块引入导出与ES6的区别
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/09/NodeJs从入门到放弃/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/28/NodeJs从入门到放弃/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -438,18 +489,9 @@ nodejs模块引入导出与ES6的区别
   
 <nav id="article-nav">
   
-    <a href="/2018/08/09/基础篇之javaScript/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          基础篇之javaScript
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/08/08/React从入门到放弃/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">React从入门到放弃</div>
+    <a href="/2018/08/27/JSX语法糖/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JSX语法糖</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -616,31 +658,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -648,7 +666,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -656,7 +690,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -664,7 +698,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,14 +723,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
               </li>
             
             <div class="clearfix"></div>
