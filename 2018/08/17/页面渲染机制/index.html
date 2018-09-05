@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://wangzhongshun.com">
   <title>页面渲染机制 | 个人笔记整理与收集</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="浏览器 Chrome FireFox Safari 浏览器的基本结构 1.用户界面（User Interface）:用户所看到及与之交互的功能组件，如地址栏，返回，前进按钮等； 2.浏览器引擎（Browser engine）:负责控制和管理下一级的渲染引擎； 3.渲染引擎（Rendering engine）:负责解析用户请求的内容（如HTML或XML，渲染引擎会解析HTML或XML，以及相关CSS">
+  <meta name="description" content="浏览器 Chrome FireFox Safari IE Opera 浏览器的基本结构 1.用户界面（User Interface）:用户所看到及与之交互的功能组件，如地址栏，返回，前进按钮等； 2.浏览器引擎（Browser engine）:负责控制和管理下一级的渲染引擎； 3.渲染引擎（Rendering engine）:负责解析用户请求的内容（如HTML或XML，渲染引擎会解析HTML或XM">
 <meta name="keywords" content="渲染">
 <meta property="og:type" content="article">
 <meta property="og:title" content="页面渲染机制">
 <meta property="og:url" content="https://wangzhongshun.com/2018/08/17/页面渲染机制/index.html">
 <meta property="og:site_name" content="个人笔记整理与收集">
-<meta property="og:description" content="浏览器 Chrome FireFox Safari 浏览器的基本结构 1.用户界面（User Interface）:用户所看到及与之交互的功能组件，如地址栏，返回，前进按钮等； 2.浏览器引擎（Browser engine）:负责控制和管理下一级的渲染引擎； 3.渲染引擎（Rendering engine）:负责解析用户请求的内容（如HTML或XML，渲染引擎会解析HTML或XML，以及相关CSS">
+<meta property="og:description" content="浏览器 Chrome FireFox Safari IE Opera 浏览器的基本结构 1.用户界面（User Interface）:用户所看到及与之交互的功能组件，如地址栏，返回，前进按钮等； 2.浏览器引擎（Browser engine）:负责控制和管理下一级的渲染引擎； 3.渲染引擎（Rendering engine）:负责解析用户请求的内容（如HTML或XML，渲染引擎会解析HTML或XM">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-25T13:24:12.149Z">
+<meta property="og:updated_time" content="2018-09-03T12:48:48.405Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="页面渲染机制">
-<meta name="twitter:description" content="浏览器 Chrome FireFox Safari 浏览器的基本结构 1.用户界面（User Interface）:用户所看到及与之交互的功能组件，如地址栏，返回，前进按钮等； 2.浏览器引擎（Browser engine）:负责控制和管理下一级的渲染引擎； 3.渲染引擎（Rendering engine）:负责解析用户请求的内容（如HTML或XML，渲染引擎会解析HTML或XML，以及相关CSS">
+<meta name="twitter:description" content="浏览器 Chrome FireFox Safari IE Opera 浏览器的基本结构 1.用户界面（User Interface）:用户所看到及与之交互的功能组件，如地址栏，返回，前进按钮等； 2.浏览器引擎（Browser engine）:负责控制和管理下一级的渲染引擎； 3.渲染引擎（Rendering engine）:负责解析用户请求的内容（如HTML或XML，渲染引擎会解析HTML或XM">
   
     <link rel="alternative" href="/atom.xml" title="个人笔记整理与收集" type="application/atom+xml">
   
@@ -198,6 +198,8 @@
 <pre><code>Chrome
 FireFox
 Safari
+IE
+Opera
 </code></pre><p>浏览器的基本结构</p>
 <pre><code>1.用户界面（User Interface）:用户所看到及与之交互的功能组件，如地址栏，返回，前进按钮等；
 2.浏览器引擎（Browser engine）:负责控制和管理下一级的渲染引擎；
@@ -756,11 +758,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JSX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -768,11 +766,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
+                <a href="javascript:void(0)" class="js-tag color4">JSX</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -780,11 +782,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -792,7 +806,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -800,7 +818,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -808,19 +826,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">渲染</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
             
             <div class="clearfix"></div>

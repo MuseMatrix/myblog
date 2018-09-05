@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:description" content="IO/密集型、cpu密集型:可以把任务分为计算密集型和IO密集型。 计算密集型:     任务的特点是要进行大量的计算，消耗CPU资源，比如计算圆周率、对视频进行高清解码等等，全靠CPU的运算能力。这种计算密集型任务虽然也可以用多任务完成，但是任务越多，花在任务切换的时间就越多，CPU执行任务的效率就越低，所以，要最高效地利用CPU，计算密集型任务同时进行的数量应当等于CPU的核心数。     计">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-31T14:04:08.374Z">
+<meta property="og:updated_time" content="2018-09-05T14:36:55.101Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NodeJs从入门到放弃">
 <meta name="twitter:description" content="IO/密集型、cpu密集型:可以把任务分为计算密集型和IO密集型。 计算密集型:     任务的特点是要进行大量的计算，消耗CPU资源，比如计算圆周率、对视频进行高清解码等等，全靠CPU的运算能力。这种计算密集型任务虽然也可以用多任务完成，但是任务越多，花在任务切换的时间就越多，CPU执行任务的效率就越低，所以，要最高效地利用CPU，计算密集型任务同时进行的数量应当等于CPU的核心数。     计">
@@ -227,9 +227,9 @@
         4.系统开销 
             进程创建、切换和撤销都会导致系统为之创建或者回收进程控制卡以及资源，但是线程的创建以及线程间的切换并不会引起系统做这些事儿，所以线程的系统开销明显更小。
 </code></pre><h5 id="同步与异步"><a href="#同步与异步" class="headerlink" title="同步与异步"></a>同步与异步</h5><pre><code>同步
-    程序自上而下运行
+    程序自上而下运行(在主线程上排队执行的任务，前一个任务执行完毕，才能执行后一个任务；)
 异步
-    不用等待上面的程序执行完后再运行下面的操作
+    不用等待上面的程序执行完后再运行下面的操作(不进入主线程、而进入”任务队列”（task queue）的任务，只有”任务队列”通知主线程，某个异步任务可以执行了，该任务才会进入主线程执行。)
 </code></pre><h5 id="AMD、CMD规范及-CommonJS规范"><a href="#AMD、CMD规范及-CommonJS规范" class="headerlink" title="AMD、CMD规范及 CommonJS规范"></a>AMD、CMD规范及 CommonJS规范</h5><pre><code>CommonJS规范
    CommonJS是在浏览器环境之外构建JavaScript生态系统为目标产生的项目，比如服务器和桌面环境中。CommonJS规范是为了解决JavaScript的作用域问题而定义的模块形式，可以使每个模块在它自身的命名空间中执行。该规范的主要内容是：模块必须通过  module.exports导出对外的变量或接口，通过require()来导入其他模块的输出到当前模块。
 
@@ -367,7 +367,111 @@ setImmediate方法则是在当前&quot;任务队列&quot;的尾部添加事件(�
         });
 
     执行结果：1，TIMEOUT FIRED，2
-</code></pre><h5 id="NodeJs常用模块"><a href="#NodeJs常用模块" class="headerlink" title="NodeJs常用模块"></a>NodeJs常用模块</h5><pre><code>(https://www.cnblogs.com/onepixel/p/7143769.html)
+    任务队列，还有 micro-task 和 macro-task
+        micro-task(宏任务)：
+            process.nextTick
+            promise
+            Object.observe
+            MutationObserver
+        macro-task(微任务):
+            script(整体)
+            setTimeout
+            setInterval
+            setImmediate
+            I/O
+            UI渲染
+
+        执行过程
+           两个对列， macro-task(script里的全部地方)比如console.log(1),执行完后也不会执行macro-task里的其他任务，而是把micro-task内全部执行完然后再回到macro-task下一个任务执行，然后又回到micro-task内全部执行完不断循环。
+</code></pre><h5 id="NodeJs常用模块"><a href="#NodeJs常用模块" class="headerlink" title="NodeJs常用模块"></a>NodeJs常用模块</h5><pre><code>path模块
+
+    主要用来拼接路径
+    ————dirname(当前运行文件夹的路径)
+    ————fliename(当前文件的绝对路径)
+    const path = require(&apos;path&apos;);
+    path.join()拼接路径，参数链接的相对路径
+    path.resolve(&quot;a&quot;)拿到绝对路径后面拼接一个a
+    path.resolve(————dirname,&quot;a&quot;);
+    path.parse(__filename);路径解析为json串，可以拿文件名字，文件后缀
+
+events模块
+
+    const events = require(&apos;events&apos;).EventEmitter //读取事件模块返回一个对象，并调用对象里的EventEmitter，它是一个构造函数
+    on
+    off
+    once
+    addListener
+    removeListener
+    setMaxListeners设置当前的最大监听器限制值
+    getMaxListeners获取当前的最大监听器限制值
+    listeners返回所有事件监听的个数(返回的是一个数组)
+    ex1:
+        const events = require(&apos;events&apos;).EventEmitter
+        const myEmitter = new EventEmitter;
+        const fn = ()=&gt;{
+            console.log(&quot;这是某个异步函数的毁掉函数“)
+        }
+        //这里有一个异步函数
+        setTimeout(()=&gt;{
+            //触发someEvents这个事件
+            myEmitter.emit(&quot;someEvents&quot;);
+        },2000)
+        //监听someEvents这个事件，并回调
+        myEmitter.on(&quot;someEvents&quot;,fn);
+    ex2:
+        const myEmitter = new EventEmitter;
+        function Fn(name){
+            this.name = name;
+        }  
+        Fn.prototype.__proto__ = myEmitter.prototype;
+        const obj = new Fn(&quot;大帅比“);
+        obj.on(&apos;fy&apos;,function(){
+            console.log(this.name)
+        })
+
+        setTimeout(() =&gt;{
+            obj.emit(&apos;fy&apos;)
+        },1000)
+
+url模块和querystring模块
+
+    //读取url模块，返回一个对象
+    const {URL} = require(&apos;url&apos;)
+    //返回一个对象(searchParams为参数,以map形式展现，key:value)
+    const myurl = new URL(&apos;https://www.baidu.com&apos;)
+    ex:new Map([[{},123]])
+       myurl.search获取？后面的参数
+       结合querystring可以格式化为对象
+       ex:
+        const qs = require(&apos;querystring&apos;);
+        const queryObj = qs.parse(myUrl.search.slice(1))
+    自己实现
+    ex:
+        const url = require(&apos;url&apos;);
+        const myurl = url.parse(&apos;地址&apos;)
+        console.log(url(&apos;http:www.baidu.com&apos;,&apos;/a&apos;))
+        有*号，正常走，没*号，后面的替换前面的
+
+crypto加密模块
+    const crypto = require(&apos;crypto&apos;);
+    //获取hash加密所有方式
+    crypto.getHashes();
+    ex:(MD5加密)
+        const KEY = &quot;wangzhongshun&quot;;
+        //创建MD5加密对象
+        const obj = crypto.createHash(&quot;md5&quot;)
+        //进行密码加密KEY
+        obj.update(KEY)
+        //输出加密密码(只能输出一次)
+        const password = obj.digest();
+        password是个buffer对象(二进制)
+        可以进行base64输出obj.digest(&apos;base64&apos;);
+        16进制输出obj.digest(&apos;hex&apos;);(或者其他latin1)
+fs模块
+assert模块
+stream模块
+http模块
+(https://www.cnblogs.com/onepixel/p/7143769.html)
 </code></pre>
       
 
@@ -481,6 +585,15 @@ setImmediate方法则是在当前&quot;任务队列&quot;的尾部添加事件(�
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/09/01/Mongodb学习/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Mongodb学习
+        
+      </div>
+    </a>
   
   
     <a href="/2018/08/23/webapp常见兼容问题解决/" id="article-nav-older" class="article-nav-link-wrap">
@@ -651,11 +764,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JSX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -663,11 +772,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
+                <a href="javascript:void(0)" class="js-tag color4">JSX</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -675,11 +788,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -687,7 +812,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -695,7 +824,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -703,19 +832,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">渲染</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
             
             <div class="clearfix"></div>
