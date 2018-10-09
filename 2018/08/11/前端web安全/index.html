@@ -8,15 +8,18 @@
   <link rel="dns-prefetch" href="https://wangzhongshun.com">
   <title>前端web安全 | 个人笔记整理与收集</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="web安全">
+  <meta name="description" content="XSS攻击 XSS(跨站脚本攻击)，web应用中常见的安全漏洞，可以理解为恶意用户将代码植入到提供给其他用户使用的页面中；在前端来讲，javascript的代码注入。 ex:      1、用户在输入用户名时，输入包含script标签的代码，浏览器遇到script标签的话，则会执行其中的脚本        方法：对前端的输出数据进行转义     2、利用jquery的append.jquery会在">
+<meta name="keywords" content="web安全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端web安全">
 <meta property="og:url" content="https://wangzhongshun.com/2018/08/11/前端web安全/index.html">
 <meta property="og:site_name" content="个人笔记整理与收集">
+<meta property="og:description" content="XSS攻击 XSS(跨站脚本攻击)，web应用中常见的安全漏洞，可以理解为恶意用户将代码植入到提供给其他用户使用的页面中；在前端来讲，javascript的代码注入。 ex:      1、用户在输入用户名时，输入包含script标签的代码，浏览器遇到script标签的话，则会执行其中的脚本        方法：对前端的输出数据进行转义     2、利用jquery的append.jquery会在">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-03T12:30:36.244Z">
+<meta property="og:updated_time" content="2018-09-08T09:06:22.903Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端web安全">
+<meta name="twitter:description" content="XSS攻击 XSS(跨站脚本攻击)，web应用中常见的安全漏洞，可以理解为恶意用户将代码植入到提供给其他用户使用的页面中；在前端来讲，javascript的代码注入。 ex:      1、用户在输入用户名时，输入包含script标签的代码，浏览器遇到script标签的话，则会执行其中的脚本        方法：对前端的输出数据进行转义     2、利用jquery的append.jquery会在">
   
     <link rel="alternative" href="/atom.xml" title="个人笔记整理与收集" type="application/atom+xml">
   
@@ -191,7 +194,58 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>XSS攻击</p>
+<pre><code>XSS(跨站脚本攻击)，web应用中常见的安全漏洞，可以理解为恶意用户将代码植入到提供给其他用户使用的页面中；在前端来讲，javascript的代码注入。
+ex:
+
+    1、用户在输入用户名时，输入包含script标签的代码，浏览器遇到script标签的话，则会执行其中的脚本
+       方法：对前端的输出数据进行转义
+    2、利用jquery的append.jquery会在将append元素变为fragment(文档碎片)的时候，找到其中的script标签，再使用eval执行一遍，append使用的方式也是innerHTML，而innerHTML是会将unicode码转换为字符实体的，在使用append进行dom操作，如果是append可以决定的字段，那么可以将左右尖括号，使用unicode码伪装起来，例如：--&quot;\u003cscript\u003ealert(&apos;okok&apos;);&quot;。在转义的时候，伪装成\u003的&lt;会被漏掉，append的时候，则会被重新调用，转义也不好使
+
+      利用img标签，在加载图片失败的时候，会调用该元素上的onerror事件，例如onerror=&quot;javascript:alert(1)&quot;,转义可解决
+</code></pre><a id="more"></a>
+<pre><code>  利用img标签与innerhtml相结合，innerHTML赋值的script标签，不会被执行，但是innerHTML赋值一个img标签是可以被识别的，把img标签的左右尖括号，使用unicode进行伪装，让转义方法认不出来，然后再利用innerhtml
+
+  方法：输出的字符串中的\反斜杠进行转义(json转义);
+
+3、利用url参数，比如要获取url参数
+      var param = /=(.+)$/.exec(location.search);
+      var value = decodeURIComponent(param[1]);
+      $(&apos;#username&apos;).append(value);
+    这样的方法，如果在url参数里带上script标签，脚本就会被植入
+
+    方法：从url中获取的信息，最好由后端获取，在前端转义后再行输出
+4、利用js窃取用户cookie进行获取用户信息
+    方法：利用cookie的httpOnly字段
+</code></pre><p>CSRF攻击</p>
+<pre><code>CSRF(跨站请求伪造)。也被叫做XSRF,网页中的一些提交行为，被黑客利用，你在访问黑客的网站的时候，进行的操作，会被操作到其他网站上
+
+ex：
+    1、利用get请求，
+      比如购买商品，在自己的电脑上，的链接为localhost:8080/dopay/malls/profuctpay?ProductId = 10;
+      把此链接放到两一个网页的img的src属性，在加载此网页后，就会执行
+
+      方法：要遵循提交业务，严格按照post请求去做的
+
+    2、利用post也会被破解
+        比如审查元素查看请求参数，在另一网页上创建form表单进行post提交
+     方法：加验证码，这样除了用户，别的网站是获取不到用户本次session的验证码的。但是这样也会降低用户的提交体验。
+        另一种方式是在用访问的页面中，都种下验证用的token，用户所有的提交都必须带上本次页面中生成的token，这种方式的本质和使用验证码没什么两样，但是这种方式，整个页面每一次的session，使用同一个token就行，很多post操作，开发者就可以自动带上当前页面的token。如果token校验不通过，则证明此次提交并非从本站发送来，则终止提交过程。如果token确实为本网站生成的话，则可以通过。具体的token生成，要随着session与用户ID去变的
+</code></pre><p> 网络劫持攻击</p>
+<pre><code>在网络环境不好的网络上，利用http劫持，截取用户数据，插入广告。
+采用https加密传输
+</code></pre><p>控制台注入代码</p>
+<pre><code>黑客会诱骗用户去往控制台里面粘贴东西（欺负小白用户不懂代码），这样会暴露用户隐私
+</code></pre><p>钓鱼</p>
+<pre><code>比如我在空间转载一篇日志，想要查看详情，点击详情进行跳转，而跳转的那个页面伪造成朋友空间，要求访问登陆，欺骗用户输入用户名密码，获取用户信息
+</code></pre><p>注意</p>
+<pre><code>开发时要提防用户产生的内容，要对用户输入的信息进行层层检测
+要注意对用户的输出内容进行过滤(进行转义等)
+重要的内容记得要加密传输(无论是利用https也好，自己加密也好)
+get请求与post请求，要严格遵守规范，不要混用，不要将一些危险的提交使用jsonp完成。
+对于URL上携带的信息，要谨慎使用。
+心中时刻记着，当前页面哪里可能有危险。
+</code></pre>
       
 
       
@@ -483,11 +537,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JSX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color3">H5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,7 +545,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JSX</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -503,31 +557,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">兼容</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -535,7 +565,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,11 +589,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,7 +601,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
             
             <div class="clearfix"></div>
