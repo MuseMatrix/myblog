@@ -43,7 +43,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="http://p1.wmpic.me/article/2018/01/19/1516328943_QIFxOyGi.jpg" class="js-avatar">
+			<img src="head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">老先生</a></h1>
@@ -114,7 +114,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://p1.wmpic.me/article/2018/01/19/1516328943_QIFxOyGi.jpg" class="js-avatar">
+				<img src="head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">老先生</h1>
@@ -171,28 +171,29 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-优雅的Vue-CLI-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-js异步解决方案-generator-async-await" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/23/优雅的Vue-CLI-3/">优雅的Vue-CLI-3</a>
+      <a class="article-title" href="/2018/09/23/js异步解决方案-generator-async-await/">js异步解决方案(generator&amp;async&amp;await)</a>
     </h1>
   
 
         
-        <a href="/2018/09/23/优雅的Vue-CLI-3/" class="archive-article-date">
-  	<time datetime="2018-09-22T22:58:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-23</time>
+        <a href="/2018/09/23/js异步解决方案-generator-async-await/" class="archive-article-date">
+  	<time datetime="2018-09-23T12:43:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>exples<br><img src="/2018/09/23/优雅的Vue-CLI-3/vue1.png" alt="exples"></p>
-
+        <p>以nodejs读取文件为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;)</span><br><span class="line">const readFile = function(filename)&#123;</span><br><span class="line">    return new Promise(function(res,rej)&#123;</span><br><span class="line">        fs.readFile(filename,(err,data) =&gt;&#123;</span><br><span class="line">            if(err)rej(err);</span><br><span class="line">            res(data);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
       
 
       
@@ -205,7 +206,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
         		</li>
       		
 		</ul>
@@ -215,7 +216,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/23/优雅的Vue-CLI-3/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/09/23/js异步解决方案-generator-async-await/">展开全文 >></a>
         </p>
       
 
@@ -245,59 +246,28 @@
 
 
   
-    <article id="post-H5核心api" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Express体验" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/18/H5核心api/">H5核心api</a>
+      <a class="article-title" href="/2018/09/23/Express体验/">Express体验之</a>
     </h1>
   
 
         
-        <a href="/2018/09/18/H5核心api/" class="archive-article-date">
-  	<time datetime="2018-09-17T23:11:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-18</time>
+        <a href="/2018/09/23/Express体验/" class="archive-article-date">
+  	<time datetime="2018-09-22T23:31:11.227Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>H5之拖拽</p>
-<pre><code>H5中要使元素可以拖拽，那么要给元素设置属性draggable;
-拖动产生的事件：
-    被拖动的元素(事件)：
-        dragstart   在元素开始被拖动的时候触发
-        drag        在元素被拖动时反复触发
-        dragend     在元素拖动操作完成时触发
-    目标对象(事件)
-        dragcenter  当拖动元素进入目的元素所占屏幕空间时触发
-        dragover    当拖动元素在目的元素内时触发
-        dragleave   当拖动元素没有放下就离开目的地时触发
-    dragenter和dragleave事件的默认行为是拒绝任何被拖拽的元素，所以要阻止浏览器的默认行为 e.preventDefault();
-释放产生的事件：
-    drop    当被拖动元素在目的地元素里放下时触发，一般需要取消浏览器的默认行为。
-</code></pre><p>H5之arraybuffer<br>H5之canvas<br>H5之多文件上传<br>H5之websocket<br>H5之history</p>
-<pre><code>History对象包含(在浏览器窗口中)访问过的url&apos;
-History对象也是window对象的一部分
+        <p>express应用生成器创建应用</p>
 
-history.length返回浏览器列表中URL的数量
-history.back(),加载history列表中的前一个url
-history.forward(),加载history列表中的后一个url
-history.go(),加载history列表中的某个具体页面
-
-H5中又在history中引入了 history.pushState() 和 history.replaceState() 方法,他们分别可以添加和修改历史记录条目(配合window.onpopstate)
-
-pushState() 需要三个参数: 一个状态对象, 一个标题 (目前被忽略), 和 (可选的) 一个URL
-
-使用 history.pushState() 可以改变referrer，它在用户发送 XMLHttpRequest 请求时在HTTP头部使用，改变state后创建的 XMLHttpRequest 对象的referrer都会被改变。因为referrer是标识创建  XMLHttpRequest 对象时 this 
-
-ex:
-</code></pre><p>H5之storage</p>
-<pre><code>参见基础篇之javaScript的webstorage
-</code></pre>
       
 
       
@@ -310,7 +280,7 @@ ex:
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">H5</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nodejs应用框架</a>
         		</li>
       		
 		</ul>
@@ -320,7 +290,83 @@ ex:
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/18/H5核心api/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/09/23/Express体验/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-优雅的Vue-CLI-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/23/优雅的Vue-CLI-3/">优雅的Vue-CLI-3</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/23/优雅的Vue-CLI-3/" class="archive-article-date">
+  	<time datetime="2018-09-22T22:58:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>近日发现vue-cli2已经升级到vue-cli3,Vue CLI 的包名称由 vue-cli 改成了 @vue/cli,具体以官方为准<a href="https://cli.vuejs.org/zh/" target="_blank" rel="noopener">https://cli.vuejs.org/zh/</a></p>
+<pre><code>1、vue-cli3可建立快速应用通道，单独运行.vue文件，自动生成npm依赖包，也可以单文件编译
+</code></pre>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/23/优雅的Vue-CLI-3/">展开全文 >></a>
         </p>
       
 
@@ -919,84 +965,6 @@ ex:
 
 
   
-    <article id="post-htpp协议整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/09/htpp协议整理/">htpp协议整理</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/09/htpp协议整理/" class="archive-article-date">
-  	<time datetime="2018-08-09T05:47:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Http</p>
-<pre><code>HTTP协议，即超文本传输协议(Hypertext transfer protocol)。是一种详细规定了浏览器和万维网(WWW = World Wide Web)服务器之间互相通信的规则，通过因特网传送万维网文档的数据传送协议。
-
-HTTP协议是用于从WWW服务器传输超文本到本地浏览器的传送协议。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等。
-</code></pre>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Http</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/09/htpp协议整理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1104,6 +1072,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nodejs应用框架</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">H5</a>
               </li>
              
@@ -1112,11 +1084,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JSX</a>
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1124,11 +1092,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">兼容</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JSX</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1136,19 +1112,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">web安全</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1160,15 +1140,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">渲染</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1176,11 +1148,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
             
             <div class="clearfix"></div>
@@ -1232,11 +1204,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="https://wangzhongshun.github.io/1/#/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>高仿华为商城</a>
+              <a href="https://wangzhongshun.github.io/1/#/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>仿华为商城</a>
             </li>
           
             <li class="search-li">
-              <a href="https://wangzhongshun.github.io/2/#/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>高仿天猫移动端</a>
+              <a href="https://wangzhongshun.github.io/2/#/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>仿天猫移动端</a>
             </li>
           
             <li class="search-li">
@@ -1262,8 +1234,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
-  	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">老先生： 主业，码农一枚。 躬耕于北京，苟全性命于嘉合，不求闻达于领导。 web前端攻城师一枚。 喜欢读书；喜欢旅游；喜欢摄影；喜欢音乐；喜欢烹饪（尽管水平不行）；喜欢骑自行车瞎逛等等。 特别注意：没有了！！！</div>
   	  	
     	</section>
     

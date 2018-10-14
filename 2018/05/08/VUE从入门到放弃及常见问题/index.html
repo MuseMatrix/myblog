@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:description" content="前言 围绕vue.js的一系列工具     vue.js核心,不解释     VueRouter2 实现路由组织工具     webpack项目打包以及编译工具     nodejs前端开发环境     npm前端包管理器     axiso ajax接口请求工具     sass-loader和node-sass css预处理     element基于vue的后台组件库     iview基于">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-31T12:59:21.432Z">
+<meta property="og:updated_time" content="2018-10-09T11:39:35.677Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VUE从入门到放弃及常见问题">
 <meta name="twitter:description" content="前言 围绕vue.js的一系列工具     vue.js核心,不解释     VueRouter2 实现路由组织工具     webpack项目打包以及编译工具     nodejs前端开发环境     npm前端包管理器     axiso ajax接口请求工具     sass-loader和node-sass css预处理     element基于vue的后台组件库     iview基于">
@@ -48,7 +48,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="http://p1.wmpic.me/article/2018/01/19/1516328943_QIFxOyGi.jpg" class="js-avatar">
+			<img src="head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">老先生</a></h1>
@@ -119,7 +119,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://p1.wmpic.me/article/2018/01/19/1516328943_QIFxOyGi.jpg" class="js-avatar">
+				<img src="head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">老先生</h1>
@@ -1193,6 +1193,10 @@ vue在history模式下，刷新页面会404
             }
             #.......其他部分省略
       }
+    vue的页面 部分低版本安卓手机上，app嵌入vue页面，显示白屏问题以及页面数据渲染不完整
+    原因：安卓低版本手机是不支持es6语法的，还有少部分的安卓手机不支持小部分的es5语法，因为vue使用的是es6语法，所以会导致页面渲染问题
+    解决：在html页面上引入&lt;script src=&quot;https://cdn.bootcss.com/babel-polyfill/6.23.0/polyfill.min.js&quot;&gt;&lt;/script&gt;
+    进行es6转es5
 </code></pre>
       
 
@@ -1485,6 +1489,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nodejs应用框架</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">H5</a>
               </li>
              
@@ -1493,11 +1501,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JSX</a>
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1505,11 +1509,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">兼容</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JSX</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1517,19 +1529,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">web安全</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1541,15 +1557,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">渲染</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1557,11 +1565,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
             
             <div class="clearfix"></div>
@@ -1613,11 +1621,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="https://wangzhongshun.github.io/1/#/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>高仿华为商城</a>
+              <a href="https://wangzhongshun.github.io/1/#/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>仿华为商城</a>
             </li>
           
             <li class="search-li">
-              <a href="https://wangzhongshun.github.io/2/#/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>高仿天猫移动端</a>
+              <a href="https://wangzhongshun.github.io/2/#/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>仿天猫移动端</a>
             </li>
           
             <li class="search-li">
@@ -1643,8 +1651,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
-  	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">老先生： 主业，码农一枚。 躬耕于北京，苟全性命于嘉合，不求闻达于领导。 web前端攻城师一枚。 喜欢读书；喜欢旅游；喜欢摄影；喜欢音乐；喜欢烹饪（尽管水平不行）；喜欢骑自行车瞎逛等等。 特别注意：没有了！！！</div>
   	  	
     	</section>
     
