@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:description" content="IO/密集型、cpu密集型:可以把任务分为计算密集型和IO密集型。 计算密集型:     任务的特点是要进行大量的计算，消耗CPU资源，比如计算圆周率、对视频进行高清解码等等，全靠CPU的运算能力。这种计算密集型任务虽然也可以用多任务完成，但是任务越多，花在任务切换的时间就越多，CPU执行任务的效率就越低，所以，要最高效地利用CPU，计算密集型任务同时进行的数量应当等于CPU的核心数。     计">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-05T14:36:55.101Z">
+<meta property="og:updated_time" content="2018-11-02T09:55:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NodeJs从入门到放弃">
 <meta name="twitter:description" content="IO/密集型、cpu密集型:可以把任务分为计算密集型和IO密集型。 计算密集型:     任务的特点是要进行大量的计算，消耗CPU资源，比如计算圆周率、对视频进行高清解码等等，全靠CPU的运算能力。这种计算密集型任务虽然也可以用多任务完成，但是任务越多，花在任务切换的时间就越多，CPU执行任务的效率就越低，所以，要最高效地利用CPU，计算密集型任务同时进行的数量应当等于CPU的核心数。     计">
@@ -86,6 +86,8 @@
 		<nav class="header-nav">
 			<div class="social">
 				
+					<a class="github" target="_blank" href="https://github.com/wangzhongshun?tab=repositories" title="github"><i class="icon-github"></i></a>
+		        
 					<a class="weibo" target="_blank" href="https://weibo.com/u/2259506985?refer_flag=1005055013_&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 		        
 					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/lao-xian-sheng-30-29/activities" title="zhihu"><i class="icon-zhihu"></i></a>
@@ -140,6 +142,8 @@
 			<nav class="header-nav">
 				<div class="social">
 					
+						<a class="github" target="_blank" href="https://github.com/wangzhongshun?tab=repositories" title="github"><i class="icon-github"></i></a>
+			        
 						<a class="weibo" target="_blank" href="https://weibo.com/u/2259506985?refer_flag=1005055013_&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 			        
 						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/lao-xian-sheng-30-29/activities" title="zhihu"><i class="icon-zhihu"></i></a>
@@ -317,7 +321,11 @@ nodejs模块引入导出与ES6的区别
     // import v from &apos;./other&apos;;
     // es6导入指定值
     // import {info} from &apos;./other&apos;;
-</code></pre><h5 id="Nodejs事件循环机制-Event-Loop"><a href="#Nodejs事件循环机制-Event-Loop" class="headerlink" title="Nodejs事件循环机制(Event Loop)"></a>Nodejs事件循环机制(Event Loop)</h5><pre><code>Node.js 采用事件驱动和异步 I/O 的方式,实现了一个单线程、高并发的JavaScript运行时环境，而单线程意味着同一时间只能做一件事情;
+</code></pre><h5 id="Nodejs事件循环机制-Event-Loop"><a href="#Nodejs事件循环机制-Event-Loop" class="headerlink" title="Nodejs事件循环机制(Event Loop)"></a>Nodejs事件循环机制(Event Loop)</h5><pre><code>Node.js是单线程应用程序，几乎每一个API都支持回调函数，基本上所有的事件机制都是利用设计模式中观察者模式实现
+
+Node.js 单线程类似进入一个while(true)的事件循环，直到没有事件观察者退出，每个异步事件都生成一个事件观察者，如果有事件发生就调用该回调函数.
+
+Node.js 采用事件驱动和异步 I/O 的方式,实现了一个单线程、高并发的JavaScript运行时环境，而单线程意味着同一时间只能做一件事情;
 Node.js也是单线程的Event Loop，但是它的运行机制不同于浏览器环境。
 
 NodeJs的运行机制
@@ -394,17 +402,20 @@ setImmediate方法则是在当前&quot;任务队列&quot;的尾部添加事件(�
     path.resolve(————dirname,&quot;a&quot;);
     path.parse(__filename);路径解析为json串，可以拿文件名字，文件后缀
 
-events模块
+events模块(nodejs内置事件)
 
     const events = require(&apos;events&apos;).EventEmitter //读取事件模块返回一个对象，并调用对象里的EventEmitter，它是一个构造函数
-    on
-    off
-    once
-    addListener
-    removeListener
+    on注册一个监听器，第一个参数为字符串事件名，第二个参数为callback回调函数
+    emit触发执行监听器，第一个参数为触发的时间名称，后面为事件函数的参数
+    off 移除绑定的事件
+    once只绑定一次时间
+    addListener跟on一样，注册事件
+    removeListener，跟off一样，移除绑定的事件
     setMaxListeners设置当前的最大监听器限制值
     getMaxListeners获取当前的最大监听器限制值
     listeners返回所有事件监听的个数(返回的是一个数组)
+
+
     ex1:
         const events = require(&apos;events&apos;).EventEmitter
         const myEmitter = new EventEmitter;
@@ -432,7 +443,12 @@ events模块
         setTimeout(() =&gt;{
             obj.emit(&apos;fy&apos;)
         },1000)
+    ex3:
+        var events = require(&apos;events&apos;); 
+        var emitter = new events.EventEmitter(); 
+        emitter.emit(&apos;error&apos;); 
 
+        error为特殊的事件触发 error事件的对象设置监听器，避免遇到错误后整个程序崩溃
 url模块和querystring模块
 
     //读取url模块，返回一个对象
@@ -467,11 +483,15 @@ crypto加密模块
         password是个buffer对象(二进制)
         可以进行base64输出obj.digest(&apos;base64&apos;);
         16进制输出obj.digest(&apos;hex&apos;);(或者其他latin1)
+Buff类
+    创建Buffer对象-------Buffer.from(&quot;runoob&quot;,&apos;ascii&apos;)
 fs模块
 assert模块
 stream模块
 http模块
 (https://www.cnblogs.com/onepixel/p/7143769.html)
+</code></pre><h5 id="NodeJs升级"><a href="#NodeJs升级" class="headerlink" title="NodeJs升级"></a>NodeJs升级</h5><pre><code>win系统下安装n模块： npm install -g n --force
+n stable
 </code></pre>
       
 
@@ -624,7 +644,7 @@ http模块
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#IO-密集型、cpu密集型"><span class="toc-number">1.</span> <span class="toc-text">IO/密集型、cpu密集型:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#进程与线程"><span class="toc-number">2.</span> <span class="toc-text">进程与线程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#同步与异步"><span class="toc-number">3.</span> <span class="toc-text">同步与异步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#AMD、CMD规范及-CommonJS规范"><span class="toc-number">4.</span> <span class="toc-text">AMD、CMD规范及 CommonJS规范</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Nodejs模块的引入与导出"><span class="toc-number">5.</span> <span class="toc-text">Nodejs模块的引入与导出</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Nodejs事件循环机制-Event-Loop"><span class="toc-number">6.</span> <span class="toc-text">Nodejs事件循环机制(Event Loop)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#NodeJs常用模块"><span class="toc-number">7.</span> <span class="toc-text">NodeJs常用模块</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#IO-密集型、cpu密集型"><span class="toc-number">1.</span> <span class="toc-text">IO/密集型、cpu密集型:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#进程与线程"><span class="toc-number">2.</span> <span class="toc-text">进程与线程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#同步与异步"><span class="toc-number">3.</span> <span class="toc-text">同步与异步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#AMD、CMD规范及-CommonJS规范"><span class="toc-number">4.</span> <span class="toc-text">AMD、CMD规范及 CommonJS规范</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Nodejs模块的引入与导出"><span class="toc-number">5.</span> <span class="toc-text">Nodejs模块的引入与导出</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Nodejs事件循环机制-Event-Loop"><span class="toc-number">6.</span> <span class="toc-text">Nodejs事件循环机制(Event Loop)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#NodeJs常用模块"><span class="toc-number">7.</span> <span class="toc-text">NodeJs常用模块</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#NodeJs升级"><span class="toc-number">8.</span> <span class="toc-text">NodeJs升级</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -768,7 +788,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">H5</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -776,7 +796,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">H5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -784,15 +804,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -800,7 +812,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -808,19 +832,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -999,5 +1019,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
+  <script src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </html>

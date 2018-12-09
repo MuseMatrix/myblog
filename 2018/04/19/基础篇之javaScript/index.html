@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:description" content="javaScript部分： javascript历史 javascript诞生于1995年，网景 javascript之父，Brendan Eich 布兰登.艾奇  js跟java 没有一毛关系，js与java同年出生，但是java火了，js为了蹭java的热度，命名为javascript">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-31T12:56:05.503Z">
+<meta property="og:updated_time" content="2018-11-21T09:24:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基础篇之javaScript">
 <meta name="twitter:description" content="javaScript部分： javascript历史 javascript诞生于1995年，网景 javascript之父，Brendan Eich 布兰登.艾奇  js跟java 没有一毛关系，js与java同年出生，但是java火了，js为了蹭java的热度，命名为javascript">
@@ -86,6 +86,8 @@
 		<nav class="header-nav">
 			<div class="social">
 				
+					<a class="github" target="_blank" href="https://github.com/wangzhongshun?tab=repositories" title="github"><i class="icon-github"></i></a>
+		        
 					<a class="weibo" target="_blank" href="https://weibo.com/u/2259506985?refer_flag=1005055013_&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 		        
 					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/lao-xian-sheng-30-29/activities" title="zhihu"><i class="icon-zhihu"></i></a>
@@ -140,6 +142,8 @@
 			<nav class="header-nav">
 				<div class="social">
 					
+						<a class="github" target="_blank" href="https://github.com/wangzhongshun?tab=repositories" title="github"><i class="icon-github"></i></a>
+			        
 						<a class="weibo" target="_blank" href="https://weibo.com/u/2259506985?refer_flag=1005055013_&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 			        
 						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/lao-xian-sheng-30-29/activities" title="zhihu"><i class="icon-zhihu"></i></a>
@@ -959,6 +963,39 @@ Math.ceil();对一个数进行向上摄入；向上取整运算，它返回的�
             array.map(function(element,index,self){})
     Array.isArray(object)
         判断该对象是否为数组，如果是数组则返回true,如果不是则返回false,如果传的参数不是object则返回false
+</code></pre><p>JavaScript的各种循环</p>
+<pre><code>var arr = [&apos;23&apos;,&apos;we&apos;,&apos;32&apos;]
+//普通的循环(普通的循环)
+for(var i =0;i &lt; arr.length&gt;;i++){
+    console.log(i)
+}
+//数组的forEach循环(普通的循环)
+arr.forEach(function(value,index,arr){
+    console.log(&quot;数组的值&quot;+value);
+    console.log(&quot;数组的下标&quot;+index);
+    console.log(&quot;数组本身&quot;+arr);
+})
+//数组的map循环(若是没有return,就是正常的for循环，有return，返回的是一个数组，可以重新整理数据结构)
+arr.map(function(value,index,arr){
+    同上
+})
+//map和forEach接受两个参数，一个是回调函数，一个是this的指向
+//数组的filter(过滤一些元素,如果数组返回true,那么数组就留下来)
+arr.filter(function(value,index,arr){
+    同上
+})
+//数组的some(类似查找，数组里面某一个元素符合条件，返回true)
+arr.some(function(){
+    同上
+})
+//数组的every(数组里面所有的元素都符合条件，才返回true);
+arr.every(function(){
+    同上
+})
+//数组的reduce(可以求数组的阶长,从左到右)
+arr.reduce(function(必须初始值，必须当前元素，当前的索引，当前数组对象)，函数的初始值)
+//数组的reduceRight(从右往左)
+arr.reduceRight(参数同上)
 </code></pre><p>JavaScript中的json，call,apply,bind</p>
 <pre><code>json
     Json是javascript对象表示法
@@ -1300,6 +1337,42 @@ Ie的attachEvent问题
     console.log(cat.sleep());
     console.log(cat instanceof Animal); // true
     console.log(cat instanceof Cat); //true
+
+(7)Object.create实现类式继承
+    //Shape - superclass
+    function Shape() {
+        this.x = 0;
+        this.y = 0;
+    }
+    Shape.prototype.move = function(x, y) {
+        this.x += x;
+        this.y += y;
+        console.info(&quot;Shape moved.&quot;);
+    };
+    // Rectangle - subclass
+    function Rectangle() {
+        Shape.call(this); //call super constructor.
+    }
+    Rectangle.prototype = Object.create(Shape.prototype);
+    var rect = new Rectangle();
+    rect instanceof Rectangle //true.
+    rect instanceof Shape //true.
+    rect.move(1, 1); //Outputs, &quot;Shape moved.&quot;
+
+(8)es6继承
+    // 父类
+    class Super{
+        constroctor (r) {
+            this.r = r;
+        }
+    }
+    // 子类
+    class Sub extends Super{
+        constroctor (r) {
+            super(r);
+            this.color = &apos;red&apos;;
+        }
+    }
 </code></pre><p>JavaScript的运行机制</p>
 <pre><code>javascript从一开始是单线程
 在Html5中，推出了web worker标准允许javascript脚本创建多个线程，但是子线程完全受主线程的控制，且不得操作DOM
@@ -1698,7 +1771,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">H5</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1706,7 +1779,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">H5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1714,15 +1787,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1730,7 +1795,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1738,19 +1815,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1929,5 +2002,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
+  <script src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </html>

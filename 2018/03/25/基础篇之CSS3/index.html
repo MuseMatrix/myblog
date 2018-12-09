@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:description" content="CSS部分 兼容查询网址：https://www.caniuse.com/  CSS书写顺序 //显示属性 display list-style position float clear">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-31T12:54:56.098Z">
+<meta property="og:updated_time" content="2018-11-07T08:32:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基础篇之CSS3">
 <meta name="twitter:description" content="CSS部分 兼容查询网址：https://www.caniuse.com/  CSS书写顺序 //显示属性 display list-style position float clear">
@@ -86,6 +86,8 @@
 		<nav class="header-nav">
 			<div class="social">
 				
+					<a class="github" target="_blank" href="https://github.com/wangzhongshun?tab=repositories" title="github"><i class="icon-github"></i></a>
+		        
 					<a class="weibo" target="_blank" href="https://weibo.com/u/2259506985?refer_flag=1005055013_&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 		        
 					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/lao-xian-sheng-30-29/activities" title="zhihu"><i class="icon-zhihu"></i></a>
@@ -140,6 +142,8 @@
 			<nav class="header-nav">
 				<div class="social">
 					
+						<a class="github" target="_blank" href="https://github.com/wangzhongshun?tab=repositories" title="github"><i class="icon-github"></i></a>
+			        
 						<a class="weibo" target="_blank" href="https://weibo.com/u/2259506985?refer_flag=1005055013_&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 			        
 						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/lao-xian-sheng-30-29/activities" title="zhihu"><i class="icon-zhihu"></i></a>
@@ -1146,7 +1150,79 @@ radial-gradient
 
 http://blog.csdn.net/gyq04551/article/details/55254359
 </code></pre><p><a href="https://www.douban.com/group/topic/95227323/" target="_blank" rel="noopener">https://www.douban.com/group/topic/95227323/</a></p>
-<p>-</p>
+<p>Sass篇(速度篇)</p>
+<pre><code>1、定义变量，通过$定义变量，变量名可以带(-)中划线和(_)下划线,但是他们代表的值是一样的,如果重复定义变量名，则后边的变量覆盖前面的变量
+2、支持css选择器进行嵌套，可以避免重复使用，主要可以：
+    选择器嵌套;
+    属性嵌套;
+3、具有css的@import特性
+    css的@import特性：允许在一个css文件中导入其他css,只有在加载到@import时，才会去下载，这会导致页面加载非常慢；
+    sass的@import特性：sass在编译时，生成css文件就会把相关的文件引入进来，无需发起额外的下载请求，并且不需要指定引入文件的全名，并且sass的@import可以写道css的样式里面，若想在sass中引入css文件，则只需把css文件的后缀改为scss即可
+    ex:
+        @import &quot;colors&quot;----------&gt;colors.scss
+        @import &quot;mixins&quot;----------&gt;mixins.scss
+        @import &quot;grid&quot;------------&gt;grid.scss
+        .blue-theme {@import &quot;blue-theme&quot;}
+4、Sass混合器
+    类似js的函数
+        不带参混合器声明和调用
+            ex:
+                @mixin mixName {        
+                    float: left;
+                    margin-left: 10px;
+                }
+                div {
+                    @include mixName;
+                }
+                //编译后：
+                div {
+                float: left;
+                margin-left: 10px;
+                }
+        带参数混合器的声明和调用
+            ex:
+                @mixin left($value: 10px) {
+                    float: left;
+                    margin-left: $value;
+                }
+                div {
+                    @include left(66px);
+                }
+                //编译后：
+                div {
+                    float: left;
+                    margin-left: 66px;
+                }
+        带多参数混合器的声明和调用
+            ex:
+            @mixin mixName($shadow...) {
+                box-shadow:$shadow;
+            }
+            .box{
+                 @include mixName(0 2px 2px rgba(0,0,0,.3),0 3px 3px rgba(0,0,0,.3),0 4px 4px rgba(0,0,0,.3));
+            }
+            //编译后：
+            .box {
+                 box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3), 0 3px 3px rgba(0, 0, 0, 0.3), 0 4px 4px rgba(0, 0, 0, 0.3);
+            }
+5、Sass继承
+    选择器继承可以让选择器继承另一选择器的所有样式，并联合声明，使用关键字@extends
+        ex:
+            .class1 {
+                border: 1px solid #333;
+            }
+            .class2 {
+                @extend .class1;
+                background-color: #999;
+            }
+            //编译后
+            .class1, .class2 {
+                border: 1px solid #333;
+            }
+            .class2 {
+                background-color: #999;
+            }
+</code></pre><p>-</p>
 
       
 
@@ -1443,7 +1519,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">H5</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1451,7 +1527,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">H5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1459,15 +1535,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1475,7 +1543,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1483,19 +1563,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1674,5 +1750,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
+  <script src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </html>

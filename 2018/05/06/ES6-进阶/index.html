@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:description" content="let 1、let的用法跟es5的var一样; 2、var会存在变量提升现象，let、const不会存在这种情况 3、只要块级作用域存在let、它声明的变量就会绑定这个区域，不在受外部的影响，形成封闭式作用域，言之，暂时性死区(简称TDZ),它的本质就是     只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用变量 4、let不允许">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-09T11:35:55.506Z">
+<meta property="og:updated_time" content="2018-12-05T05:16:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6+进阶">
 <meta name="twitter:description" content="let 1、let的用法跟es5的var一样; 2、var会存在变量提升现象，let、const不会存在这种情况 3、只要块级作用域存在let、它声明的变量就会绑定这个区域，不在受外部的影响，形成封闭式作用域，言之，暂时性死区(简称TDZ),它的本质就是     只要一进入当前作用域，所要使用的变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用变量 4、let不允许">
@@ -86,6 +86,8 @@
 		<nav class="header-nav">
 			<div class="social">
 				
+					<a class="github" target="_blank" href="https://github.com/wangzhongshun?tab=repositories" title="github"><i class="icon-github"></i></a>
+		        
 					<a class="weibo" target="_blank" href="https://weibo.com/u/2259506985?refer_flag=1005055013_&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 		        
 					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/lao-xian-sheng-30-29/activities" title="zhihu"><i class="icon-zhihu"></i></a>
@@ -140,6 +142,8 @@
 			<nav class="header-nav">
 				<div class="social">
 					
+						<a class="github" target="_blank" href="https://github.com/wangzhongshun?tab=repositories" title="github"><i class="icon-github"></i></a>
+			        
 						<a class="weibo" target="_blank" href="https://weibo.com/u/2259506985?refer_flag=1005055013_&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 			        
 						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/lao-xian-sheng-30-29/activities" title="zhihu"><i class="icon-zhihu"></i></a>
@@ -232,15 +236,33 @@
                 let tmp =....;
             }
         3、块级作用域不返回值，除非t是全局变量
-</code></pre><p> const<br>    1、const声明一个只读的常量<br>    2、const除以下两点 不同外，其他都相同<br>            const一旦声明，就必须立即初始化，不能留到以后赋值<br>            const一旦赋值，常量的值就不能改变</p>
-<pre><code>在声明引用性数据为常量时，const保存的是变量的指针，只要指针不变就不会保存
-    const array = [];
-    array.push(1);
-    arr = [];
-</code></pre><p> 顶层对象属性和全局变量<br>    顶层对象，在浏览器环境指的是window对象，在node指的是global对象。es5中，顶层对象的属性和全局变量是等价的<br>    顶层对象的属性与全局变量挂钩，被认为是 JavaScript 语言最大的设计败笔之一。</p>
-<pre><code>es6引入的let 、const和class声明的全局变量不再属于顶层对象的属性
-</code></pre><p> 变量的解构赋值<br>    es6允许按照一定的模式，从数组和对象赋值，对变量进行赋值，这称之为解构。<br>        es5一次声明多个变量<br>        var a =1,<br>            b =2,<br>            c =3,<br>            …..<br>            ;<br>        es6一次声明多个变量<br>        let[a,b,c,d] = [1,2,1,4];</p>
-<pre><code>1、本质上这种写法属于&quot;模式匹配&quot;，只要等号两边的模式相同，左边的变量就会被赋予相同的值
+</code></pre><p> const</p>
+<pre><code>1、const声明一个只读的常量
+2、const除以下两点 不同外，其他都相同
+        const一旦声明，就必须立即初始化，不能留到以后赋值
+        const一旦赋值，常量的值就不能改变
+
+            在声明引用性数据为常量时，const保存的是变量的指针，只要指针不变就不会保存
+                const array = [];
+                array.push(1);
+                arr = [];
+</code></pre><p> 顶层对象属性和全局变量</p>
+<pre><code>顶层对象，在浏览器环境指的是window对象，在node指的是global对象。es5中，顶层对象的属性和全局变量是等价的
+顶层对象的属性与全局变量挂钩，被认为是 JavaScript 语言最大的设计败笔之一。
+
+es6引入的let 、const和class声明的全局变量不再属于顶层对象的属性
+</code></pre><p> 变量的解构赋值</p>
+<pre><code>es6允许按照一定的模式，从数组和对象赋值，对变量进行赋值，这称之为解构。
+    es5一次声明多个变量
+    var a =1,
+        b =2,
+        c =3,
+        .....
+        ;
+    es6一次声明多个变量
+    let[a,b,c,d] = [1,2,1,4];
+
+1、本质上这种写法属于&quot;模式匹配&quot;，只要等号两边的模式相同，左边的变量就会被赋予相同的值
 
 2、如果结构不成功，变量的值就等于undefined
 
@@ -374,9 +396,41 @@ move(); // [0, 0]
     3、方便的让函数的参数和值对应起来
     4、提取json数据
     5、函数参数的默认值
-</code></pre><p> 严格模式(“use strict”)<br>    严格模式的限制<br>        1、变量必须声明后在使用<br>        2、函数的参数不能有同名属性，否则报错<br>        3、不能使用with语句<br>        4、不能对只读属性赋值，否则报错<br>        5、不能使用0表示8进制数，否则报错<br>        6、不能删除不可删除的属性，否则报错<br>        7、不能删除变量delete prop,会报错，只能删除属性delete global[prop]<br>        8、eval不会再它的外层作用域引入变量<br>        9、eval和arguments不能被重新赋值<br>        10、arguments不能自动反应函数参数的变化<br>        11、不能使用arguments.callee<br>        12、不能使用arguments.caller<br>        13、禁止this指向全局对象<br>        14、不能使用fn.caller和fn.arguments获取函数调用的堆栈<br>        15、增加了保留字（比如protected、static和interface）</p>
-<p> ES6数值的扩展<br>    es6在number对象上提供了Number.isFinite()和Number.isNaN()两个方法<br>    Number.isFinite()用来检查一个数值是否为有限的(finite)<br>    Number.isFinite(15); // true<br>    Number.isFinite(0.8); // true<br>    Number.isFinite(NaN); // false<br>    Number.isFinite(Infinity); // false<br>    Number.isFinite(-Infinity); // false<br>    Number.isFinite(‘foo’); // false<br>    Number.isFinite(‘15’); // false<br>    Number.isFinite(true); // false<br>    Number.isNaN()用来检查一个数值是否为NaN<br>    和全局函数 isNaN() 相比，该方法不会强制将参数转换成数字，只有在参数是真正的数字类型，且值为 NaN 的时候才会返回 true。<br>    Number.isNaN(NaN);        // true<br>    Number.isNaN(Number.NaN); // true<br>    Number.isNaN(0 / 0)       // true</p>
-<pre><code>// 下面这几个如果使用全局的 isNaN() 时，会返回 true。
+</code></pre><p> 严格模式(“use strict”)</p>
+<pre><code>严格模式的限制
+    1、变量必须声明后在使用
+    2、函数的参数不能有同名属性，否则报错
+    3、不能使用with语句
+    4、不能对只读属性赋值，否则报错
+    5、不能使用0表示8进制数，否则报错
+    6、不能删除不可删除的属性，否则报错
+    7、不能删除变量delete prop,会报错，只能删除属性delete global[prop]
+    8、eval不会再它的外层作用域引入变量
+    9、eval和arguments不能被重新赋值
+    10、arguments不能自动反应函数参数的变化
+    11、不能使用arguments.callee
+    12、不能使用arguments.caller
+    13、禁止this指向全局对象
+    14、不能使用fn.caller和fn.arguments获取函数调用的堆栈
+    15、增加了保留字（比如protected、static和interface）
+</code></pre><p> ES6数值的扩展</p>
+<pre><code>es6在number对象上提供了Number.isFinite()和Number.isNaN()两个方法
+Number.isFinite()用来检查一个数值是否为有限的(finite)
+Number.isFinite(15); // true
+Number.isFinite(0.8); // true
+Number.isFinite(NaN); // false
+Number.isFinite(Infinity); // false
+Number.isFinite(-Infinity); // false
+Number.isFinite(&apos;foo&apos;); // false
+Number.isFinite(&apos;15&apos;); // false
+Number.isFinite(true); // false
+Number.isNaN()用来检查一个数值是否为NaN
+和全局函数 isNaN() 相比，该方法不会强制将参数转换成数字，只有在参数是真正的数字类型，且值为 NaN 的时候才会返回 true。
+Number.isNaN(NaN);        // true
+Number.isNaN(Number.NaN); // true
+Number.isNaN(0 / 0)       // true
+
+// 下面这几个如果使用全局的 isNaN() 时，会返回 true。
 Number.isNaN(&quot;NaN&quot;);      // false，字符串 &quot;NaN&quot; 不会被隐式转换成数字 NaN。
 Number.isNaN(undefined);  // false
 Number.isNaN({});         // false
@@ -573,8 +627,10 @@ padStart()、padEnd()
     f(1) // [1, 5, undefined]
     f(1, ,2) // 报错
     f(1, undefined, 2) // [1, 5, 2]
-</code></pre><p>函数的length属性<br>        指定了默认值以后，函数的length属性，将返回没有指定默认值的参数个数。也就是说，指定了默认值后，length属性将失真。</p>
-<pre><code>(function (a) {}).length // 1
+</code></pre><p>函数的length属性</p>
+<pre><code>指定了默认值以后，函数的length属性，将返回没有指定默认值的参数个数。也就是说，指定了默认值后，length属性将失真。
+
+(function (a) {}).length // 1
 (function (a = 5) {}).length // 0
 (function (a, b, c = 5) {}).length // 2
 fn.length 返回形参个数
@@ -669,8 +725,11 @@ function f(a, ...b, c) {
 </code></pre><p>严格模式<br>    从 ES5 开始，函数内部可以设定为严格模式。</p>
 <pre><code>ES2016 做了一点修改，规定只要函数参数使用了默认值、解构赋值、或者扩展运算符，那么函数内部就不能显式设定为严格模式，否则会报错
 </code></pre><p>函数的name属性</p>
-<p>   返回函数名<br>   function foo() {}<br>   foo.name // “foo”<br>   var f = function () {}; // “f”</p>
-<p>箭头函数</p>
+<pre><code>返回函数名
+function foo() {}
+foo.name // &quot;foo&quot;
+var f = function () {}; // &quot;f&quot;
+</code></pre><p>箭头函数</p>
 <pre><code>Es6允许使用箭头(=&gt;)定义函数
 var f = v =&gt; v;
 相当于
@@ -727,9 +786,18 @@ function foo() {
 //转换后的 ES5 版本清楚地说明了，箭头函数里面根本没有自己的this，而是引用外层的this。
 由于箭头函数没有自己的this，所以当然也就不能用call()、apply()、bind()这些方法去改变this的指向。
 </code></pre><p>函数参数的尾逗号</p>
-<p>   ES2017 允许函数的最后一个参数有尾逗号（trailing comma）。<br>   这样的规定也使得，函数参数与数组和对象的尾逗号规则，保持一致了。<br>   function clownsEverywhere(<br>     param1,<br>     param2,<br>   ) { /<em> … </em>/ }</p>
-<p>   clownsEverywhere(<br>     ‘foo’,<br>     ‘bar’,<br>   );</p>
-<p>数组的扩展</p>
+<pre><code>ES2017 允许函数的最后一个参数有尾逗号（trailing comma）。
+这样的规定也使得，函数参数与数组和对象的尾逗号规则，保持一致了。
+function clownsEverywhere(
+    param1,
+    param2,
+) { /* ... */ }
+
+clownsEverywhere(
+    &apos;foo&apos;,
+    &apos;bar&apos;,
+);
+</code></pre><p>数组的扩展</p>
 <pre><code>扩展运算符
     扩展运算符是三个点(...)。它好比rest参数的逆运算，将一个素组转为用逗号分割的参数序列
     console.log(...[1,2,3])
@@ -847,8 +915,15 @@ function foo() {
 
           let nodeList = document.querySelectorAll(&apos;div&apos;);
           let array = [...nodeList];
-</code></pre><p> Array.form()<br>    Array.form()将两类对象转为真正的数组<br>        // NodeList对象(节点对象)<br>        let ps = document.querySelectorAll(‘p’);<br>        Array.from(ps).forEach(function (p) {<br>          console.log(p);<br>        });</p>
-<pre><code>// arguments对象
+</code></pre><p> Array.from()</p>
+<pre><code>Array.from()将类数组转为真正的数组
+// NodeList对象(节点对象)
+let ps = document.querySelectorAll(&apos;p&apos;);
+Array.from(ps).forEach(function (p) {
+  console.log(p);
+});
+
+// arguments对象
 function foo() {
   var args = Array.from(arguments);
   // ...
@@ -871,8 +946,11 @@ Array(3, 11, 8) // [3, 11, 8]
 Array.of(3, 11, 8) // [3,11,8]
 Array.of(3) // [3]
 Array.of(3).length // 1
-</code></pre><p>数组实例的copyWithin()<br>    copayWithin()，在当前数组的内部，将指定位置的成员复制到其他位置(会覆盖原有成员)，然后返回当前数组，也就是说，使用这个方法会修改当前数组</p>
-<p>Es6之Class和extends</p>
+
+数组实例的copyWithin()
+
+copayWithin()，在当前数组的内部，将指定位置的成员复制到其他位置(会覆盖原有成员)，然后返回当前数组，也就是说，使用这个方法会修改当前数组
+</code></pre><p>Es6之Class和extends</p>
 <pre><code>es5的写法
     方法一:
         function Person(name, age){
@@ -1084,9 +1162,137 @@ Array.of(3).length // 1
                     //调用
 
                     let stu1 = new Student(&apos;Strive&apos;,&apos;逃学&apos;);
-                    console.log(stu1.showName());
-</code></pre><p>es6之Promise</p>
+                    console.log(stu1.showName()); 
+</code></pre><p>es6之对象新增</p>
+<pre><code>json
+对象简介语法(相当有用)
 
+let json = {
+    a:1,
+    b:2,
+    showA:function(){return this.a}
+    showB:function(){return this.b}
+}
+
+let json ={
+    a,
+    b,
+    showA(){  //个人建议: 一定注意，不要用箭头函数
+    },
+    showB(){}
+}
+
+
+new Vuex.Store({
+    state,
+    mutation,
+    types,
+    actions
+});
+
+new Vue({router,App,vuex})
+object.is()用来比较两个值是否相等
+Object.is(&apos;a&apos;,&apos;a&apos;)
+比较两个东西相等  ==  === 
+Object.is(+0,-0);
+Object.assign():用来合并对象
+let 新的对象 = Object.assign(目标对象，source1，source2)
+
+例：
+    function ajax(options){  //用户传
+        let defaults={
+            type:&apos;get&apos;,
+            header:
+            data:{}
+            ....
+        };
+
+        let json = Object.assign({}, defaults, options);
+        .....
+    }
+
+用途:
+    1. 复制一个对象
+    2. 合并参数
+
+Object.keys();//获取对象的key
+Object.entries();//获取对象的entries
+Object.values();//获取对象的value
+let {keys, values, entries} = Object;let {keys, values, entries} = Object;
+</code></pre><p>es6之Promise </p>
+<pre><code>Promise,承诺，许诺的意思
+作用：解决异步回调函数问题
+传统方式：大部分用回调函数，事件
+语法：
+    let promise = new Promise(function(resolve,reject){
+        //resolve,成功调用
+        //失败调用
+    })
+    promise.then(res =&gt;{},err =&gt;{})
+    promise.catch(err =&gt;{})
+
+    常用方法：
+    new Promise().then(res =&gt;{}).catch(err =&gt;{})
+    Promise.resolve(&quot;aa&quot;) //将现有的东西转换成一个promise对象。resolve状态，成功状态。
+    相当于
+        new Promise(resolve =&gt;{
+            resolve(&quot;aa&quot;);
+        })
+    Promise.reject(&apos;aaa&apos;); //将先有东西转换成一个promise对象。 reject 状态，失败状态。
+    相当于
+        new Promise(reject =&gt;{
+            reject(&apos;aaa&apos;)
+        })
+    Promise.all([p1,p2,p3]):把promise打包，打包完还是一个promise对象，必须确保，所有的promise都是resolve状态(成功状态)；
+    若有错误，则返回第一个错误
+    Promise.race([p1,p2,p3]);若有一个成功就返回成功
+</code></pre><p>es6之模块化</p>
+<pre><code>js不支持模块化
+    ruby require
+    python import
+在es6之前，社区制定一套前端规范
+    Commonjs   主要服务端nodejs  require(&apos;http&apos;);
+    Amd        requirejs   curljs
+    Cmd        seajs
+ES6出来同意客户端和服务端模块规范
+    import {xx} ddd
+
+模块化(要放到服务器环境)
+    1、如何定义模块？
+        export  东西
+        export const a =12;
+        export{
+            a as aaa,
+            b as banana
+        }
+    2、如何实用模块？
+        import
+        import &apos;./modules/1.js&apos;; 
+        import {a as a, banana, c} from &apos;./modules/2.js&apos;
+        import * as modTwo from &apos;./modules/2.js&apos;;
+使用模块
+    &lt;script type=&quot;module&quot;&gt;&lt;/script&gt;
+
+import的特点
+    a).import 可以是相对路径，也可以是绝对路径
+       import &apos;https://code.jquery.com/jquery-3.3.1.js&apos;;
+    b)import模块只导入一次，无论你引入多少次
+    c)import &apos;./modules/1.js&apos;;  如果这么用，相当于引入文件
+    d)有提升效果，import会自动提升到顶部，首先执行
+    e)导出去模块内容，如果里面有定时器修改，外面也会改动，不想Common规范缓存
+
+* import() 类似node里面的require,可以动态引入，默认import语法不能写到if之类里面，返回值，是个promise对象
+
+import(&apos;./modules/1.js&apos;).then(res=&gt;{
+        console.log(res.a+res.b);
+    });
+
+优点:
+    1. 按需加载
+    2. 可以写if中
+    3. 路径也可以动态
+    Promise.all([])
+</code></pre>
       
 
       
@@ -1382,7 +1588,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">H5</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1390,7 +1596,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">H5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1398,15 +1604,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1414,7 +1612,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1422,19 +1632,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1613,5 +1819,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
+  <script src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </html>

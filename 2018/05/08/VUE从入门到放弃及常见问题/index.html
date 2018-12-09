@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:description" content="前言 围绕vue.js的一系列工具     vue.js核心,不解释     VueRouter2 实现路由组织工具     webpack项目打包以及编译工具     nodejs前端开发环境     npm前端包管理器     axiso ajax接口请求工具     sass-loader和node-sass css预处理     element基于vue的后台组件库     iview基于">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-09T11:39:35.677Z">
+<meta property="og:updated_time" content="2018-12-05T09:46:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VUE从入门到放弃及常见问题">
 <meta name="twitter:description" content="前言 围绕vue.js的一系列工具     vue.js核心,不解释     VueRouter2 实现路由组织工具     webpack项目打包以及编译工具     nodejs前端开发环境     npm前端包管理器     axiso ajax接口请求工具     sass-loader和node-sass css预处理     element基于vue的后台组件库     iview基于">
@@ -86,6 +86,8 @@
 		<nav class="header-nav">
 			<div class="social">
 				
+					<a class="github" target="_blank" href="https://github.com/wangzhongshun?tab=repositories" title="github"><i class="icon-github"></i></a>
+		        
 					<a class="weibo" target="_blank" href="https://weibo.com/u/2259506985?refer_flag=1005055013_&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 		        
 					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/lao-xian-sheng-30-29/activities" title="zhihu"><i class="icon-zhihu"></i></a>
@@ -140,6 +142,8 @@
 			<nav class="header-nav">
 				<div class="social">
 					
+						<a class="github" target="_blank" href="https://github.com/wangzhongshun?tab=repositories" title="github"><i class="icon-github"></i></a>
+			        
 						<a class="weibo" target="_blank" href="https://weibo.com/u/2259506985?refer_flag=1005055013_&is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 			        
 						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/lao-xian-sheng-30-29/activities" title="zhihu"><i class="icon-zhihu"></i></a>
@@ -888,11 +892,70 @@ watched它检测的值是谁，然后相应的改变其他的值
         data必须为一个函数
 父组件向子组件传递数据
    父级组件绑定传递的参数,使用props来接受参数
+   除了一般参数，还可以用来传递函数，在子组件接受；
+   参数多时，可以传递一个对象，但是子组件不可该表props的值(所谓的单向数据流)
+
+   单向数据流可以在data里重新定义一个属性进行过度，这样就可以修改了
 子组件向父组件传值
     使用$emit来触发一个自定义事件，并传递参数
     子组件自定义事件，this.$emit(&quot;事件名&quot;,&quot;参数&quot;)
     父组件用该事件接受
-
+    ex:
+        父组件接受子组件传值
+            &lt;template&gt;
+                &lt;GetBanks :isShow = &quot;isShow&quot;  @on-isShow-change=&quot;onIsShowChange&quot; @getbankinfo=&quot;getbank&quot;&gt;&lt;/GetBanks&gt;
+            &lt;/template&gt;
+            import GetBanks from &quot;../common/GetBanks&quot;
+            export default {
+                name: &quot;bingmembercard&quot;,
+                components:{GetBanks},
+                data(){
+                    return{
+                        isShow:false,
+                        bankName:&apos;&apos;,
+                        bankCode:&apos;&apos;,
+                    }
+                },
+                methods:{
+                    getbank(bankname,bankcode){
+                        this.bankName = bankname;
+                        this.bankCode = bankcode;
+                    },
+                    onIsShowChange(val){
+                        this.isShow = val;
+                    },
+                },
+            }
+        子组件触发父组件事件
+            &lt;template&gt;
+                &lt;div @click=&quot;select&quot;&gt;&lt;/div&gt;
+            &lt;/template&gt;
+            export default {
+            name: &quot;getbanks&quot;,
+            props:[&quot;isShow&quot;],
+            data(){
+                return{
+                    flag:this.isShow,
+                    bankName:&quot;&quot;,
+                    bankCode:&quot;&quot;,
+                }
+            },
+            methods:{
+                select(e){
+                    this.bankName = e.target.firstChild.textContent;
+                    this.bankCode = e.target.getAttribute(&quot;data-Code&quot;);
+                    console.log(&quot;获取银行名称：&quot;+this.bankName);
+                    console.log(&quot;获取银行编码：&quot;+this.bankCode);
+                    this.$emit(&quot;getbankinfo&quot;, this.bankName,this.bankCode);
+                    this.flag = false;
+                }
+            },
+            watch: {
+                flag(val){
+                    this.$emit(&quot;on-isShow-change&quot;,val);
+                },
+            },
+        }
 各组件之间传值的方法
     1、路由传参
         使用params,此方法在刷新页面的时候，参数会丢失，要想不丢失请使用query,另外在使用这两个参数时要注意，路由跳转应该使用name,通过path来跳转是接受不到参数的
@@ -1197,7 +1260,194 @@ vue在history模式下，刷新页面会404
     原因：安卓低版本手机是不支持es6语法的，还有少部分的安卓手机不支持小部分的es5语法，因为vue使用的是es6语法，所以会导致页面渲染问题
     解决：在html页面上引入&lt;script src=&quot;https://cdn.bootcss.com/babel-polyfill/6.23.0/polyfill.min.js&quot;&gt;&lt;/script&gt;
     进行es6转es5
-</code></pre>
+</code></pre><p>vue插槽的使用</p>
+<pre><code>单个插槽
+    无name属性
+    在组件中只可以使用一次
+    父组件提供样式和内容
+    &lt;slot&gt;&lt;/slot&gt;
+
+    ex:
+        父组件
+            &lt;!-- 父组件--&gt;
+            &lt;template&gt;
+                &lt;div class=&quot;father&quot;&gt;
+                &lt;h3&gt;这里是父组件&lt;/h3&gt;
+                &lt;chlid&gt;
+                    &lt;div class=&quot;tmp1&quot;&gt;
+                        &lt;span&gt;Leaf 1&lt;/span&gt;
+                        &lt;span&gt;Leaf 2&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/child&gt;
+                &lt;/div&gt;
+            &lt;/template&gt;
+            &lt;script&gt;
+            import Child from &apos;@/components/child&apos;
+            export default {
+                components:{
+                    child:child
+                }
+            }
+            &lt;/script&gt;
+            &lt;style&gt;
+            .tmp1 span{
+                width: 50px;
+                height: 50px;
+                border:  1px solid black;
+            }
+            &lt;/style&gt;
+        子组件
+            &lt;!--子组件--&gt;
+            &lt;template&gt;
+                &lt;div&gt;
+                    &lt;slot&gt;&lt;/slot&gt;
+                    &lt;h2&gt;child子组件部分&lt;/h2&gt;
+                &lt;/div&gt;
+            &lt;/template&gt;
+具名插槽
+    有name属性
+    在组件中可以使用N次
+    父组件通过html模板上的slot属性关联具名插槽
+    没有slot属性的html模板默认关联匿名模板
+    父组件提供样式和内容
+    &lt;slot name=&quot;###&quot;&gt;&lt;/slot&gt;
+
+    ex:
+        &lt;!--父组件--&gt;
+        &lt;template&gt;
+            &lt;div class=&quot;father&quot;&gt;
+            &lt;h3&gt;这里是父组件&lt;/h3&gt;
+            &lt;chlid&gt;
+                &lt;div class=&quot;tmp1&quot; slot=&quot;up&quot;&gt;
+                    &lt;span&gt;Leaf 1&lt;/span&gt;
+                    &lt;span&gt;Leaf 2&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;div class=&quot;tmp1&quot; slot=&quot;down&quot;&gt;
+                    &lt;span&gt;Leaf 6&lt;/span&gt;
+                    &lt;span&gt;Leaf 7&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/child&gt;
+            &lt;/div&gt;
+        &lt;/template&gt;
+        &lt;script&gt;
+        import Child from &apos;@/components/child&apos;
+        export default {
+            components:{
+                child:child
+            }
+        }
+        &lt;/script&gt;
+        &lt;style&gt;
+        .tmp1 span{
+            width: 50px;
+            height: 50px;
+            border:  1px solid black;
+        }
+        &lt;/style&gt;
+        &lt;!--子组件--&gt;
+        &lt;template&gt;
+            &lt;div&gt;
+                &lt;slot name=&quot;up&quot;&gt;&lt;/slot&gt;
+                &lt;h2&gt;chlid子组件部分&lt;/h2&gt;
+                &lt;slot name=&quot;down&quot;&gt;&lt;/slot&gt;
+            &lt;/div&gt;
+        &lt;/template&gt;
+作用域插槽
+    父组件只提供样式，子组件提供内容
+    在slot上面绑定数据
+    子组件的值可以传给父组件使用
+    父组件展示子组件数据有3种方式：flex显示、列表显示、直接显示
+    使用slot-scope必须使用template
+    scope返回的值是slot标签上返回的所有属性值，并且是一个对象的形式保存起来
+    slot有两个属性，一个row,另一个是index
+    &lt;!--父组件--&gt;
+    &lt;template&gt;
+        &lt;div class=&quot;father&quot;&gt;
+        &lt;h3&gt;这里是父组件&lt;/h3&gt;
+        &lt;chlid&gt;
+            &lt;!-- 第一次使用：用flex展示数据 --&gt;
+                &lt;template slot-scope=&quot;user&quot;&gt;
+                    &lt;div class=&quot;tmp1&quot;&gt;
+                        &lt;span v-for=&quot;(item,index) in user.data&quot; :key=&quot;index&quot;&gt;{{item}}&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
+                &lt;!-- 第二次使用：用列表展示数据 --&gt;
+                &lt;template slot-scope=&quot;user&quot;&gt;
+                    &lt;ul&gt;
+                        &lt;li v-for=&quot;(item,index) in user.data&quot; :key=&quot;index&quot;&gt;{{item}}&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/template&gt;
+                &lt;!-- 第三次使用：直接显示 --&gt;
+                &lt;template slot-scope=&quot;user&quot;&gt;
+                {{user.data}}
+                &lt;/template&gt;
+            &lt;/child&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+    &lt;script&gt;
+        import Child from &apos;@/components/child&apos;
+        export default {
+            components:{
+                child:child
+            }
+        }
+    &lt;/script&gt;
+    &lt;style&gt;
+        .tmp1 span{
+            width: 50px;
+            height: 50px;
+            border:  1px solid black;
+        }
+    &lt;/style&gt;
+    &lt;!--子组件--&gt;
+    &lt;template&gt;
+        &lt;div&gt;
+            &lt;h2&gt;chlid子组件部分&lt;/h2&gt;
+            &lt;slot :data=&quot;data&quot;&gt;&lt;/slot&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+    &lt;script&gt;
+    export default {
+        props: [&quot;message&quot;],
+        data () {
+            return {
+                data: [&apos;&apos;小庄&apos;,&apos;CC&apos;,&apos;小张&apos;,&apos;小林&apos;,&apos;Leaf&apos;,&apos;Bob&apos;]
+            }
+        }
+    }
+    &lt;/script&gt;
+</code></pre><p>vue刷新当前页面</p>
+<pre><code>在App.vue,声明reload方法，控制router-view的显示或隐藏，从而控制页面的再次加载。
+&lt;script&gt;
+export default {
+    name: &apos;App&apos;,
+    provide () {
+        return {
+            reload: this.reload
+        }
+    },
+    data () {
+        return {
+        isRouterAlive: true
+        }
+    },
+    methods: {
+        reload () {
+            this.isRouterAlive = false
+            this.$nextTick(function () {
+                this.isRouterAlive = true
+            })
+        }
+    }
+}
+&lt;/script&gt;
+
+在需要用到刷新的页面。在页面注入App.vue组件提供（provide）的 reload 依赖，在逻辑完成之后（删除或添加...）,直接this.reload()调用，即可刷新当前页面。
+注入reload方法
+ inject:[&apos;reload();&apos;]
+ 使用this.reload();
+</code></pre><p>vue给路由添加过渡动画<br>    <transition name="transitionRouter"><br>        <router-view></router-view><br>    </transition><br>    <style><br>        .transitionRouter-enter-active,.transitionRouter-leave-active {<br>            transition: all 0.4s;<br>        }<br>        .transitionRouter-enter,.transitionRouter-leave{<br>            transform: translate3d(100%, 0, 0);<br>        }<br>    </style><br>vue上拉加载，下拉刷新demo<br>    组件：<br>        <template><br>            <div><br>                <slot name="list"></slot><br>                <div class="list-donetip" v-show="!isLoading && isDone"><br>                    <slot>没有更多数据了</slot><br>                </div><br>                <div class="list-loading" v-show="isLoading"><br>                    <slot>加载中</slot><br>                </div><br>            </div><br>        </template><br>        <script type="text/babel"><br>            export default {<br>                data() {<br>                    return {<br>                        isLoading: false,<br>                        isDone: false,<br>                    }<br>                },<br>                props: {<br>                    onInfinite: {<br>                        type: Function,<br>                        required: true<br>                    },<br>                    distance : {<br>                        type : Number,<br>                        default：100<br>                    }<br>                },<br>                methods: {<br>                    init() {<br>                        this.$on(‘loadedDone’, () =&gt; {<br>                            this.isLoading = false;<br>                            this.isDone = true;<br>                        });<br>                        this.$on(‘finishLoad’, () =&gt; {<br>                            this.isLoading = false;<br>                        });<br>                    },<br>                    scrollHandler() {<br>                        if (this.isLoading || this.isDone) return;<br>                        let baseHeight = this.scrollview == window ? document.body.offsetHeight : this.scrollview.offsetHeight<br>                        let moreHeight = this.scrollview == window ? document.body.scrollHeight : this.scrollview.scrollHeight;<br>                        let scrollTop = this.scrollview == window ? document.body.scrollTop : this.scrollview.scrollTop<br>                        if (baseHeight + scrollTop + this.distance &gt; moreHeight) {<br>                            this.isLoading = true;<br>                            this.onInfinite()<br>                        }<br>                    }<br>                },<br>                mounted() {<br>                    this.scrollview = window<br>                    this.scrollview.addEventListener(‘scroll’, this.scrollHandler, false);<br>                    this.$nextTick(this.init);<br>                },<br>            }<br>        </script><br>    父组件调用：<br>        <template><br>            <div><br>                <infinite-scroll :on-infinite="loadData" ref="infinite"><br>                    <ul slot="list"><br>                        <li v-for="n in Number"></li><br>                    </ul><br>                </infinite-scroll><br>            </div><br>        </template><br>        <script type="text/babel"><br>            import ‘InfiniteScroll’ from ‘…….’<br>            export default {<br>                data () {<br>                return {<br>                    Number : 10<br>                }<br>                },<br>                methods : {<br>                loadData () {<br>                    setTimeout(()=&gt;{<br>                        this.Number = 20<br>                        this.$refs.infinite.$emit(‘loadDone’)<br>                    },1000)<br>                }<br>                }<br>            }<br>        </script></p>
+
       
 
       
@@ -1493,7 +1743,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">H5</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1501,7 +1751,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">H5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1509,15 +1759,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1525,7 +1767,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1533,19 +1787,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1724,5 +1974,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
+  <script src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </html>
