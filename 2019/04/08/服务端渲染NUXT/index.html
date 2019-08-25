@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://wangzhongshun.com">
-  <title>message | 个人笔记整理与收集</title>
+  <title>服务渲染Nuxt | 个人笔记整理与收集</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="有事请留言">
-<meta property="og:type" content="website">
-<meta property="og:title" content="message">
-<meta property="og:url" content="https://wangzhongshun.com/message/index.html">
+  <meta name="description" content="服务端渲染(SSR) 为什要服务端渲染？     由于近几年前后端分离的理念被大规模应用，前后端进行了拆分，并且单页应用得到了广泛应用（Angular、React、Vue 前端三大框架）, 单页应用随之而来的seo问题，不利于搜索引擎爬虫抓取页面主要内容，影响网站收录与网站排名。还有就是首屏加载巨慢，影响用户体验。为了 解决这些问题，服务端渲染又开始随之火热起来。">
+<meta name="keywords" content="SSR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="服务渲染Nuxt">
+<meta property="og:url" content="https://wangzhongshun.com/2019/04/08/服务端渲染NUXT/index.html">
 <meta property="og:site_name" content="个人笔记整理与收集">
-<meta property="og:description" content="有事请留言">
+<meta property="og:description" content="服务端渲染(SSR) 为什要服务端渲染？     由于近几年前后端分离的理念被大规模应用，前后端进行了拆分，并且单页应用得到了广泛应用（Angular、React、Vue 前端三大框架）, 单页应用随之而来的seo问题，不利于搜索引擎爬虫抓取页面主要内容，影响网站收录与网站排名。还有就是首屏加载巨慢，影响用户体验。为了 解决这些问题，服务端渲染又开始随之火热起来。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-22T23:07:00.750Z">
+<meta property="og:image" content="https://wangzhongshun.com/2019/04/08/服务端渲染NUXT/nuxt.png">
+<meta property="og:updated_time" content="2019-08-25T05:05:16.055Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="message">
-<meta name="twitter:description" content="有事请留言">
+<meta name="twitter:title" content="服务渲染Nuxt">
+<meta name="twitter:description" content="服务端渲染(SSR) 为什要服务端渲染？     由于近几年前后端分离的理念被大规模应用，前后端进行了拆分，并且单页应用得到了广泛应用（Angular、React、Vue 前端三大框架）, 单页应用随之而来的seo问题，不利于搜索引擎爬虫抓取页面主要内容，影响网站收录与网站排名。还有就是首屏加载巨慢，影响用户体验。为了 解决这些问题，服务端渲染又开始随之火热起来。">
+<meta name="twitter:image" content="https://wangzhongshun.com/2019/04/08/服务端渲染NUXT/nuxt.png">
   
     <link rel="alternative" href="/atom.xml" title="个人笔记整理与收集" type="application/atom+xml">
   
@@ -177,28 +180,159 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-服务端渲染NUXT" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      message
+      服务渲染Nuxt
     </h1>
   
 
         
-        <a href="/message/index.html" class="archive-article-date">
-  	<time datetime="2016-09-17T05:21:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-17</time>
+        <a href="/2019/04/08/服务端渲染NUXT/" class="archive-article-date">
+  	<time datetime="2019-04-08T08:16:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>有事请留言</p>
+        <p>服务端渲染(SSR)</p>
+<pre><code>为什要服务端渲染？
+    由于近几年前后端分离的理念被大规模应用，前后端进行了拆分，并且单页应用得到了广泛应用（Angular、React、Vue 前端三大框架）,
+单页应用随之而来的seo问题，不利于搜索引擎爬虫抓取页面主要内容，影响网站收录与网站排名。还有就是首屏加载巨慢，影响用户体验。为了
+解决这些问题，服务端渲染又开始随之火热起来。
+</code></pre><a id="more"></a>   
+<p>vue的服务端渲染</p>
+<pre><code>安装
+npm install vue vue-server-renderer --save
+npm install express --save
 
+const Vue = require(&apos;vue&apos;)
+const server = require(&apos;express&apos;)()
+const renderer = require(&apos;vue-server-renderer&apos;).createRenderer()
+server.get(&apos;*&apos;, (req, res) =&gt; {
+     const app = new Vue({
+        data: {
+          url: req.url
+        },
+        template: `&lt;div&gt;访问的 URL 是： {{ url }}&lt;/div&gt;`
+    })
+    renderer.renderToString(app, (err, html) =&gt; {
+        if (err) {
+          res.status(500).end(&apos;Internal Server Error&apos;)
+          return
+        }
+        res.end(`
+              &lt;!DOCTYPE html&gt;
+              &lt;html lang=&quot;en&quot;&gt;
+                &lt;head&gt;&lt;title&gt;Hello&lt;/title&gt;&lt;/head&gt;
+                &lt;body&gt;${html}&lt;/body&gt;
+              &lt;/html&gt;
+            `)
+        })
+    })
+server.listen(8080)
+</code></pre><p>服务端渲染之Nuxt</p>
+<pre><code>创建
+  npm版本5.2.0
+  npx create-nuxt-app &lt;项目名&gt;
+
+生命周期
+  Vue的生命周期全都跑在客户端(浏览器)，而Nuxt的生命周期有些在服务端(Node)，客户端，甚至两边都在:
+
+  nuxtServeinit------服务器初始化
+  middleware---------中间件运行
+  validate()---------校验参数
+  asyncData() &amp; fetch()--------异步数据处理
+  render------------客户端处理
+  然后在进行vue的生命周期
+</code></pre><p><img src="/2019/04/08/服务端渲染NUXT/nuxt.png" alt="NUXT生命周期"></p>
+<pre><code>1、红框、黄框内的周期都不存在Window对象
+2、不支持keep-alive
+</code></pre><p>配置插件</p>
+<pre><code>example(以swiper为例)
+    在plugins下新建swiper.js
+        import Vue from &apos;vue&apos;
+        import VueAwesomeSwiper from &apos;vue-awesome-swiper&apos;
+        Vue.use(VueAwesomeSwiper, /* { default global options } */)
+    nuxt.config.js
+          css: [{
+                src:&quot;swiper/dist/css/swiper.css&quot;
+            }],
+          plugins: [{
+                src:&quot;~/plugins/swiper.js&quot;,ssr:false
+            }],
+</code></pre><p>配置跨域处理</p>
+<pre><code>使用Axios，并配置全局拦截器，处理跨域
+npm install @nuxtjs/axios @nuxtjs/proxy --save
+nuxt.config.js
+      module.exports = {
+      modules: [ &apos;@nuxtjs/axios&apos; ], // 不需要加入@nuxtjs/proxy
+      axios: {
+        proxy: true,
+        prefix: &apos;/api&apos;, // baseURL
+        credentials: true,
+      },
+      proxy: {
+        &apos;/api/&apos;: {
+          target: &apos;http://127.0.0.1:2001&apos;, // 代理地址
+          changeOrigin: true,
+          pathRewrite: {
+            &apos;^/api&apos;: &apos;&apos;
+          },
+        },
+      }
+    }
+
+ 组件中使用
+
+    &lt;script&gt;
+        export default {
+            fetch ({ app }) {
+                console.log(app.$axios)
+              },
+              asyncData ({ app }) {
+                console.log(app.$axios)
+              },
+              created () {
+                console.log(this.$axios)
+              }
+        }
+    &lt;/script&gt;
+</code></pre><p>如果要设置全局拦截器，那么就要新建一个/plugins/axios.js</p>
+<pre><code>export default function (app) {
+  let axios = app.$axios; 
+ // 基本配置
+  axios.defaults.timeout = 10000
+  axios.defaults.headers.post[&apos;Content-Type&apos;] = &apos;application/x-www-form-urlencoded&apos;
+
+  // 请求回调
+  axios.onRequest(config =&gt; {})
+
+  // 返回回调
+  axios.onResponse(res =&gt; {})
+
+  // 错误回调
+  axios.onError(error =&gt; {})
+}
+
+然后nuxt.config.js
+
+ plugins = [
+    {
+      src: &quot;~/plugins/axios&quot;,
+      ssr: false
+    },
+  ]
+</code></pre><p>pm2部署</p>
+<pre><code>npm install pm2 -g
+npm run build
+pm2 start ./node_modules/nuxt/bin/nuxt-start
+</code></pre>
       
 
       
@@ -237,6 +371,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SSR</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -287,7 +432,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://wangzhongshun.com/message/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://wangzhongshun.com/2019/04/08/服务端渲染NUXT/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -299,6 +444,16 @@
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/03/node服务端框架egg/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">egg</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -390,7 +545,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
