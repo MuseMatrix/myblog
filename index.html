@@ -175,85 +175,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-服务端渲染NUXT" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/08/服务端渲染NUXT/">服务渲染Nuxt</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/08/服务端渲染NUXT/" class="archive-article-date">
-  	<time datetime="2019-04-08T08:16:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>服务端渲染(SSR)</p>
-<pre><code>为什要服务端渲染？
-    由于近几年前后端分离的理念被大规模应用，前后端进行了拆分，并且单页应用得到了广泛应用（Angular、React、Vue 前端三大框架）,
-单页应用随之而来的seo问题，不利于搜索引擎爬虫抓取页面主要内容，影响网站收录与网站排名。还有就是首屏加载巨慢，影响用户体验。为了
-解决这些问题，服务端渲染又开始随之火热起来。
-</code></pre>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SSR</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/08/服务端渲染NUXT/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-node服务端框架egg" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -428,35 +349,29 @@ koa中间件的执行流程
 
 
   
-    <article id="post-Node-Resultful学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-js异步解决方案-generator-async-await" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/27/Node-Resultful学习/">Node Resultful学习</a>
+      <a class="article-title" href="/2018/12/25/js异步解决方案-generator-async-await/">js异步解决方案(generator&amp;async&amp;await)</a>
     </h1>
   
 
         
-        <a href="/2018/12/27/Node-Resultful学习/" class="archive-article-date">
-  	<time datetime="2018-12-27T06:07:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-27</time>
+        <a href="/2018/12/25/js异步解决方案-generator-async-await/" class="archive-article-date">
+  	<time datetime="2018-12-25T12:43:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code>Rest即表叔性状态传递
-表叔性状态转移是一组架构约束条件和原则，满足这些约束条件和原则的应用程序设计就是RestFul
-
-Rest基本架构的四个http方法：
-    get-----用于获取数据
-    put-----用于更新或添加数据
-    delete-----用于删除数据
-    post------用于添加数据
-</code></pre>
+        <p>以nodejs读取文件为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;)</span><br><span class="line">const readFile = function(filename)&#123;</span><br><span class="line">    return new Promise(function(res,rej)&#123;</span><br><span class="line">        fs.readFile(filename,(err,data) =&gt;&#123;</span><br><span class="line">            if(err)rej(err);</span><br><span class="line">            res(data);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
       
 
       
@@ -469,7 +384,7 @@ Rest基本架构的四个http方法：
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">restful</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
         		</li>
       		
 		</ul>
@@ -479,7 +394,7 @@ Rest基本架构的四个http方法：
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/27/Node-Resultful学习/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/12/25/js异步解决方案-generator-async-await/">展开全文 >></a>
         </p>
       
 
@@ -678,29 +593,35 @@ Rest基本架构的四个http方法：
 
 
   
-    <article id="post-js异步解决方案-generator-async-await" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Resultful规范" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/23/js异步解决方案-generator-async-await/">js异步解决方案(generator&amp;async&amp;await)</a>
+      <a class="article-title" href="/2018/11/27/Resultful规范/">Resultful规范</a>
     </h1>
   
 
         
-        <a href="/2018/09/23/js异步解决方案-generator-async-await/" class="archive-article-date">
-  	<time datetime="2018-09-23T12:43:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-23</time>
+        <a href="/2018/11/27/Resultful规范/" class="archive-article-date">
+  	<time datetime="2018-11-27T06:07:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>以nodejs读取文件为例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;)</span><br><span class="line">const readFile = function(filename)&#123;</span><br><span class="line">    return new Promise(function(res,rej)&#123;</span><br><span class="line">        fs.readFile(filename,(err,data) =&gt;&#123;</span><br><span class="line">            if(err)rej(err);</span><br><span class="line">            res(data);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
+        <pre><code>Rest即表叔性状态传递
+表叔性状态转移是一组架构约束条件和原则，满足这些约束条件和原则的应用程序设计就是RestFul
+
+Rest基本架构的四个http方法：
+    get-----用于获取数据
+    put-----用于更新或添加数据
+    delete-----用于删除数据
+    post------用于添加数据
+</code></pre>
       
 
       
@@ -713,7 +634,7 @@ Rest基本架构的四个http方法：
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">restful</a>
         		</li>
       		
 		</ul>
@@ -723,7 +644,7 @@ Rest基本架构的四个http方法：
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/23/js异步解决方案-generator-async-await/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/11/27/Resultful规范/">展开全文 >></a>
         </p>
       
 
@@ -800,6 +721,85 @@ Rest基本架构的四个http方法：
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/09/23/优雅的Vue-CLI-3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-服务端渲染NUXT" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/15/服务端渲染NUXT/">服务渲染Nuxt</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/15/服务端渲染NUXT/" class="archive-article-date">
+  	<time datetime="2018-09-15T08:16:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>服务端渲染(SSR)</p>
+<pre><code>为什要服务端渲染？
+    前后端分离的大规模应用，前后端进行了拆分，并且单页应用得到了广泛应用（Angular、React、Vue 前端三大框架）,
+单页应用随之而来的seo问题，不利于搜索引擎爬虫抓取页面主要内容，影响网站收录与网站排名。还有就是首屏加载巨慢，影响用户体验。为了
+解决这些问题，服务端渲染又开始随之火热起来。
+</code></pre>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SSR</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/15/服务端渲染NUXT/">展开全文 >></a>
         </p>
       
 
@@ -1098,7 +1098,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nodejs应用框架</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1110,19 +1110,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nodejs应用框架</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JSX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node服务框架</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1134,7 +1126,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">node服务框架</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">兼容</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">nodejs模板</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1142,11 +1146,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">nodejs模板</a>
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1158,19 +1162,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">H5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1194,11 +1194,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
             
             <div class="clearfix"></div>

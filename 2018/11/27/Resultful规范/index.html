@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://wangzhongshun.com">
-  <title>js异步解决方案(generator&amp;async&amp;await) | 个人笔记整理与收集</title>
+  <title>Resultful规范 | 个人笔记整理与收集</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="以nodejs读取文件为例： 123456789const fs = require(&amp;apos;fs&amp;apos;)const readFile = function(filename)&amp;#123;    return new Promise(function(res,rej)&amp;#123;        fs.readFile(filename,(err,data) =&amp;gt;&amp;#123;">
-<meta name="keywords" content="javascript">
+  <meta name="description" content="Rest即表叔性状态传递 表叔性状态转移是一组架构约束条件和原则，满足这些约束条件和原则的应用程序设计就是RestFul  Rest基本架构的四个http方法：     get-----用于获取数据     put-----用于更新或添加数据     delete-----用于删除数据     post------用于添加数据">
+<meta name="keywords" content="restful">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js异步解决方案(generator&amp;async&amp;await)">
-<meta property="og:url" content="https://wangzhongshun.com/2018/09/23/js异步解决方案-generator-async-await/index.html">
+<meta property="og:title" content="Resultful规范">
+<meta property="og:url" content="https://wangzhongshun.com/2018/11/27/Resultful规范/index.html">
 <meta property="og:site_name" content="个人笔记整理与收集">
-<meta property="og:description" content="以nodejs读取文件为例： 123456789const fs = require(&amp;apos;fs&amp;apos;)const readFile = function(filename)&amp;#123;    return new Promise(function(res,rej)&amp;#123;        fs.readFile(filename,(err,data) =&amp;gt;&amp;#123;">
+<meta property="og:description" content="Rest即表叔性状态传递 表叔性状态转移是一组架构约束条件和原则，满足这些约束条件和原则的应用程序设计就是RestFul  Rest基本架构的四个http方法：     get-----用于获取数据     put-----用于更新或添加数据     delete-----用于删除数据     post------用于添加数据">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-21T10:30:40.000Z">
+<meta property="og:updated_time" content="2019-08-25T05:26:40.319Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js异步解决方案(generator&amp;async&amp;await)">
-<meta name="twitter:description" content="以nodejs读取文件为例： 123456789const fs = require(&amp;apos;fs&amp;apos;)const readFile = function(filename)&amp;#123;    return new Promise(function(res,rej)&amp;#123;        fs.readFile(filename,(err,data) =&amp;gt;&amp;#123;">
+<meta name="twitter:title" content="Resultful规范">
+<meta name="twitter:description" content="Rest即表叔性状态传递 表叔性状态转移是一组架构约束条件和原则，满足这些约束条件和原则的应用程序设计就是RestFul  Rest基本架构的四个http方法：     get-----用于获取数据     put-----用于更新或添加数据     delete-----用于删除数据     post------用于添加数据">
   
     <link rel="alternative" href="/atom.xml" title="个人笔记整理与收集" type="application/atom+xml">
   
@@ -178,60 +178,35 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-js异步解决方案-generator-async-await" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Resultful规范" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      js异步解决方案(generator&amp;async&amp;await)
+      Resultful规范
     </h1>
   
 
         
-        <a href="/2018/09/23/js异步解决方案-generator-async-await/" class="archive-article-date">
-  	<time datetime="2018-09-23T12:43:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-23</time>
+        <a href="/2018/11/27/Resultful规范/" class="archive-article-date">
+  	<time datetime="2018-11-27T06:07:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>以nodejs读取文件为例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;)</span><br><span class="line">const readFile = function(filename)&#123;</span><br><span class="line">    return new Promise(function(res,rej)&#123;</span><br><span class="line">        fs.readFile(filename,(err,data) =&gt;&#123;</span><br><span class="line">            if(err)rej(err);</span><br><span class="line">            res(data);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>Promise<br> Promise，就是一个对象，用来传递异步操作的消息，避免了层层嵌套的回调函数。它代表了某个 未来才会知道结果的事件（通常是一个异步操作），并且这个事件提供统一的API，可供进一步处理。 </p>
-<pre><code>（1）对象的状态不受外界影响。有三种状态：Pending（进行中）、Resolved（已完成，又称Fulfilled）和Rejected（已失败）。 
-（2）一旦状态改变，就不会再变，任何时候都可以得到这个结果。Promise对象的状态改变，只有两种可能：从Pending变为Resolved和从Pending变为Rejected。只要这两种情况发生，状态就凝固了，不会再变了，会一直保持这个结果。
-</code></pre><p>缺点：</p>
-<pre><code>1、 无法取消Promise，一旦新建它就会执行，无法中途取消
-2、如果不设置回调函数，Promise内部抛出的错误，不会反应到外部
-3、当处于Pending状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成）。
-</code></pre><p>Promise解决方案<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> readFile(&apos;a.txt&apos;).then((data) =&gt; &#123;</span><br><span class="line">    console.log(data.toString());</span><br><span class="line">    return readFile(&apos;b.txt&apos;)</span><br><span class="line">&#125;).then((data) =&gt;&#123;</span><br><span class="line">    console.log(data.toString())</span><br><span class="line">    return readFile(&apos;c.txt&apos;)</span><br><span class="line">&#125;).then((data) =&gt;&#123;</span><br><span class="line">    console.log(data.toString());</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>Generator</p>
-<pre><code>从计算机角度看，生成器是一种类协程或半协程，它提供了一种可以通过特定语句或方法使其执行对象暂停的功能。 
-​ Generator函数，返回一个部署了Iterator接口的遍历器对象，用来操作内部指针。以后，每次调用遍历器对象的next方法，就会返回一个有着value和done两个属性的对象。value属性表示当前的内部状态的值，是yield语句后面那个表达式的值；done属性是一个布尔值，表示是否遍历结束。
-</code></pre><p>yield</p>
-<pre><code>​yield 关键字使生成器函数暂停执行，并返回跟在它后面的表达式的当前值。可以把它想成是return关键字的一个基于生成器的版本，但其并非退出函数体，而是切出当前函数的运行时，与此同时可以将一个值带到主线程中。yield语句是暂停执行的标记，而next方法可以恢复执行。
-（1）遇到yield语句，就暂停执行后面的操作，并将紧跟在yield后面的那个表达式的值，作为返回的对象的value属性值； 
-（2）下一次调用next方法时，再继续往下执行，直到遇到下一个yield语句； 
-（3）如果没有再遇到新的yield语句，就一直运行到函数结束，直到return语句为止，并将return语句后面的表达式的值，作为返回的对象的value属性值； 
-（4）如果该函数没有return语句，则返回的对象的value属性值为undefined。 
-需要注意的是，yield语句后面的表达式，只有当调用next方法、内部指针指向该语句时才会执行，因此等于为JavaScript提供了手动的“惰性求值”（Lazy Evaluation）的语法功能。
-</code></pre><p>注意： yield句本身没有返回值（返回undefined）。next方法可以带一个参数，该参数就会被当作上一个yield语句的返回值。</p>
-<p>Generator解决方案<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function * gen()&#123;</span><br><span class="line">    yield readFile(&apos;a.txt&apos;);</span><br><span class="line">    yield readFile(&apos;b.txt&apos;);</span><br><span class="line">    yield readFile(&apos;c.txt&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let g = gen();</span><br><span class="line">g.next().value.then((data) =&gt;&#123;</span><br><span class="line">    console.log(data.toString());</span><br><span class="line">    return g.next().value;</span><br><span class="line">&#125;).then((data) =&gt;&#123;</span><br><span class="line">    console.log(data.toString());</span><br><span class="line">    return g.next().value;</span><br><span class="line">&#125;).then((data) =&gt;&#123;</span><br><span class="line">    console.log(data.toString());</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>Async</p>
-<pre><code>async函数可以理解为Generator函数的语法糖，使用async内置了执行器，无需调用next方法进行逐步调用。且其返回值为Promise。
+        <pre><code>Rest即表叔性状态传递
+表叔性状态转移是一组架构约束条件和原则，满足这些约束条件和原则的应用程序设计就是RestFul
 
-​ async函数返回一个 Promise 对象，可以使用then方法添加回调函数。当函数执行的时候，一旦遇到await就会先返回，等到异步操作完成，再接着执行函数体内后面的语句。
-</code></pre><p>Async解决方案<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    async function fn()&#123;</span><br><span class="line">    let f1 = await readFile(&apos;a.txt&apos;);</span><br><span class="line">    console.log(f1.toString());</span><br><span class="line">    let f2 = await readFile(&apos;b.txt&apos;);</span><br><span class="line">    console.log(f2.toString());</span><br><span class="line">    let f3 = await readFile(&apos;c.txt&apos;);</span><br><span class="line">    console.log(f3.toString());</span><br><span class="line">&#125;</span><br><span class="line">fn();</span><br></pre></td></tr></table></figure></p>
-<p>async/awit的特点</p>
-<pre><code>可以让异步逻辑用同步写法实现
-最底层的await返回需要是Promise对象
-可以通过多层 async function 的同步写法代替传统的callback嵌套
-</code></pre><p>参考文献<a href="https://blog.csdn.net/ligang2585116/article/details/70843713" target="_blank" rel="noopener">https://blog.csdn.net/ligang2585116/article/details/70843713</a></p>
-
+Rest基本架构的四个http方法：
+    get-----用于获取数据
+    put-----用于更新或添加数据
+    delete-----用于删除数据
+    post------用于添加数据
+</code></pre>
       
 
       
@@ -275,7 +250,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">restful</a>
         		</li>
       		
 		</ul>
@@ -331,7 +306,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://wangzhongshun.com/2018/09/23/js异步解决方案-generator-async-await/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://wangzhongshun.com/2018/11/27/Resultful规范/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -523,7 +498,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nodejs应用框架</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -535,19 +510,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nodejs应用框架</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JSX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node服务框架</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,7 +526,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">node服务框架</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">兼容</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">nodejs模板</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,11 +546,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">nodejs模板</a>
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,19 +562,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">H5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,11 +594,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
             
             <div class="clearfix"></div>

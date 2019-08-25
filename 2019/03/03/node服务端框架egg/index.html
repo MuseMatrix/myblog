@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:description" content="框架内置对象  Application(全局应用对象，只会实例化一个，可以挂在全局对象和方法) 事件(server,error,request,response) 获取方式   //app.js   module.exports = app =&amp;gt; {     app.cache = new Cache();   };   使用app作为参数   使用ctx.app访问   Context(请">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-25T01:29:54.621Z">
+<meta property="og:updated_time" content="2019-08-25T05:22:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="egg">
 <meta name="twitter:description" content="框架内置对象  Application(全局应用对象，只会实例化一个，可以挂在全局对象和方法) 事件(server,error,request,response) 获取方式   //app.js   module.exports = app =&amp;gt; {     app.cache = new Cache();   };   使用app作为参数   使用ctx.app访问   Context(请">
@@ -236,7 +236,18 @@ exports.task = async ctx =&gt; {
   获取 POST 的 body 应该使用 ctx.request.body，而不是 ctx.body。
 </code></pre><p>  Controller，Service,Helper，Config，Logger都可以获取</p>
 <h5 id="路由-router"><a href="#路由-router" class="headerlink" title="路由(router)"></a>路由(router)</h5><p>  定义路由的方法<br>      // app/router.js<br>      module.exports = app =&gt; {<br>        const { router, controller } = app;<br>        router.get(‘/user/:id’, controller.user.info);<br>      };</p>
-<h5 id="控制器-controller"><a href="#控制器-controller" class="headerlink" title="控制器(controller)"></a>控制器(controller)</h5><p>  定义控制层的写法<br>     // app/controller/user.js<br>    class UserController extends Controller {<br>      async info() {<br>        const { ctx } = this;<br>        ctx.body = {<br>          name: <code>hello ${ctx.params.id}</code>,<br>        };<br>      }<br>    }   </p>
+<h5 id="扩展-extand"><a href="#扩展-extand" class="headerlink" title="扩展(extand)"></a>扩展(extand)</h5><p>  可以扩展的对象<br>    Application<br>    Context<br>    Request<br>    Response<br>    Helper</p>
+<pre><code>介于扩展对象都差不多，挑个常用的来说，
+可以扩展Helper,比如返回的时间不是自己想要的，就可以扩展，类似工具类，特别方便
+// app/extend/helper.js
+  module.exports = {
+  formattime(param) {
+    // this 是 helper 对象，在其中可以调用其他 helper 方法
+    // this.ctx =&gt; context 对象
+    // this.app =&gt; application 对象
+  },
+};
+</code></pre><h5 id="控制器-controller"><a href="#控制器-controller" class="headerlink" title="控制器(controller)"></a>控制器(controller)</h5><p>  定义控制层的写法<br>     // app/controller/user.js<br>    class UserController extends Controller {<br>      async info() {<br>        const { ctx } = this;<br>        ctx.body = {<br>          name: <code>hello ${ctx.params.id}</code>,<br>        };<br>      }<br>    }   </p>
 <pre><code>this.ctx: 当前请求的上下文 Context 对象的实例，通过它我们可以拿到框架封装好的处理当前请求的各种便捷属性和方法。
 this.app: 当前应用 Application 对象的实例，通过它我们可以拿到框架提供的全局对象和方法。
 this.service：应用定义的 Service，通过它我们可以访问到抽象出的业务层，等价于 this.ctx.service 。
@@ -399,15 +410,6 @@ async task(ctx) {
   
 <nav id="article-nav">
   
-    <a href="/2019/04/08/服务端渲染NUXT/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          服务渲染Nuxt
-        
-      </div>
-    </a>
-  
   
     <a href="/2019/01/05/Koa体验/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Koa体验</div>
@@ -437,7 +439,7 @@ async task(ctx) {
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#框架内置对象"><span class="toc-number">1.</span> <span class="toc-text">框架内置对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#路由-router"><span class="toc-number">2.</span> <span class="toc-text">路由(router)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#控制器-controller"><span class="toc-number">3.</span> <span class="toc-text">控制器(controller)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#服务逻辑层-Service"><span class="toc-number">4.</span> <span class="toc-text">服务逻辑层(Service)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#插件-plugins"><span class="toc-number">5.</span> <span class="toc-text">插件(plugins)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#定时任务-schedule"><span class="toc-number">6.</span> <span class="toc-text">定时任务(schedule)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#本地开发配置"><span class="toc-number">7.</span> <span class="toc-text">本地开发配置</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#框架内置对象"><span class="toc-number">1.</span> <span class="toc-text">框架内置对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#路由-router"><span class="toc-number">2.</span> <span class="toc-text">路由(router)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#扩展-extand"><span class="toc-number">3.</span> <span class="toc-text">扩展(extand)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#控制器-controller"><span class="toc-number">4.</span> <span class="toc-text">控制器(controller)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#服务逻辑层-Service"><span class="toc-number">5.</span> <span class="toc-text">服务逻辑层(Service)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#插件-plugins"><span class="toc-number">6.</span> <span class="toc-text">插件(plugins)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#定时任务-schedule"><span class="toc-number">7.</span> <span class="toc-text">定时任务(schedule)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#本地开发配置"><span class="toc-number">8.</span> <span class="toc-text">本地开发配置</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -577,7 +579,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nodejs应用框架</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,19 +591,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nodejs应用框架</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JSX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">node服务框架</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -613,7 +607,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">node服务框架</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">兼容</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">nodejs模板</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -621,11 +627,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">nodejs模板</a>
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -637,19 +643,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">H5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,11 +675,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
             
             <div class="clearfix"></div>
