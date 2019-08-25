@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://wangzhongshun.com">
-  <title>网络爬虫 | 个人笔记整理与收集</title>
+  <title>egg | 个人笔记整理与收集</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="网络爬虫的基本原理 网络爬虫是搜索引擎抓取系统的重要组成部分.爬虫的主要目的是将互联网上的网页下载到本地形成一个或互联网内容的镜像备份  网络爬虫抓取的工作流程：     1.首先选取一部分精心挑选的种子URL；     2.将这些URL放入待抓取URL队列；     3.从待抓取URL队列中取出待抓取在URL，解析DNS，并且得到主机的ip，并将URL对应的网页下载下来，存储进已下载网页库中。此">
-<meta name="keywords" content="爬虫">
+  <meta name="description" content="框架内置对象  Application(全局应用对象，只会实例化一个，可以挂在全局对象和方法) 事件(server,error,request,response) 获取方式   //app.js   module.exports = app =&amp;gt; {     app.cache = new Cache();   };   使用app作为参数   使用ctx.app访问   Context(请">
+<meta name="keywords" content="node服务框架">
 <meta property="og:type" content="article">
-<meta property="og:title" content="网络爬虫">
-<meta property="og:url" content="https://wangzhongshun.com/2018/08/15/网络爬虫/index.html">
+<meta property="og:title" content="egg">
+<meta property="og:url" content="https://wangzhongshun.com/2019/03/03/node服务端框架egg/index.html">
 <meta property="og:site_name" content="个人笔记整理与收集">
-<meta property="og:description" content="网络爬虫的基本原理 网络爬虫是搜索引擎抓取系统的重要组成部分.爬虫的主要目的是将互联网上的网页下载到本地形成一个或互联网内容的镜像备份  网络爬虫抓取的工作流程：     1.首先选取一部分精心挑选的种子URL；     2.将这些URL放入待抓取URL队列；     3.从待抓取URL队列中取出待抓取在URL，解析DNS，并且得到主机的ip，并将URL对应的网页下载下来，存储进已下载网页库中。此">
+<meta property="og:description" content="框架内置对象  Application(全局应用对象，只会实例化一个，可以挂在全局对象和方法) 事件(server,error,request,response) 获取方式   //app.js   module.exports = app =&amp;gt; {     app.cache = new Cache();   };   使用app作为参数   使用ctx.app访问   Context(请">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-26T00:24:00.000Z">
+<meta property="og:updated_time" content="2019-08-25T01:29:54.621Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="网络爬虫">
-<meta name="twitter:description" content="网络爬虫的基本原理 网络爬虫是搜索引擎抓取系统的重要组成部分.爬虫的主要目的是将互联网上的网页下载到本地形成一个或互联网内容的镜像备份  网络爬虫抓取的工作流程：     1.首先选取一部分精心挑选的种子URL；     2.将这些URL放入待抓取URL队列；     3.从待抓取URL队列中取出待抓取在URL，解析DNS，并且得到主机的ip，并将URL对应的网页下载下来，存储进已下载网页库中。此">
+<meta name="twitter:title" content="egg">
+<meta name="twitter:description" content="框架内置对象  Application(全局应用对象，只会实例化一个，可以挂在全局对象和方法) 事件(server,error,request,response) 获取方式   //app.js   module.exports = app =&amp;gt; {     app.cache = new Cache();   };   使用app作为参数   使用ctx.app访问   Context(请">
   
     <link rel="alternative" href="/atom.xml" title="个人笔记整理与收集" type="application/atom+xml">
   
@@ -178,35 +178,113 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-网络爬虫" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-node服务端框架egg" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      网络爬虫
+      egg
     </h1>
   
 
         
-        <a href="/2018/08/15/网络爬虫/" class="archive-article-date">
-  	<time datetime="2018-08-15T04:59:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-15</time>
+        <a href="/2019/03/03/node服务端框架egg/" class="archive-article-date">
+  	<time datetime="2019-03-03T03:29:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>网络爬虫的基本原理</p>
-<pre><code>网络爬虫是搜索引擎抓取系统的重要组成部分.爬虫的主要目的是将互联网上的网页下载到本地形成一个或互联网内容的镜像备份
-
-网络爬虫抓取的工作流程：
-    1.首先选取一部分精心挑选的种子URL；
-    2.将这些URL放入待抓取URL队列；
-    3.从待抓取URL队列中取出待抓取在URL，解析DNS，并且得到主机的ip，并将URL对应的网页下载下来，存储进已下载网页库中。此外，将这些URL放进已抓取URL队列。
-    4.分析已抓取URL队列中的URL，分析其中的其他URL，并且将URL放入待抓取URL队列，从而进入下一个循环。
+        <h5 id="框架内置对象"><a href="#框架内置对象" class="headerlink" title="框架内置对象"></a>框架内置对象</h5><p>  Application(全局应用对象，只会实例化一个，可以挂在全局对象和方法)</p>
+<pre><code>事件(server,error,request,response)
+获取方式
+  //app.js
+  module.exports = app =&gt; {
+    app.cache = new Cache();
+  };
+  使用app作为参数
+  使用ctx.app访问
+</code></pre><p>  Context(请求级别对象，每收到一个用户请求，就会实例化一个Context)</p>
+<pre><code>获取方式
+  中间件获取
+  async function middleware(ctx, next) {
+    // ctx is instance of Context
+    console.log(ctx.query);
+  }
+  Application.createAnonymousContext() 方法创建一个匿名 Context 实例
+  // app.js
 </code></pre><a id="more"></a>
+<pre><code>module.exports = app =&gt; {
+  app.beforeStart(async () =&gt; {
+    const ctx = app.createAnonymousContext();
+    // preload before app start
+    await ctx.service.posts.load();
+  });
+}
+在定时任务中的每一个 task 都接受一个 Context 实例作为参数
+// app/schedule/refresh.js
+exports.task = async ctx =&gt; {
+  await ctx.service.posts.refresh();
+};
+</code></pre><p>  Request &amp; Response(请求级别的对象)</p>
+<pre><code>获取方式
+  可以在 Context 的实例上获取到当前请求的 Request(ctx.request) 和 Response(ctx.response) 实例。
+  ctx.request.query.id 和 ctx.query.id 是等价的，ctx.response.body= 和 ctx.body= 是等价的
+  获取 POST 的 body 应该使用 ctx.request.body，而不是 ctx.body。
+</code></pre><p>  Controller，Service,Helper，Config，Logger都可以获取</p>
+<h5 id="路由-router"><a href="#路由-router" class="headerlink" title="路由(router)"></a>路由(router)</h5><p>  定义路由的方法<br>      // app/router.js<br>      module.exports = app =&gt; {<br>        const { router, controller } = app;<br>        router.get(‘/user/:id’, controller.user.info);<br>      };</p>
+<h5 id="控制器-controller"><a href="#控制器-controller" class="headerlink" title="控制器(controller)"></a>控制器(controller)</h5><p>  定义控制层的写法<br>     // app/controller/user.js<br>    class UserController extends Controller {<br>      async info() {<br>        const { ctx } = this;<br>        ctx.body = {<br>          name: <code>hello ${ctx.params.id}</code>,<br>        };<br>      }<br>    }   </p>
+<pre><code>this.ctx: 当前请求的上下文 Context 对象的实例，通过它我们可以拿到框架封装好的处理当前请求的各种便捷属性和方法。
+this.app: 当前应用 Application 对象的实例，通过它我们可以拿到框架提供的全局对象和方法。
+this.service：应用定义的 Service，通过它我们可以访问到抽象出的业务层，等价于 this.ctx.service 。
+this.config：应用运行时的配置项。
+this.logger：logger 对象，上面有四个方法（debug，info，warn，error），分别代表打印四个不同级别的日志，使用方法
+</code></pre><h5 id="服务逻辑层-Service"><a href="#服务逻辑层-Service" class="headerlink" title="服务逻辑层(Service)"></a>服务逻辑层(Service)</h5><p>  定义service的方法</p>
+<pre><code>// app/service/user.js
+const Service = require(&apos;egg&apos;).Service;
+class UserService extends Service {
+  async find(uid) {
+    const user = await this.ctx.db.query(&apos;select * from user where uid = ?&apos;, uid);
+    return user;
+  }
+}
+module.exports = UserService;
+
+this.ctx: 当前请求的上下文 Context 对象的实例，通过它我们可以拿到框架封装好的处理当前请求的各种便捷属性和方法。
+this.app: 当前应用 Application 对象的实例，通过它我们可以拿到框架提供的全局对象和方法。
+this.service：应用定义的 Service，通过它我们可以访问到其他业务层，等价于 this.ctx.service 。
+this.config：应用运行时的配置项。
+this.logger：logger 对象，上面有四个方法（debug，info，warn，error），分别代表打印四个不同级别的日志，使用方法和效果与 context logger 中介绍的一样，但是通过这个 logger 对象记录的日志，在日志前面会加上打印该日志的文件路径，以便快速定位日志打印位置。
+</code></pre><h5 id="插件-plugins"><a href="#插件-plugins" class="headerlink" title="插件(plugins)"></a>插件(plugins)</h5><p>  npm更新模块后，定义插件的写法</p>
+<pre><code>// config/plugin.js
+// 使用 mysql 插件
+exports.mysql = {
+  enable: true,
+  package: &apos;egg-mysql&apos;,
+};
+
+发现个好玩的npm包，目标是希望访问数据库逻辑都能使用一行代码完成，让访问数据库变得更加简单优雅。ali-mysql-client
+使用方法见http://npm.taobao.org/package/ali-mysql-client，里面对应的框架使用，都有对应的例子，是个利器
+</code></pre><h5 id="定时任务-schedule"><a href="#定时任务-schedule" class="headerlink" title="定时任务(schedule)"></a>定时任务(schedule)</h5><p>  定义定时任务(所有的定时任务都放在app/schel目录下，每一个文件都是一个独立的定时任务)</p>
+<pre><code>module.exports = {
+schedule: {
+  interval: &apos;1m&apos;, // 1 分钟间隔
+  type: &apos;all&apos;, // 指定所有的 worker 都需要执行
+},
+async task(ctx) {
+    const res = await ctx.curl(&apos;http://www.api.com/cache&apos;, {
+      dataType: &apos;json&apos;,
+    });
+    ctx.app.cache = res.data;
+  },
+};
+</code></pre><h5 id="本地开发配置"><a href="#本地开发配置" class="headerlink" title="本地开发配置"></a>本地开发配置</h5><p>  引入egg-bin模块 npm i egg-bin –save-dev</p>
+<p>  启动应用配置<br>    {<br>      “scripts”: {<br>        “dev”: “egg-bin dev”<br>      }<br>    }</p>
+<p>  指定端口配置<br>    {<br>      “scripts”: {<br>        “dev”: “egg-bin dev –port 7001”<br>      }<br>    }</p>
+<p>总的来说，对express和koa的基础上，添加了规范，更偏向于后端，整个目录一目了然<br>具体更多请看官方文档<a href="https://eggjs.org/" target="_blank" rel="noopener">https://eggjs.org/</a></p>
 
       
 
@@ -251,7 +329,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">node服务框架</a>
         		</li>
       		
 		</ul>
@@ -307,7 +385,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://wangzhongshun.com/2018/08/15/网络爬虫/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://wangzhongshun.com/2019/03/03/node服务端框架egg/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -321,18 +399,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/08/17/页面渲染机制/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          页面渲染机制
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/08/11/前端web安全/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">前端web安全</div>
+    <a href="/2019/01/05/Koa体验/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Koa体验</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -359,7 +428,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#框架内置对象"><span class="toc-number">1.</span> <span class="toc-text">框架内置对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#路由-router"><span class="toc-number">2.</span> <span class="toc-text">路由(router)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#控制器-controller"><span class="toc-number">3.</span> <span class="toc-text">控制器(controller)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#服务逻辑层-Service"><span class="toc-number">4.</span> <span class="toc-text">服务逻辑层(Service)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#插件-plugins"><span class="toc-number">5.</span> <span class="toc-text">插件(plugins)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#定时任务-schedule"><span class="toc-number">6.</span> <span class="toc-text">定时任务(schedule)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#本地开发配置"><span class="toc-number">7.</span> <span class="toc-text">本地开发配置</span></a></li></ol>
                     </div>
                 </span>
             </div>
