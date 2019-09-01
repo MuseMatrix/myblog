@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://wangzhongshun.com">
-  <title>基础篇之HTML5 | 个人笔记整理与收集</title>
+  <title>js性能之防抖和节流 | 个人笔记整理与收集</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="HTML部分 meta常用标签总结     meta元素有三个可选属性（http-equiv、name和scheme）和一个必选属性,content定义与 http-equiv 或 name 属性相关的元信息      属性                                               值">
-<meta name="keywords" content="html">
+  <meta name="description" content="概念： oh,mygod!突然不知道该怎么说，一般在我们开发过程中，经常会遇到一些高频次事件执行，比如在输入表单的时候通过keyup进行后台表单验证，会高频次的触发事件向后台请求验证数据的合法性和有效性；再比如通过鼠标移动去发送请求，一个请求执行完，回调还没有执行完，又去触发，不停的触发，如果在回调里执行dom,等等一系列的操作，就会造成资源加载的浪费，有可能会造成页面卡顿，甚至浏览器崩溃，防抖和">
+<meta name="keywords" content="随笔">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基础篇之HTML5">
-<meta property="og:url" content="https://wangzhongshun.com/2018/04/13/基础篇之HTML5/index.html">
+<meta property="og:title" content="js性能之防抖和节流">
+<meta property="og:url" content="https://wangzhongshun.com/2018/12/05/js性能之防抖和节流/index.html">
 <meta property="og:site_name" content="个人笔记整理与收集">
-<meta property="og:description" content="HTML部分 meta常用标签总结     meta元素有三个可选属性（http-equiv、name和scheme）和一个必选属性,content定义与 http-equiv 或 name 属性相关的元信息      属性                                               值">
+<meta property="og:description" content="概念： oh,mygod!突然不知道该怎么说，一般在我们开发过程中，经常会遇到一些高频次事件执行，比如在输入表单的时候通过keyup进行后台表单验证，会高频次的触发事件向后台请求验证数据的合法性和有效性；再比如通过鼠标移动去发送请求，一个请求执行完，回调还没有执行完，又去触发，不停的触发，如果在回调里执行dom,等等一系列的操作，就会造成资源加载的浪费，有可能会造成页面卡顿，甚至浏览器崩溃，防抖和">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-31T12:55:26.000Z">
+<meta property="og:updated_time" content="2019-09-01T08:22:07.577Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基础篇之HTML5">
-<meta name="twitter:description" content="HTML部分 meta常用标签总结     meta元素有三个可选属性（http-equiv、name和scheme）和一个必选属性,content定义与 http-equiv 或 name 属性相关的元信息      属性                                               值">
+<meta name="twitter:title" content="js性能之防抖和节流">
+<meta name="twitter:description" content="概念： oh,mygod!突然不知道该怎么说，一般在我们开发过程中，经常会遇到一些高频次事件执行，比如在输入表单的时候通过keyup进行后台表单验证，会高频次的触发事件向后台请求验证数据的合法性和有效性；再比如通过鼠标移动去发送请求，一个请求执行完，回调还没有执行完，又去触发，不停的触发，如果在回调里执行dom,等等一系列的操作，就会造成资源加载的浪费，有可能会造成页面卡顿，甚至浏览器崩溃，防抖和">
   
     <link rel="alternative" href="/atom.xml" title="个人笔记整理与收集" type="application/atom+xml">
   
@@ -178,299 +178,52 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-基础篇之HTML5" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-js性能之防抖和节流" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      基础篇之HTML5
+      js性能之防抖和节流
     </h1>
   
 
         
-        <a href="/2018/04/13/基础篇之HTML5/" class="archive-article-date">
-  	<time datetime="2018-04-13T12:58:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-13</time>
+        <a href="/2018/12/05/js性能之防抖和节流/" class="archive-article-date">
+  	<time datetime="2018-12-05T12:43:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>HTML部分</p>
-<pre><code>meta常用标签总结
-    meta元素有三个可选属性（http-equiv、name和scheme）和一个必选属性,content定义与 http-equiv 或 name 属性相关的元信息
-
-    属性                                               值                                                           描述
-http-equiv                       content-type / expire / refresh / set-cookie                             把content属性关联到HTTP头部
-    name                         author / description / keywords / generator / revised / others           把 content 属性关联到一个名称
-   scheme                                           some_text                                             定义用于翻译 content 属性值的格式
-</code></pre><a id="more"></a>
-<pre><code>   content                                          some_text                                             定义与 http-equiv 或 name 属性相关的元信息
-
-name属性：
-    &lt;!-- 页面作者 --&gt;
-    &lt;meta name=&quot;author&quot; content=&quot;author name&quot; /&gt;
-    &lt;!-- 页面描述 --&gt;
-    &lt;meta name=&quot;description&quot; content=&quot;meta元素共有三个可选属性(不超过150字符)&quot; /&gt;
-    &lt;!-- 页面关键词 --&gt;
-    &lt;meta name=&quot;keywords&quot; content=&quot;meta标签总结,meta标签&quot; /&gt;
-    &lt;!-- 页面生成器 --&gt;
-    &lt;meta name=&quot;generator&quot; content=&quot;hexo&quot; /&gt;
-    &lt;!-- 页面修改信息 --&gt;
-    &lt;meta name=&quot;revised&quot; content=&quot;story,2015/07/22&quot; /&gt;
-    &lt;!-- 版权信息 --&gt;
-    &lt;meta name=&quot;copyright&quot; content=&quot;All Rights Reserved&quot; /&gt;
-    &lt;!-- 页面爬虫设置 --&gt;
-    &lt;meta name=&quot;robots&quot; content=&quot;index,follow&quot; /&gt;
-    &lt;!-- robots的content取值 --&gt;
-    &lt;!-- all：文件将被检索，且页面上的链接可以被查询 --&gt;
-    &lt;!-- none：文件将不被检索，且页面上的链接不可以被查询 --&gt;
-    &lt;!-- index：文件将被检索 --&gt;
-    &lt;!-- follow：页面上的链接可以被查询 --&gt;
-    &lt;!-- noindex：文件将不被检索，但页面上的链接可以被查询 --&gt;
-    &lt;!-- nofollow：文件将被检索，但页面上的链接不可以被查询 --&gt;
-http-equiv
-    &lt;!-- 字符编码 --&gt;
-    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=UTF-8&quot; /&gt;
-    &lt;!-- 页面到期时间 --&gt;
-    &lt;meta http-equiv=&quot;expire&quot; content=&quot;Wed,22Jul201511:11:11GMT&quot; /&gt;
-    &lt;!-- 页面重刷新，0秒后刷新并跳转 --&gt;
-    &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;URL=&apos;&apos;&quot; /&gt;
-    &lt;!-- cookie设置 --&gt;
-    &lt;meta http-equiv=&quot;set-cookie&quot; content=&quot;cookie value=xxx;expires=Wed,22-Jul-201511:11:11GMT；path=/&quot; /&gt;
-    &lt;!-- 脚本类型 --&gt;
-    &lt;meta http-equiv=&quot;Content-Script-Type&quot;Content=&quot;text/javascript&quot;&gt;
-    &lt;!-- 禁止从本地缓存中读取页面 --&gt;
-    &lt;meta http-equiv=&quot;Pragma&quot;content=&quot;no-cache&quot;&gt; 
-移动端
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no&quot;/&gt;
-    &lt;!-- viewport的content取值 --&gt;
-    &lt;!-- width：宽度（数值 / device-width）（200~10000，默认为980px） --&gt;
-    &lt;!-- height：高度（数值 / device-height）（223~10000） --&gt;
-    &lt;!-- initial-scale：初始缩放比例 （0~10） --&gt;
-    &lt;!-- minimum-scale：允许用户缩放到的最小比例 --&gt;
-    &lt;!-- maximum-scale：允许用户缩放到的最大比例 --&gt;
-    &lt;!-- user-scalable：是否允许用户缩放 (no/yes)  --&gt;
-
-    &lt;!-- uc强制竖屏 --&gt;
-    &lt;meta name=&quot;screen-orientation&quot; content=&quot;portrait&quot;&gt;
-    &lt;!-- QQ强制竖屏 --&gt;
-    &lt;meta name=&quot;x5-orientation&quot; content=&quot;portrait&quot;&gt;
-    &lt;!-- UC强制全屏 --&gt;
-    &lt;meta name=&quot;full-screen&quot; content=&quot;yes&quot;&gt;
-    &lt;!-- QQ强制全屏 --&gt;
-    &lt;meta name=&quot;x5-fullscreen&quot; content=&quot;true&quot;&gt;
-    &lt;!-- UC应用模式 --&gt;
-    &lt;meta name=&quot;browsermode&quot; content=&quot;application&quot;&gt;
-    &lt;!-- QQ应用模式 --&gt;
-    &lt;meta name=&quot;x5-page-mode&quot; content=&quot;app&quot;&gt;
-
-    &lt;!-- IOS启用 WebApp 全屏模式 --&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;
-    &lt;!-- IOS全屏模式下隐藏状态栏/设置状态栏颜色 content的值为default | black | black-translucent  --&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black-translucent&quot; /&gt;
-    &lt;!-- IOS添加到主屏后的标题 --&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;标题&quot;&gt;
-    &lt;!-- IOS添加智能 App 广告条 Smart App Banner --&gt;
-    &lt;meta name=&quot;apple-itunes-app&quot; content=&quot;app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL&quot;&gt;
-
-    &lt;!-- 去除iphone 识别数字为号码 --&gt;
-    &lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot;&gt;
-    &lt;!-- 不识别邮箱 --&gt;
-    &lt;meta name=&quot;format-detection&quot; content=&quot;email=no&quot;&gt;
-    &lt;!-- 禁止跳转至地图 --&gt;
-    &lt;meta name=&quot;format-detection&quot; content=&quot;adress=no&quot;&gt;
-    &lt;!-- 可以连写--&gt;
-    &lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no,email=no,adress=no&quot;&gt;
-</code></pre><p>标签语义化：<br>    &lt;!doctype html&gt;文档声明  html类型<br>    <html lang="en">根目录标签<br>    <head>头部，主要包括（网页信息，浏览器，搜索引擎）<br>    网页三要素：<meta charset="UTF-8">当前编码集 国际编码utf-8;<br>               <meta name="Keywords" content="关键词,关键词">搜索引擎可以搜索的关键词；<br>               <meta name="Description" content="描述：概括当前网页内容">当前网页的描述；<br>    <title>六一儿童节大家快乐</title>网页的标题:<br>    </head><body></body>身体 可视化网页内容<br>    <div></div>盒子模型：可以控制宽高度，放置内容的长方形区域</html></p>
-<pre><code>Hn标签在网站优化中的注意事项：
-h标签在网站的SEO优化中有不可忽视的重要性，贸然使用容易打乱网页权重比较危险。
-注意：权重是站长工具等网站推出来针对网站关键词排名预计给网站带来的流量，等级划分0~10，是对网站的综合评级，只是针对关键词排名方面给网站带来 的欢迎度进行评级
-
-H标签分为6个等级：h1、h2、h3、h4、h5、h6，6个标签登记，站在SEO技巧上面，h1的标签权是最高，依次往下面排列，h6最低。H5、H6相对来说比较少用到 。
-使用标题标签是为了提高文档的可阅读性，提高文档的层次，这是促进用户习惯的优化技巧，H标签在SEO当中也是为了提高用户体验，提高web的层次分明，确保用户可以最好的体验。
-
-p标签：段落标签，通常网页中添加文本段落使用p标签
-
-strong标签、b标签：字体加粗标签
-strong：强调加粗文本（关键字）起到强调作用，重复多用
-b：单纯加粗
-
-i标签、em标签：字体斜体标签
-i:普通斜体标签（引入小图标）
-em:强调语义斜体标签（强调斜体语义）
-
-img标签：width  宽度  height 高度alt：替换作用(关键字,涉及到权重）
-    支持宽高、支持margin、可以横排展示、能设置text-align和vertail-align,标签中间隙被解析，不支持margin:auto;
-font标签：字体标签（可控制文本大小、颜色、风格样式）——淘汰，改用Css里面font样式（font-size：字体大小、font-family:字体风格样式、color:字体颜色）
-
-a标签：超链接   超链接总共四个特征：默认没有访问、鼠标滑动触发、鼠标点击下去、访问过后
-&lt;a&gt;&lt;/a&gt;定义链接。
-target=&quot;_self&quot;自身标签页打开新网页;
-targrt=&quot;_blank&quot;新标签中打开新网页;
-href=&quot;#&quot;返回页面顶部的空连接；
-默认：:link
-鼠标滑动：:hover
-鼠标点击：:active
-访问过后：:visited
-为什么执行不了样式？
-顺序问题（默认、访问过后）、动作顺序（滑上去、点击）
-
-如果要在某个区块显示源代码（计算机代码），需要保留该有代码格式[空格、回车]，请使用pre预格式标签
-
-textarea:文本域(文本输入区域)：
-cols(宽度 10):宽度值=中文字节 一个中文等于2个英文字节
-rows（行数）:
-文本域用户体验细节：当页面加载完毕自动获取鼠标焦点到该文本域(autofocus)
-禁止用户修改文本域内容：(disabled)
-
-&lt;sup&gt;&lt;/sup&gt;上标
-&lt;sub&gt;&lt;/sub&gt;下标
-&lt;caption&gt;&lt;/caption&gt;表格标题的内容，通常设置&lt;table&gt;&lt;/table&gt;的下一行，只能出现一次;
-&lt;ol&gt;&lt;/ol&gt;有序列表；&lt;ul&gt;&lt;/ul&gt;无序列表；&lt;dl&gt;&lt;/dl&gt;定义列表；
-&lt;header&gt;&lt;/header&gt;定义文档头部信息；
-&lt;nav&gt;&lt;/nav&gt;定义文档导航链信息；
-&lt;section&gt;&lt;/section&gt;定义文档的小节，可以表示为主体内容部分；
-&lt;article&gt;&lt;/article&gt;用于描述，一般定义论坛帖子，报纸的文章，博客信息或微博条目；
-&lt;aside&gt;&lt;/aside&gt;用于定义页面的边栏信息；
-
-&lt;fieldset&gt;&lt;/fieldset&gt;元素可将表单内的相关元素分组。
-&lt;legend&lt;/legend&gt;为 fieldset 元素定义标题
-
-&lt;iframe&gt;&lt;/iframe&gt;框架标签
-    scrolling 设置滚动条是否显示yes no  auto
-    frameborder 去掉默认边框  1是有边框的  0是无边框的
-注释：网页中总共三大注释
-
-网页结构（HTML标签）、网页样式（Css）、浏览器脚本(Js)
-网页结构注释：&lt;!--注释文本--&gt;
-网页样式注释：/*注释文本*/
-浏览器脚本语言注释：
-行注释：//注释文本
-段落注释：/*注释文本
-           注释2
-           注释3
-          */
-标签特效：标签分为块级标签、行内标签
-
-标签互相嵌套（父元素标签&gt;子元素标签&gt;子元素标签）
-标签嵌套注意事项：块级标签嵌套其他块级标签，嵌套行内标签（p标签除外）；行内标签只能嵌套行内标签，千万不能嵌套块级标签 
-
-web前端常用四大转义符：当使用转义符切记请写上分号
-标记：&lt;&gt;
-&lt;:&amp;lt;
-&gt;:&amp;gt;
-&quot;：&amp;quot;
-空格:&amp;nbsp;
-
-如何去除超链接下划线：
-通过修饰字体样式
-文档流：浏览器解析网页标签（依次从上到下，从左到右）
-
-网页中如果同时出现若干相同标签怎么办？
-
-通过标签自带属性（id、class、name）
-id:给标签命名（网页中不能出现重复id名字、身份证、QQ号）
-class:给标签命类名（可以在网页中进行重复）
-
-给网页中标签添加样式之前，请先初始化网页标签默认的外边距和填充
-方法：*{margin:0px;padding:0px;};//偷懒形式
-优化方法：标签名（网页中通用标签）{margin:0px;padding:0px;}建议
-
-标签宽高注意事项：
-块级：可以直接使用宽高样式设定
-行内：通常都由内容填充（撑开）产生
-行内标签不执行宽高样式处理方法：直接把该行内标签转换块级
-行内转块级方法：display:block;转换块级
-块级转行内方法：display:inline-block;块级（不带回车）
-
-导航思路：
-直接使用a标签，不利于后台开发相互之间交互对接
-借助无序列表(ul)
-ul:无序列表
-li:列表项
-无序列表特点：子元素（列表项）默认显示为垂直显示，列表项前面默认自带小黑圆点
-type:circle空心圆、square方块、disc默认值
-规范书写格式：
-&lt;ul&gt;&lt;!--父标签--&gt;
-    &lt;li&gt;列表项1&lt;/li&gt;&lt;!--子标签--&gt;
-    &lt;li&gt;列表项2&lt;/li&gt;
-    &lt;li&gt;列表项3&lt;/li&gt;
-&lt;/ul&gt;
-重要注意点：无序列表里面（ul）只能够存放子标签（li），标签嵌套（div、img、p）请放在li里面
-
-ol有序列表
-ol有序列表特点：默认显示方式为垂直对齐方式，自带排序序号
-注意事项：列表区块中父级标签（ul、ol）里面只能够存放子标签（li）。如果需要嵌套其他标签请放在li里面
-有序列表序号类型（type）：1（默认）、A、a、i、I
-有序列表序号起始值(start)：列入从5开始，start=&quot;5&quot;，序号会以此往下排序
-类型小技巧：ol有序列表类型不能随便给，如果有请使用背景图片替代
-dl自定义列表
-dt:列表项标题;dd:列表项
-</code></pre><p>H5部分<br>    新增标签</p>
-<pre><code>结构性标签
-    &lt;header&gt;&lt;/header&gt;页眉，用于块头部
-    &lt;nav&gt;&lt;/nav&gt;导航
-    &lt;section&gt;&lt;/section&gt;页面上的区块
-    &lt;article&gt;&lt;/article&gt;用来在页面上表示一套结构完整而独立的内容部分(article套article表示文章下面的评论)
-    &lt;aside&gt;&lt;/aside&gt;侧边栏，广告，nav元素组，aside的标签应该与article的内容相关
-    &lt;footer&gt;&lt;/footer&gt;页面的底部或者板块的底部
-语义化标签
-    &lt;hgroup&gt;&lt;/hgroup&gt;一个标题和一个子标题，或者标语的组合(标题组)
-    &lt;figure&gt;&lt;/figure&gt;用于对元素进行组合，一般用于图片或者视频(图片视频组)
-    &lt;figcaption&gt;&lt;/figcaption&gt;图片或视频组的标题
-    &lt;time&gt;&lt;/time&gt;用来表示时间或者日期
-    &lt;datalist&gt;&lt;/datalist&gt;标签定义列表选项，请与input配合使用，来定义input可能的值，请使用input元素的list属性来绑定datalist 的ID
-    例如：
-        &lt;input type=&quot;text&quot; list=&quot;data&quot;&gt;
-        &lt;datalist id=&quot;data&quot;&gt;
-            &lt;option&gt;1&lt;/option&gt;
-            &lt;option&gt;2&lt;/option&gt;
-            &lt;option&gt;3&lt;/option&gt;
-            &lt;option&gt;4&lt;/option&gt;
-        &lt;/datalist&gt;
-    &lt;details&gt;&lt;/details&gt;用于描述文档或文档某部分的细节.该元素用于摘录引用等,与标签配合使用(默认折叠，添加open展开)
-    &lt;summary&gt;&lt;/summary&gt;details元素的标题(默认标题为详细信息)
-    例如：
-    &lt;details open&gt;
-        &lt;summary&gt;闺怨&lt;/summary&gt;
-        谷中少妇不知愁，春日应著上翠柳；
-    &lt;/details&gt;
-    &lt;dialog&gt;&lt;/dialog&gt;定义一段对话,默认展开需要添加open属性
-        例如：
-        &lt;dialog open&gt;对话框&lt;/dialog&gt;
-    &lt;address&gt;&lt;/address&gt;定义文章或页面作者的详细联系信息
-    &lt;meter&gt;&lt;/meter&gt;定义已知范围或数值内的标量测量.也被称为gauge(尺度).
-    &lt;progress&gt;&lt;/progress&gt;进度条
-    &lt;mark&gt;&lt;/mark&gt;需要标记的词或句子,默认黄色背景
-</code></pre><p>IE低版本兼容</p>
-<pre><code>在页面头部如下注意:样式属性display:block; 
-    &lt;script&gt; 
-    document.createElement(header); 
-    document.createElement(nav); 
-    document.createElement(footer); 
-    &lt;/script&gt;
-在页面头部如下(注释语法)
-    &lt;!--[if lt IE 9]&gt; 
-    &lt;script src=&quot;https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js&quot;&gt;&lt;/script&gt; 
-    &lt;![endif]--&gt; 
-    &lt;!-- IE条件注释语句 
-    针对的浏览器版本 
-    &lt;!--[if lt IE 7]&gt; 内容 &lt;![endif]--&gt; 
-    IE7 以下版本 （小于IE7） 
-    &lt;!--[if lte IE 7]&gt;内容&lt;![endif]--&gt; 
-    IE7及以下版本 （包含IE7） 
-    &lt;!--[if gt IE 7]&gt;内容&lt;![endif]--&gt; 
-    IE7 以上版本 （大于IE7） 
-    &lt;!--[if gte IE 7]&gt;内容&lt;![endif]--&gt; 
-    IE7及以上版本 （包含IE7） 
-    &lt;!--[if !IE 7]&gt;内容&lt;![endif]--&gt; 
-    非IE7版本 
-    &lt;!--[if !IE]&gt;&lt;!--&gt; 
-    非IE版本 
-    &lt;!--&lt;![endif]--&gt; 
+        <p>概念：</p>
+<p>oh,mygod!突然不知道该怎么说，一般在我们开发过程中，经常会遇到一些高频次事件执行，比如在输入表单的时候通过keyup进行后台表单验证，会高频次的触发事件向后台请求验证数据的合法性和有效性；再比如通过鼠标移动去发送请求，一个请求执行完，回调还没有执行完，又去触发，不停的触发，如果在回调里执行dom,等等一系列的操作，就会造成资源加载的浪费，有可能会造成页面卡顿，甚至浏览器崩溃，防抖和节流就是为了处理这样的类似情况而出现的</p>
+<p>防抖：比如，用户在输入表单进行服务器验证，直到用户停止操作后，开始计时延迟时间，到达延迟时间，就会触发回调函数执行，如果没有到达延迟时间，就会重新计时</p>
+<p>防抖函数：</p>
+<pre><code>function debounce(handle, delay) {
+    var timer = null;
+    return function () {
+        var _this = this, _arg = arguments;//谁调用此方法,this就指向谁
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+            handle.apply(_this, _arg);
+        }, delay);
+    }
+}
+</code></pre><p>节流：用户输入在规定时间内，不管怎么操作只触发一次执行函数</p>
+<pre><code>function throttle(handle, wait) {
+    var lastTime = 0;
+    return function () {
+        var nowTime = new Date().getTime();
+        //时间差大于等于等待时间，就去执行函数
+        if (nowTime - lastTime &gt;= wait) {
+            handle.apply(this, arguments);
+            lastTime = nowTime;
+        }
+    }
+}
 </code></pre>
       
 
@@ -515,7 +268,7 @@ dt:列表项标题;dd:列表项
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		
 		</ul>
@@ -571,7 +324,7 @@ dt:列表项标题;dd:列表项
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://wangzhongshun.com/2018/04/13/基础篇之HTML5/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://wangzhongshun.com/2018/12/05/js性能之防抖和节流/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -585,18 +338,18 @@ dt:列表项标题;dd:列表项
   
 <nav id="article-nav">
   
-    <a href="/2018/04/16/H5核心api/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/12/12/JavaScript之设计模式/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          H5核心api
+          JavaScript之设计模式
         
       </div>
     </a>
   
   
-    <a href="/2018/04/13/jquery学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">jquery学习笔记</div>
+    <a href="/2018/11/27/Resultful规范/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Resultful规范</div>
       <i class="icon-circle-right"></i>
     </a>
   
