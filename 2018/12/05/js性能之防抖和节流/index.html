@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="个人笔记整理与收集">
 <meta property="og:description" content="概念： oh,mygod!突然不知道该怎么说，一般在我们开发过程中，经常会遇到一些高频次事件执行，比如在输入表单的时候通过keyup进行后台表单验证，会高频次的触发事件向后台请求验证数据的合法性和有效性；再比如通过鼠标移动去发送请求，一个请求执行完，回调还没有执行完，又去触发，不停的触发，如果在回调里执行dom,等等一系列的操作，就会造成资源加载的浪费，有可能会造成页面卡顿，甚至浏览器崩溃，防抖和">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-01T08:22:07.577Z">
+<meta property="og:updated_time" content="2019-10-04T10:59:13.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js性能之防抖和节流">
 <meta name="twitter:description" content="概念： oh,mygod!突然不知道该怎么说，一般在我们开发过程中，经常会遇到一些高频次事件执行，比如在输入表单的时候通过keyup进行后台表单验证，会高频次的触发事件向后台请求验证数据的合法性和有效性；再比如通过鼠标移动去发送请求，一个请求执行完，回调还没有执行完，又去触发，不停的触发，如果在回调里执行dom,等等一系列的操作，就会造成资源加载的浪费，有可能会造成页面卡顿，甚至浏览器崩溃，防抖和">
@@ -99,15 +99,16 @@
 			</div>
 		</nav>
 	</header>	
+	<!--
 	<div style="position:absolute;bottom:105px;left:0">
 	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="250" height="30" id="honehoneclock" align="middle"><param name="allowScriptAccess" value="always"><param name="movie" value="/assets/honehone_clock_wh.swf"><param name="quality" value="high"><param name="bgcolor" value="#ffffff"><param name="wmode" value="transparent"><embed wmode="transparent" src="/assets/honehone_clock_wh.swf" quality="high" bgcolor="#ffffff" width="160" height="70" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"></object>
 <object type="application/x-shockwave-flash" style="outline:none;" data="/assets/hamster.swf?" width="230" height="180"><param name="movie" value="/assets/hamster.swf?"></param><param name="AllowScriptAccess" value="always"></param><param name="wmode" value="opaque"></param></object>
-<!--
-<object type="application/x-shockwave-flash" style="outline:none;" data="https://cdn.abowman.com/widgets/fish/fish.swf?" width="230" height="150"><param name="movie" value="https://cdn.abowman.com/widgets/fish/fish.swf?"></param><param name="AllowScriptAccess" value="always"></param><param name="wmode" value="opaque"></param><param name="scale" value="noscale"/><param name="salign" value="tl"/></object>-->
+
+<object type="application/x-shockwave-flash" style="outline:none;" data="https://cdn.abowman.com/widgets/fish/fish.swf?" width="230" height="150"><param name="movie" value="https://cdn.abowman.com/widgets/fish/fish.swf?"></param><param name="AllowScriptAccess" value="always"></param><param name="wmode" value="opaque"></param><param name="scale" value="noscale"/><param name="salign" value="tl"/></object>
 	</div>
 	<div style="position:absolute;left:0;bottom:0">
     <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=86 src="//music.163.com/outchain/player?type=2&id=29999274&auto=1&height=66"></iframe>
-    </div>	
+    </div>	-->
 </div>
 
     </div>
@@ -200,16 +201,26 @@
       
         <p>概念：</p>
 <p>oh,mygod!突然不知道该怎么说，一般在我们开发过程中，经常会遇到一些高频次事件执行，比如在输入表单的时候通过keyup进行后台表单验证，会高频次的触发事件向后台请求验证数据的合法性和有效性；再比如通过鼠标移动去发送请求，一个请求执行完，回调还没有执行完，又去触发，不停的触发，如果在回调里执行dom,等等一系列的操作，就会造成资源加载的浪费，有可能会造成页面卡顿，甚至浏览器崩溃，防抖和节流就是为了处理这样的类似情况而出现的</p>
-<p>防抖：比如，用户在输入表单进行服务器验证，直到用户停止操作后，开始计时延迟时间，到达延迟时间，就会触发回调函数执行，如果没有到达延迟时间，就会重新计时</p>
+<p>防抖：执行高频次事件，在一段时间内没有再触发事件，事件处理函数执行一次，如果设定的时间到来之前，又一次触发了事件，就重新开始延时</p>
 <p>防抖函数：</p>
-<pre><code>function debounce(handle, delay) {
-    var timer = null;
+<pre><code>function debounce(handle, delay,flag) {//handle为处理的函数，delay要延迟的,flag第一次进来是否立马执行
+    var timer;
     return function () {
-        var _this = this, _arg = arguments;//谁调用此方法,this就指向谁
+        var self = this;//谁调用此方法,this就指向谁
         clearTimeout(timer);
-        timer = setTimeout(function () {
-            handle.apply(_this, _arg);
-        }, delay);
+        if(flag){
+            var callnow = !timer;
+             timer = setTimeout(function () {
+                timer = null;
+            }, delay);
+            if(callnow){
+                handle.apply(self);
+            }
+        }else{
+            timer = setTimeout(function () {
+                handle.apply(self);
+            }, delay);
+        }
     }
 }
 </code></pre><p>节流：用户输入在规定时间内，不管怎么操作只触发一次执行函数</p>
@@ -218,8 +229,8 @@
     return function () {
         var nowTime = new Date().getTime();
         //时间差大于等于等待时间，就去执行函数
-        if (nowTime - lastTime &gt;= wait) {
-            handle.apply(this, arguments);
+        if (nowTime - lastTime &gt; wait) {
+            handle.apply(this);
             lastTime = nowTime;
         }
     }
@@ -426,7 +437,7 @@
         &copy; 2019 王忠顺
       </div>
           <!--统计start-->
-      <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
       </script>
         <span id="busuanzi_container_site_pv">
           本站总访问量<span id="busuanzi_value_site_pv"></span>次
@@ -520,7 +531,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,7 +543,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -540,7 +551,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -548,31 +559,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">node服务框架</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SSR</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -580,15 +571,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">兼容</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SEO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SSR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">H5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
