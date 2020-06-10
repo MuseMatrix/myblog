@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://wangzhongshun.com">
-  <title>js异步解决方案(generator&amp;async&amp;await) | 个人笔记整理与收集</title>
+  <title>JavaScript之设计模式 | 个人笔记整理与收集</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="以nodejs读取文件为例： 123456789const fs = require(&amp;apos;fs&amp;apos;)const readFile = function(filename)&amp;#123;    return new Promise(function(res,rej)&amp;#123;        fs.readFile(filename,(err,data) =&amp;gt;&amp;#123;">
-<meta name="keywords" content="javascript">
+  <meta name="description" content="JavaScript设计模式： 单例模式：(以对象字面量的方式来创建对象)     var singleton = {             name : value,             method : function () {             //这里是ݛ法的代码             }         };">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js异步解决方案(generator&amp;async&amp;await)">
-<meta property="og:url" content="https://wangzhongshun.com/2018/12/25/js异步解决方案-generator-async-await/index.html">
+<meta property="og:title" content="JavaScript之设计模式">
+<meta property="og:url" content="https://wangzhongshun.com/2020/01/31/JavaScript之设计模式/index.html">
 <meta property="og:site_name" content="个人笔记整理与收集">
-<meta property="og:description" content="以nodejs读取文件为例： 123456789const fs = require(&amp;apos;fs&amp;apos;)const readFile = function(filename)&amp;#123;    return new Promise(function(res,rej)&amp;#123;        fs.readFile(filename,(err,data) =&amp;gt;&amp;#123;">
+<meta property="og:description" content="JavaScript设计模式： 单例模式：(以对象字面量的方式来创建对象)     var singleton = {             name : value,             method : function () {             //这里是ݛ法的代码             }         };">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-25T05:27:19.927Z">
+<meta property="og:updated_time" content="2020-06-10T13:26:46.975Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js异步解决方案(generator&amp;async&amp;await)">
-<meta name="twitter:description" content="以nodejs读取文件为例： 123456789const fs = require(&amp;apos;fs&amp;apos;)const readFile = function(filename)&amp;#123;    return new Promise(function(res,rej)&amp;#123;        fs.readFile(filename,(err,data) =&amp;gt;&amp;#123;">
+<meta name="twitter:title" content="JavaScript之设计模式">
+<meta name="twitter:description" content="JavaScript设计模式： 单例模式：(以对象字面量的方式来创建对象)     var singleton = {             name : value,             method : function () {             //这里是ݛ法的代码             }         };">
   
     <link rel="alternative" href="/atom.xml" title="个人笔记整理与收集" type="application/atom+xml">
   
@@ -179,60 +179,136 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-js异步解决方案-generator-async-await" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JavaScript之设计模式" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      js异步解决方案(generator&amp;async&amp;await)
+      JavaScript之设计模式
     </h1>
   
 
         
-        <a href="/2018/12/25/js异步解决方案-generator-async-await/" class="archive-article-date">
-  	<time datetime="2018-12-25T12:43:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-25</time>
+        <a href="/2020/01/31/JavaScript之设计模式/" class="archive-article-date">
+  	<time datetime="2020-01-31T05:26:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-31</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>以nodejs读取文件为例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;)</span><br><span class="line">const readFile = function(filename)&#123;</span><br><span class="line">    return new Promise(function(res,rej)&#123;</span><br><span class="line">        fs.readFile(filename,(err,data) =&gt;&#123;</span><br><span class="line">            if(err)rej(err);</span><br><span class="line">            res(data);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>Promise<br> Promise，就是一个对象，用来传递异步操作的消息，避免了层层嵌套的回调函数。它代表了某个 未来才会知道结果的事件（通常是一个异步操作），并且这个事件提供统一的API，可供进一步处理。 </p>
-<pre><code>（1）对象的状态不受外界影响。有三种状态：Pending（进行中）、Resolved（已完成，又称Fulfilled）和Rejected（已失败）。 
-（2）一旦状态改变，就不会再变，任何时候都可以得到这个结果。Promise对象的状态改变，只有两种可能：从Pending变为Resolved和从Pending变为Rejected。只要这两种情况发生，状态就凝固了，不会再变了，会一直保持这个结果。
-</code></pre><p>缺点：</p>
-<pre><code>1、 无法取消Promise，一旦新建它就会执行，无法中途取消
-2、如果不设置回调函数，Promise内部抛出的错误，不会反应到外部
-3、当处于Pending状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成）。
-</code></pre><p>Promise解决方案<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> readFile(&apos;a.txt&apos;).then((data) =&gt; &#123;</span><br><span class="line">    console.log(data.toString());</span><br><span class="line">    return readFile(&apos;b.txt&apos;)</span><br><span class="line">&#125;).then((data) =&gt;&#123;</span><br><span class="line">    console.log(data.toString())</span><br><span class="line">    return readFile(&apos;c.txt&apos;)</span><br><span class="line">&#125;).then((data) =&gt;&#123;</span><br><span class="line">    console.log(data.toString());</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>Generator</p>
-<pre><code>从计算机角度看，生成器是一种类协程或半协程，它提供了一种可以通过特定语句或方法使其执行对象暂停的功能。 
-​ Generator函数，返回一个部署了Iterator接口的遍历器对象，用来操作内部指针。以后，每次调用遍历器对象的next方法，就会返回一个有着value和done两个属性的对象。value属性表示当前的内部状态的值，是yield语句后面那个表达式的值；done属性是一个布尔值，表示是否遍历结束。
-</code></pre><p>yield</p>
-<pre><code>​yield 关键字使生成器函数暂停执行，并返回跟在它后面的表达式的当前值。可以把它想成是return关键字的一个基于生成器的版本，但其并非退出函数体，而是切出当前函数的运行时，与此同时可以将一个值带到主线程中。yield语句是暂停执行的标记，而next方法可以恢复执行。
-（1）遇到yield语句，就暂停执行后面的操作，并将紧跟在yield后面的那个表达式的值，作为返回的对象的value属性值； 
-（2）下一次调用next方法时，再继续往下执行，直到遇到下一个yield语句； 
-（3）如果没有再遇到新的yield语句，就一直运行到函数结束，直到return语句为止，并将return语句后面的表达式的值，作为返回的对象的value属性值； 
-（4）如果该函数没有return语句，则返回的对象的value属性值为undefined。 
-需要注意的是，yield语句后面的表达式，只有当调用next方法、内部指针指向该语句时才会执行，因此等于为JavaScript提供了手动的“惰性求值”（Lazy Evaluation）的语法功能。
-</code></pre><p>注意： yield句本身没有返回值（返回undefined）。next方法可以带一个参数，该参数就会被当作上一个yield语句的返回值。</p>
-<p>Generator解决方案<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function * gen()&#123;</span><br><span class="line">    yield readFile(&apos;a.txt&apos;);</span><br><span class="line">    yield readFile(&apos;b.txt&apos;);</span><br><span class="line">    yield readFile(&apos;c.txt&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let g = gen();</span><br><span class="line">g.next().value.then((data) =&gt;&#123;</span><br><span class="line">    console.log(data.toString());</span><br><span class="line">    return g.next().value;</span><br><span class="line">&#125;).then((data) =&gt;&#123;</span><br><span class="line">    console.log(data.toString());</span><br><span class="line">    return g.next().value;</span><br><span class="line">&#125;).then((data) =&gt;&#123;</span><br><span class="line">    console.log(data.toString());</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>Async</p>
-<pre><code>async函数可以理解为Generator函数的语法糖，使用async内置了执行器，无需调用next方法进行逐步调用。且其返回值为Promise。
+        <p>JavaScript设计模式：</p>
+<pre><code>单例模式：(以对象字面量的方式来创建对象)
+    var singleton = {
+            name : value,
+            method : function () {
+            //这里是ݛ法的代码
+            }
+        }; 
+</code></pre><a id="more"></a>         
+<pre><code>模块模式：(为单例添加私有变量和特权方法能够使其得到增强)
+    特权方法：
+        有权访问私有变量的公有方法叫做特权方法
 
-​ async函数返回一个 Promise 对象，可以使用then方法添加回调函数。当函数执行的时候，一旦遇到await就会先返回，等到异步操作完成，再接着执行函数体内后面的语句。
-</code></pre><p>Async解决方案<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    async function fn()&#123;</span><br><span class="line">    let f1 = await readFile(&apos;a.txt&apos;);</span><br><span class="line">    console.log(f1.toString());</span><br><span class="line">    let f2 = await readFile(&apos;b.txt&apos;);</span><br><span class="line">    console.log(f2.toString());</span><br><span class="line">    let f3 = await readFile(&apos;c.txt&apos;);</span><br><span class="line">    console.log(f3.toString());</span><br><span class="line">&#125;</span><br><span class="line">fn();</span><br></pre></td></tr></table></figure></p>
-<p>async/awit的特点</p>
-<pre><code>可以让异步逻辑用同步写法实现
-最底层的await返回需要是Promise对象
-可以通过多层 async function 的同步写法代替传统的callback嵌套
-</code></pre><p>参考文献<a href="https://blog.csdn.net/ligang2585116/article/details/70843713" target="_blank" rel="noopener">https://blog.csdn.net/ligang2585116/article/details/70843713</a></p>
+    var singleton = function(){
+        //私有变量和私有函数
+        var privateVariable = 10;
+        function privateFunction(){
+            return false;
+        } 
+        //特权、公有方法和属性
+        return {
+            publicProperty: true,
+            publicMethod : function(){
+                privateVariable++;
+                return privateFunction();
+            }
+        };
+    }(); 
+工厂模式：(由一个方法来决定到底要创建哪个类的实例)
 
+    function createPerson(name,age,job){
+        var o = new Object();
+        o.name = this.name;
+        o.age = this.age;
+        o.job = this.job;
+        o.sayName = function(){
+            alert(this.name);
+        }
+        return o;
+    }
+    var person1 = createPerson(&quot;Nicholas&quot;, 29, &quot;Software Engineer&quot;);
+    var person2 = createPerson(&quot;Greg&quot;, 27, &quot;Doctor&quot;); 
+
+构造函数模式：(够构造函数可以用来创造特定对象，类似Array,Date)
+
+    function Person(name,age,job){
+        this.name = name;
+        this.age = age;
+        this.job = job;
+        this.sayName = fucntion(){
+            alert(this.name);
+        }
+    }
+    var person1 = createPerson(&quot;Nicholas&quot;, 29, &quot;Software Engineer&quot;);
+    var person2 = createPerson(&quot;Greg&quot;, 27, &quot;Doctor&quot;); 
+
+原型模式：(让所有对象实例共享他所包含的属性和方法)
+
+    每个函数都有一个property,这个属性是一个指针，指向一个对象，而这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法
+    function Person(){
+    }
+    Person.prototype.name = &quot;Nicholas&quot;;
+    Person.prototype.age = 29;
+    Person.prototype.job = &quot;Software Engineer&quot;;
+    Person.prototype.sayName = function(){
+    alert(this.name);
+    };
+    var person1 = new Person();
+    person1.sayName(); //&quot;Nicholas&quot;
+    var person2 = new Person(); 
+    person2.sayName(); //&quot;Nicholas&quot;
+    alert(person1.sayName == person2.sayName); //true 
+
+    原型对象理解：
+        只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个property属性，这个属性指向函数的原型对象，在默认情况下，所有原型对象都会自动获得一个constructor(构造函数属性)，这个属性包含一个指向property属性所在函数的指针。
+
+        创建了自定义的构造函数后，其原型对象默认只会取得constructor属性，至于其他方法，从Object继承而来，当构造函数创建一个新的实例，该实例的内部将包含一个指针，指向构造函数的原型对象__proto__
+
+组合使用构造函数模式和原型模式
+    function Person(name, age, job){
+        this.name = name;
+        this.age = age;
+        this.job = job;
+        this.friends = [&quot;Shelby&quot;, &quot;Court&quot;];
+    }
+    Person.prototype = {
+        constructor : Person,
+        sayName : function(){
+            alert(this.name);
+        }
+    }
+    var person1 = new Person(&quot;Nicholas&quot;, 29, &quot;Software Engineer&quot;);
+    var person2 = new Person(&quot;Greg&quot;, 27, &quot;Doctor&quot;); 
+
+动态原型模式
+    function Person(name, age, job){
+        this.name = name;
+        this.age = age;
+        this.job = job; 
+        if (typeof this.sayName != &quot;function&quot;){
+            Person.prototype.sayName = function(){
+                alert(this.name);
+            };
+        }
+    }
+    var friend = new Person(&quot;Nicholas&quot;, 29, &quot;Software Engineer&quot;); 
+
+寄生构造函数模式(同工厂模式一样)
+稳妥构造函数模式(不想说啥了)
+</code></pre>
       
 
       
@@ -276,7 +352,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
         		</li>
       		
 		</ul>
@@ -332,7 +408,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://wangzhongshun.com/2018/12/25/js异步解决方案-generator-async-await/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://wangzhongshun.com/2020/01/31/JavaScript之设计模式/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -346,18 +422,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/01/05/Koa体验/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/26/js异步解决方案-generator-async-await/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Koa体验
+          js异步解决方案(generator&amp;async&amp;await)
         
       </div>
     </a>
   
   
-    <a href="/2018/12/20/pug模板的使用/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">pug模板的使用</div>
+    <a href="/2019/03/03/node服务端框架egg/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">egg</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -431,7 +507,7 @@
   <div class="outer">
     <div id="footer-info">
       <div class="footer-left">
-        &copy; 2019 王忠顺
+        &copy; 2020 王忠顺
       </div>
           <!--统计start-->
       <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
@@ -528,15 +604,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nodejs应用框架</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">restful</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,15 +616,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">restful</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -560,11 +628,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">node服务框架</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">nodejs模板</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,7 +644,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+                <a href="javascript:void(0)" class="js-tag color4">nodejs模板</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -580,7 +652,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SSR</a>
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -588,11 +660,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">H5</a>
+                <a href="javascript:void(0)" class="js-tag color4">SSR</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Http</a>
+                <a href="javascript:void(0)" class="js-tag color3">H5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -600,7 +672,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color5">Http</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,11 +680,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渲染</a>
               </li>
              
               <li class="article-tag-list-item">
